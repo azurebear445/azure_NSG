@@ -15,4 +15,28 @@ variable "environment" {
       var.environment == "qa" ||
       var.environment == "stage" ||
       var.environment == "uat"
-  
+
+
+
+
+
+variable "egress_rules" {
+  description = "Object to define egress rules including the to_cidrs rule objects (Map of objects by protocol to define rules to list of CIDRs and port) and to_nsgs rule objects (Map of objects by protocol to define rules to NSGs)."
+  type = object({
+    to_cidrs = optional(object({
+      cidrs    = list(string)
+      protocol = string
+      to_port  = optional(number, null)
+    })),
+    to_nsgs = optional(map(object({
+      source_nsg_ids = list(string)
+      protocol       = string
+      to_port        = optional(number, null)
+    })))
+  })
+
+  default = {
+    to_cidrs = null
+    to_nsgs  = {}
+  }
+}
