@@ -15,35 +15,4 @@ resource "azurerm_network_security_group" "this" {
   location            = var.location
   resource_group_name = var.resource_group_name
 
-  tags = local.nsg_tags
-}
 
-# Security rules - managed separately for better control
-resource "azurerm_network_security_rule" "rules" {
-  for_each = local.all_rules_map
-
-  name                        = each.key
-  network_security_group_name = azurerm_network_security_group.this.name
-  resource_group_name         = var.resource_group_name
-
-  direction = each.value.direction
-  access    = each.value.access
-  priority  = each.value.priority
-  protocol  = each.value.protocol
-
-  # Port ranges - handle both single ports and ranges
-  source_port_range      = each.value.from_port == 0 && each.value.to_port == 0 ? "*" : null
-  source_port_ranges     = each.value.from_port != 0 || each.value.to_port != 0 ? (each.value.from_port == each.value.to_port ? [tostring(each.value.from_port)] : ["${each.value.from_port}-${each.value.to_port}"]) : null
-  destination_port_range = each.value.from_port == 0 && each.value.to_port == 0 ? "*" : null
-  destination_port_ranges = each.value.from_port != 0 || each.value.to_port != 0 ? (each.value.from_port == each.value.to_port ? [tostring(each.value.from_port)] : ["${each.value.from_port}-${each.value.to_port}"]) : null
-
-  # Address prefixes
-  source_address_prefix      = try(each.value.source_address_prefix, null)
-  destination_address_prefix = try(each.value.destination_address_prefix, null)
-
-  # Application Security Groups (for NSG-to-NSG rules in Azure)
-  source_application_security_group_ids      = try(each.value.source_application_security_group_ids, null)
-  destination_application_security_group_ids = try(each.value.destination_application_security_group_ids, null)
-
-  description = try(each.value.description, "Managed by Terraform")
-}
