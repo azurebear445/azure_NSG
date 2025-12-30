@@ -294,7 +294,7 @@ locals {
       priority                   = 122
       description                = "ServiceNow Enterprise Rule"
     }
-    "-1-all-10-111-14-251-32-inbound" = {
+    "all-all-10-111-14-251-32-inbound" = {
       protocol                   = "*"
       source_port_range          = "*"
       destination_port_range     = "*"
@@ -668,11 +668,11 @@ locals {
       priority                   = 156
       description                = "ServiceNow Enterprise Rule"
     }
-    "tcp-60777-10-111-19-0--44-inbound" = {
+    "tcp-60777-10-111-19-0-24-inbound" = {
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "60777"
-      source_address_prefix      = "10.111.19.0/.44"
+      source_address_prefix      = "10.111.19.0/24"
       destination_address_prefix = "*"
       direction                  = "Inbound"
       access                     = "Allow"
@@ -690,7 +690,7 @@ locals {
       priority                   = 158
       description                = "ServiceNow Enterprise Rule"
     }
-    "-1-all-0-0-0-0-0-outbound" = {
+    "all-all-0-0-0-0-0-outbound" = {
       protocol                   = "*"
       source_port_range          = "*"
       destination_port_range     = "*"
@@ -965,7 +965,7 @@ locals {
       priority                   = 122
       description                = "ServiceNow Enterprise Rule"
     }
-    "-1-all-10-111-14-251-32-inbound" = {
+    "all-all-10-111-14-251-32-inbound" = {
       protocol                   = "*"
       source_port_range          = "*"
       destination_port_range     = "*"
@@ -1361,7 +1361,7 @@ locals {
       priority                   = 158
       description                = "ServiceNow Enterprise Rule"
     }
-    "-1-all-0-0-0-0-0-outbound" = {
+    "all-all-0-0-0-0-0-outbound" = {
       protocol                   = "*"
       source_port_range          = "*"
       destination_port_range     = "*"
