@@ -1,4 +1,20 @@
 locals {
+
+  # =========================================================================
+  # Shared Region Configuration - Used by ALL ESG files
+  # =========================================================================
+  # Define once, use everywhere to avoid duplication
+  
+  # Regions that should get "Virginia Primary" rules (from AWS us-east-1)
+  virginia_primary_regions = ["eastus"]
+  
+  # Regions that should get "Virginia Secondary" rules (from AWS us-east-2)
+  # Note: These were originally from AWS Ohio (us-east-2) but map to Azure eastus2
+  virginia_secondary_regions = ["eastus2"]
+  
+  # Determine which rule set to apply based on var.location
+  is_virginia_primary = contains(local.virginia_primary_regions, var.location)
+  is_virginia_secondary = contains(local.virginia_secondary_regions, var.location)
   # =========================================================================
   # Enterprise Security Group Rules
   # =========================================================================
