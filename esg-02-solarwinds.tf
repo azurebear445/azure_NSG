@@ -1,12 +1,15 @@
 # =============================================================================
-# SolarWinds Monitoring Enterprise Security Group Rules
+# SolarWinds Monitoring Enterprise Security Group Rules (ESG 02)
 # =============================================================================
 # This file contains enterprise-managed SolarWinds monitoring rules that are
 # automatically applied to NSGs based on the deployment region.
 #
 # Region Mapping:
-#   - AWS us-east-1 (Virginia)    → Azure eastus (East US - Virginia Primary)
-#   - AWS us-east-2 (Ohio)        → Azure eastus2 (East US 2 - Virginia Secondary)
+#   - Primary regions   → Currently: eastus (was AWS us-east-1 Virginia)
+#   - Secondary regions → Currently: eastus2 (was AWS us-east-2 Ohio)
+#
+# Note: Region names (Virginia/Ohio) are kept in comments for reference,
+#       but the code uses generic "primary" and "secondary" for flexibility.
 #
 # Note: Azure doesn't have an Ohio datacenter. Both eastus and eastus2 are in
 #       Virginia, but we maintain the AWS us-east-1 vs us-east-2 rule separation
@@ -26,7 +29,7 @@ locals {
   # COMMON RULES - Apply to BOTH Virginia Primary and Virginia Secondary
   # =========================================================================
   # These 60 rules are identical in both AWS us-east-1 and us-east-2
-  # Region variables (virginia_primary_regions, virginia_secondary_regions)
+  # Region variables (primary_regions, secondary_regions)
   # are defined in locals.tf to avoid duplication across ESG files
   
   enterprise_solarwinds_common = {
@@ -722,7 +725,7 @@ locals {
         destination_address_prefix = "*"
         description                = "SolarWinds monitoring - TCP/49152-65535 from 10.120.7.135/32 (Virginia Primary only)"
       }
-    } : k => v if contains(local.virginia_primary_regions, var.location)
+    } : k => v if contains(local.primary_regions, var.location)
   }
 
   # =========================================================================
@@ -751,7 +754,7 @@ locals {
       #   destination_address_prefix = "*"
       #   description                = "SolarWinds monitoring - TCP/8080 from 10.120.7.200/32 (Virginia Secondary only)"
       # }
-    } : k => v if contains(local.virginia_secondary_regions, var.location)
+    } : k => v if contains(local.secondary_regions, var.location)
   }
 
   # =========================================================================

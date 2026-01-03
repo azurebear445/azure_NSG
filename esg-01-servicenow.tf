@@ -1,12 +1,14 @@
 # =============================================================================
-# ServiceNow Enterprise Security Group Rules
+# ServiceNow Enterprise Security Group Rules (ESG 01)
 # =============================================================================
 # This file contains enterprise-managed ServiceNow rules that are automatically
 # applied to NSGs based on the deployment region.
 #
 # Region Mapping:
-#   - AWS us-east-1 (Virginia)    → Azure eastus (East US - Virginia Primary)
-#   - AWS us-east-2 (Ohio)        → Azure eastus2 (East US 2 - Virginia Secondary)
+#   - Primary regions   → Currently: eastus (was AWS us-east-1 Virginia)
+#   - Secondary regions → Currently: eastus2 (was AWS us-east-2 Ohio)
+#
+# Note: Region names are kept in comments. Code uses generic primary/secondary.
 #
 # Note: Azure doesn't have an Ohio datacenter. Both eastus and eastus2 are in
 #       Virginia, but we maintain the AWS us-east-1 vs us-east-2 rule separation
@@ -23,23 +25,23 @@ locals {
   # Adjust these lists based on your actual Azure region deployment strategy.
   
   # Regions that should get "Virginia Primary" rules (from AWS us-east-1)
-  virginia_primary_regions = ["eastus"]
+  primary_regions = ["eastus"]
   
   # Regions that should get "Virginia Secondary" rules (from AWS us-east-2)
   # Note: These were originally from AWS Ohio (us-east-2) but map to Azure eastus2
-  virginia_secondary_regions = ["eastus2"]
+  secondary_regions = ["eastus2"]
   
   # Determine which rule set to apply based on var.location
-  is_virginia_primary = contains(local.virginia_primary_regions, var.location)
-  is_virginia_secondary = contains(local.virginia_secondary_regions, var.location)
+  is_primary = contains(local.primary_regions, var.location)
+  is_secondary = contains(local.secondary_regions, var.location)
   
   # =========================================================================
   # Virginia Primary Rules (from AWS us-east-1) - 60 Rules
   # =========================================================================
-  # These rules are applied when deploying to regions in virginia_primary_regions
+  # These rules are applied when deploying to regions in primary_regions
   # Source: AWS Security Group in us-east-1 (Virginia)
   
-  servicenow_rules_virginia_primary = local.is_virginia_primary ? {
+  servicenow_01_rules_primary = local.is_primary ? {
 
     "udp-138-10-1-248-0-24-inbound" = {
       protocol                   = "Udp"
@@ -706,11 +708,11 @@ locals {
   # =========================================================================
   # Virginia Secondary Rules (from AWS us-east-2) - 60 Rules
   # =========================================================================
-  # These rules are applied when deploying to regions in virginia_secondary_regions
+  # These rules are applied when deploying to regions in secondary_regions
   # Source: AWS Security Group in us-east-2 (Ohio) - mapped to Azure eastus2
   # Note: Originally from AWS Ohio, but deployed to Azure Virginia eastus2 datacenter
   
-  servicenow_rules_virginia_secondary = local.is_virginia_secondary ? {
+   servicenow_01_rules_secondary = local.is_secondary ? {
 
     "udp-138-10-1-248-0-24-inbound" = {
       protocol                   = "Udp"
@@ -1383,8 +1385,8 @@ locals {
   #   - eastus2 (Virginia Secondary) gets 60 rules from AWS us-east-2 (originally Ohio)
   #   - Other regions get neither (empty)
   
-  enterprise_servicenow_rules = merge(
-    local.servicenow_rules_virginia_primary,
-    local.servicenow_rules_virginia_secondary
+  enterprise_01_servicenow_rules = merge(
+    local.servicenow_01_rules_primary,
+    local.servicenow_01_rules_secondary
   )
 }

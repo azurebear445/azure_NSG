@@ -3,17 +3,20 @@ locals {
   # Shared Region Configuration - Used by ALL ESG files
   # =========================================================================
   # Define once, use everywhere to avoid duplication
+  # 
+  # Region Mapping:
+  #   AWS us-east-1 (Virginia) → Azure East US 2 (eastus2)
+  #   AWS us-east-2 (Ohio)     → Azure Central US (centralus)
   
-  # Regions that should get "Virginia Primary" rules (from AWS us-east-1)
-  virginia_primary_regions = ["eastus"]
+  # Primary regions (currently: eastus2, was AWS us-east-1 Virginia)
+  primary_regions = ["eastus2"]
   
-  # Regions that should get "Virginia Secondary" rules (from AWS us-east-2)
-  # Note: These were originally from AWS Ohio (us-east-2) but map to Azure eastus2
-  virginia_secondary_regions = ["eastus2"]
+  # Secondary regions (currently: centralus, was AWS us-east-2 Ohio)  
+  secondary_regions = ["centralus"]
   
-  # Determine which rule set to apply based on var.location
-  is_virginia_primary = contains(local.virginia_primary_regions, var.location)
-  is_virginia_secondary = contains(local.virginia_secondary_regions, var.location)
+  # Boolean checks for region type (used by ESG 01 two-block pattern)
+  is_primary = contains(local.primary_regions, var.location)
+  is_secondary = contains(local.secondary_regions, var.location)
 
   # =========================================================================
   # Enterprise Security Group Rules
@@ -21,11 +24,18 @@ locals {
   # Merge all enterprise rules from esg-*.tf files
   # Content-based keys ensure automatic deduplication across ESGs
   # Priority range: 100-1499 (reserved for enterprise rules)
+  #
+  # Naming Convention: enterprise_[NUMBER]_[NAME]_rules
+  # This matches the file naming pattern: esg-[NUMBER]-[NAME].tf
   
   all_enterprise_rules = merge(
-    local.enterprise_servicenow_rules,
-    local.enterprise_solarwinds_rules,
-    local.enterprise_multi_service_rules
+    local.enterprise_01_servicenow_rules,
+    local.enterprise_02_solarwinds_rules,
+    local.enterprise_03_multi_service_rules
+    # Add future ESG rules here:
+    # local.enterprise_04_multi_service_rules,
+    # local.enterprise_05_multi_service_rules,
+    # ...
   )
 
   # =========================================================================

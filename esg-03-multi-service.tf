@@ -1,12 +1,15 @@
 # =============================================================================
-# Multi-Service Enterprise Security Group Rules
+# Multi-Service Enterprise Security Group Rules (ESG 03)
 # =============================================================================
 # This file contains enterprise-managed rules for multiple monitoring and
 # management services (SolarWinds Azure pollers, Delinea server).
 #
 # Region Mapping:
-#   - AWS us-east-1 (Virginia)    → Azure eastus (East US - Virginia Primary)
-#   - AWS us-east-2 (Ohio)        → Azure eastus2 (East US 2 - Virginia Secondary)
+#   - Primary regions   → Currently: eastus (was AWS us-east-1 Virginia)
+#   - Secondary regions → Currently: eastus2 (was AWS us-east-2 Ohio)
+#
+# Note: Region names (Virginia/Ohio) are kept in comments for reference,
+#       but the code uses generic "primary" and "secondary" for flexibility.
 #
 # Note: Azure doesn't have an Ohio datacenter. Both eastus and eastus2 are in
 #       Virginia, but we maintain the AWS us-east-1 vs us-east-2 rule separation
@@ -19,6 +22,9 @@
 #   - Total unique rules: 61
 #
 # Priority Range: 222-282 (61 rules)
+#
+# Variable Naming: enterprise_03_multi_service_rules
+# (Matches file pattern: esg-03-multi-service.tf)
 # =============================================================================
 
 locals {
@@ -26,10 +32,10 @@ locals {
   # COMMON RULES - Apply to BOTH Virginia Primary and Virginia Secondary
   # =========================================================================
   # These 61 rules are identical in both AWS us-east-1 and us-east-2
-  # Region variables (virginia_primary_regions, virginia_secondary_regions)
+  # Region variables (primary_regions, secondary_regions)
   # are defined in locals.tf to avoid duplication across ESG files
   
-  enterprise_multi_service_common = {
+  multi_service_03_common = {
     "all-all-0-0-0-0-0-outbound" = {
       direction                  = "Outbound"
       access                     = "Allow"
@@ -714,10 +720,10 @@ locals {
   # - Follow the same format as common rules above
   # - Rules will only apply when deployed to eastus
   
-  enterprise_multi_service_virginia_primary = {
+  multi_service_03_primary = {
     for k, v in {
       # Add Virginia Primary-specific rules here in the future
-    } : k => v if contains(local.virginia_primary_regions, var.location)
+    } : k => v if contains(local.primary_regions, var.location)
   }
 
   # =========================================================================
@@ -731,22 +737,22 @@ locals {
   # - Follow the same format as common rules above
   # - Rules will only apply when deployed to eastus2
   
-  enterprise_multi_service_virginia_secondary = {
+  multi_service_03_secondary = {
     for k, v in {
       # Add Virginia Secondary-specific rules here in the future
-    } : k => v if contains(local.virginia_secondary_regions, var.location)
+    } : k => v if contains(local.secondary_regions, var.location)
   }
 
   # =========================================================================
-  # MERGE ALL MULTI-SERVICE RULES
+  # MERGE ALL MULTI-SERVICE ESG 03 RULES
   # =========================================================================
   # Common rules always apply
   # Virginia Primary rules only apply when deployed to eastus
   # Virginia Secondary rules only apply when deployed to eastus2
   
-  enterprise_multi_service_rules = merge(
-    local.enterprise_multi_service_common,
-    local.enterprise_multi_service_virginia_primary,
-    local.enterprise_multi_service_virginia_secondary
+  enterprise_03_multi_service_rules = merge(
+    local.multi_service_03_common,
+    local.multi_service_03_primary,
+    local.multi_service_03_secondary
   )
 }
