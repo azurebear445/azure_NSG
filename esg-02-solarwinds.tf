@@ -1,42 +1,40 @@
 # =============================================================================
 # SolarWinds Monitoring Enterprise Security Group Rules (ESG 02)
 # =============================================================================
-# This file contains enterprise-managed SolarWinds monitoring rules that are
-# automatically applied to NSGs based on the deployment region.
+# This file contains enterprise-managed SolarWinds monitoring rules.
 #
 # Region Mapping:
-#   - Primary regions   → Currently: eastus (was AWS us-east-1 Virginia)
-#   - Secondary regions → Currently: eastus2 (was AWS us-east-2 Ohio)
+#   - Primary regions   → Currently: eastus2 (was AWS us-east-1 Virginia)
+#   - Secondary regions → Currently: centralus (was AWS us-east-2 Ohio)
 #
-# Note: Region names (Virginia/Ohio) are kept in comments for reference,
-#       but the code uses generic "primary" and "secondary" for flexibility.
+# Note: Region names are kept in comments. Code uses generic primary/secondary.
 #
-# Note: Azure doesn't have an Ohio datacenter. Both eastus and eastus2 are in
-#       Virginia, but we maintain the AWS us-east-1 vs us-east-2 rule separation
-#       for compatibility with your existing AWS setup.
+# Priority Block: 200-299 (100 total slots)
+#   - Currently used: 200-261 (62 rules max)
+#   - Reserved for future: 262-299 (38 slots)
 #
 # Rule Distribution:
-#   - Common rules: 60 (apply to both eastus and eastus2)
-#   - Virginia Primary only: 2 rules (eastus only)
-#   - Virginia Secondary only: 0 rules (eastus2 - ready for future rules)
-#   - Total unique rules: 62
+#   - Common rules: 60 (apply to both regions)
+#   - Primary-only: 2 (eastus2 only - dynamic port ranges)
+#   - Secondary-only: 0
 #
-# Priority Range: 160-221
+# Note: Primary and secondary can reuse same priorities (200-299) because
+#       they deploy to DIFFERENT NSGs in DIFFERENT regions - no conflicts!
+#
+# Variable Naming: enterprise_02_solarwinds_rules
 # =============================================================================
 
 locals {
   # =========================================================================
-  # COMMON RULES - Apply to BOTH Virginia Primary and Virginia Secondary
+  # COMMON RULES - Apply to BOTH Primary and Secondary
   # =========================================================================
-  # These 60 rules are identical in both AWS us-east-1 and us-east-2
-  # Region variables (primary_regions, secondary_regions)
-  # are defined in locals.tf to avoid duplication across ESG files
+  # These 60 rules are identical in both regions
   
-  enterprise_solarwinds_common = {
+  solarwinds_02_common = {
     "all-all-0-0-0-0-0-outbound" = {
       direction                  = "Outbound"
       access                     = "Allow"
-      priority                   = 160
+      priority                   = 200
       protocol                   = "*"
       source_port_range          = "*"
       destination_port_range     = "*"
@@ -47,7 +45,7 @@ locals {
     "icmp-any-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 161
+      priority                   = 201
       protocol                   = "Icmp"
       source_port_range          = "*"
       destination_port_range     = "*"
@@ -58,7 +56,7 @@ locals {
     "tcp-22-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 162
+      priority                   = 202
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "22"
@@ -69,7 +67,7 @@ locals {
     "tcp-22-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 163
+      priority                   = 203
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "22"
@@ -80,7 +78,7 @@ locals {
     "tcp-23-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 164
+      priority                   = 204
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "23"
@@ -91,7 +89,7 @@ locals {
     "tcp-23-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 165
+      priority                   = 205
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "23"
@@ -102,7 +100,7 @@ locals {
     "tcp-25-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 166
+      priority                   = 206
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "25"
@@ -113,7 +111,7 @@ locals {
     "tcp-25-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 167
+      priority                   = 207
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "25"
@@ -124,7 +122,7 @@ locals {
     "tcp-53-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 168
+      priority                   = 208
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "53"
@@ -135,7 +133,7 @@ locals {
     "tcp-53-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 169
+      priority                   = 209
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "53"
@@ -146,7 +144,7 @@ locals {
     "tcp-80-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 170
+      priority                   = 210
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "80"
@@ -157,7 +155,7 @@ locals {
     "tcp-80-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 171
+      priority                   = 211
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "80"
@@ -168,7 +166,7 @@ locals {
     "tcp-135-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 172
+      priority                   = 212
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "135"
@@ -179,7 +177,7 @@ locals {
     "tcp-135-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 173
+      priority                   = 213
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "135"
@@ -190,7 +188,7 @@ locals {
     "tcp-139-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 174
+      priority                   = 214
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "139"
@@ -201,7 +199,7 @@ locals {
     "tcp-139-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 175
+      priority                   = 215
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "139"
@@ -212,7 +210,7 @@ locals {
     "tcp-443-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 176
+      priority                   = 216
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "443"
@@ -223,7 +221,7 @@ locals {
     "tcp-443-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 177
+      priority                   = 217
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "443"
@@ -234,7 +232,7 @@ locals {
     "tcp-445-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 178
+      priority                   = 218
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "445"
@@ -245,7 +243,7 @@ locals {
     "tcp-445-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 179
+      priority                   = 219
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "445"
@@ -256,7 +254,7 @@ locals {
     "tcp-465-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 180
+      priority                   = 220
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "465"
@@ -267,7 +265,7 @@ locals {
     "tcp-465-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 181
+      priority                   = 221
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "465"
@@ -278,7 +276,7 @@ locals {
     "tcp-587-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 182
+      priority                   = 222
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "587"
@@ -289,7 +287,7 @@ locals {
     "tcp-587-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 183
+      priority                   = 223
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "587"
@@ -300,7 +298,7 @@ locals {
     "tcp-1024-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 184
+      priority                   = 224
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1024"
@@ -311,7 +309,7 @@ locals {
     "tcp-1024-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 185
+      priority                   = 225
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1024"
@@ -322,7 +320,7 @@ locals {
     "tcp-1025-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 186
+      priority                   = 226
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1025"
@@ -333,7 +331,7 @@ locals {
     "tcp-1025-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 187
+      priority                   = 227
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1025"
@@ -344,7 +342,7 @@ locals {
     "tcp-1026-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 188
+      priority                   = 228
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1026"
@@ -355,7 +353,7 @@ locals {
     "tcp-1026-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 189
+      priority                   = 229
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1026"
@@ -366,7 +364,7 @@ locals {
     "tcp-1027-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 190
+      priority                   = 230
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1027"
@@ -377,7 +375,7 @@ locals {
     "tcp-1027-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 191
+      priority                   = 231
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1027"
@@ -388,7 +386,7 @@ locals {
     "tcp-1028-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 192
+      priority                   = 232
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1028"
@@ -399,7 +397,7 @@ locals {
     "tcp-1028-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 193
+      priority                   = 233
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1028"
@@ -410,7 +408,7 @@ locals {
     "tcp-1029-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 194
+      priority                   = 234
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1029"
@@ -421,7 +419,7 @@ locals {
     "tcp-1029-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 195
+      priority                   = 235
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1029"
@@ -432,7 +430,7 @@ locals {
     "tcp-1030-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 196
+      priority                   = 236
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1030"
@@ -443,7 +441,7 @@ locals {
     "tcp-1031-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 197
+      priority                   = 237
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1031"
@@ -454,7 +452,7 @@ locals {
     "tcp-1032-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 198
+      priority                   = 238
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1032"
@@ -465,7 +463,7 @@ locals {
     "tcp-1033-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 199
+      priority                   = 239
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1033"
@@ -476,7 +474,7 @@ locals {
     "tcp-1034-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 200
+      priority                   = 240
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1034"
@@ -487,7 +485,7 @@ locals {
     "tcp-1433-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 201
+      priority                   = 241
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1433"
@@ -498,7 +496,7 @@ locals {
     "tcp-1801-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 202
+      priority                   = 242
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "1801"
@@ -509,7 +507,7 @@ locals {
     "tcp-5671-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 203
+      priority                   = 243
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "5671"
@@ -520,7 +518,7 @@ locals {
     "tcp-17777-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 204
+      priority                   = 244
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "17777"
@@ -531,7 +529,7 @@ locals {
     "tcp-17778-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 205
+      priority                   = 245
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "17778"
@@ -542,7 +540,7 @@ locals {
     "tcp-17791-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 206
+      priority                   = 246
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "17791"
@@ -553,7 +551,7 @@ locals {
     "udp-53-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 207
+      priority                   = 247
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "53"
@@ -564,7 +562,7 @@ locals {
     "udp-53-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 208
+      priority                   = 248
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "53"
@@ -575,7 +573,7 @@ locals {
     "udp-137-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 209
+      priority                   = 249
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "137"
@@ -586,7 +584,7 @@ locals {
     "udp-137-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 210
+      priority                   = 250
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "137"
@@ -597,7 +595,7 @@ locals {
     "udp-138-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 211
+      priority                   = 251
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "138"
@@ -608,7 +606,7 @@ locals {
     "udp-138-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 212
+      priority                   = 252
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "138"
@@ -619,7 +617,7 @@ locals {
     "udp-161-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 213
+      priority                   = 253
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "161"
@@ -630,7 +628,7 @@ locals {
     "udp-161-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 214
+      priority                   = 254
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "161"
@@ -641,7 +639,7 @@ locals {
     "udp-162-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 215
+      priority                   = 255
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "162"
@@ -652,7 +650,7 @@ locals {
     "udp-162-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 216
+      priority                   = 256
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "162"
@@ -663,7 +661,7 @@ locals {
     "udp-1024-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 217
+      priority                   = 257
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "1024"
@@ -674,7 +672,7 @@ locals {
     "udp-1024-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 218
+      priority                   = 258
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "1024"
@@ -685,7 +683,7 @@ locals {
     "udp-1434-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 219
+      priority                   = 259
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "1434"
@@ -696,77 +694,62 @@ locals {
   }
 
   # =========================================================================
-  # VIRGINIA PRIMARY ONLY - Apply ONLY to eastus
+  # PRIMARY-ONLY RULES - Apply ONLY to Primary Regions (eastus2)
   # =========================================================================
   # These 2 rules exist only in AWS us-east-1 (Virginia)
-  # Dynamic port ranges for SolarWinds monitoring servers
+  # Dynamic port ranges for SolarWinds Azure pollers
+  # 
+  # Note: Can reuse priorities 200-299 because this deploys to DIFFERENT NSG
+  # than secondary (different region = different NSG instance)
   
-  enterprise_solarwinds_virginia_primary = {
+  solarwinds_02_primary = {
     for k, v in {
       "tcp-49152-65535-10-111-14-232-32-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 220
+        priority                   = 260
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "49152-65535"
         source_address_prefix      = "10.111.14.232/32"
         destination_address_prefix = "*"
-        description                = "SolarWinds monitoring - TCP/49152-65535 from 10.111.14.232/32 (Virginia Primary only)"
+        description                = "SolarWinds monitoring - TCP/49152-65535 from 10.111.14.232/32"
       }
       "tcp-49152-65535-10-120-7-135-32-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 221
+        priority                   = 261
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "49152-65535"
         source_address_prefix      = "10.120.7.135/32"
         destination_address_prefix = "*"
-        description                = "SolarWinds monitoring - TCP/49152-65535 from 10.120.7.135/32 (Virginia Primary only)"
+        description                = "SolarWinds monitoring - TCP/49152-65535 from 10.120.7.135/32"
       }
     } : k => v if contains(local.primary_regions, var.location)
   }
 
   # =========================================================================
-  # VIRGINIA SECONDARY ONLY - Apply ONLY to eastus2
+  # SECONDARY-ONLY RULES - Apply ONLY to Secondary Regions (centralus)
   # =========================================================================
-  # Currently empty - no rules specific to AWS us-east-2 (Ohio)
-  # This block is ready for future Virginia Secondary-specific rules
+  # Currently empty - all non-common rules are primary-only
+  # This block is ready for future secondary-specific rules
   # 
-  # When adding rules here:
-  # - Start with priority 222
-  # - Follow the same format as Virginia Primary block above
-  # - Rules will only apply when deployed to eastus2
+  # Note: Can reuse priorities 200-299 for future secondary-only rules
   
-  enterprise_solarwinds_virginia_secondary = {
+  solarwinds_02_secondary = {
     for k, v in {
-      # Add Virginia Secondary-specific rules here in the future
-      # Example:
-      # "tcp-8080-10-120-7-200-32-inbound" = {
-      #   direction                  = "Inbound"
-      #   access                     = "Allow"
-      #   priority                   = 222
-      #   protocol                   = "Tcp"
-      #   source_port_range          = "*"
-      #   destination_port_range     = "8080"
-      #   source_address_prefix      = "10.120.7.200/32"
-      #   destination_address_prefix = "*"
-      #   description                = "SolarWinds monitoring - TCP/8080 from 10.120.7.200/32 (Virginia Secondary only)"
-      # }
+      # Add secondary-specific rules here in the future
     } : k => v if contains(local.secondary_regions, var.location)
   }
 
   # =========================================================================
-  # MERGE ALL SOLARWINDS RULES
+  # MERGE ALL SOLARWINDS ESG 02 RULES
   # =========================================================================
-  # Common rules always apply
-  # Virginia Primary rules only apply when deployed to eastus
-  # Virginia Secondary rules only apply when deployed to eastus2
   
-  enterprise_solarwinds_rules = merge(
-    local.enterprise_solarwinds_common,
-    local.enterprise_solarwinds_virginia_primary,
-    local.enterprise_solarwinds_virginia_secondary
+  enterprise_02_solarwinds_rules = merge(
+    local.solarwinds_02_common,
+    local.solarwinds_02_primary,
+    local.solarwinds_02_secondary
   )
 }
