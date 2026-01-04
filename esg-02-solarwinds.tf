@@ -4,13 +4,11 @@
 # This file contains enterprise-managed SolarWinds monitoring rules.
 #
 # Region Mapping:
-#   - Virginia Region (AWS us-east-1) → Azure eastus2 (Virginia)
-#   - Ohio Region (AWS us-east-2) → Azure centralus (Iowa)
+#   - Region-01 (AWS us-east-1 Virginia) → Azure eastus2 (Virginia)
+#   - Region-02 (AWS us-east-2 Ohio) → Azure centralus (Iowa)
 #
 # Note: Azure has no Ohio datacenter. AWS Ohio maps to Azure Central US (Iowa)
 #       for optimal network latency to Midwest regions.
-#
-# Note: Region names are kept in comments. Code uses generic primary/secondary.
 #
 # Priority Block: 200-299 (100 total slots)
 #   - Currently used: 200-261 (62 rules max)
@@ -18,20 +16,20 @@
 #
 # Rule Distribution:
 #   - Common rules: 60 (apply to both regions)
-#   - Virginia Primary-only: 2 (eastus2 only - AWS us-east-1 dynamic port ranges)
-#   - Ohio Secondary-only: 0
+#   - Region-01 only: 2 (eastus2 only - AWS Virginia dynamic ports)
+#   - Region-02 only: 0
 #
-# Note: Primary and secondary can reuse same priorities (200-299) because
-#       they deploy to DIFFERENT NSGs in DIFFERENT regions - no conflicts!
+# Note: Region-01 and Region-02 can reuse same priorities (200-299) because
+#       they deploy to DIFFERENT NSGs in DIFFERENT Azure regions - no conflicts!
 #
 # Variable Naming: enterprise_02_solarwinds_rules
 # =============================================================================
 
 locals {
   # =========================================================================
-  # COMMON RULES - Apply to BOTH Primary and Secondary
+  # COMMON RULES - Apply to BOTH Region-01 and Region-02
   # =========================================================================
-  # These 60 rules are identical in both regions
+  # These 60 rules are identical in both AWS regions
   
   solarwinds_02_common = {
     "all-all-0-0-0-0-0-outbound" = {
@@ -697,15 +695,15 @@ locals {
   }
 
   # =========================================================================
-  # VIRGINIA PRIMARY-ONLY RULES - Apply ONLY to Primary Regions (eastus2)
+  # REGION-01 ONLY RULES - Apply ONLY to Region-01 (eastus2)
   # =========================================================================
-  # These 2 rules exist only in AWS us-east-1 (Virginia Region)
+  # These 2 rules exist only in AWS us-east-1 (Virginia)
   # Dynamic port ranges for SolarWinds Azure pollers
   # 
   # Note: Can reuse priorities 200-299 because this deploys to DIFFERENT NSG
-  # than secondary (different region = different NSG instance)
+  # than Region-02 (different Azure region = different NSG instance)
   
-  solarwinds_02_primary = {
+  solarwinds_02_region_01 = {
     for k, v in {
       "tcp-49152-65535-10-111-14-232-32-inbound" = {
         direction                  = "Inbound"
@@ -729,21 +727,21 @@ locals {
         destination_address_prefix = "*"
         description                = "SolarWinds monitoring - TCP/49152-65535 from 10.120.7.135/32"
       }
-    } : k => v if contains(local.primary_regions, var.location)
+    } : k => v if contains(local.region_01_locations, var.location)
   }
 
   # =========================================================================
-  # OHIO SECONDARY-ONLY RULES - Apply ONLY to Secondary Regions (centralus)
+  # REGION-02 ONLY RULES - Apply ONLY to Region-02 (centralus)
   # =========================================================================
-  # Currently empty - all non-common rules are primary-only
-  # This block is ready for future secondary-specific rules
+  # Currently empty - all non-common rules are Region-01 only
+  # This block is ready for future Region-02 specific rules
   # 
-  # Note: Can reuse priorities 200-299 for future secondary-only rules
+  # Note: Can reuse priorities 200-299 for future Region-02 only rules
   
-  solarwinds_02_secondary = {
+  solarwinds_02_region_02 = {
     for k, v in {
-      # Add secondary-specific rules here in the future
-    } : k => v if contains(local.secondary_regions, var.location)
+      # Add Region-02 specific rules here in the future
+    } : k => v if contains(local.region_02_locations, var.location)
   }
 
   # =========================================================================
@@ -752,7 +750,7 @@ locals {
   
   enterprise_02_solarwinds_rules = merge(
     local.solarwinds_02_common,
-    local.solarwinds_02_primary,
-    local.solarwinds_02_secondary
+    local.solarwinds_02_region_01,
+    local.solarwinds_02_region_02
   )
 }

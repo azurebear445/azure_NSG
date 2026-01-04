@@ -4,13 +4,11 @@
 # This file contains enterprise-managed ServiceNow rules.
 #
 # Region Mapping:
-#   - Virginia Region (AWS us-east-1) → Azure eastus2 (Virginia)
-#   - Ohio Region (AWS us-east-2) → Azure centralus (Iowa)
+#   - Region-01 (AWS us-east-1 Virginia) → Azure eastus2 (Virginia)
+#   - Region-02 (AWS us-east-2 Ohio) → Azure centralus (Iowa)
 #
 # Note: Azure has no Ohio datacenter. AWS Ohio maps to Azure Central US (Iowa)
 #       for optimal network latency to Midwest regions.
-#
-# Note: Region names are kept in comments. Code uses generic primary/secondary.
 #
 # Priority Block: 100-199 (100 total slots)
 #   - Currently used: 100-159 (60 rules)
@@ -18,20 +16,20 @@
 #
 # Rule Distribution:
 #   - Common rules: 58 (apply to both regions)
-#   - Virginia Primary-only: 2 (eastus2 only - AWS us-east-1)
-#   - Ohio Secondary-only: 2 (centralus only - AWS us-east-2)
+#   - Region-01 only: 2 (eastus2 only - AWS Virginia)
+#   - Region-02 only: 2 (centralus only - AWS Ohio)
 #
-# Note: Primary and secondary can reuse same priorities (100-199) because
-#       they deploy to DIFFERENT NSGs in DIFFERENT regions - no conflicts!
+# Note: Region-01 and Region-02 can reuse same priorities (100-199) because
+#       they deploy to DIFFERENT NSGs in DIFFERENT Azure regions - no conflicts!
 #
 # Variable Naming: enterprise_01_servicenow_rules
 # =============================================================================
 
 locals {
   # =========================================================================
-  # COMMON RULES - Apply to BOTH Primary and Secondary
+  # COMMON RULES - Apply to BOTH Region-01 and Region-02
   # =========================================================================
-  # These 58 rules are identical in both regions
+  # These 58 rules are identical in both AWS regions
   
   servicenow_01_common = {
     "all-all-0-0-0-0-0-outbound" = {
@@ -675,14 +673,15 @@ locals {
   }
 
   # =========================================================================
-  # VIRGINIA PRIMARY-ONLY RULES - Apply ONLY to Primary Regions (eastus2)
+  # REGION-01 ONLY RULES - Apply ONLY to Region-01 (eastus2)
   # =========================================================================
-  # These 2 rules exist only in AWS us-east-1 (Virginia) or differ from Ohio
+  # These 2 rules exist only in AWS us-east-1 (Virginia)
+  # or have different definitions than Region-02
   # 
   # Note: Can reuse priorities 100-199 because this deploys to DIFFERENT NSG
-  # than secondary (different region = different NSG instance)
+  # than Region-02 rules (different Azure region = different NSG instance)
   
-  servicenow_01_primary = {
+  servicenow_01_region_01 = {
     for k, v in {
       "tcp-49152-10-110-34-0-24-inbound" = {
         protocol                   = "Tcp"
@@ -706,18 +705,19 @@ locals {
         priority                   = 159
         description                = "ServiceNow Enterprise Rule"
       }
-    } : k => v if contains(local.primary_regions, var.location)
+    } : k => v if contains(local.region_01_locations, var.location)
   }
 
   # =========================================================================
-  # OHIO SECONDARY-ONLY RULES - Apply ONLY to Secondary Regions (centralus)
+  # REGION-02 ONLY RULES - Apply ONLY to Region-02 (centralus)
   # =========================================================================
-  # These 2 rules exist only in AWS us-east-2 (Ohio) or differ from Virginia
+  # These 2 rules exist only in AWS us-east-2 (Ohio)
+  # or have different definitions than Region-01
   # 
   # Note: Can reuse priorities 100-199 because this deploys to DIFFERENT NSG
-  # than primary (different region = different NSG instance)
+  # than Region-01 rules (different Azure region = different NSG instance)
   
-  servicenow_01_secondary = {
+  servicenow_01_region_02 = {
     for k, v in {
       "tcp-49152-65535-10-110-34-0-24-inbound" = {
         protocol                   = "Tcp"
@@ -741,7 +741,7 @@ locals {
         priority                   = 159
         description                = "ServiceNow Enterprise Rule"
       }
-    } : k => v if contains(local.secondary_regions, var.location)
+    } : k => v if contains(local.region_02_locations, var.location)
   }
 
   # =========================================================================
@@ -750,7 +750,7 @@ locals {
   
   enterprise_01_servicenow_rules = merge(
     local.servicenow_01_common,
-    local.servicenow_01_primary,
-    local.servicenow_01_secondary
+    local.servicenow_01_region_01,
+    local.servicenow_01_region_02
   )
 }

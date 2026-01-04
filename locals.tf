@@ -5,18 +5,24 @@ locals {
   # Define once, use everywhere to avoid duplication
   # 
   # Region Mapping:
-  #   Virginia Region - AWS us-east-1 → Azure East US 2 (eastus2)
-  #   Ohio Region - AWS us-east-2 → Azure Central US (centralus)
+  #   - Region-01 (AWS us-east-1 Virginia) → Azure eastus2 (Virginia)
+  #   - Region-02 (AWS us-east-2 Ohio) → Azure centralus (Iowa)
+  #
+  # Note: Azure has no Ohio datacenter. AWS Ohio maps to Azure Central US (Iowa)
+  #       for optimal network latency to Midwest regions.
+  #
+  # Note: Region-01 and Region-02 are peers (not primary/secondary hierarchy).
+  #       They have equal preference and can fail over to each other.
   
-  # Virginia Primary regions (AWS us-east-1 Virginia → Azure eastus2 Virginia)
-  primary_regions = ["eastus2"]
+  # Region-01 locations (AWS us-east-1 Virginia → Azure eastus2 Virginia)
+  region_01_locations = ["eastus2"]
   
-  # Ohio Secondary regions (AWS us-east-2 Ohio → Azure centralus Iowa)
-  secondary_regions = ["centralus"]
+  # Region-02 locations (AWS us-east-2 Ohio → Azure centralus Iowa)
+  region_02_locations = ["centralus"]
   
-  # Boolean checks for region type (used by ESG 01 two-block pattern)
-  is_primary = contains(local.primary_regions, var.location)
-  is_secondary = contains(local.secondary_regions, var.location)
+  # Boolean checks for region type (used by ESG files with for-loop filters)
+  is_region_01 = contains(local.region_01_locations, var.location)
+  is_region_02 = contains(local.region_02_locations, var.location)
 
   # =========================================================================
   # Enterprise Security Group Rules
