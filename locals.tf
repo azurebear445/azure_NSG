@@ -20,7 +20,7 @@ locals {
   # Region-02 locations (AWS us-east-2 Ohio → Azure centralus Iowa)
   region_02_locations = ["centralus"]
   
-  # Boolean checks for region type (used by ESG files with for-loop filters)
+  # Boolean checks for region type (used by ESG files)
   is_region_01 = contains(local.region_01_locations, var.location)
   is_region_02 = contains(local.region_02_locations, var.location)
 
@@ -30,18 +30,10 @@ locals {
   # Merge all enterprise rules from esg-*.tf files
   # Content-based keys ensure automatic deduplication across ESGs
   # Priority range: 100-1499 (reserved for enterprise rules)
-  #
-  # Naming Convention: enterprise_[NUMBER]_[NAME]_rules
-  # This matches the file naming pattern: esg-[NUMBER]-[NAME].tf
   
   all_enterprise_rules = merge(
     local.enterprise_01_servicenow_rules,
     local.enterprise_02_solarwinds_rules,
-    local.enterprise_03_multi_service_rules
-    # Add future ESG rules here:
-    # local.enterprise_04_multi_service_rules,
-    # local.enterprise_05_multi_service_rules,
-    # ...
   )
 
   # =========================================================================
@@ -49,20 +41,18 @@ locals {
   # =========================================================================
   # These rules are provided by application teams via input variables
   # Priority range: 1500-3999 (starts after enterprise rules)
+  # =========================================================================
 
   # Flatten ingress rules from CIDRs for ICMP
   ingress_rules_from_cidrs_icmp = flatten([
     for port, rule in var.ingress_rules["from_cidrs"]["icmp"] : [
-      for cidr in rule.cidrs : {
-        key                        = "icmp-${replace(cidr, "/", "-")}-inbound"
-        direction                  = "Inbound"
-        access                     = "Allow"
-        protocol                   = "Icmp"
-        source_port_range          = "*"
-        destination_port_range     = "*"
+      for cidr in rule["cidrs"] : {
+        key                        = "${port}-icmp-${replace(cidr, "/", "-")}"
+        protocol                   = rule["protocol"]
+        from_port                  = tonumber(port)
+        to_port                    = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
         source_address_prefix      = cidr
         destination_address_prefix = "*"
-        description                = try(rule.description, "ICMP from ${cidr}")
       }
     ]
   ])
@@ -70,16 +60,13 @@ locals {
   # Flatten ingress rules from CIDRs for TCP
   ingress_rules_from_cidrs_tcp = flatten([
     for port, rule in var.ingress_rules["from_cidrs"]["tcp"] : [
-      for cidr in rule.cidrs : {
-        key                        = "${port}-tcp-${replace(cidr, "/", "-")}-inbound"
-        direction                  = "Inbound"
-        access                     = "Allow"
-        protocol                   = "Tcp"
-        source_port_range          = "*"
-        destination_port_range     = try(rule.to_port, port)
+      for cidr in rule["cidrs"] : {
+        key                        = "${port}-tcp-${replace(cidr, "/", "-")}"
+        protocol                   = rule["protocol"]
+        from_port                  = tonumber(port)
+        to_port                    = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
         source_address_prefix      = cidr
         destination_address_prefix = "*"
-        description                = try(rule.description, "TCP/${port} from ${cidr}")
       }
     ]
   ])
@@ -87,128 +74,128 @@ locals {
   # Flatten ingress rules from CIDRs for UDP
   ingress_rules_from_cidrs_udp = flatten([
     for port, rule in var.ingress_rules["from_cidrs"]["udp"] : [
-      for cidr in rule.cidrs : {
-        key                        = "${port}-udp-${replace(cidr, "/", "-")}-inbound"
-        direction                  = "Inbound"
-        access                     = "Allow"
-        protocol                   = "Udp"
-        source_port_range          = "*"
-        destination_port_range     = try(rule.to_port, port)
+      for cidr in rule["cidrs"] : {
+        key                        = "${port}-udp-${replace(cidr, "/", "-")}"
+        protocol                   = rule["protocol"]
+        from_port                  = tonumber(port)
+        to_port                    = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
         source_address_prefix      = cidr
         destination_address_prefix = "*"
-        description                = try(rule.description, "UDP/${port} from ${cidr}")
       }
     ]
   ])
 
-  # Flatten ingress rules from ASGs for TCP
-  ingress_rules_from_asgs_tcp = flatten([
-    for port, rule in var.ingress_rules["from_asgs"]["tcp"] : [
-      for asg_id in rule.application_security_group_ids : {
-        key                                       = "${port}-tcp-asg-${basename(asg_id)}-inbound"
-        direction                                 = "Inbound"
-        access                                    = "Allow"
-        protocol                                  = "Tcp"
-        source_port_range                         = "*"
-        destination_port_range                    = try(rule.to_port, port)
-        source_application_security_group_ids     = [asg_id]
-        destination_application_security_group_ids = null
-        description                               = try(rule.description, "TCP/${port} from ASG")
+  # Flatten ingress rules from NSGs for TCP
+  ingress_rules_from_nsgs_tcp = flatten([
+    for port, x in var.ingress_rules["from_nsgs"]["tcp"] : [
+      for y, nsg_id in x["source_nsg_ids"] : {
+        key                                    = "${port}-tcp-nsg-${y}"
+        protocol                               = x["protocol"]
+        from_port                              = tonumber(port)
+        to_port                                = x["to_port"] != null ? tonumber(x["to_port"]) : tonumber(port)
+        source_application_security_group_ids = [nsg_id]
+        destination_address_prefix             = "*"
       }
     ]
   ])
 
-  # Flatten ingress rules from ASGs for UDP
-  ingress_rules_from_asgs_udp = flatten([
-    for port, rule in var.ingress_rules["from_asgs"]["udp"] : [
-      for asg_id in rule.application_security_group_ids : {
-        key                                       = "${port}-udp-asg-${basename(asg_id)}-inbound"
-        direction                                 = "Inbound"
-        access                                    = "Allow"
-        protocol                                  = "Udp"
-        source_port_range                         = "*"
-        destination_port_range                    = try(rule.to_port, port)
-        source_application_security_group_ids     = [asg_id]
-        destination_application_security_group_ids = null
-        description                               = try(rule.description, "UDP/${port} from ASG")
+  # Flatten ingress rules from NSGs for UDP
+  ingress_rules_from_nsgs_udp = flatten([
+    for port, x in var.ingress_rules["from_nsgs"]["udp"] : [
+      for y, nsg_id in x["source_nsg_ids"] : {
+        key                                    = "${port}-udp-nsg-${y}"
+        protocol                               = x["protocol"]
+        from_port                              = tonumber(port)
+        to_port                                = x["to_port"] != null ? tonumber(x["to_port"]) : tonumber(port)
+        source_application_security_group_ids = [nsg_id]
+        destination_address_prefix             = "*"
       }
     ]
   ])
 
-  # Combine all user ingress rules and assign priorities starting at 1500
-  user_ingress_rules = {
-    for idx, rule in concat(
-      local.ingress_rules_from_cidrs_icmp,
-      local.ingress_rules_from_cidrs_tcp,
-      local.ingress_rules_from_cidrs_udp,
-      local.ingress_rules_from_asgs_tcp,
-      local.ingress_rules_from_asgs_udp
-    ) : rule.key => merge(rule, { priority = 1500 + idx })
-  }
-
-  # Flatten egress rules from CIDRs for TCP
-  egress_rules_from_cidrs_tcp = flatten([
-    for port, rule in var.egress_rules["to_cidrs"]["tcp"] : [
-      for cidr in rule.cidrs : {
-        key                        = "${port}-tcp-${replace(cidr, "/", "-")}-outbound"
-        direction                  = "Outbound"
-        access                     = "Allow"
-        protocol                   = "Tcp"
-        source_port_range          = "*"
-        destination_port_range     = try(rule.to_port, port)
-        source_address_prefix      = "*"
-        destination_address_prefix = cidr
-        description                = try(rule.description, "TCP/${port} to ${cidr}")
-      }
-    ]
-  ])
-
-  # Flatten egress rules from CIDRs for UDP
-  egress_rules_from_cidrs_udp = flatten([
-    for port, rule in var.egress_rules["to_cidrs"]["udp"] : [
-      for cidr in rule.cidrs : {
-        key                        = "${port}-udp-${replace(cidr, "/", "-")}-outbound"
-        direction                  = "Outbound"
-        access                     = "Allow"
-        protocol                   = "Udp"
-        source_port_range          = "*"
-        destination_port_range     = try(rule.to_port, port)
-        source_address_prefix      = "*"
-        destination_address_prefix = cidr
-        description                = try(rule.description, "UDP/${port} to ${cidr}")
-      }
-    ]
-  ])
-
-  # Combine all user egress rules and assign priorities starting at 2000
-  user_egress_rules = {
-    for idx, rule in concat(
-      local.egress_rules_from_cidrs_tcp,
-      local.egress_rules_from_cidrs_udp
-    ) : rule.key => merge(rule, {
-      priority = 2000 + length(local.user_ingress_rules) + idx
-    })
-  }
-
-  # Allow any egress rule
-  any_egress_rule = var.enable_any_egress ? {
-    "any-egress" = {
-      direction                  = "Outbound"
-      access                     = "Allow"
-      protocol                   = "*"
-      source_port_range          = "*"
-      destination_port_range     = "*"
+  # Flatten egress rules to CIDRs
+  egress_rules_to_cidrs = try(length(var.egress_rules["to_cidrs"]["cidrs"]) > 0 ? flatten([
+    for cidr in var.egress_rules["to_cidrs"]["cidrs"] : {
+      key                        = "egress-${var.egress_rules["to_cidrs"]["protocol"]}-${replace(cidr, "/", "-")}"
+      protocol                   = var.egress_rules["to_cidrs"]["protocol"]
+      from_port                  = 0
+      to_port                    = var.egress_rules["to_cidrs"]["to_port"] != null ? var.egress_rules["to_cidrs"]["to_port"] : 0
       source_address_prefix      = "*"
-      destination_address_prefix = "*"
-      priority                   = 2500
-      description                = "Allow any egress"
+      destination_address_prefix = cidr
     }
-  } : {}
+  ]) : [], [])
 
-  # Combine all user-defined rules
-  all_user_rules = merge(
-    local.user_ingress_rules,
-    local.user_egress_rules,
-    local.any_egress_rule
+  # Flatten egress rules to NSGs
+  egress_rules_to_nsgs = flatten([
+    for port, v in var.egress_rules["to_nsgs"] : [
+      for k, nsg_id in v["source_nsg_ids"] : {
+        key                                       = "egress-${port}-${v["protocol"]}-nsg-${k}"
+        protocol                                  = v["protocol"]
+        from_port                                 = tonumber(port)
+        to_port                                   = v["to_port"] != null ? tonumber(v["to_port"]) : tonumber(port)
+        source_address_prefix                     = "*"
+        destination_application_security_group_ids = [nsg_id]
+      }
+    ]
+  ])
+
+  # Combine all ingress rules
+  all_ingress_rules = concat(
+    local.ingress_rules_from_cidrs_icmp,
+    local.ingress_rules_from_cidrs_tcp,
+    local.ingress_rules_from_cidrs_udp,
+    local.ingress_rules_from_nsgs_tcp,
+    local.ingress_rules_from_nsgs_udp
+  )
+
+  # Combine all egress rules
+  all_egress_rules = concat(
+    local.egress_rules_to_cidrs,
+    local.egress_rules_to_nsgs
+  )
+
+  # Create map of all rules with priorities
+  # User rules start at priority 1500 to avoid conflict with enterprise rules (100-1499)
+  all_rules_map = merge(
+    # Ingress rules with auto-incrementing priorities starting at 1500
+    { for idx, rule in local.all_ingress_rules : rule.key => merge(rule, {
+      direction = "Inbound"
+      access    = "Allow"
+      priority  = 1500 + idx
+    }) },
+    # self-to-self rule if enabled
+    var.enable_any_nsg_to_self ? {
+      "allow-self-to-self" = {
+        key                        = "allow-self-to-self"
+        protocol                   = "*"
+        from_port                  = 0
+        to_port                    = 0
+        source_address_prefix      = "VirtualNetwork"
+        destination_address_prefix = "VirtualNetwork"
+        direction                  = "Inbound"
+        access                     = "Allow"
+        priority                   = 1500 + length(local.all_ingress_rules)
+      }
+    } : {},
+    # Egress rules with auto-incrementing priorities starting at 2000
+    { for idx, rule in local.all_egress_rules : rule.key => merge(rule, {
+      direction = "Outbound"
+      access    = "Allow"
+      priority  = 2000 + idx
+    }) },
+    # Any egress rule if enabled
+    var.enable_any_egress ? {
+      "allow-any-egress" = {
+        key                        = "allow-any-egress"
+        protocol                   = "*"
+        from_port                  = 0
+        to_port                    = 0
+        source_address_prefix      = "*"
+        destination_address_prefix = "*"
+        direction                  = "Outbound"
+        access                     = "Allow"
+        priority                   = 2500
+      }
+    } : {}
   )
 }
