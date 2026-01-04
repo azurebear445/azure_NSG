@@ -1,10 +1,10 @@
 resource "random_id" "this" {
   keepers = {
     # Generate a new id each time we modify attributes that will re-create NSG
-    description         = local.tags["purpose"]
-    environment         = var.environment
     namespace           = var.namespace
+    environment         = var.environment
     resource_group_name = var.resource_group_name
+    name                = var.name
   }
 
   byte_length = 3
