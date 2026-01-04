@@ -34,6 +34,7 @@ locals {
   all_enterprise_rules = merge(
     local.enterprise_01_servicenow_rules,
     local.enterprise_02_solarwinds_rules,
+    local.enterprise_03_multi_service_rules
   )
 
   # =========================================================================
