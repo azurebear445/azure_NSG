@@ -4,8 +4,11 @@
 # This file contains enterprise-managed SolarWinds monitoring rules.
 #
 # Region Mapping:
-#   - Primary regions   → Currently: eastus2 (was AWS us-east-1 Virginia)
-#   - Secondary regions → Currently: centralus (was AWS us-east-2 Ohio)
+#   - Virginia Region (AWS us-east-1) → Azure eastus2 (Virginia)
+#   - Ohio Region (AWS us-east-2) → Azure centralus (Iowa)
+#
+# Note: Azure has no Ohio datacenter. AWS Ohio maps to Azure Central US (Iowa)
+#       for optimal network latency to Midwest regions.
 #
 # Note: Region names are kept in comments. Code uses generic primary/secondary.
 #
@@ -15,8 +18,8 @@
 #
 # Rule Distribution:
 #   - Common rules: 60 (apply to both regions)
-#   - Primary-only: 2 (eastus2 only - dynamic port ranges)
-#   - Secondary-only: 0
+#   - Virginia Primary-only: 2 (eastus2 only - AWS us-east-1 dynamic port ranges)
+#   - Ohio Secondary-only: 0
 #
 # Note: Primary and secondary can reuse same priorities (200-299) because
 #       they deploy to DIFFERENT NSGs in DIFFERENT regions - no conflicts!
@@ -694,9 +697,9 @@ locals {
   }
 
   # =========================================================================
-  # PRIMARY-ONLY RULES - Apply ONLY to Primary Regions (eastus2)
+  # VIRGINIA PRIMARY-ONLY RULES - Apply ONLY to Primary Regions (eastus2)
   # =========================================================================
-  # These 2 rules exist only in AWS us-east-1 (Virginia)
+  # These 2 rules exist only in AWS us-east-1 (Virginia Region)
   # Dynamic port ranges for SolarWinds Azure pollers
   # 
   # Note: Can reuse priorities 200-299 because this deploys to DIFFERENT NSG
@@ -730,7 +733,7 @@ locals {
   }
 
   # =========================================================================
-  # SECONDARY-ONLY RULES - Apply ONLY to Secondary Regions (centralus)
+  # OHIO SECONDARY-ONLY RULES - Apply ONLY to Secondary Regions (centralus)
   # =========================================================================
   # Currently empty - all non-common rules are primary-only
   # This block is ready for future secondary-specific rules

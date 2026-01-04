@@ -4,8 +4,11 @@
 # This file contains enterprise-managed ServiceNow rules.
 #
 # Region Mapping:
-#   - Primary regions   → Currently: eastus2 (was AWS us-east-1 Virginia)
-#   - Secondary regions → Currently: centralus (was AWS us-east-2 Ohio)
+#   - Virginia Region (AWS us-east-1) → Azure eastus2 (Virginia)
+#   - Ohio Region (AWS us-east-2) → Azure centralus (Iowa)
+#
+# Note: Azure has no Ohio datacenter. AWS Ohio maps to Azure Central US (Iowa)
+#       for optimal network latency to Midwest regions.
 #
 # Note: Region names are kept in comments. Code uses generic primary/secondary.
 #
@@ -15,8 +18,8 @@
 #
 # Rule Distribution:
 #   - Common rules: 58 (apply to both regions)
-#   - Primary-only: 2 (eastus2 only)
-#   - Secondary-only: 2 (centralus only)
+#   - Virginia Primary-only: 2 (eastus2 only - AWS us-east-1)
+#   - Ohio Secondary-only: 2 (centralus only - AWS us-east-2)
 #
 # Note: Primary and secondary can reuse same priorities (100-199) because
 #       they deploy to DIFFERENT NSGs in DIFFERENT regions - no conflicts!
@@ -672,9 +675,9 @@ locals {
   }
 
   # =========================================================================
-  # PRIMARY-ONLY RULES - Apply ONLY to Primary Regions (eastus2)
+  # VIRGINIA PRIMARY-ONLY RULES - Apply ONLY to Primary Regions (eastus2)
   # =========================================================================
-  # These 2 rules exist only in primary or differ from secondary
+  # These 2 rules exist only in AWS us-east-1 (Virginia) or differ from Ohio
   # 
   # Note: Can reuse priorities 100-199 because this deploys to DIFFERENT NSG
   # than secondary (different region = different NSG instance)
@@ -707,9 +710,9 @@ locals {
   }
 
   # =========================================================================
-  # SECONDARY-ONLY RULES - Apply ONLY to Secondary Regions (centralus)
+  # OHIO SECONDARY-ONLY RULES - Apply ONLY to Secondary Regions (centralus)
   # =========================================================================
-  # These 2 rules exist only in secondary or differ from primary
+  # These 2 rules exist only in AWS us-east-2 (Ohio) or differ from Virginia
   # 
   # Note: Can reuse priorities 100-199 because this deploys to DIFFERENT NSG
   # than primary (different region = different NSG instance)

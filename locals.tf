@@ -5,13 +5,13 @@ locals {
   # Define once, use everywhere to avoid duplication
   # 
   # Region Mapping:
-  #   AWS us-east-1 (Virginia) → Azure East US 2 (eastus2)
-  #   AWS us-east-2 (Ohio)     → Azure Central US (centralus)
+  #   Virginia Region - AWS us-east-1 → Azure East US 2 (eastus2)
+  #   Ohio Region - AWS us-east-2 → Azure Central US (centralus)
   
-  # Primary regions (currently: eastus2, was AWS us-east-1 Virginia)
+  # Virginia Primary regions (AWS us-east-1 Virginia → Azure eastus2 Virginia)
   primary_regions = ["eastus2"]
   
-  # Secondary regions (currently: centralus, was AWS us-east-2 Ohio)  
+  # Ohio Secondary regions (AWS us-east-2 Ohio → Azure centralus Iowa)
   secondary_regions = ["centralus"]
   
   # Boolean checks for region type (used by ESG 01 two-block pattern)

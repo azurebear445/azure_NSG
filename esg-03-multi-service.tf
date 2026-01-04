@@ -5,8 +5,11 @@
 # management services (SolarWinds Azure pollers, Delinea server).
 #
 # Region Mapping:
-#   - Primary regions   → Currently: eastus2 (was AWS us-east-1 Virginia)
-#   - Secondary regions → Currently: centralus (was AWS us-east-2 Ohio)
+#   - Virginia Region (AWS us-east-1) → Azure eastus2 (Virginia)
+#   - Ohio Region (AWS us-east-2) → Azure centralus (Iowa)
+#
+# Note: Azure has no Ohio datacenter. AWS Ohio maps to Azure Central US (Iowa)
+#       for optimal network latency to Midwest regions.
 #
 # Note: Region names are kept in comments. Code uses generic primary/secondary.
 #
@@ -16,8 +19,8 @@
 #
 # Rule Distribution:
 #   - Common rules: 61 (apply to both regions)
-#   - Primary-only: 0
-#   - Secondary-only: 0
+#   - Virginia Primary-only: 0
+#   - Ohio Secondary-only: 0
 #
 # Note: Primary and secondary can reuse same priorities (300-399) because
 #       they deploy to DIFFERENT NSGs in DIFFERENT regions - no conflicts!
@@ -706,7 +709,7 @@ locals {
   }
 
   # =========================================================================
-  # PRIMARY-ONLY RULES - Apply ONLY to Primary Regions (eastus2)
+  # VIRGINIA PRIMARY-ONLY RULES - Apply ONLY to Primary Regions (eastus2)
   # =========================================================================
   # Currently empty - all rules are common to both regions
   # This block is ready for future primary-specific rules
@@ -722,7 +725,7 @@ locals {
   }
 
   # =========================================================================
-  # SECONDARY-ONLY RULES - Apply ONLY to Secondary Regions (centralus)
+  # OHIO SECONDARY-ONLY RULES - Apply ONLY to Secondary Regions (centralus)
   # =========================================================================
   # Currently empty - all rules are common to both regions
   # This block is ready for future secondary-specific rules
