@@ -1,0 +1,4 @@
+In AWS, tag-based ESG application is handled by AWS Firewall Manager (FMS), which automatically attaches security groups to EC2 instances based on resource tags like ops:servicenow_ingress = "true".
+Azure doesn't have an equivalent service. NSGs in Azure are directly associated with subnets or NICs - there's no tag-based auto-attachment mechanism.
+Our Azure module bakes all enterprise rules directly into the NSG. The filtering happens at deployment time based on region (eastus2 vs centralus), not tags.
+We can only have one example: examples/default/
