@@ -199,7 +199,6 @@ See the `examples/` directory for complete working examples:
 ESGs are merged in `locals.tf`:
 
 ```hcl
-# locals.tf
 all_enterprise_rules = merge(
   local.enterprise_01_servicenow_rules,
   local.enterprise_02_solarwinds_rules,
