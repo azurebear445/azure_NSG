@@ -1,37 +1,15 @@
 # =============================================================================
 # Multi-Service Enterprise Security Group Rules (ESG 04)
 # =============================================================================
-# This file contains enterprise-managed rules for multiple monitoring and
-# management services.
-#
-# Region Mapping:
-#   - Region-01 (AWS us-east-1 Virginia) → Azure eastus2 (Virginia)
-#   - Region-02 (AWS us-east-2 Ohio) → Azure centralus (Iowa)
-#
-# Note: Azure has no Ohio datacenter. AWS Ohio maps to Azure Central US (Iowa)
-#       for optimal network latency to Midwest regions.
-#
 # Priority Block: 400-499 (100 total slots)
 #   - Currently used: 400-466 (67 rules)
-#   - Reserved for future: 467-499 (33 slots)
+#   - Reserved: 467-499 (33 slots)
 #
 # Rule Distribution:
-#   - Common rules: 49 (apply to both regions)
-#   - Region-01 only: 9 (eastus2 only - AWS Virginia)
-#   - Region-02 only: 9 (centralus only - AWS Ohio)
-#
-# Note: Region-01 and Region-02 can reuse same priorities (400-499) because
-#       they deploy to DIFFERENT NSGs in DIFFERENT Azure regions - no conflicts!
-#
-# Variable Naming: enterprise_04_multi_service_rules
+#   - Common: 51 | Region-01: 7 | Region-02: 7
 # =============================================================================
 
 locals {
-  # =========================================================================
-  # COMMON RULES - Apply to BOTH Region-01 and Region-02
-  # =========================================================================
-  # These 49 rules are identical in both AWS regions
-  
   multi_service_04_common = {
     "all-all-0-0-0-0-0-outbound" = {
       direction                  = "Outbound"
@@ -440,10 +418,21 @@ locals {
       destination_address_prefix = "*"
       description                = "ESG 04 - Multi-Service Rule"
     }
-    "tcp-49152-65535-10-111-19-208-32-inbound" = {
+    "tcp-5500-10-211-88-0-24-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 437
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "5500"
+      source_address_prefix      = "10.211.88.0/24"
+      destination_address_prefix = "*"
+      description                = "ESG 04 - Multi-Service Rule"
+    }
+    "tcp-49152-65535-10-111-19-208-32-inbound" = {
+      direction                  = "Inbound"
+      access                     = "Allow"
+      priority                   = 438
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "49152-65535"
@@ -454,7 +443,7 @@ locals {
     "tcp-49152-65535-10-211-19-155-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 438
+      priority                   = 439
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "49152-65535"
@@ -465,7 +454,7 @@ locals {
     "tcp-49152-65535-10-211-88-0-24-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 439
+      priority                   = 440
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "49152-65535"
@@ -476,7 +465,7 @@ locals {
     "tcp-49152-65535-10-71-44-0-24-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 440
+      priority                   = 441
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "49152-65535"
@@ -487,7 +476,7 @@ locals {
     "tcp-49152-65535-10-72-44-0-24-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 441
+      priority                   = 442
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "49152-65535"
@@ -498,7 +487,7 @@ locals {
     "tcp-52731-10-111-19-208-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 442
+      priority                   = 443
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "52731"
@@ -509,7 +498,7 @@ locals {
     "tcp-52731-10-111-88-0-24-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 443
+      priority                   = 444
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "52731"
@@ -520,7 +509,7 @@ locals {
     "tcp-52731-10-211-88-0-24-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 444
+      priority                   = 445
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "52731"
@@ -531,7 +520,7 @@ locals {
     "tcp-52731-10-71-44-0-24-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 445
+      priority                   = 446
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = "52731"
@@ -539,10 +528,21 @@ locals {
       destination_address_prefix = "*"
       description                = "ESG 04 - Multi-Service Rule"
     }
+    "tcp-52731-10-72-44-0-24-inbound" = {
+      direction                  = "Inbound"
+      access                     = "Allow"
+      priority                   = 447
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "52731"
+      source_address_prefix      = "10.72.44.0/24"
+      destination_address_prefix = "*"
+      description                = "ESG 04 - Multi-Service Rule"
+    }
     "udp-1813-10-111-88-0-24-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 446
+      priority                   = 448
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "1813"
@@ -553,7 +553,7 @@ locals {
     "udp-1813-10-211-19-155-32-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 447
+      priority                   = 449
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "1813"
@@ -564,7 +564,7 @@ locals {
     "udp-1813-10-211-88-0-24-inbound" = {
       direction                  = "Inbound"
       access                     = "Allow"
-      priority                   = 448
+      priority                   = 450
       protocol                   = "Udp"
       source_port_range          = "*"
       destination_port_range     = "1813"
@@ -574,21 +574,12 @@ locals {
     }
   }
 
-  # =========================================================================
-  # REGION-01 ONLY RULES - Apply ONLY to Region-01 (eastus2)
-  # =========================================================================
-  # These 9 rules exist only in AWS us-east-1 (Virginia)
-  # or have different definitions than Region-02
-  # 
-  # Note: Can reuse priorities 400-499 because this deploys to DIFFERENT NSG
-  # than Region-02 rules (different Azure region = different NSG instance)
-  
   multi_service_04_region_01 = {
     for k, v in {
       "tcp-22-10-111-19-208-32-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 449
+        priority                   = 451
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "22"
@@ -599,7 +590,7 @@ locals {
       "tcp-22-10-211-19-155-32-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 450
+        priority                   = 452
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "22"
@@ -610,7 +601,7 @@ locals {
       "tcp-445-10-111-19-20-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 451
+        priority                   = 453
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "445"
@@ -618,21 +609,10 @@ locals {
         destination_address_prefix = "*"
         description                = "ESG 04 - Multi-Service Rule"
       }
-      "tcp-5500-10,211-88-0-24-inbound" = {
-        direction                  = "Inbound"
-        access                     = "Allow"
-        priority                   = 452
-        protocol                   = "Tcp"
-        source_port_range          = "*"
-        destination_port_range     = "5500"
-        source_address_prefix      = "10,211.88.0/24"
-        destination_address_prefix = "*"
-        description                = "ESG 04 - Multi-Service Rule"
-      }
       "tcp-5500-10-211-19-155-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 453
+        priority                   = 454
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "5500"
@@ -643,7 +623,7 @@ locals {
       "tcp-49152-6553-10-111-88-0-24-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 454
+        priority                   = 455
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "49152-6553"
@@ -654,22 +634,11 @@ locals {
       "tcp-52731-10-211-19-155-32-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 455
-        protocol                   = "Tcp"
-        source_port_range          = "*"
-        destination_port_range     = "52731"
-        source_address_prefix      = "10.211.19.155/32"
-        destination_address_prefix = "*"
-        description                = "ESG 04 - Multi-Service Rule"
-      }
-      "tcp-52731-10-72-44-0-24-inbound" = {
-        direction                  = "Inbound"
-        access                     = "Allow"
         priority                   = 456
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "52731"
-        source_address_prefix      = "10.72.44.0/24"
+        source_address_prefix      = "10.211.19.155/32"
         destination_address_prefix = "*"
         description                = "ESG 04 - Multi-Service Rule"
       }
@@ -687,20 +656,12 @@ locals {
     } : k => v if contains(local.region_01_locations, var.location)
   }
 
-  # =========================================================================
-  # REGION-02 ONLY RULES - Apply ONLY to Region-02 (centralus)
-  # =========================================================================
-  # These 9 rules exist only in AWS us-east-2 (Ohio)
-  # or have different definitions than Region-01
-  # 
-  # Note: Can reuse priorities 400-499 for Region-02 only rules
-  
   multi_service_04_region_02 = {
     for k, v in {
       "tcp-22-10-111-19-20-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 449
+        priority                   = 451
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "22"
@@ -711,7 +672,7 @@ locals {
       "tcp-22-10-211-19-155-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 450
+        priority                   = 452
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "22"
@@ -722,7 +683,7 @@ locals {
       "tcp-445-10-111-19-208-32-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 451
+        priority                   = 453
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "445"
@@ -733,7 +694,7 @@ locals {
       "tcp-5500-10-211-19-155-32-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 452
+        priority                   = 454
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "5500"
@@ -741,21 +702,10 @@ locals {
         destination_address_prefix = "*"
         description                = "ESG 04 - Multi-Service Rule"
       }
-      "tcp-5500-10-211-88-0-24-inbound" = {
-        direction                  = "Inbound"
-        access                     = "Allow"
-        priority                   = 453
-        protocol                   = "Tcp"
-        source_port_range          = "*"
-        destination_port_range     = "5500"
-        source_address_prefix      = "10.211.88.0/24"
-        destination_address_prefix = "*"
-        description                = "ESG 04 - Multi-Service Rule"
-      }
       "tcp-49152-65535-10-111-88-0-24-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
-        priority                   = 454
+        priority                   = 455
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "49152-65535"
@@ -766,23 +716,12 @@ locals {
       "tcp-52731-10-211-19-155-32-outbound" = {
         direction                  = "Outbound"
         access                     = "Allow"
-        priority                   = 455
+        priority                   = 456
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "52731"
         source_address_prefix      = "*"
         destination_address_prefix = "10.211.19.155/32"
-        description                = "ESG 04 - Multi-Service Rule"
-      }
-      "tcp-52731-10-72-44-OY24-inbound" = {
-        direction                  = "Inbound"
-        access                     = "Allow"
-        priority                   = 456
-        protocol                   = "Tcp"
-        source_port_range          = "*"
-        destination_port_range     = "52731"
-        source_address_prefix      = "10.72.44.OY24"
-        destination_address_prefix = "*"
         description                = "ESG 04 - Multi-Service Rule"
       }
       "udp-1813-10-111-19-20-inbound" = {
@@ -799,10 +738,6 @@ locals {
     } : k => v if contains(local.region_02_locations, var.location)
   }
 
-  # =========================================================================
-  # MERGE ALL MULTI-SERVICE ESG 04 RULES
-  # =========================================================================
-  
   enterprise_04_multi_service_rules = merge(
     local.multi_service_04_common,
     local.multi_service_04_region_01,
