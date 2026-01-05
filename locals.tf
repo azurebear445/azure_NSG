@@ -32,9 +32,20 @@ locals {
   # Priority range: 100-1499 (reserved for enterprise rules)
   
   all_enterprise_rules = merge(
-    local.enterprise_01_servicenow_rules,
-    local.enterprise_02_solarwinds_rules,
-    local.enterprise_03_multi_service_rules
+  local.enterprise_01_servicenow_rules,
+  local.enterprise_02_solarwinds_rules,
+  local.enterprise_03_multi_service_rules,
+  local.enterprise_04_multi_service_rules,
+  local.enterprise_05_multi_service_rules,
+  local.enterprise_06_rubrik_backup_rules,
+  local.enterprise_07_database_admin_rules,
+  local.enterprise_08_multi_service_rules,
+  local.enterprise_09_idera_monitoring_rules,
+  local.enterprise_10_hsa_monitoring_rules,
+  local.enterprise_11_citrix_rules,
+  local.enterprise_12_sailpoint_rules,
+  local.enterprise_13_varonis_collectors_rules
+	
   )
 
   # =========================================================================
