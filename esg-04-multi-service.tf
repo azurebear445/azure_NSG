@@ -683,7 +683,23 @@ locals {
   # than Region-02 rules (different Azure region = different NSG instance)
   
   multi_service_04_region_01 = {
-    # No Region-01 only rules
+    for k, v in {
+      # No Region-01 specific rules currently
+      # 
+      # EXAMPLE: How to add a new Region-01 only rule:
+      # 
+      # "tcp-3306-192-168-1-0-24-inbound" = {
+      #   direction                  = "Inbound"
+      #   access                     = "Allow"
+      #   priority                   = 458  # Next available priority
+      #   protocol                   = "Tcp"
+      #   source_port_range          = "*"
+      #   destination_port_range     = "3306"
+      #   source_address_prefix      = "192.168.1.0/24"
+      #   destination_address_prefix = "*"
+      #   description                = "ESG 04 - Multi-Service Rule"
+      # }
+    } : k => v if contains(local.region_01_locations, var.location)
   }
 
   # =========================================================================
@@ -695,7 +711,23 @@ locals {
   # Note: Can reuse priorities 400-499 for Region-02 only rules
   
   multi_service_04_region_02 = {
-    # No Region-02 only rules
+    for k, v in {
+      # No Region-02 specific rules currently
+      # 
+      # EXAMPLE: How to add a new Region-02 only rule:
+      # 
+      # "tcp-8080-10-1-1-0-24-inbound" = {
+      #   direction                  = "Inbound"
+      #   access                     = "Allow"
+      #   priority                   = 458  # Next available priority
+      #   protocol                   = "Tcp"
+      #   source_port_range          = "*"
+      #   destination_port_range     = "8080"
+      #   source_address_prefix      = "10.1.1.0/24"
+      #   destination_address_prefix = "*"
+      #   description                = "ESG 04 - Multi-Service Rule"
+      # }
+    } : k => v if contains(local.region_02_locations, var.location)
   }
 
   # =========================================================================

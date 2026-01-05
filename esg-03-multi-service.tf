@@ -42,7 +42,7 @@ locals {
       destination_port_range     = "*"
       source_address_prefix      = "*"
       destination_address_prefix = "0.0.0.0/0"
-      description                = "Multi-service monitoring - ALL/all to 0.0.0.0/0"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "icmp-any-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -53,7 +53,7 @@ locals {
       destination_port_range     = "*"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - ICMP/any from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "icmp-any-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -64,7 +64,7 @@ locals {
       destination_port_range     = "*"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - ICMP/any from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "icmp-any-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -75,7 +75,7 @@ locals {
       destination_port_range     = "*"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - ICMP/any from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-22-10-1-249-31-32-inbound" = {
       direction                  = "Inbound"
@@ -86,7 +86,7 @@ locals {
       destination_port_range     = "22"
       source_address_prefix      = "10.1.249.31/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/22 from 10.1.249.31/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-22-10-1-82-254-32-inbound" = {
       direction                  = "Inbound"
@@ -97,7 +97,7 @@ locals {
       destination_port_range     = "22"
       source_address_prefix      = "10.1.82.254/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/22 from 10.1.82.254/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-22-23-10-111-14-80-32-inbound" = {
       direction                  = "Inbound"
@@ -108,7 +108,7 @@ locals {
       destination_port_range     = "22-23"
       source_address_prefix      = "10.111.14.80/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/22-23 from 10.111.14.80/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-22-23-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -119,7 +119,7 @@ locals {
       destination_port_range     = "22-23"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/22-23 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-22-23-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -130,7 +130,7 @@ locals {
       destination_port_range     = "22-23"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/22-23 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-22-10-20-68-72-32-inbound" = {
       direction                  = "Inbound"
@@ -141,7 +141,7 @@ locals {
       destination_port_range     = "22"
       source_address_prefix      = "10.20.68.72/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/22 from 10.20.68.72/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-22-10-81-1-113-32-inbound" = {
       direction                  = "Inbound"
@@ -152,7 +152,7 @@ locals {
       destination_port_range     = "22"
       source_address_prefix      = "10.81.1.113/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/22 from 10.81.1.113/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-25-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -163,7 +163,7 @@ locals {
       destination_port_range     = "25"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/25 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-25-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -174,7 +174,7 @@ locals {
       destination_port_range     = "25"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/25 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-53-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -185,7 +185,7 @@ locals {
       destination_port_range     = "53"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/53 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-53-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -196,7 +196,7 @@ locals {
       destination_port_range     = "53"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/53 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-80-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -207,7 +207,7 @@ locals {
       destination_port_range     = "80"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/80 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-80-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -218,7 +218,7 @@ locals {
       destination_port_range     = "80"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/80 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-135-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -229,7 +229,7 @@ locals {
       destination_port_range     = "135"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/135 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-135-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -240,7 +240,7 @@ locals {
       destination_port_range     = "135"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/135 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-139-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -251,7 +251,7 @@ locals {
       destination_port_range     = "139"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/139 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-139-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -262,7 +262,7 @@ locals {
       destination_port_range     = "139"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/139 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-443-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -273,7 +273,7 @@ locals {
       destination_port_range     = "443"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/443 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-443-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -284,7 +284,7 @@ locals {
       destination_port_range     = "443"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/443 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-445-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -295,7 +295,7 @@ locals {
       destination_port_range     = "445"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/445 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-445-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -306,7 +306,7 @@ locals {
       destination_port_range     = "445"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/445 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-465-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -317,7 +317,7 @@ locals {
       destination_port_range     = "465"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/465 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-465-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -328,7 +328,7 @@ locals {
       destination_port_range     = "465"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/465 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-587-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -339,7 +339,7 @@ locals {
       destination_port_range     = "587"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/587 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-587-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -350,7 +350,7 @@ locals {
       destination_port_range     = "587"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/587 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-1024-1034-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -361,7 +361,7 @@ locals {
       destination_port_range     = "1024-1034"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/1024-1034 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-1024-1034-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -372,7 +372,7 @@ locals {
       destination_port_range     = "1024-1034"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/1024-1034 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-1030-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -383,7 +383,7 @@ locals {
       destination_port_range     = "1030"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/1030 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-1031-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -394,7 +394,7 @@ locals {
       destination_port_range     = "1031"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/1031 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-1032-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -405,7 +405,7 @@ locals {
       destination_port_range     = "1032"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/1032 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-1033-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -416,7 +416,7 @@ locals {
       destination_port_range     = "1033"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/1033 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-1034-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -427,7 +427,7 @@ locals {
       destination_port_range     = "1034"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/1034 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-1433-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -438,7 +438,7 @@ locals {
       destination_port_range     = "1433"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/1433 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-1433-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -449,7 +449,7 @@ locals {
       destination_port_range     = "1433"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/1433 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-1801-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -460,7 +460,7 @@ locals {
       destination_port_range     = "1801"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/1801 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-1801-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -471,7 +471,7 @@ locals {
       destination_port_range     = "1801"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/1801 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-5671-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -482,7 +482,7 @@ locals {
       destination_port_range     = "5671"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/5671 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-5671-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -493,7 +493,7 @@ locals {
       destination_port_range     = "5671"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/5671 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-17777-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -504,7 +504,7 @@ locals {
       destination_port_range     = "17777"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/17777 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-17777-17778-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -515,7 +515,7 @@ locals {
       destination_port_range     = "17777-17778"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/17777-17778 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-17778-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -526,7 +526,7 @@ locals {
       destination_port_range     = "17778"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/17778 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-17791-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -537,7 +537,7 @@ locals {
       destination_port_range     = "17791"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/17791 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-17791-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -548,7 +548,7 @@ locals {
       destination_port_range     = "17791"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/17791 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-49152-65535-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -559,7 +559,7 @@ locals {
       destination_port_range     = "49152-65535"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/49152-65535 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "tcp-49152-65535-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -570,7 +570,7 @@ locals {
       destination_port_range     = "49152-65535"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - TCP/49152-65535 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-53-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -581,7 +581,7 @@ locals {
       destination_port_range     = "53"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/53 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-53-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -592,7 +592,7 @@ locals {
       destination_port_range     = "53"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/53 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-137-138-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -603,7 +603,7 @@ locals {
       destination_port_range     = "137-138"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/137-138 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-137-138-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -614,7 +614,7 @@ locals {
       destination_port_range     = "137-138"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/137-138 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-161-162-10-110-34-0-24-inbound" = {
       direction                  = "Inbound"
@@ -625,7 +625,7 @@ locals {
       destination_port_range     = "161-162"
       source_address_prefix      = "10.110.34.0/24"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/161-162 from 10.110.34.0/24"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-161-162-10-111-32-0-24-inbound" = {
       direction                  = "Inbound"
@@ -636,7 +636,7 @@ locals {
       destination_port_range     = "161-162"
       source_address_prefix      = "10.111.32.0/24"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/161-162 from 10.111.32.0/24"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-161-162-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -647,7 +647,7 @@ locals {
       destination_port_range     = "161-162"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/161-162 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-161-162-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -658,7 +658,7 @@ locals {
       destination_port_range     = "161-162"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/161-162 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-1024-10-120-7-135-32-inbound" = {
       direction                  = "Inbound"
@@ -669,7 +669,7 @@ locals {
       destination_port_range     = "1024"
       source_address_prefix      = "10.120.7.135/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/1024 from 10.120.7.135/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-1024-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -680,7 +680,7 @@ locals {
       destination_port_range     = "1024"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/1024 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-1434-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -691,7 +691,7 @@ locals {
       destination_port_range     = "1434"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/1434 from 10.111.14.233/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
     "udp-1434-10-120-7-142-32-inbound" = {
       direction                  = "Inbound"
@@ -702,7 +702,7 @@ locals {
       destination_port_range     = "1434"
       source_address_prefix      = "10.120.7.142/32"
       destination_address_prefix = "*"
-      description                = "Multi-service monitoring - UDP/1434 from 10.120.7.142/32"
+      description                = "ESG 03 - Multi-Service Rule"
     }
   }
 
@@ -717,8 +717,21 @@ locals {
   
   multi_service_03_region_01 = {
     for k, v in {
-      # Add Region-01 specific rules here in the future
-      # Start with priority 361 (or reuse 300-360 for region-specific versions)
+      # No Region-01 specific rules currently
+      # 
+      # EXAMPLE: How to add a new Region-01 only rule:
+      # 
+      # "tcp-5432-10-50-0-0-16-inbound" = {
+      #   direction                  = "Inbound"
+      #   access                     = "Allow"
+      #   priority                   = 361  # Next available priority (or reuse 300-360)
+      #   protocol                   = "Tcp"
+      #   source_port_range          = "*"
+      #   destination_port_range     = "5432"
+      #   source_address_prefix      = "10.50.0.0/16"
+      #   destination_address_prefix = "*"
+      #   description                = "ESG 03 - Multi-Service Rule"
+      # }
     } : k => v if contains(local.region_01_locations, var.location)
   }
 
@@ -732,8 +745,21 @@ locals {
   
   multi_service_03_region_02 = {
     for k, v in {
-      # Add Region-02 specific rules here in the future
-      # Start with priority 361 (or reuse 300-360 for region-specific versions)
+      # No Region-02 specific rules currently
+      # 
+      # EXAMPLE: How to add a new Region-02 only rule:
+      # 
+      # "udp-161-10-60-0-0-16-inbound" = {
+      #   direction                  = "Inbound"
+      #   access                     = "Allow"
+      #   priority                   = 361  # Next available priority (or reuse 300-360)
+      #   protocol                   = "Udp"
+      #   source_port_range          = "*"
+      #   destination_port_range     = "161"
+      #   source_address_prefix      = "10.60.0.0/16"
+      #   destination_address_prefix = "*"
+      #   description                = "ESG 03 - Multi-Service Rule"
+      # }
     } : k => v if contains(local.region_02_locations, var.location)
   }
 

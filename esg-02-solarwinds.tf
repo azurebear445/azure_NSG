@@ -41,7 +41,7 @@ locals {
       destination_port_range     = "*"
       source_address_prefix      = "*"
       destination_address_prefix = "0.0.0.0/0"
-      description                = "SolarWinds monitoring - ALL/all to 0.0.0.0/0"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "icmp-any-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -52,7 +52,7 @@ locals {
       destination_port_range     = "*"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - ICMP/any from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-22-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -63,7 +63,7 @@ locals {
       destination_port_range     = "22"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/22 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-22-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -74,7 +74,7 @@ locals {
       destination_port_range     = "22"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/22 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-23-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -85,7 +85,7 @@ locals {
       destination_port_range     = "23"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/23 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-23-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -96,7 +96,7 @@ locals {
       destination_port_range     = "23"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/23 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-25-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -107,7 +107,7 @@ locals {
       destination_port_range     = "25"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/25 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-25-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -118,7 +118,7 @@ locals {
       destination_port_range     = "25"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/25 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-53-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -129,7 +129,7 @@ locals {
       destination_port_range     = "53"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/53 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-53-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -140,7 +140,7 @@ locals {
       destination_port_range     = "53"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/53 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-80-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -151,7 +151,7 @@ locals {
       destination_port_range     = "80"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/80 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-80-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -162,7 +162,7 @@ locals {
       destination_port_range     = "80"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/80 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-135-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -173,7 +173,7 @@ locals {
       destination_port_range     = "135"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/135 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-135-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -184,7 +184,7 @@ locals {
       destination_port_range     = "135"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/135 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-139-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -195,7 +195,7 @@ locals {
       destination_port_range     = "139"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/139 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-139-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -206,7 +206,7 @@ locals {
       destination_port_range     = "139"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/139 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-443-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -217,7 +217,7 @@ locals {
       destination_port_range     = "443"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/443 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-443-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -228,7 +228,7 @@ locals {
       destination_port_range     = "443"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/443 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-445-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -239,7 +239,7 @@ locals {
       destination_port_range     = "445"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/445 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-445-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -250,7 +250,7 @@ locals {
       destination_port_range     = "445"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/445 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-465-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -261,7 +261,7 @@ locals {
       destination_port_range     = "465"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/465 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-465-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -272,7 +272,7 @@ locals {
       destination_port_range     = "465"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/465 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-587-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -283,7 +283,7 @@ locals {
       destination_port_range     = "587"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/587 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-587-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -294,7 +294,7 @@ locals {
       destination_port_range     = "587"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/587 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1024-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -305,7 +305,7 @@ locals {
       destination_port_range     = "1024"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1024 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1024-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -316,7 +316,7 @@ locals {
       destination_port_range     = "1024"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1024 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1025-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -327,7 +327,7 @@ locals {
       destination_port_range     = "1025"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1025 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1025-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -338,7 +338,7 @@ locals {
       destination_port_range     = "1025"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1025 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1026-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -349,7 +349,7 @@ locals {
       destination_port_range     = "1026"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1026 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1026-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -360,7 +360,7 @@ locals {
       destination_port_range     = "1026"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1026 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1027-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -371,7 +371,7 @@ locals {
       destination_port_range     = "1027"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1027 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1027-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -382,7 +382,7 @@ locals {
       destination_port_range     = "1027"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1027 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1028-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -393,7 +393,7 @@ locals {
       destination_port_range     = "1028"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1028 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1028-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -404,7 +404,7 @@ locals {
       destination_port_range     = "1028"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1028 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1029-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -415,7 +415,7 @@ locals {
       destination_port_range     = "1029"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1029 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1029-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -426,7 +426,7 @@ locals {
       destination_port_range     = "1029"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1029 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1030-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -437,7 +437,7 @@ locals {
       destination_port_range     = "1030"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1030 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1031-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -448,7 +448,7 @@ locals {
       destination_port_range     = "1031"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1031 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1032-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -459,7 +459,7 @@ locals {
       destination_port_range     = "1032"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1032 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1033-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -470,7 +470,7 @@ locals {
       destination_port_range     = "1033"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1033 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1034-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -481,7 +481,7 @@ locals {
       destination_port_range     = "1034"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1034 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1433-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -492,7 +492,7 @@ locals {
       destination_port_range     = "1433"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1433 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-1801-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -503,7 +503,7 @@ locals {
       destination_port_range     = "1801"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/1801 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-5671-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -514,7 +514,7 @@ locals {
       destination_port_range     = "5671"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/5671 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-17777-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -525,7 +525,7 @@ locals {
       destination_port_range     = "17777"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/17777 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-17778-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -536,7 +536,7 @@ locals {
       destination_port_range     = "17778"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/17778 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "tcp-17791-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -547,7 +547,7 @@ locals {
       destination_port_range     = "17791"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - TCP/17791 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-53-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -558,7 +558,7 @@ locals {
       destination_port_range     = "53"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/53 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-53-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -569,7 +569,7 @@ locals {
       destination_port_range     = "53"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/53 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-137-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -580,7 +580,7 @@ locals {
       destination_port_range     = "137"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/137 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-137-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -591,7 +591,7 @@ locals {
       destination_port_range     = "137"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/137 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-138-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -602,7 +602,7 @@ locals {
       destination_port_range     = "138"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/138 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-138-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -613,7 +613,7 @@ locals {
       destination_port_range     = "138"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/138 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-161-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -624,7 +624,7 @@ locals {
       destination_port_range     = "161"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/161 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-161-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -635,7 +635,7 @@ locals {
       destination_port_range     = "161"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/161 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-162-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -646,7 +646,7 @@ locals {
       destination_port_range     = "162"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/162 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-162-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -657,7 +657,7 @@ locals {
       destination_port_range     = "162"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/162 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-1024-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -668,7 +668,7 @@ locals {
       destination_port_range     = "1024"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/1024 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-1024-10-111-14-233-32-inbound" = {
       direction                  = "Inbound"
@@ -679,7 +679,7 @@ locals {
       destination_port_range     = "1024"
       source_address_prefix      = "10.111.14.233/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/1024 from 10.111.14.233/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
     "udp-1434-10-111-14-232-32-inbound" = {
       direction                  = "Inbound"
@@ -690,7 +690,7 @@ locals {
       destination_port_range     = "1434"
       source_address_prefix      = "10.111.14.232/32"
       destination_address_prefix = "*"
-      description                = "SolarWinds monitoring - UDP/1434 from 10.111.14.232/32"
+      description                = "ESG 02 - SolarWinds Rule"
     }
   }
 
@@ -714,7 +714,7 @@ locals {
         destination_port_range     = "49152-65535"
         source_address_prefix      = "10.111.14.232/32"
         destination_address_prefix = "*"
-        description                = "SolarWinds monitoring - TCP/49152-65535 from 10.111.14.232/32"
+        description                = "ESG 02 - SolarWinds Rule"
       }
       "tcp-49152-65535-10-120-7-135-32-inbound" = {
         direction                  = "Inbound"
@@ -725,7 +725,7 @@ locals {
         destination_port_range     = "49152-65535"
         source_address_prefix      = "10.120.7.135/32"
         destination_address_prefix = "*"
-        description                = "SolarWinds monitoring - TCP/49152-65535 from 10.120.7.135/32"
+        description                = "ESG 02 - SolarWinds Rule"
       }
     } : k => v if contains(local.region_01_locations, var.location)
   }
@@ -740,7 +740,21 @@ locals {
   
   solarwinds_02_region_02 = {
     for k, v in {
-      # Add Region-02 specific rules here in the future
+      # No Region-02 specific rules currently
+      # 
+      # EXAMPLE: How to add a new Region-02 only rule:
+      # 
+      # "tcp-9090-172-16-0-0-16-inbound" = {
+      #   direction                  = "Inbound"
+      #   access                     = "Allow"
+      #   priority                   = 260  # Next available priority
+      #   protocol                   = "Tcp"
+      #   source_port_range          = "*"
+      #   destination_port_range     = "9090"
+      #   source_address_prefix      = "172.16.0.0/16"
+      #   destination_address_prefix = "*"
+      #   description                = "ESG 02 - SolarWinds Rule"
+      # }
     } : k => v if contains(local.region_02_locations, var.location)
   }
 
