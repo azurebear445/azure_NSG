@@ -1,15 +1,20 @@
 # =============================================================================
-# Web Tier Example - User-Defined Rules + Enterprise Security Group Rules
+# Azure NSG Module - Web Tier Example
 # =============================================================================
-# This example creates an NSG for web applications with user-defined rules.
-# Enterprise-managed rules are applied automatically in addition to user rules.
+# This example demonstrates the NSG module with user-defined ingress rules
+# for web applications. Enterprise security group rules are also applied
+# automatically based on deployment region.
 # =============================================================================
 
+# Create Resource Group for testing
 resource "azurerm_resource_group" "this" {
   name     = "rg-nsg-web-tier-example"
   location = "centralus"
 }
 
+# =============================================================================
+# NSG with User-Defined Rules + Enterprise Rules
+# =============================================================================
 module "nsg_web" {
   source = "../../"
 
@@ -17,9 +22,9 @@ module "nsg_web" {
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
   environment         = "dev"
-  namespace           = "example"
+  namespace           = "test-app"
 
-  # User-defined ingress rules for web traffic
+  # User-defined ingress rules
   ingress_rules = {
     from_cidrs = {
       tcp = {
@@ -49,7 +54,13 @@ module "nsg_web" {
           to_port = 8443
         }
       }
-      udp  = {}
+      udp = {
+        # DNS from internal network
+        "53" = {
+          cidrs   = ["10.0.0.0/8"]
+          to_port = 53
+        }
+      }
       icmp = {}
     }
     from_nsgs = {
@@ -58,19 +69,29 @@ module "nsg_web" {
     }
   }
 
+  # Egress rules
   egress_rules = {
     to_cidrs = null
     to_nsgs  = {}
   }
 
-  enable_any_egress      = true
-  enable_any_nsg_to_self = false
+  # Enable all egress
+  enable_any_egress = true
 
+  # Enable self-to-self communication
+  enable_any_nsg_to_self = true
+
+  # Tags
   tags = {
     architecture       = "native"
     owner              = "platform_team"
-    purpose            = "Web tier NSG example with user-defined rules for internal traffic."
+    purpose            = "Web tier NSG example with user-defined rules for internal web traffic."
     terraform_resource = "true"
     appid              = "app-web-001"
+    custom_tags = {
+      team        = "infrastructure"
+      cost_center = "engineering"
+      example     = "web-tier"
+    }
   }
 }

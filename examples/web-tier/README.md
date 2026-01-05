@@ -9,6 +9,7 @@ NSG for web applications with user-defined rules for internal traffic.
 - SSH (22) from bastion subnet (10.100.0.0/24)
 - Custom app port (8080) from app subnet (10.200.0.0/24)
 - Health check (8443) from load balancer subnet (10.50.0.0/24)
+- DNS (53/UDP) from internal network (10.0.0.0/8)
 
 ## Usage
 
