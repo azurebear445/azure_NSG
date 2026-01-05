@@ -14,11 +14,11 @@ Terraform module for creating Azure Network Security Groups with support for ent
 ## Architecture
 
 ```
-Priority Range    | Purpose                      | Managed By
-------------------|------------------------------|------------
-100-1499         | Enterprise Security Groups   | Platform Team
-1500-3999        | User/Application Rules       | Application Teams
-4000-4096        | Reserved                     | -
+Priority Range  | Purpose                      | Managed By
+----------------|------------------------------|-------------
+100-1499        | Enterprise Security Groups   | Platform Team
+1500-3999       | User/Application Rules       | Application Teams
+4000-4096       | Reserved                     | -
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ module "nsg_web" {
 
   name                = "web-tier"
   resource_group_name = azurerm_resource_group.example.name
-  location            = "eastus"
+  location            = "eastus2"
   environment         = "prod"
   namespace           = "myapp"
 
@@ -48,7 +48,7 @@ module "nsg_web" {
           to_port = 80
         }
       }
-      udp = {}
+      udp  = {}
       icmp = {}
     }
     from_nsgs = {
@@ -67,85 +67,25 @@ module "nsg_web" {
   enable_any_nsg_to_self = false
 
   tags = {
-    architecture      = "native"
-    owner            = "platform-team"
-    purpose          = "web-frontend"
+    architecture       = "native"
+    owner              = "platform-team"
+    purpose            = "web-frontend"
     terraform_resource = "true"
-    appid            = "app-12345"
-  }
-}
-```
-
-### Advanced Example with Port Ranges
-
-```hcl
-module "nsg_app" {
-  source = "git::ssh://git@gitlab.com/your-org/terraform-azurerm-network_security_group.git?ref=v1.0.0"
-
-  name                = "app-tier"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = "eastus"
-  environment         = "prod"
-  namespace           = "myapp"
-
-  ingress_rules = {
-    from_cidrs = {
-      tcp = {
-        "8080" = {
-          cidrs   = ["10.0.0.0/16"]
-          to_port = 8080
-        }
-        # Port range example
-        "9000" = {
-          cidrs   = ["10.0.0.0/16"]
-          to_port = 9999  # Creates range 9000-9999
-        }
-      }
-      udp = {
-        "53" = {
-          cidrs   = ["10.0.0.0/8"]
-          to_port = 53
-        }
-      }
-      icmp = {}
-    }
-    from_nsgs = {
-      tcp = {}
-      udp = {}
-    }
-  }
-
-  egress_rules = {
-    to_cidrs = null
-    to_nsgs  = {}
-  }
-
-  enable_any_egress      = true
-  enable_any_nsg_to_self = true
-
-  tags = {
-    architecture      = "native"
-    owner            = "app-team"
-    purpose          = "application-backend"
-    terraform_resource = "true"
-    appid            = "app-67890"
+    appid              = "app-12345"
   }
 }
 ```
 
 ## Enterprise Security Group Rules
 
-Enterprise rules are automatically applied based on deployment region. These rules are managed by the platform team and include:
-
-- **ServiceNow ESG**: Communication rules for ServiceNow infrastructure
-- *(Additional ESGs will be added in future releases)*
+Enterprise rules are automatically applied based on deployment region. These rules are managed by the platform team.
 
 ### Region Mapping
 
-| AWS Region | Azure Region | Enterprise Rules Applied |
-|------------|--------------|--------------------------|
-| us-east-1  | eastus       | Virginia Primary rules   |
-| us-east-2  | eastus2      | Virginia Secondary rules |
+| AWS Region | Azure Region | Location |
+|------------|--------------|----------|
+| us-east-1  | eastus2      | Virginia |
+| us-east-2  | centralus    | Iowa     |
 
 Enterprise rules use priorities 100-1499 and are automatically deduplicated across multiple ESGs.
 
@@ -163,7 +103,7 @@ Users cannot specify priorities directly, ensuring no conflicts occur.
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+|------|-------------|------|---------|----------|
 | name | Name of the NSG | `string` | n/a | yes |
 | resource_group_name | Resource group name | `string` | n/a | yes |
 | location | Azure region | `string` | n/a | yes |
@@ -206,12 +146,7 @@ ingress_rules = {
         to_port        = <end_port>  # Optional
       }
     }
-    udp = {
-      "<port>" = {
-        source_nsg_ids = ["<asg_id1>", "<asg_id2>"]
-        to_port        = <end_port>  # Optional
-      }
-    }
+    udp = {}
   }
 }
 ```
@@ -245,30 +180,44 @@ See the `examples/` directory for complete working examples:
 
 ### Available ESGs
 
-The module includes the following Enterprise Security Groups:
+| ESG | File | Priority Range | Service |
+|-----|------|----------------|---------|
+| 01 | esg-01-servicenow.tf | 100-159 | ServiceNow |
+| 02 | esg-02-solarwinds.tf | 200-261 | SolarWinds |
+| 03 | esg-03-multi-service.tf | 300-361 | Multi Service |
+| 04 | esg-04-multi-service.tf | 400-458 | Multi Service |
+| 05 | esg-05-multi-service.tf | 500-563 | Multi Service |
+| 06 | esg-06-rubrik-backup.tf | 600-603 | Rubrik Backup |
+| 07 | esg-07-database-admin.tf | 700-736 | Database Admin |
+| 08 | esg-08-multi-service.tf | 800-854 | Multi Service |
+| 09 | esg-09-idera-monitoring.tf | 900-944 | Idera Monitoring |
+| 10 | esg-10-hsa-monitoring.tf | 1000-1003 | HSA Monitoring |
+| 11 | esg-11-citrix.tf | 1040-1051 | Citrix |
+| 12 | esg-12-sailpoint.tf | 1090-1110 | SailPoint |
+| 13 | esg-13-varonis-collectors.tf | 1150-1164 | Varonis Collectors |
 
-- **ServiceNow ESG** (`enterprise-servicenow.tf`): Priority range 100-159
-  - Virginia Primary (eastus): 60 rules from AWS us-east-1
-  - Virginia Secondary (eastus2): 60 rules from AWS us-east-2
-
-Additional ESGs are managed in separate files following the naming convention `enterprise-<name>.tf`. Each ESG has a designated priority range to prevent conflicts:
+ESGs are merged in `locals.tf`:
 
 ```hcl
 # locals.tf
 all_enterprise_rules = merge(
-  local.enterprise_servicenow_rules,
-  # Additional ESGs merged here
+  local.enterprise_01_servicenow_rules,
+  local.enterprise_02_solarwinds_rules,
+  local.enterprise_03_multi_service_rules,
+  local.enterprise_04_multi_service_rules,
+  local.enterprise_05_multi_service_rules,
+  local.enterprise_06_rubrik_backup_rules,
+  local.enterprise_07_database_admin_rules,
+  local.enterprise_08_multi_service_rules,
+  local.enterprise_09_idera_monitoring_rules,
+  local.enterprise_10_hsa_monitoring_rules,
+  local.enterprise_11_citrix_rules,
+  local.enterprise_12_sailpoint_rules,
+  local.enterprise_13_varonis_collectors_rules
 )
 ```
 
-### ESG Priority Allocation
-
-| Priority Range | ESG Name | Status |
-|----------------|----------|--------|
-| 100-159 | ServiceNow | Active |
-| 160-1499 | Reserved | Available for future ESGs |
-
-### Testing
+## Testing
 
 ```bash
 cd examples/nsg
@@ -295,24 +244,3 @@ terraform apply
 - `azurerm_network_security_group`
 - `azurerm_network_security_rule` (enterprise rules)
 - `azurerm_network_security_rule` (user rules)
-
-## License
-
-Internal use only - Property of [Your Organization]
-
-## Support
-
-For issues or questions:
-- Platform Team: platform-team@example.com
-- Slack: #terraform-support
-- Documentation: https://wiki.example.com/terraform/azure-nsg
-
-## Changelog
-
-### Version 1.0.0 (2024-12-30)
-- Initial release
-- ServiceNow Enterprise Security Group rules (60 rules per region)
-- Support for user-defined TCP, UDP, and ICMP rules
-- Automatic priority management
-- Region-specific rule support (eastus, eastus2)
-- Content-based deduplication
