@@ -1,6 +1,7 @@
 resource "random_id" "this" {
   keepers = {
     # Generate a new id each time we modify attributes that will re-create NSG
+	description         = local.tags["purpose"]
     namespace           = var.namespace
     environment         = var.environment
     resource_group_name = var.resource_group_name
@@ -88,4 +89,26 @@ resource "azurerm_network_security_rule" "rules" {
   destination_application_security_group_ids = try(each.value.destination_application_security_group_ids, null)
 
   description = try(each.value.description, "Managed by Terraform")
+}
+
+# =============================================================================
+# NSG Diagnostic Settings (Optional)
+# =============================================================================
+# Enables diagnostic logging for the NSG if a Log Analytics Workspace ID is provided.
+# Captures NetworkSecurityGroupEvent and NetworkSecurityGroupRuleCounter logs.
+# =============================================================================
+resource "azurerm_monitor_diagnostic_setting" "nsg" {
+  count = var.log_analytics_workspace_id != null ? 1 : 0
+
+  name                       = "${azurerm_network_security_group.this.name}-diagnostics"
+  target_resource_id         = azurerm_network_security_group.this.id
+  log_analytics_workspace_id = var.log_analytics_workspace_id
+
+  enabled_log {
+    category = "NetworkSecurityGroupEvent"
+  }
+
+  enabled_log {
+    category = "NetworkSecurityGroupRuleCounter"
+  }
 }

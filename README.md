@@ -1,29 +1,43 @@
 # Azure Network Security Group Module
 
-Terraform module for creating Azure Network Security Groups with support for enterprise-managed rules and user-defined rules.
+## Description
 
-## Features
+This module creates Azure Network Security Groups with enterprise-managed rules and user-defined rules. It tags all resources with architecture, environment, owner, purpose, terraform_resource, and one of appid|appgid|project.
 
-- **Enterprise Security Group Rules**: Pre-configured enterprise-managed rules with automatic priority assignment
-- **User-Defined Rules**: Application-specific rules with automatic priority assignment to avoid conflicts
-- **Region-Specific Rules**: Support for different rule sets based on deployment region
-- **Content-Based Deduplication**: Automatic deduplication of rules across multiple Enterprise Security Groups
-- **Flexible Priority Management**: Reserved priority ranges for enterprise (100-1499) and user rules (1500+)
-- **Tag Validation**: Required tags with validation for compliance
+## Notes
+
+- Enterprise Security Group rules are applied automatically based on deployment region
+- Users cannot disable or select individual ESGs - all rules are applied by default
+- Priority ranges are managed automatically to prevent conflicts
+
+## Release Notes
+
+***Note: Complete any required actions for each set of release notes between the version the module is on and the version it is being upgraded to.***
+
+- Release **1.0.0** (Initial Release):
+  - Azure Network Security Group resource with automatic naming
+  - 13 Enterprise Security Groups with region-specific rules
+  - User-defined ingress rules (TCP, UDP, ICMP) from CIDRs and NSGs
+  - User-defined egress rules
+  - Automatic priority assignment (enterprise: 100-1499, user: 1500+)
+  - Content-based deduplication across ESGs
+  - Tag validation for compliance
+  - ACTION REQUIRED:
+    - No action required (new module)
 
 ## Architecture
 
 ```
 Priority Range  | Purpose                      | Managed By
-----------------|------------------------------|-------------
+----------------|------------------------------|------------------
 100-1499        | Enterprise Security Groups   | Platform Team
-1500-3999       | User/Application Rules       | Application Teams
+1500-1999       | User Ingress Rules           | Application Teams
+2000-2499       | User Egress Rules            | Application Teams
+2500            | Allow Any Egress             | Auto (if enabled)
 4000-4096       | Reserved                     | -
 ```
 
-## Usage
-
-### Basic Example
+## Basic Example
 
 ```hcl
 module "nsg_web" {
@@ -35,16 +49,15 @@ module "nsg_web" {
   environment         = "prod"
   namespace           = "myapp"
 
-  # User-defined ingress rules
   ingress_rules = {
     from_cidrs = {
       tcp = {
         "443" = {
-          cidrs   = ["0.0.0.0/0"]
+          cidrs   = ["10.0.0.0/8"]
           to_port = 443
         }
         "80" = {
-          cidrs   = ["0.0.0.0/0"]
+          cidrs   = ["10.0.0.0/8"]
           to_port = 80
         }
       }
@@ -57,7 +70,6 @@ module "nsg_web" {
     }
   }
 
-  # Egress rules
   egress_rules = {
     to_cidrs = null
     to_nsgs  = {}
@@ -68,37 +80,13 @@ module "nsg_web" {
 
   tags = {
     architecture       = "native"
-    owner              = "platform-team"
-    purpose            = "web-frontend"
+    owner              = "platform_team"
+    purpose            = "Web tier NSG for frontend applications handling HTTP and HTTPS traffic."
     terraform_resource = "true"
     appid              = "app-12345"
   }
 }
 ```
-
-## Enterprise Security Group Rules
-
-Enterprise rules are automatically applied based on deployment region. These rules are managed by the platform team.
-
-### Region Mapping
-
-| AWS Region | Azure Region | Location |
-|------------|--------------|----------|
-| us-east-1  | eastus2      | Virginia |
-| us-east-2  | centralus    | Iowa     |
-
-Enterprise rules use priorities 100-1499 and are automatically deduplicated across multiple ESGs.
-
-## Priority Assignment
-
-Priorities are automatically assigned to prevent conflicts:
-
-- **Enterprise Rules**: 100-1499 (managed by platform, content-based keys ensure deduplication)
-- **User Ingress Rules**: 1500+ (auto-incremented)
-- **User Egress Rules**: 2000+ (auto-incremented)
-- **Allow Any Egress**: 2500 (if enabled)
-
-Users cannot specify priorities directly, ensuring no conflicts occur.
 
 ## Inputs
 
@@ -106,14 +94,16 @@ Users cannot specify priorities directly, ensuring no conflicts occur.
 |------|-------------|------|---------|----------|
 | name | Name of the NSG | `string` | n/a | yes |
 | resource_group_name | Resource group name | `string` | n/a | yes |
-| location | Azure region | `string` | n/a | yes |
-| environment | Environment (dev/qa/prod) | `string` | n/a | yes |
+| location | Azure region (eastus2 or centralus) | `string` | n/a | yes |
+| environment | Environment (box/dev/dr/prod/qa/stage/uat) | `string` | n/a | yes |
 | namespace | Application namespace | `string` | n/a | yes |
-| ingress_rules | Ingress rule configuration | `object` | n/a | yes |
-| egress_rules | Egress rule configuration | `object` | n/a | yes |
-| enable_any_egress | Allow all outbound traffic | `bool` | `false` | no |
-| enable_any_nsg_to_self | Allow VirtualNetwork to VirtualNetwork | `bool` | `false` | no |
-| tags | Resource tags | `map(string)` | n/a | yes |
+| ingress_rules | Ingress rule configuration | `object` | `{}` | no |
+| egress_rules | Egress rule configuration | `object` | `{}` | no |
+| enable_any_egress | Allow all outbound traffic | `bool` | `true` | no |
+| enable_any_nsg_to_self | Allow VirtualNetwork to VirtualNetwork | `bool` | `true` | no |
+| tags | Resource tags | `object` | n/a | yes |
+| nsg_custom_name | Custom name override for imports | `string` | `""` | no |
+| log_analytics_workspace_id | Log Analytics Workspace ID for NSG diagnostic settings | `string` | `null` | no |
 
 ### Ingress Rules Structure
 
@@ -142,7 +132,7 @@ ingress_rules = {
   from_nsgs = {
     tcp = {
       "<port>" = {
-        source_nsg_ids = ["<asg_id1>", "<asg_id2>"]
+        source_nsg_ids = ["<nsg_id1>", "<nsg_id2>"]
         to_port        = <end_port>  # Optional
       }
     }
@@ -160,25 +150,14 @@ ingress_rules = {
 | enterprise_rule_count | Number of enterprise rules applied |
 | user_rule_count | Number of user-defined rules |
 
-## Tag Requirements
+## Region Mapping
 
-The following tags are required and validated:
-
-- `architecture`: Must be "native" or "vendor"
-- `owner`: Owner or team name
-- `purpose`: Purpose of the resource
-- `terraform_resource`: Must be "true"
-- `appid`: Application ID
-
-## Examples
-
-See the `examples/` directory for complete working examples:
-
-- `examples/nsg/`: Basic NSG with web tier rules
+| AWS Region | Azure Region | Location |
+|------------|--------------|----------|
+| us-east-1  | eastus2      | Virginia |
+| us-east-2  | centralus    | Iowa     |
 
 ## Enterprise Security Groups
-
-### Available ESGs
 
 | ESG | File | Priority Range | Service |
 |-----|------|----------------|---------|
@@ -196,34 +175,15 @@ See the `examples/` directory for complete working examples:
 | 12 | esg-12-sailpoint.tf | 1090-1110 | SailPoint |
 | 13 | esg-13-varonis-collectors.tf | 1150-1164 | Varonis Collectors |
 
-ESGs are merged in `locals.tf`:
+## Tag Requirements
 
-```hcl
-all_enterprise_rules = merge(
-  local.enterprise_01_servicenow_rules,
-  local.enterprise_02_solarwinds_rules,
-  local.enterprise_03_multi_service_rules,
-  local.enterprise_04_multi_service_rules,
-  local.enterprise_05_multi_service_rules,
-  local.enterprise_06_rubrik_backup_rules,
-  local.enterprise_07_database_admin_rules,
-  local.enterprise_08_multi_service_rules,
-  local.enterprise_09_idera_monitoring_rules,
-  local.enterprise_10_hsa_monitoring_rules,
-  local.enterprise_11_citrix_rules,
-  local.enterprise_12_sailpoint_rules,
-  local.enterprise_13_varonis_collectors_rules
-)
-```
-
-## Testing
-
-```bash
-cd examples/nsg
-terraform init
-terraform plan
-terraform apply
-```
+| Tag | Requirement |
+|-----|-------------|
+| architecture | Must be "native", "legacy", or "migrations" |
+| owner | Owner or team name |
+| purpose | Must be >40 chars, start with capital, end with period |
+| terraform_resource | Must be "true" |
+| appid/appgid/project/serviceid | At least one required |
 
 ## Requirements
 
@@ -237,9 +197,34 @@ terraform apply
 | Name | Version |
 |------|---------|
 | azurerm | >= 3.0 |
+| random | >= 3.0 |
 
 ## Resources
 
 - `azurerm_network_security_group`
 - `azurerm_network_security_rule` (enterprise rules)
 - `azurerm_network_security_rule` (user rules)
+- `azurerm_monitor_diagnostic_setting` (optional, if log_analytics_workspace_id provided)
+- `random_id`
+
+## Diagnostic Settings (Optional)
+
+To enable NSG diagnostic settings for compliance and monitoring, pass your Log Analytics Workspace ID:
+
+```hcl
+module "nsg_web" {
+  source = "../../"
+  # ... other variables
+  
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.example.id
+}
+```
+
+If not provided, diagnostic settings will not be configured.
+
+## Usage Examples
+
+Reference the code in `examples/*`:
+
+- `examples/default/` - Enterprise rules only (no user-defined rules)
+- `examples/web-tier/` - Enterprise rules + user-defined web traffic rules
