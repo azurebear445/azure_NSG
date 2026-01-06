@@ -90,3 +90,31 @@ resource "azurerm_network_security_rule" "rules" {
 
   description = try(each.value.description, "Managed by Terraform")
 }
+
+# =============================================================================
+# NSG Diagnostic Settings (Optional)
+# =============================================================================
+# When enabled, creates a diagnostic setting for the NSG.
+# Azure Policy may automatically configure the Log Analytics Workspace.
+# =============================================================================
+resource "azurerm_monitor_diagnostic_setting" "nsg" {
+  count = var.enable_diagnostic_settings ? 1 : 0
+
+  name                       = "${azurerm_network_security_group.this.name}-diagnostics"
+  target_resource_id         = azurerm_network_security_group.this.id
+  log_analytics_workspace_id = var.log_analytics_workspace_id
+
+  enabled_log {
+    category = "NetworkSecurityGroupEvent"
+  }
+
+  enabled_log {
+    category = "NetworkSecurityGroupRuleCounter"
+  }
+
+  lifecycle {
+    ignore_changes = [
+      log_analytics_workspace_id
+    ]
+  }
+}

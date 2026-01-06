@@ -122,6 +122,18 @@ variable "resource_group_name" {
   description = "Name of the resource group where NSG will be created"
 }
 
+variable "enable_diagnostic_settings" {
+  type        = bool
+  description = "Enable diagnostic settings for the NSG. When enabled, Azure Policy will automatically configure the Log Analytics Workspace."
+  default     = false
+}
+
+variable "log_analytics_workspace_id" {
+  type        = string
+  description = "Log Analytics Workspace ID for diagnostic settings. Required when enable_diagnostic_settings is true. Azure Policy may override this with the organization's centralized workspace."
+  default     = null
+}
+
 variable "tags" {
   type = object({
     architecture              = string
