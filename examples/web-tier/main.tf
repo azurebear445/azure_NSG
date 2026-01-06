@@ -13,17 +13,6 @@ resource "azurerm_resource_group" "this" {
 }
 
 # =============================================================================
-# Log Analytics Workspace (for NSG Diagnostic Settings)
-# =============================================================================
-resource "azurerm_log_analytics_workspace" "this" {
-  name                = "law-nsg-web-tier-example"
-  location            = azurerm_resource_group.this.location
-  resource_group_name = azurerm_resource_group.this.name
-  sku                 = "PerGB2018"
-  retention_in_days   = 90
-}
-
-# =============================================================================
 # NSG with User-Defined Rules + Enterprise Rules
 # =============================================================================
 module "nsg_web" {
@@ -34,9 +23,6 @@ module "nsg_web" {
   location            = azurerm_resource_group.this.location
   environment         = "dev"
   namespace           = "test-app"
-
-  # Log Analytics Workspace for diagnostic settings
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
 
   # User-defined ingress rules
   ingress_rules = {
