@@ -13,6 +13,17 @@ resource "azurerm_resource_group" "this" {
 }
 
 # =============================================================================
+# Log Analytics Workspace (for NSG Diagnostic Settings)
+# =============================================================================
+resource "azurerm_log_analytics_workspace" "this" {
+  name                = "law-nsg-web-tier-example"
+  location            = azurerm_resource_group.this.location
+  resource_group_name = azurerm_resource_group.this.name
+  sku                 = "PerGB2018"
+  retention_in_days   = 90
+}
+
+# =============================================================================
 # NSG with User-Defined Rules + Enterprise Rules
 # =============================================================================
 module "nsg_web" {
@@ -24,18 +35,21 @@ module "nsg_web" {
   environment         = "dev"
   namespace           = "test-app"
 
+  # Log Analytics Workspace for diagnostic settings
+  log_analytics_workspace_id = azurerm_log_analytics_workspace.this.id
+
   # User-defined ingress rules
   ingress_rules = {
     from_cidrs = {
       tcp = {
-        # HTTPS from internal network
+        # HTTPS from web subnet
         "443" = {
-          cidrs   = ["10.0.0.0/8"]
+          cidrs   = ["10.100.1.0/24"]
           to_port = 443
         }
-        # HTTP from internal network
+        # HTTP from web subnet
         "80" = {
-          cidrs   = ["10.0.0.0/8"]
+          cidrs   = ["10.100.1.0/24"]
           to_port = 80
         }
         # SSH from bastion subnet
@@ -55,9 +69,9 @@ module "nsg_web" {
         }
       }
       udp = {
-        # DNS from internal network
+        # DNS from DNS servers
         "53" = {
-          cidrs   = ["10.0.0.0/8"]
+          cidrs   = ["10.100.2.0/24"]
           to_port = 53
         }
       }
