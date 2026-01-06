@@ -122,18 +122,6 @@ variable "resource_group_name" {
   description = "Name of the resource group where NSG will be created"
 }
 
-variable "log_analytics_workspace_id" {
-  type        = string
-  description = "Log Analytics Workspace ID for NSG diagnostic settings. If provided, diagnostic settings will be enabled for NetworkSecurityGroupEvent and NetworkSecurityGroupRuleCounter logs."
-  default     = null
-}
-
-variable "enable_diagnostic_settings" {
-  type        = bool
-  description = "Enable diagnostic settings for the NSG. Requires log_analytics_workspace_id to be provided."
-  default     = false
-}
-
 variable "tags" {
   type = object({
     architecture              = string

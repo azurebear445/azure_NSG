@@ -103,7 +103,6 @@ module "nsg_web" {
 | enable_any_nsg_to_self | Allow VirtualNetwork to VirtualNetwork | `bool` | `true` | no |
 | tags | Resource tags | `object` | n/a | yes |
 | nsg_custom_name | Custom name override for imports | `string` | `""` | no |
-| log_analytics_workspace_id | Log Analytics Workspace ID for NSG diagnostic settings | `string` | `null` | no |
 
 ### Ingress Rules Structure
 
@@ -204,23 +203,7 @@ ingress_rules = {
 - `azurerm_network_security_group`
 - `azurerm_network_security_rule` (enterprise rules)
 - `azurerm_network_security_rule` (user rules)
-- `azurerm_monitor_diagnostic_setting` (optional, if log_analytics_workspace_id provided)
 - `random_id`
-
-## Diagnostic Settings (Optional)
-
-To enable NSG diagnostic settings for compliance and monitoring, pass your Log Analytics Workspace ID:
-
-```hcl
-module "nsg_web" {
-  source = "../../"
-  # ... other variables
-  
-  log_analytics_workspace_id = azurerm_log_analytics_workspace.example.id
-}
-```
-
-If not provided, diagnostic settings will not be configured.
 
 ## Usage Examples
 
