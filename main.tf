@@ -94,11 +94,12 @@ resource "azurerm_network_security_rule" "rules" {
 # =============================================================================
 # NSG Diagnostic Settings (Optional)
 # =============================================================================
-# Enables diagnostic logging for the NSG if a Log Analytics Workspace ID is provided.
+# Enables diagnostic logging for the NSG if enable_diagnostic_settings is true.
+# Requires log_analytics_workspace_id to be provided.
 # Captures NetworkSecurityGroupEvent and NetworkSecurityGroupRuleCounter logs.
 # =============================================================================
 resource "azurerm_monitor_diagnostic_setting" "nsg" {
-  count = var.log_analytics_workspace_id != null ? 1 : 0
+  count = var.enable_diagnostic_settings ? 1 : 0
 
   name                       = "${azurerm_network_security_group.this.name}-diagnostics"
   target_resource_id         = azurerm_network_security_group.this.id
@@ -111,4 +112,5 @@ resource "azurerm_monitor_diagnostic_setting" "nsg" {
   enabled_log {
     category = "NetworkSecurityGroupRuleCounter"
   }
+}
 }
