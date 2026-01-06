@@ -24,6 +24,10 @@ module "nsg_web" {
   environment         = "dev"
   namespace           = "test-app"
 
+  # Enable diagnostic settings with organization's centralized Log Analytics Workspace
+  enable_diagnostic_settings = true
+  log_analytics_workspace_id = "/subscriptions/8a90d2fe-83fe-4c20-a5de-23adf84fb1bb/resourceGroups/azprd-mgmt/providers/Microsoft.OperationalInsights/workspaces/AZPrd-la-8a90d2fe-83fe-4c20-a5de-23adf84fb1bb"
+
   # User-defined ingress rules
   ingress_rules = {
     from_cidrs = {
