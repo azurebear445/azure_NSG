@@ -128,6 +128,12 @@ variable "log_analytics_workspace_id" {
   default     = null
 }
 
+variable "enable_diagnostic_settings" {
+  type        = bool
+  description = "Enable diagnostic settings for the NSG. Requires log_analytics_workspace_id to be provided."
+  default     = false
+}
+
 variable "tags" {
   type = object({
     architecture              = string
