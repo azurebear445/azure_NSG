@@ -2,13 +2,14 @@
 
 ## Description
 
-This module creates Azure Network Security Groups with enterprise-managed rules and user-defined rules. It tags all resources with architecture, environment, owner, purpose, terraform_resource, and one of appid|appgid|project.
+This module creates Azure Network Security Groups with enterprise-managed rules and user-defined rules. It replicates AWS Security Group functionality for Azure, including 13 Enterprise Security Groups (ESGs) that are automatically applied based on deployment region.
 
 ## Notes
 
-- Enterprise Security Group rules are applied automatically based on deployment region
+- Enterprise Security Group rules are applied automatically based on deployment region (eastus2 or centralus)
 - Users cannot disable or select individual ESGs - all rules are applied by default
 - Priority ranges are managed automatically to prevent conflicts
+- NSG Diagnostic Settings are automatically enabled by Azure Policy after NSG creation
 
 ## Release Notes
 
@@ -53,11 +54,11 @@ module "nsg_web" {
     from_cidrs = {
       tcp = {
         "443" = {
-          cidrs   = ["10.0.0.0/8"]
+          cidrs   = ["10.100.1.0/24"]
           to_port = 443
         }
         "80" = {
-          cidrs   = ["10.0.0.0/8"]
+          cidrs   = ["10.100.1.0/24"]
           to_port = 80
         }
       }
@@ -76,7 +77,7 @@ module "nsg_web" {
   }
 
   enable_any_egress      = true
-  enable_any_nsg_to_self = false
+  enable_any_nsg_to_self = true
 
   tags = {
     architecture       = "native"
@@ -173,6 +174,15 @@ ingress_rules = {
 | 11 | esg-11-citrix.tf | 1040-1051 | Citrix |
 | 12 | esg-12-sailpoint.tf | 1090-1110 | SailPoint |
 | 13 | esg-13-varonis-collectors.tf | 1150-1164 | Varonis Collectors |
+
+## Diagnostic Settings
+
+NSG Diagnostic Settings are **automatically enabled by Azure Policy** after NSG creation. No configuration is required in this module.
+
+The Azure Policy configures:
+- **Log Categories:** NetworkSecurityGroupEvent, NetworkSecurityGroupRuleCounter
+- **Destination:** Organization's centralized Log Analytics Workspace
+- **Data Retention:** 180 days (configured at workspace level)
 
 ## Tag Requirements
 
