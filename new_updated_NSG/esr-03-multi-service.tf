@@ -19,7 +19,6 @@
 # Variable Naming: enterprise_03_multi_service_rules
 locals {
     # Common rules - Apply to all regions
-     61 rules are identical in both AWS regions
   multi_service_03_common = {
     "all-all-0-0-0-0-0-outbound" = {
       direction                  = "Outbound"
@@ -696,7 +695,6 @@ locals {
     # Region-01 only (eastus)
     # Currently empty - all rules are common to both regions
   # This block is ready for future Region-01 specific rules
-  # than Region-02 (different Azure region = different NSG instance)
   multi_service_03_region_01 = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:

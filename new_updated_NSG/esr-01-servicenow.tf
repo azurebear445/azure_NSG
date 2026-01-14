@@ -659,8 +659,6 @@ locals {
     }
   }
     # Region-01 only (eastus)
-     2 rules exist only in AWS us-east-1 (Virginia)
-  # than Region-02 rules (different Azure region = different NSG instance)
   servicenow_01_region_01 = {
       "tcp-49152-10-110-34-0-24-inbound" = {
         protocol                   = "Tcp"
@@ -686,8 +684,6 @@ locals {
       }
   }
     # Region-02 only (eastus2)
-     2 rules exist only in AWS us-east-2 (Ohio)
-  # than Region-01 rules (different Azure region = different NSG instance)
   servicenow_01_region_02 = {
       "tcp-49152-65535-10-110-34-0-24-inbound" = {
         protocol                   = "Tcp"

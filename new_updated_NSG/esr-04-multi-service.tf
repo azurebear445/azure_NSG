@@ -660,8 +660,6 @@ locals {
     }
   }
     # Region-01 only (eastus)
-     0 rules exist only in AWS us-east-1 (Virginia)
-  # than Region-02 rules (different Azure region = different NSG instance)
   multi_service_04_region_01 = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:
@@ -678,7 +676,6 @@ locals {
       # }
   }
     # Region-02 only (eastus2)
-     0 rules exist only in AWS us-east-2 (Ohio)
   multi_service_04_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:

@@ -19,7 +19,6 @@
 # Variable Naming: enterprise_05_multi_service_rules
 locals {
     # Common rules - Apply to all regions
-     54 rules are identical in both AWS regions
   multi_service_05_common = {
     "tcp-22-10-110-88-0-24-ingress" = {
       direction                  = "Inbound"
@@ -617,8 +616,6 @@ locals {
     }
   }
     # Region-01 only (eastus)
-     4 rules exist only in AWS us-east-1 (Virginia)
-  # than Region-02 rules (different Azure region = different NSG instance)
   multi_service_05_region_01 = {
       "tcp-0-65535-10-111-100-235-32-ingress" = {
         direction                  = "Inbound"
@@ -666,7 +663,6 @@ locals {
       }
   }
     # Region-02 only (eastus2)
-     6 rules exist only in AWS us-east-2 (Ohio)
   multi_service_05_region_02 = {
       "tcp-135-10-20-60-110-32-ingress" = {
         direction                  = "Inbound"

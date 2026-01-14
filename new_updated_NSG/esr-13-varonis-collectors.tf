@@ -19,7 +19,6 @@
 # Variable Naming: enterprise_13_varonis_collectors_rules
 locals {
     # Common rules - Apply to all regions
-     14 rules are identical in both AWS regions
   varonis_collectors_13_common = {
     "tcp-22-10-111-19-0-24-ingress" = {
       direction                  = "Inbound"
@@ -177,8 +176,6 @@ locals {
     }
   }
     # Region-01 only (eastus)
-     0 rules exist only in AWS us-east-1 (Virginia)
-  # than Region-02 rules (different Azure region = different NSG instance)
   varonis_collectors_13_region_01 = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:
@@ -195,7 +192,6 @@ locals {
       # }
   }
     # Region-02 only (eastus2)
-     0 rules exist only in AWS us-east-2 (Ohio)
   varonis_collectors_13_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:

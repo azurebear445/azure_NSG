@@ -77,7 +77,7 @@ resource "azurerm_network_security_rule" "rules" {
   source_application_security_group_ids      = try(each.value.source_application_security_group_ids, null)
   destination_application_security_group_ids = try(each.value.destination_application_security_group_ids, null)
 
-  description = try(each.value.description, "Managed by Terraform")
+  description = try(each.value.description, "")
 }
 
 # NSG Diagnostic Settings (Optional)

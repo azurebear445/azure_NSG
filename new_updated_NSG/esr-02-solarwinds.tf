@@ -18,7 +18,6 @@
 # Variable Naming: enterprise_02_solarwinds_rules
 locals {
     # Common rules - Apply to all regions
-     60 rules are identical in both AWS regions
   solarwinds_02_common = {
     "all-all-0-0-0-0-0-outbound" = {
       direction                  = "Outbound"
@@ -682,9 +681,7 @@ locals {
     }
   }
     # Region-01 only (eastus)
-     2 rules exist only in AWS us-east-1 (Virginia)
   # Dynamic port ranges for SolarWinds Azure pollers
-  # than Region-02 (different Azure region = different NSG instance)
   solarwinds_02_region_01 = {
       "tcp-49152-65535-10-111-14-232-32-inbound" = {
         direction                  = "Inbound"
