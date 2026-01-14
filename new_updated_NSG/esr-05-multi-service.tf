@@ -3,8 +3,7 @@
 # management services.
 #
 # Region Mapping:
-#   - Region-01 (AWS us-east-1 Virginia) → Azure eastus
-#   - Region-02 (AWS us-east-2 Ohio) → Azure eastus2
+# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
 #
 #
 # Priority Block: 500-599 (100 total slots)
@@ -13,17 +12,15 @@
 #
 # Rule Distribution:
 #   - Common rules: 54 (apply to both regions)
-#   - Region-01 only: 4 (eastus2 only - AWS Virginia)
-#   - Region-02 only: 6 (centralus only - AWS Ohio)
+#   - Region-01 only: 4 (eastus only)
+#   - Region-02 only: 6 (eastus only)
 #
 #
 # Variable Naming: enterprise_05_multi_service_rules
 
 locals {
-  # =========================================================================
-  # COMMON RULES - Apply to BOTH Region-01 and Region-02
-  # =========================================================================
-  # These 54 rules are identical in both AWS regions
+    # Common rules - Apply to all regions
+     54 rules are identical in both AWS regions
 
   multi_service_05_common = {
     "tcp-22-10-110-88-0-24-ingress" = {
@@ -622,17 +619,11 @@ locals {
     }
   }
 
-  # =========================================================================
-  # REGION-01 ONLY RULES - Apply ONLY to Region-01 (eastus2)
-  # =========================================================================
-  # These 4 rules exist only in AWS us-east-1 (Virginia)
-  # or have different definitions than Region-02
-  # 
-  # Note: Can reuse priorities 500-599 because this deploys to DIFFERENT NSG
+    # Region-01 only (eastus)
+     4 rules exist only in AWS us-east-1 (Virginia)
   # than Region-02 rules (different Azure region = different NSG instance)
 
   multi_service_05_region_01 = {
-    for k, v in {
       "tcp-0-65535-10-111-100-235-32-ingress" = {
         direction                  = "Inbound"
         access                     = "Allow"
@@ -677,19 +668,12 @@ locals {
         destination_address_prefix = "*"
         description                = "ESR 05 - Multi-Service Rule"
       }
-    } : k => v if contains(local.region_01_locations, var.location)
   }
 
-  # =========================================================================
-  # REGION-02 ONLY RULES - Apply ONLY to Region-02 (centralus)
-  # =========================================================================
-  # These 6 rules exist only in AWS us-east-2 (Ohio)
-  # or have different definitions than Region-01
-  # 
-  # Note: Can reuse priorities 500-599 for Region-02 only rules
+    # Region-02 only (eastus2)
+     6 rules exist only in AWS us-east-2 (Ohio)
 
   multi_service_05_region_02 = {
-    for k, v in {
       "tcp-135-10-20-60-110-32-ingress" = {
         direction                  = "Inbound"
         access                     = "Allow"
@@ -756,16 +740,12 @@ locals {
         destination_address_prefix = "*"
         description                = "ESR 05 - Multi-Service Rule"
       }
-    } : k => v if contains(local.region_02_locations, var.location)
   }
 
-  # =========================================================================
-  # MERGE ALL MULTI-SERVICE ESR 05 RULES
-  # =========================================================================
-
+    
   enterprise_05_multi_service_rules = merge(
     local.multi_service_05_common,
-    local.multi_service_05_region_01,
-    local.multi_service_05_region_02
+    var.location == "eastus" ? local.multi_service_05_region_01 : {},
+    var.location == "eastus2" ? local.multi_service_05_region_02 : {}
   )
 }

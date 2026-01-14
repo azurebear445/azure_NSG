@@ -14,7 +14,7 @@ locals {
   is_region_02 = contains(local.region_02_locations, var.location)
   is_region_03 = contains(local.region_03_locations, var.location)
 
-  # Enterprise Security Rules - Conditional merge based on enable flags
+  # Enterprise Security Rules - Conditional merge
   all_enterprise_rules = merge(
     var.enable_enterprise_security_rules ? merge(
       local.enterprise_01_servicenow_rules,
@@ -33,7 +33,11 @@ locals {
     var.enable_varonis_ingress ? local.enterprise_13_varonis_collectors_rules : {}
   )
 
-  # User-Defined Rules Processing (Priority 1500+)
+  # User-Defined Rules Processing
+ Processing
+    # These rules are provided by application teams via input variables
+  # Priority range: 1500-3999 (starts after enterprise rules)
+  
   ingress_rules_from_cidrs_icmp = flatten([
     for port, rule in var.ingress_rules["from_cidrs"]["icmp"] : [
       for cidr in rule["cidrs"] : {
@@ -136,7 +140,6 @@ locals {
     local.egress_rules_to_nsgs
   )
 
-  # User rules with priorities starting at 1500
   all_rules_map = merge(
     { for idx, rule in local.all_ingress_rules : rule.key => merge(rule, {
       direction = "Inbound"

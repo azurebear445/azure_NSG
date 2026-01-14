@@ -2,8 +2,7 @@
 # This file contains enterprise-managed rules for Idera database monitoring.
 #
 # Region Mapping:
-#   - Region-01 (AWS us-east-1 Virginia) → Azure eastus
-#   - Region-02 (AWS us-east-2 Ohio) → Azure eastus2
+# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
 #
 #
 # Priority Block: 900-999 (100 total slots)
@@ -12,17 +11,15 @@
 #
 # Rule Distribution:
 #   - Common rules: 44 (apply to both regions)
-#   - Region-01 only: 0 (eastus2 only - AWS Virginia)
-#   - Region-02 only: 0 (centralus only - AWS Ohio)
+#   - Region-01 only: 0 (eastus only)
+#   - Region-02 only: 0 (eastus only)
 #
 #
 # Variable Naming: enterprise_09_idera_monitoring_rules
 
 locals {
-  # =========================================================================
-  # COMMON RULES - Apply to BOTH Region-01 and Region-02
-  # =========================================================================
-  # These 44 rules are identical in both AWS regions
+    # Common rules - Apply to all regions
+     44 rules are identical in both AWS regions
 
   idera_monitoring_09_common = {
     "tcp-135-10-111-14-6-32-ingress" = {
@@ -511,22 +508,14 @@ locals {
     }
   }
 
-  # =========================================================================
-  # REGION-01 ONLY RULES - Apply ONLY to Region-01 (eastus2)
-  # =========================================================================
-  # These 0 rules exist only in AWS us-east-1 (Virginia)
-  # or have different definitions than Region-02
-  # 
-  # Note: Can reuse priorities 900-999 because this deploys to DIFFERENT NSG
+    # Region-01 only (eastus)
+     0 rules exist only in AWS us-east-1 (Virginia)
   # than Region-02 rules (different Azure region = different NSG instance)
 
   idera_monitoring_09_region_01 = {
-    for k, v in {
       # No Region-01 specific rules currently
-      # 
-      # EXAMPLE: How to add a new Region-01 only rule:
-      # 
-      # "tcp-3306-192-168-1-0-24-inbound" = {
+          # EXAMPLE: How to add a new Region-01 only rule:
+          # "tcp-3306-192-168-1-0-24-inbound" = {
       #   direction                  = "Inbound"
       #   access                     = "Allow"
       #   priority                   = 944  # Next available priority
@@ -537,24 +526,15 @@ locals {
       #   destination_address_prefix = "*"
       #   description                = "ESR 09 - Idera Monitoring Rule"
       # }
-    } : k => v if contains(local.region_01_locations, var.location)
   }
 
-  # =========================================================================
-  # REGION-02 ONLY RULES - Apply ONLY to Region-02 (centralus)
-  # =========================================================================
-  # These 0 rules exist only in AWS us-east-2 (Ohio)
-  # or have different definitions than Region-01
-  # 
-  # Note: Can reuse priorities 900-999 for Region-02 only rules
+    # Region-02 only (eastus2)
+     0 rules exist only in AWS us-east-2 (Ohio)
 
   idera_monitoring_09_region_02 = {
-    for k, v in {
       # No Region-02 specific rules currently
-      # 
-      # EXAMPLE: How to add a new Region-02 only rule:
-      # 
-      # "tcp-8080-10-1-1-0-24-inbound" = {
+          # EXAMPLE: How to add a new Region-02 only rule:
+          # "tcp-8080-10-1-1-0-24-inbound" = {
       #   direction                  = "Inbound"
       #   access                     = "Allow"
       #   priority                   = 944  # Next available priority
@@ -565,16 +545,12 @@ locals {
       #   destination_address_prefix = "*"
       #   description                = "ESR 09 - Idera Monitoring Rule"
       # }
-    } : k => v if contains(local.region_02_locations, var.location)
   }
 
-  # =========================================================================
-  # MERGE ALL IDERA MONITORING ESR 09 RULES
-  # =========================================================================
-
+    
   enterprise_09_idera_monitoring_rules = merge(
     local.idera_monitoring_09_common,
-    local.idera_monitoring_09_region_01,
-    local.idera_monitoring_09_region_02
+    var.location == "eastus" ? local.idera_monitoring_09_region_01 : {},
+    var.location == "eastus2" ? local.idera_monitoring_09_region_02 : {}
   )
 }

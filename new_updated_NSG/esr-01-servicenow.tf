@@ -2,8 +2,7 @@
 # This file contains enterprise-managed ServiceNow rules.
 #
 # Region Mapping:
-#   - Region-01 (AWS us-east-1 Virginia) → Azure eastus
-#   - Region-02 (AWS us-east-2 Ohio) → Azure eastus2
+# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
 #
 #
 # Priority Block: 100-199 (100 total slots)
@@ -12,17 +11,15 @@
 #
 # Rule Distribution:
 #   - Common rules: 58 (apply to both regions)
-#   - Region-01 only: 2 (eastus2 only - AWS Virginia)
-#   - Region-02 only: 2 (centralus only - AWS Ohio)
+#   - Region-01 only: 2 (eastus only)
+#   - Region-02 only: 2 (eastus only)
 #
 #
 # Variable Naming: enterprise_01_servicenow_rules
 
 locals {
-  # =========================================================================
-  # COMMON RULES - Apply to BOTH Region-01 and Region-02
-  # =========================================================================
-  # These 58 rules are identical in both AWS regions
+    # Common rules - Apply to all regions
+    
   
   servicenow_01_common = {
     "all-all-0-0-0-0-0-outbound" = {
@@ -665,17 +662,11 @@ locals {
     }
   }
 
-  # =========================================================================
-  # REGION-01 ONLY RULES - Apply ONLY to Region-01 (eastus2)
-  # =========================================================================
-  # These 2 rules exist only in AWS us-east-1 (Virginia)
-  # or have different definitions than Region-02
-  # 
-  # Note: Can reuse priorities 100-199 because this deploys to DIFFERENT NSG
+    # Region-01 only (eastus)
+     2 rules exist only in AWS us-east-1 (Virginia)
   # than Region-02 rules (different Azure region = different NSG instance)
   
   servicenow_01_region_01 = {
-    for k, v in {
       "tcp-49152-10-110-34-0-24-inbound" = {
         protocol                   = "Tcp"
         source_port_range          = "*"
@@ -698,20 +689,13 @@ locals {
         priority                   = 159
         description                = "ESR 01 - ServiceNow Rule"
       }
-    } : k => v if contains(local.region_01_locations, var.location)
   }
 
-  # =========================================================================
-  # REGION-02 ONLY RULES - Apply ONLY to Region-02 (centralus)
-  # =========================================================================
-  # These 2 rules exist only in AWS us-east-2 (Ohio)
-  # or have different definitions than Region-01
-  # 
-  # Note: Can reuse priorities 100-199 because this deploys to DIFFERENT NSG
+    # Region-02 only (eastus2)
+     2 rules exist only in AWS us-east-2 (Ohio)
   # than Region-01 rules (different Azure region = different NSG instance)
   
   servicenow_01_region_02 = {
-    for k, v in {
       "tcp-49152-65535-10-110-34-0-24-inbound" = {
         protocol                   = "Tcp"
         source_port_range          = "*"
@@ -734,16 +718,12 @@ locals {
         priority                   = 159
         description                = "ESR 01 - ServiceNow Rule"
       }
-    } : k => v if contains(local.region_02_locations, var.location)
   }
 
-  # =========================================================================
-  # MERGE ALL SERVICENOW ESR 01 RULES
-  # =========================================================================
-  
+      
   enterprise_01_servicenow_rules = merge(
     local.servicenow_01_common,
-    local.servicenow_01_region_01,
-    local.servicenow_01_region_02
+    var.location == "eastus" ? local.servicenow_01_region_01 : {},
+    var.location == "eastus2" ? local.servicenow_01_region_02 : {}
   )
 }

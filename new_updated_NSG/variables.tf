@@ -202,9 +202,7 @@ variable "tags" {
   }
 }
 
-# =============================================================================
-# Enterprise Security Rules (ESR) Control Variables
-# =============================================================================
+# Enterprise Security Rules Control Variables
 
 variable "enable_enterprise_security_rules" {
   description = "Enable default Enterprise Security Rules (ESR 01, 02, 03, 04, 05, 08). Set to false to exclude all default ESRs."

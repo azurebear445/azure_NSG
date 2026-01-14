@@ -3,8 +3,7 @@
 # and publishing.
 #
 # Region Mapping:
-#   - Region-01 (AWS us-east-1 Virginia) → Azure eastus
-#   - Region-02 (AWS us-east-2 Ohio) → Azure eastus2
+# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
 #
 #
 # Priority Block: 1040-1089 (50 total slots)
@@ -13,17 +12,15 @@
 #
 # Rule Distribution:
 #   - Common rules: 11 (apply to both regions)
-#   - Region-01 only: 1 (eastus2 only - AWS Virginia) - COMMENTED OUT, NEEDS VERIFICATION
-#   - Region-02 only: 0 (centralus only - AWS Ohio)
+#   - Region-01 only: 1 (eastus only) - COMMENTED OUT, NEEDS VERIFICATION
+#   - Region-02 only: 0 (eastus only)
 #
 #
 # Variable Naming: enterprise_11_citrix_rules
 
 locals {
-  # =========================================================================
-  # COMMON RULES - Apply to BOTH Region-01 and Region-02
-  # =========================================================================
-  # These 11 rules are identical in both AWS regions
+    # Common rules - Apply to all regions
+     11 rules are identical in both AWS regions
 
   citrix_11_common = {
     "tcp-80-10-111-124-135-32-ingress" = {
@@ -149,23 +146,15 @@ locals {
     }
   }
 
-  # =========================================================================
-  # REGION-01 ONLY RULES - Apply ONLY to Region-01 (eastus2)
-  # =========================================================================
-  # These rules exist only in AWS us-east-1 (Virginia)
-  # or have different definitions than Region-02
-  # 
-  # Note: Can reuse priorities 1040-1089 because this deploys to DIFFERENT NSG
+    # Region-01 only (eastus)
+     rules exist only in AWS us-east-1 (Virginia)
   # than Region-02 rules (different Azure region = different NSG instance)
 
   citrix_11_region_01 = {
-    for k, v in {
-      # =====================================================================
-      # NEEDS VERIFICATION: The following rule exists in AWS TF file for
+            # NEEDS VERIFICATION: The following rule exists in AWS TF file for
       # Virginia region only, but was NOT included in the Excel migration data.
       # Uncomment after verifying this rule should be migrated to Azure.
-      # =====================================================================
-      # "tcp-5985-10-120-191-12-32-ingress" = {
+            # "tcp-5985-10-120-191-12-32-ingress" = {
       #   direction                  = "Inbound"
       #   access                     = "Allow"
       #   priority                   = 1051
@@ -176,24 +165,15 @@ locals {
       #   destination_address_prefix = "*"
       #   description                = "ESR 11 - Citrix Rule"
       # }
-    } : k => v if contains(local.region_01_locations, var.location)
   }
 
-  # =========================================================================
-  # REGION-02 ONLY RULES - Apply ONLY to Region-02 (centralus)
-  # =========================================================================
-  # These 0 rules exist only in AWS us-east-2 (Ohio)
-  # or have different definitions than Region-01
-  # 
-  # Note: Can reuse priorities 1040-1089 for Region-02 only rules
+    # Region-02 only (eastus2)
+     0 rules exist only in AWS us-east-2 (Ohio)
 
   citrix_11_region_02 = {
-    for k, v in {
       # No Region-02 specific rules currently
-      # 
-      # EXAMPLE: How to add a new Region-02 only rule:
-      # 
-      # "tcp-8080-10-1-1-0-24-inbound" = {
+          # EXAMPLE: How to add a new Region-02 only rule:
+          # "tcp-8080-10-1-1-0-24-inbound" = {
       #   direction                  = "Inbound"
       #   access                     = "Allow"
       #   priority                   = 1051  # Next available priority
@@ -204,16 +184,12 @@ locals {
       #   destination_address_prefix = "*"
       #   description                = "ESR 11 - Citrix Rule"
       # }
-    } : k => v if contains(local.region_02_locations, var.location)
   }
 
-  # =========================================================================
-  # MERGE ALL CITRIX ESR 11 RULES
-  # =========================================================================
-
+    
   enterprise_11_citrix_rules = merge(
     local.citrix_11_common,
-    local.citrix_11_region_01,
-    local.citrix_11_region_02
+    var.location == "eastus" ? local.citrix_11_region_01 : {},
+    var.location == "eastus2" ? local.citrix_11_region_02 : {}
   )
 }

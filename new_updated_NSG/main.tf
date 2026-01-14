@@ -31,21 +31,26 @@ resource "azurerm_network_security_rule" "enterprise_rules" {
   priority  = each.value.priority
   protocol  = each.value.protocol
 
+  # Port ranges - already formatted in enterprise-*.tf files
   source_port_range          = try(each.value.source_port_range, null)
   source_port_ranges         = try(each.value.source_port_ranges, null)
   destination_port_range     = try(each.value.destination_port_range, null)
   destination_port_ranges    = try(each.value.destination_port_ranges, null)
 
+  # Address prefixes
   source_address_prefix      = try(each.value.source_address_prefix, null)
   destination_address_prefix = try(each.value.destination_address_prefix, null)
 
+  # Application Security Groups (for NSG-to-NSG rules in Azure)
   source_application_security_group_ids      = try(each.value.source_application_security_group_ids, null)
   destination_application_security_group_ids = try(each.value.destination_application_security_group_ids, null)
 
   description = each.value.description
 }
 
-# User-Defined Security Rules (Priority 1500+)
+# User-Defined Security Rules
+# These are the application-specific rules provided by teams via variables.
+# Priority range: 1500-3999 (user rules start after enterprise rules)
 resource "azurerm_network_security_rule" "rules" {
   for_each = local.all_rules_map
 
@@ -75,12 +80,9 @@ resource "azurerm_network_security_rule" "rules" {
   description = try(each.value.description, "Managed by Terraform")
 }
 
-# =============================================================================
 # NSG Diagnostic Settings (Optional)
-# =============================================================================
 # When enabled, creates a diagnostic setting for the NSG.
 # Azure Policy may automatically configure the Log Analytics Workspace.
-# =============================================================================
 resource "azurerm_monitor_diagnostic_setting" "nsg" {
   count = var.enable_diagnostic_settings ? 1 : 0
 

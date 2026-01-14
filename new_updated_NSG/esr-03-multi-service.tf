@@ -3,8 +3,7 @@
 # management services (SolarWinds Azure pollers, Delinea server).
 #
 # Region Mapping:
-#   - Region-01 (AWS us-east-1 Virginia) → Azure eastus
-#   - Region-02 (AWS us-east-2 Ohio) → Azure eastus2
+# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
 #
 #
 # Priority Block: 300-399 (100 total slots)
@@ -20,10 +19,8 @@
 # Variable Naming: enterprise_03_multi_service_rules
 
 locals {
-  # =========================================================================
-  # COMMON RULES - Apply to BOTH Region-01 and Region-02
-  # =========================================================================
-  # These 61 rules are identical in both AWS regions
+    # Common rules - Apply to all regions
+     61 rules are identical in both AWS regions
   
   multi_service_03_common = {
     "all-all-0-0-0-0-0-outbound" = {
@@ -699,22 +696,15 @@ locals {
     }
   }
 
-  # =========================================================================
-  # REGION-01 ONLY RULES - Apply ONLY to Region-01 (eastus2)
-  # =========================================================================
-  # Currently empty - all rules are common to both regions
+    # Region-01 only (eastus)
+    # Currently empty - all rules are common to both regions
   # This block is ready for future Region-01 specific rules
-  # 
-  # Note: Can reuse priorities 300-399 because this deploys to DIFFERENT NSG
   # than Region-02 (different Azure region = different NSG instance)
   
   multi_service_03_region_01 = {
-    for k, v in {
       # No Region-01 specific rules currently
-      # 
-      # EXAMPLE: How to add a new Region-01 only rule:
-      # 
-      # "tcp-5432-10-50-0-0-16-inbound" = {
+          # EXAMPLE: How to add a new Region-01 only rule:
+          # "tcp-5432-10-50-0-0-16-inbound" = {
       #   direction                  = "Inbound"
       #   access                     = "Allow"
       #   priority                   = 361  # Next available priority (or reuse 300-360)
@@ -725,24 +715,16 @@ locals {
       #   destination_address_prefix = "*"
       #   description                = "ESR 03 - Multi-Service Rule"
       # }
-    } : k => v if contains(local.region_01_locations, var.location)
   }
 
-  # =========================================================================
-  # REGION-02 ONLY RULES - Apply ONLY to Region-02 (centralus)
-  # =========================================================================
-  # Currently empty - all rules are common to both regions
+    # Region-02 only (eastus2)
+    # Currently empty - all rules are common to both regions
   # This block is ready for future Region-02 specific rules
-  # 
-  # Note: Can reuse priorities 300-399 for Region-02 only rules
   
   multi_service_03_region_02 = {
-    for k, v in {
       # No Region-02 specific rules currently
-      # 
-      # EXAMPLE: How to add a new Region-02 only rule:
-      # 
-      # "udp-161-10-60-0-0-16-inbound" = {
+          # EXAMPLE: How to add a new Region-02 only rule:
+          # "udp-161-10-60-0-0-16-inbound" = {
       #   direction                  = "Inbound"
       #   access                     = "Allow"
       #   priority                   = 361  # Next available priority (or reuse 300-360)
@@ -753,16 +735,12 @@ locals {
       #   destination_address_prefix = "*"
       #   description                = "ESR 03 - Multi-Service Rule"
       # }
-    } : k => v if contains(local.region_02_locations, var.location)
   }
 
-  # =========================================================================
-  # MERGE ALL MULTI-SERVICE ESR 03 RULES
-  # =========================================================================
-  
+      
   enterprise_03_multi_service_rules = merge(
     local.multi_service_03_common,
-    local.multi_service_03_region_01,
-    local.multi_service_03_region_02
+    var.location == "eastus" ? local.multi_service_03_region_01 : {},
+    var.location == "eastus2" ? local.multi_service_03_region_02 : {}
   )
 }

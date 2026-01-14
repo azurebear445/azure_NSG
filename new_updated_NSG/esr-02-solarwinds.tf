@@ -2,8 +2,7 @@
 # This file contains enterprise-managed SolarWinds monitoring rules.
 #
 # Region Mapping:
-#   - Region-01 (AWS us-east-1 Virginia) → Azure eastus
-#   - Region-02 (AWS us-east-2 Ohio) → Azure eastus2
+# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
 #
 #
 # Priority Block: 200-299 (100 total slots)
@@ -12,17 +11,15 @@
 #
 # Rule Distribution:
 #   - Common rules: 60 (apply to both regions)
-#   - Region-01 only: 2 (eastus2 only - AWS Virginia dynamic ports)
+#   - Region-01 only: 2 (eastus only dynamic ports)
 #   - Region-02 only: 0
 #
 #
 # Variable Naming: enterprise_02_solarwinds_rules
 
 locals {
-  # =========================================================================
-  # COMMON RULES - Apply to BOTH Region-01 and Region-02
-  # =========================================================================
-  # These 60 rules are identical in both AWS regions
+    # Common rules - Apply to all regions
+     60 rules are identical in both AWS regions
   
   solarwinds_02_common = {
     "all-all-0-0-0-0-0-outbound" = {
@@ -687,17 +684,12 @@ locals {
     }
   }
 
-  # =========================================================================
-  # REGION-01 ONLY RULES - Apply ONLY to Region-01 (eastus2)
-  # =========================================================================
-  # These 2 rules exist only in AWS us-east-1 (Virginia)
+    # Region-01 only (eastus)
+     2 rules exist only in AWS us-east-1 (Virginia)
   # Dynamic port ranges for SolarWinds Azure pollers
-  # 
-  # Note: Can reuse priorities 200-299 because this deploys to DIFFERENT NSG
   # than Region-02 (different Azure region = different NSG instance)
   
   solarwinds_02_region_01 = {
-    for k, v in {
       "tcp-49152-65535-10-111-14-232-32-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
@@ -720,24 +712,16 @@ locals {
         destination_address_prefix = "*"
         description                = "ESR 02 - SolarWinds Rule"
       }
-    } : k => v if contains(local.region_01_locations, var.location)
   }
 
-  # =========================================================================
-  # REGION-02 ONLY RULES - Apply ONLY to Region-02 (centralus)
-  # =========================================================================
-  # Currently empty - all non-common rules are Region-01 only
+    # Region-02 only (eastus2)
+    # Currently empty - all non-common rules are Region-01 only
   # This block is ready for future Region-02 specific rules
-  # 
-  # Note: Can reuse priorities 200-299 for future Region-02 only rules
   
   solarwinds_02_region_02 = {
-    for k, v in {
       # No Region-02 specific rules currently
-      # 
-      # EXAMPLE: How to add a new Region-02 only rule:
-      # 
-      # "tcp-9090-172-16-0-0-16-inbound" = {
+          # EXAMPLE: How to add a new Region-02 only rule:
+          # "tcp-9090-172-16-0-0-16-inbound" = {
       #   direction                  = "Inbound"
       #   access                     = "Allow"
       #   priority                   = 260  # Next available priority
@@ -748,16 +732,12 @@ locals {
       #   destination_address_prefix = "*"
       #   description                = "ESR 02 - SolarWinds Rule"
       # }
-    } : k => v if contains(local.region_02_locations, var.location)
   }
 
-  # =========================================================================
-  # MERGE ALL SOLARWINDS ESR 02 RULES
-  # =========================================================================
-  
+      
   enterprise_02_solarwinds_rules = merge(
     local.solarwinds_02_common,
-    local.solarwinds_02_region_01,
-    local.solarwinds_02_region_02
+    var.location == "eastus" ? local.solarwinds_02_region_01 : {},
+    var.location == "eastus2" ? local.solarwinds_02_region_02 : {}
   )
 }
