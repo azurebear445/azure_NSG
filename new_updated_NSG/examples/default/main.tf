@@ -1,6 +1,6 @@
 # Create Resource Group
 module "resource_group" {
-  source = "..."  # RG module source to be provided
+  source = "..."  # RG module source
 
   namespace   = "test-nsg"
   environment = "dev"
@@ -9,7 +9,7 @@ module "resource_group" {
   tags = {
     architecture       = "native"
     owner              = "platform_team"
-    purpose            = "Resource group for NSG module testing and validation."
+    purpose            = "Resource group for NSG module testing."
     terraform_resource = "true"
     appid              = "app-test-001"
   }
@@ -56,7 +56,7 @@ module "nsg" {
   tags = {
     architecture       = "native"
     owner              = "platform_team"
-    purpose            = "Network security group for testing default Enterprise Security Rules configuration."
+    purpose            = "Network security group for testing default Enterprise Security Rules."
     terraform_resource = "true"
     appid              = "app-test-001"
   }
