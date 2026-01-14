@@ -17,11 +17,9 @@
 #
 #
 # Variable Naming: enterprise_10_hsa_monitoring_rules
-
 locals {
     # Common rules - Apply to all regions
      3 rules are identical in both AWS regions
-
   hsa_monitoring_10_common = {
     "tcp-135-10-111-41-153-32-ingress" = {
       direction                  = "Inbound"
@@ -57,11 +55,9 @@ locals {
       description                = "ESR 10 - HSA Monitoring Rule"
     }
   }
-
     # Region-01 only (eastus)
      0 rules exist only in AWS us-east-1 (Virginia)
   # than Region-02 rules (different Azure region = different NSG instance)
-
   hsa_monitoring_10_region_01 = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:
@@ -77,10 +73,8 @@ locals {
       #   description                = "ESR 10 - HSA Monitoring Rule"
       # }
   }
-
     # Region-02 only (eastus2)
      0 rules exist only in AWS us-east-2 (Ohio)
-
   hsa_monitoring_10_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
@@ -96,8 +90,6 @@ locals {
       #   description                = "ESR 10 - HSA Monitoring Rule"
       # }
   }
-
-    
   enterprise_10_hsa_monitoring_rules = merge(
     local.hsa_monitoring_10_common,
     var.location == "eastus" ? local.hsa_monitoring_10_region_01 : {},

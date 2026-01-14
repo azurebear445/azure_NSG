@@ -17,11 +17,9 @@
 #
 #
 # Variable Naming: enterprise_11_citrix_rules
-
 locals {
     # Common rules - Apply to all regions
      11 rules are identical in both AWS regions
-
   citrix_11_common = {
     "tcp-80-10-111-124-135-32-ingress" = {
       direction                  = "Inbound"
@@ -145,11 +143,9 @@ locals {
       description                = "ESR 11 - Citrix Rule"
     }
   }
-
     # Region-01 only (eastus)
      rules exist only in AWS us-east-1 (Virginia)
   # than Region-02 rules (different Azure region = different NSG instance)
-
   citrix_11_region_01 = {
             # NEEDS VERIFICATION: The following rule exists in AWS TF file for
       # Virginia region only, but was NOT included in the Excel migration data.
@@ -166,10 +162,8 @@ locals {
       #   description                = "ESR 11 - Citrix Rule"
       # }
   }
-
     # Region-02 only (eastus2)
      0 rules exist only in AWS us-east-2 (Ohio)
-
   citrix_11_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
@@ -185,8 +179,6 @@ locals {
       #   description                = "ESR 11 - Citrix Rule"
       # }
   }
-
-    
   enterprise_11_citrix_rules = merge(
     local.citrix_11_common,
     var.location == "eastus" ? local.citrix_11_region_01 : {},

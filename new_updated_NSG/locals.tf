@@ -34,10 +34,7 @@ locals {
   )
 
   # User-Defined Rules Processing
- Processing
-    # These rules are provided by application teams via input variables
-  # Priority range: 1500-3999 (starts after enterprise rules)
-  
+
   ingress_rules_from_cidrs_icmp = flatten([
     for port, rule in var.ingress_rules["from_cidrs"]["icmp"] : [
       for cidr in rule["cidrs"] : {
@@ -51,6 +48,7 @@ locals {
     ]
   ])
 
+  # Flatten ingress rules from CIDRs for TCP
   ingress_rules_from_cidrs_tcp = flatten([
     for port, rule in var.ingress_rules["from_cidrs"]["tcp"] : [
       for cidr in rule["cidrs"] : {
@@ -64,6 +62,7 @@ locals {
     ]
   ])
 
+  # Flatten ingress rules from CIDRs for UDP
   ingress_rules_from_cidrs_udp = flatten([
     for port, rule in var.ingress_rules["from_cidrs"]["udp"] : [
       for cidr in rule["cidrs"] : {
@@ -77,6 +76,7 @@ locals {
     ]
   ])
 
+  # Flatten ingress rules from NSGs for TCP
   ingress_rules_from_nsgs_tcp = flatten([
     for port, x in var.ingress_rules["from_nsgs"]["tcp"] : [
       for y, nsg_id in x["source_nsg_ids"] : {
@@ -90,6 +90,7 @@ locals {
     ]
   ])
 
+  # Flatten ingress rules from NSGs for UDP
   ingress_rules_from_nsgs_udp = flatten([
     for port, x in var.ingress_rules["from_nsgs"]["udp"] : [
       for y, nsg_id in x["source_nsg_ids"] : {
@@ -103,6 +104,7 @@ locals {
     ]
   ])
 
+  # Flatten egress rules to CIDRs
   egress_rules_to_cidrs = try(length(var.egress_rules["to_cidrs"]["cidrs"]) > 0 ? flatten([
     for cidr in var.egress_rules["to_cidrs"]["cidrs"] : {
       key                        = "egress-${var.egress_rules["to_cidrs"]["protocol"]}-${replace(cidr, "/", "-")}"
@@ -114,6 +116,7 @@ locals {
     }
   ]) : [], [])
 
+  # Flatten egress rules to NSGs
   egress_rules_to_nsgs = flatten([
     for port, v in var.egress_rules["to_nsgs"] : [
       for k, nsg_id in v["source_nsg_ids"] : {
@@ -127,6 +130,7 @@ locals {
     ]
   ])
 
+  # Combine all ingress rules
   all_ingress_rules = concat(
     local.ingress_rules_from_cidrs_icmp,
     local.ingress_rules_from_cidrs_tcp,
@@ -135,17 +139,22 @@ locals {
     local.ingress_rules_from_nsgs_udp
   )
 
+  # Combine all egress rules
   all_egress_rules = concat(
     local.egress_rules_to_cidrs,
     local.egress_rules_to_nsgs
   )
 
+  # Create map of all rules with priorities
+  # User rules start at priority 1500 to avoid conflict with enterprise rules (100-1499)
   all_rules_map = merge(
+    # Ingress rules with auto-incrementing priorities starting at 1500
     { for idx, rule in local.all_ingress_rules : rule.key => merge(rule, {
       direction = "Inbound"
       access    = "Allow"
       priority  = 1500 + idx
     }) },
+    # self-to-self rule if enabled
     var.enable_any_nsg_to_self ? {
       "allow-self-to-self" = {
         key                        = "allow-self-to-self"
@@ -159,11 +168,13 @@ locals {
         priority                   = 1500 + length(local.all_ingress_rules)
       }
     } : {},
+    # Egress rules with auto-incrementing priorities starting at 2000
     { for idx, rule in local.all_egress_rules : rule.key => merge(rule, {
       direction = "Outbound"
       access    = "Allow"
       priority  = 2000 + idx
     }) },
+    # Any egress rule if enabled
     var.enable_any_egress ? {
       "allow-any-egress" = {
         key                        = "allow-any-egress"

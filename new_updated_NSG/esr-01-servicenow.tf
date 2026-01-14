@@ -16,11 +16,8 @@
 #
 #
 # Variable Naming: enterprise_01_servicenow_rules
-
 locals {
     # Common rules - Apply to all regions
-    
-  
   servicenow_01_common = {
     "all-all-0-0-0-0-0-outbound" = {
       protocol                   = "*"
@@ -661,11 +658,9 @@ locals {
       description                = "ESR 01 - ServiceNow Rule"
     }
   }
-
     # Region-01 only (eastus)
      2 rules exist only in AWS us-east-1 (Virginia)
   # than Region-02 rules (different Azure region = different NSG instance)
-  
   servicenow_01_region_01 = {
       "tcp-49152-10-110-34-0-24-inbound" = {
         protocol                   = "Tcp"
@@ -690,11 +685,9 @@ locals {
         description                = "ESR 01 - ServiceNow Rule"
       }
   }
-
     # Region-02 only (eastus2)
      2 rules exist only in AWS us-east-2 (Ohio)
   # than Region-01 rules (different Azure region = different NSG instance)
-  
   servicenow_01_region_02 = {
       "tcp-49152-65535-10-110-34-0-24-inbound" = {
         protocol                   = "Tcp"
@@ -719,8 +712,6 @@ locals {
         description                = "ESR 01 - ServiceNow Rule"
       }
   }
-
-      
   enterprise_01_servicenow_rules = merge(
     local.servicenow_01_common,
     var.location == "eastus" ? local.servicenow_01_region_01 : {},

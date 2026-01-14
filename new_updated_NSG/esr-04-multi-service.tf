@@ -17,11 +17,8 @@
 #
 #
 # Variable Naming: enterprise_04_multi_service_rules
-
 locals {
     # Common rules - Apply to all regions
-    
-  
   multi_service_04_common = {
     "all-all-0-0-0-0-0-outbound" = {
       direction                  = "Outbound"
@@ -662,11 +659,9 @@ locals {
       description                = "ESR 04 - Multi-Service Rule"
     }
   }
-
     # Region-01 only (eastus)
      0 rules exist only in AWS us-east-1 (Virginia)
   # than Region-02 rules (different Azure region = different NSG instance)
-  
   multi_service_04_region_01 = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:
@@ -682,10 +677,8 @@ locals {
       #   description                = "ESR 04 - Multi-Service Rule"
       # }
   }
-
     # Region-02 only (eastus2)
      0 rules exist only in AWS us-east-2 (Ohio)
-  
   multi_service_04_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
@@ -701,8 +694,6 @@ locals {
       #   description                = "ESR 04 - Multi-Service Rule"
       # }
   }
-
-      
   enterprise_04_multi_service_rules = merge(
     local.multi_service_04_common,
     var.location == "eastus" ? local.multi_service_04_region_01 : {},
