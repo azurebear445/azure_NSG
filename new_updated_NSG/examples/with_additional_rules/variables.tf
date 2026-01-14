@@ -1,1 +1,1 @@
-# Variables can be defined here if needed for the example
+# Variables can be defined here if needed

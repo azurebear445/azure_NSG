@@ -1,6 +1,6 @@
 # Create Resource Group
 module "resource_group" {
-  source = "..."  # RG module source to be provided
+  source = "..."  # RG module source
 
   namespace   = "test-nsg"
   environment = "dev"
@@ -15,7 +15,7 @@ module "resource_group" {
   }
 }
 
-# Create NSG with default ESRs + opt-in ESRs
+# Create NSG with default ESRs + opt-ins
 module "nsg" {
   source = "../../"
 
@@ -24,7 +24,7 @@ module "nsg" {
   location            = "eastus"
   resource_group_name = module.resource_group.name
 
-  # Enable specific opt-in ESRs
+  # Enable opt-in ESRs
   enable_rubrik_backup   = true
   enable_db_admin_access = true
 
@@ -60,7 +60,7 @@ module "nsg" {
   tags = {
     architecture       = "native"
     owner              = "database_team"
-    purpose            = "Network security group for database tier with Rubrik backup and admin access rules enabled."
+    purpose            = "Network security group for database with Rubrik backup and admin access enabled."
     terraform_resource = "true"
     appid              = "app-test-002"
   }
