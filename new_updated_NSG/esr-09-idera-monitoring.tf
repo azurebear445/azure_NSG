@@ -1,10 +1,6 @@
 # Idera Database Monitoring Enterprise Security Rules (ESR 09)
 # This file contains enterprise-managed rules for Idera database monitoring.
 #
-# Region Mapping:
-# Region-01: eastus | Region-02: northcentralus
-#
-#
 # Priority Block: 900-999 (100 total slots)
 #   - Currently used: 900-943 (44 rules)
 #   - Reserved for future: 944-999 (56 slots)
