@@ -1,10 +1,6 @@
 # Rubrik Backup Enterprise Security Rules (ESR 06)
 # This file contains enterprise-managed Rubrik backup and data protection rules.
 #
-# Region Mapping:
-# Region-01: eastus | Region-02: northcentralus
-#
-#
 # Priority Block: 600-639 (40 total slots)
 #   - Currently used: 600-602 (3 rules)
 #   - Reserved for future: 603-639 (37 slots)
