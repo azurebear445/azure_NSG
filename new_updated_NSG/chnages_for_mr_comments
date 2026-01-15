@@ -83,3 +83,26 @@
   - `with-additional-rules/`: Demonstrates enabling opt-in ESRs
 - Both examples include Resource Group module integration
 - Placeholder files for backend, providers, and variable configuration
+
+
+
+#### **Region Mapping**
+- Updated supported regions from three regions to two regions:
+  - **Region-01:** eastus
+  - **Region-02:** northcentralus
+- Removed Region-03 concept entirely
+
+
+
+
+
+
+
+1. Region Configuration Update
+Purpose: Align with current Azure region strategy
+Changes:
+
+Updated supported regions: Region-01 (eastus), Region-02 (northcentralus)
+Updated all ESR files with new region mapping
+Updated locals.tf and variables.tf with new region configuration
+Updated location validation to reflect current regions
