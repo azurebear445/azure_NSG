@@ -2,10 +2,6 @@
 # This file contains enterprise-managed rules for SolarWinds monitoring with
 # Azure and on-premises pollers, and Tenable security scanning.
 #
-# Region Mapping:
-# Region-01: eastus | Region-02: northcentralus
-#
-#
 # Priority Block: 800-899 (100 total slots)
 #   - Currently used: 800-853 (54 rules)
 #   - Reserved for future: 854-899 (46 slots)
