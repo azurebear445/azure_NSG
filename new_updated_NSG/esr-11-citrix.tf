@@ -2,10 +2,6 @@
 # This file contains enterprise-managed rules for Citrix application access
 # and publishing.
 #
-# Region Mapping:
-# Region-01: eastus | Region-02: northcentralus
-#
-#
 # Priority Block: 1040-1089 (50 total slots)
 #   - Currently used: 1040-1050 (11 rules)
 #   - Reserved for future: 1051-1089 (39 slots)
