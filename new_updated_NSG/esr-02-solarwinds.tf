@@ -727,6 +727,6 @@ locals {
   enterprise_02_solarwinds_rules = merge(
     local.solarwinds_02_common,
     var.location == "eastus" ? local.solarwinds_02_region_01 : {},
-    var.location == "eastus2" ? local.solarwinds_02_region_02 : {}
+    var.location == "northcentralus" ? local.solarwinds_02_region_02 : {}
   )
 }

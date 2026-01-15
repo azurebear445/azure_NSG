@@ -711,6 +711,6 @@ locals {
   enterprise_01_servicenow_rules = merge(
     local.servicenow_01_common,
     var.location == "eastus" ? local.servicenow_01_region_01 : {},
-    var.location == "eastus2" ? local.servicenow_01_region_02 : {}
+    var.location == "northcentralus" ? local.servicenow_01_region_02 : {}
   )
 }
