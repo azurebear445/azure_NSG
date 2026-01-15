@@ -2,10 +2,6 @@
 # This file contains enterprise-managed rules for HSA (Health Savings Account)
 # monitoring from the HSA admin server.
 #
-# Region Mapping:
-# Region-01: eastus | Region-02: northcentralus
-#
-#
 # Priority Block: 1000-1039 (40 total slots)
 #   - Currently used: 1000-1002 (3 rules)
 #   - Reserved for future: 1003-1039 (37 slots)
