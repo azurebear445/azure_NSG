@@ -89,6 +89,6 @@ locals {
   enterprise_10_hsa_monitoring_rules = merge(
     local.hsa_monitoring_10_common,
     var.location == "eastus" ? local.hsa_monitoring_10_region_01 : {},
-    var.location == "eastus2" ? local.hsa_monitoring_10_region_02 : {}
+    var.location == "northcentralus" ? local.hsa_monitoring_10_region_02 : {}
   )
 }

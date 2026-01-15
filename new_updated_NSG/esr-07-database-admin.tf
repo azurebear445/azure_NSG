@@ -451,6 +451,6 @@ locals {
   enterprise_07_database_admin_rules = merge(
     local.database_admin_07_common,
     var.location == "eastus" ? local.database_admin_07_region_01 : {},
-    var.location == "eastus2" ? local.database_admin_07_region_02 : {}
+    var.location == "northcentralus" ? local.database_admin_07_region_02 : {}
   )
 }

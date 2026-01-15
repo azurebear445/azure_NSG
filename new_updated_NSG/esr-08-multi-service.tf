@@ -637,6 +637,6 @@ locals {
   enterprise_08_multi_service_rules = merge(
     local.multi_service_08_common,
     var.location == "eastus" ? local.multi_service_08_region_01 : {},
-    var.location == "eastus2" ? local.multi_service_08_region_02 : {}
+    var.location == "northcentralus" ? local.multi_service_08_region_02 : {}
   )
 }

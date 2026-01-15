@@ -88,6 +88,6 @@ locals {
   enterprise_06_rubrik_backup_rules = merge(
     local.rubrik_backup_06_common,
     var.location == "eastus" ? local.rubrik_backup_06_region_01 : {},
-    var.location == "eastus2" ? local.rubrik_backup_06_region_02 : {}
+    var.location == "northcentralus" ? local.rubrik_backup_06_region_02 : {}
   )
 }

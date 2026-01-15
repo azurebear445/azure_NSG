@@ -539,6 +539,6 @@ locals {
   enterprise_09_idera_monitoring_rules = merge(
     local.idera_monitoring_09_common,
     var.location == "eastus" ? local.idera_monitoring_09_region_01 : {},
-    var.location == "eastus2" ? local.idera_monitoring_09_region_02 : {}
+    var.location == "northcentralus" ? local.idera_monitoring_09_region_02 : {}
   )
 }
