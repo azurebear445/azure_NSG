@@ -2,10 +2,6 @@
 # This file contains enterprise-managed rules for Varonis data security
 # platform collectors.
 #
-# Region Mapping:
-# Region-01: eastus | Region-02: northcentralus
-#
-#
 # Priority Block: 1150-1199 (50 total slots)
 #   - Currently used: 1150-1163 (14 rules)
 #   - Reserved for future: 1164-1199 (36 slots)
