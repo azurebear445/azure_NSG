@@ -2,10 +2,6 @@
 # This file contains enterprise-managed rules for multiple monitoring and
 # management services.
 #
-# Region Mapping:
-# Region-01: eastus | Region-02: northcentralus
-#
-#
 # Priority Block: 400-499 (100 total slots)
 #   - Currently used: 400-457 (58 rules)
 #   - Reserved for future: 458-499 (42 slots)
