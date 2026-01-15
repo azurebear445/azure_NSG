@@ -1,10 +1,6 @@
 # Database Administration Enterprise Security Rules (ESR 07)
 # This file contains enterprise-managed database administration rules.
 #
-# Region Mapping:
-# Region-01: eastus | Region-02: northcentralus
-#
-#
 # Priority Block: 700-799 (100 total slots)
 #   - Currently used: 700-735 (36 rules)
 #   - Reserved for future: 736-799 (64 slots)
