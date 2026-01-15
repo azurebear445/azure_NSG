@@ -276,6 +276,6 @@ locals {
   enterprise_12_sailpoint_rules = merge(
     local.sailpoint_12_common,
     var.location == "eastus" ? local.sailpoint_12_region_01 : {},
-    var.location == "eastus2" ? local.sailpoint_12_region_02 : {}
+    var.location == "northcentralus" ? local.sailpoint_12_region_02 : {}
   )
 }

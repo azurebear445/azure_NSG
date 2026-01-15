@@ -210,6 +210,6 @@ locals {
   enterprise_13_varonis_collectors_rules = merge(
     local.varonis_collectors_13_common,
     var.location == "eastus" ? local.varonis_collectors_13_region_01 : {},
-    var.location == "eastus2" ? local.varonis_collectors_13_region_02 : {}
+    var.location == "northcentralus" ? local.varonis_collectors_13_region_02 : {}
   )
 }

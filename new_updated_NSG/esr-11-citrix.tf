@@ -176,6 +176,6 @@ locals {
   enterprise_11_citrix_rules = merge(
     local.citrix_11_common,
     var.location == "eastus" ? local.citrix_11_region_01 : {},
-    var.location == "eastus2" ? local.citrix_11_region_02 : {}
+    var.location == "northcentralus" ? local.citrix_11_region_02 : {}
   )
 }
