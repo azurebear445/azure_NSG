@@ -2,10 +2,6 @@
 # This file contains enterprise-managed rules for SailPoint identity management
 # services for database user and role configuration.
 #
-# Region Mapping:
-# Region-01: eastus | Region-02: northcentralus
-#
-#
 # Priority Block: 1090-1149 (60 total slots)
 #   - Currently used: 1090-1109 (20 rules)
 #   - Reserved for future: 1110-1149 (40 slots)
