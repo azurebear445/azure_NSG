@@ -2,10 +2,6 @@
 # This file contains enterprise-managed rules for multiple monitoring and
 # management services (SolarWinds Azure pollers, Delinea server).
 #
-# Region Mapping:
-# Region-01: eastus | Region-02: northcentralus
-#
-#
 # Priority Block: 300-399 (100 total slots)
 #   - Currently used: 300-360 (61 rules)
 #   - Reserved for future: 361-399 (39 slots)
