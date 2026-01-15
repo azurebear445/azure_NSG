@@ -92,8 +92,8 @@
   - **Region-02:** northcentralus
 - Removed Region-03 concept entirely
 
-
-
+#### **Resource Group source**
+Updated the Resource Group (RG) module source references in both example configurations to use the correct module path.
 
 
 
