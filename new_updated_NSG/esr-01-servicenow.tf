@@ -1,8 +1,8 @@
-# ServiceNow Enterprise Security Rules (ESR 01)
+# ServiceNow Enterprise Security Rule Rules (ESR 01)
 # This file contains enterprise-managed ServiceNow rules.
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: northcentralus
+# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
 #
 #
 # Priority Block: 100-199 (100 total slots)
@@ -12,13 +12,13 @@
 # Rule Distribution:
 #   - Common rules: 58 (apply to both regions)
 #   - Region-01 only: 2 (eastus only)
-#   - Region-02 only: 2 (northcentralus only)
+#   - Region-02 only: 2 (eastus only)
 #
 #
 # Variable Naming: enterprise_01_servicenow_rules
 locals {
     # Common rules - Apply to all regions
-  servicenow_01_common = {
+  servicenow_01_common = var.enable_enterprise_security_rules ? {
     "all-all-0-0-0-0-0-outbound" = {
       protocol                   = "*"
       source_port_range          = "*"
@@ -657,9 +657,11 @@ locals {
       priority                   = 157
       description                = "ESR 01 - ServiceNow Rule"
     }
-  }
+  } : {}
     # Region-01 only (eastus)
-  servicenow_01_region_01 = {
+     2 rules exist only in AWS us-east-1 (Virginia)
+  # than Region-02 rules (different Azure region = different NSG instance)
+  servicenow_01_region_01 = var.enable_enterprise_security_rules ? {
       "tcp-49152-10-110-34-0-24-inbound" = {
         protocol                   = "Tcp"
         source_port_range          = "*"
@@ -682,9 +684,11 @@ locals {
         priority                   = 159
         description                = "ESR 01 - ServiceNow Rule"
       }
-  }
-    # Region-02 only (northcentralus)
-  servicenow_01_region_02 = {
+  } : {}
+    # Region-02 only (eastus2)
+     2 rules exist only in AWS us-east-2 (Ohio)
+  # than Region-01 rules (different Azure region = different NSG instance)
+  servicenow_01_region_02 = var.enable_enterprise_security_rules ? {
       "tcp-49152-65535-10-110-34-0-24-inbound" = {
         protocol                   = "Tcp"
         source_port_range          = "*"
@@ -707,10 +711,10 @@ locals {
         priority                   = 159
         description                = "ESR 01 - ServiceNow Rule"
       }
-  }
+  } : {}
   enterprise_01_servicenow_rules = merge(
     local.servicenow_01_common,
     var.location == "eastus" ? local.servicenow_01_region_01 : {},
-    var.location == "northcentralus" ? local.servicenow_01_region_02 : {}
+    var.location == "eastus2" ? local.servicenow_01_region_02 : {}
   )
 }
