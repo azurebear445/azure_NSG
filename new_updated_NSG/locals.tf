@@ -1,19 +1,13 @@
 locals {
   # Region Configuration
   location = {
-    eastus         = "eastus"
-    eastus2        = "eastus2"
-    northcentralus = "ncus"
+    eastus         = "eastus"    northcentralus = "ncus"
   }
 
   region_01_locations = ["eastus"]
-  region_02_locations = ["eastus2"]
-  region_03_locations = ["northcentralus"]
-
+  region_02_locations = ["northcentralus"]
   is_region_01 = contains(local.region_01_locations, var.location)
   is_region_02 = contains(local.region_02_locations, var.location)
-  is_region_03 = contains(local.region_03_locations, var.location)
-
   # Enterprise Security Rules - Conditional merge
   all_enterprise_rules = merge(
     var.enable_enterprise_security_rules ? merge(
