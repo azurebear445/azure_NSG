@@ -2,9 +2,9 @@
 module "resource_group" {
   source = "..."  # RG module source
 
-  namespace   = "test-nsg"
+  namespace = "test"
   environment = "dev"
-  location    = "eastus2"
+  location    = "northcentralus"
 
   tags = {
     architecture       = "native"
@@ -19,20 +19,20 @@ module "resource_group" {
 module "nsg" {
   source = "../../"
 
-  namespace           = "test-nsg"
+  namespace = "test"
   environment         = "dev"
-  location            = "eastus2"
+  location            = "northcentralus"
   resource_group_name = module.resource_group.name
 
   ingress_rules = {
     from_cidrs = {
       tcp = {
         "443" = {
-          cidrs   = ["0.0.0.0/0"]
+          cidrs = ["10.0.0.0/8"]
           to_port = 443
         }
         "80" = {
-          cidrs   = ["0.0.0.0/0"]
+          cidrs = ["10.0.0.0/8"]
           to_port = 80
         }
       }
@@ -49,9 +49,6 @@ module "nsg" {
     to_cidrs = null
     to_nsgs  = {}
   }
-
-  enable_any_egress      = true
-  enable_any_nsg_to_self = true
 
   tags = {
     architecture       = "native"
