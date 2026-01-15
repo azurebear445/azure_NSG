@@ -18,7 +18,7 @@
 # Variable Naming: enterprise_02_solarwinds_rules
 locals {
     # Common rules - Apply to all regions
-  solarwinds_02_common = {
+  solarwinds_02_common = var.enable_enterprise_security_rules ? {
     "all-all-0-0-0-0-0-outbound" = {
       direction                  = "Outbound"
       access                     = "Allow"
@@ -679,10 +679,10 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule"
     }
-  }
+  } : {}
     # Region-01 only (eastus)
   # Dynamic port ranges for SolarWinds Azure pollers
-  solarwinds_02_region_01 = {
+  solarwinds_02_region_01 = var.enable_enterprise_security_rules ? {
       "tcp-49152-65535-10-111-14-232-32-inbound" = {
         direction                  = "Inbound"
         access                     = "Allow"
@@ -705,11 +705,11 @@ locals {
         destination_address_prefix = "*"
         description                = "ESR 02 - SolarWinds Rule"
       }
-  }
+  } : {}
     # Region-02 only (northcentralus)
     # Currently empty - all non-common rules are Region-01 only
   # This block is ready for future Region-02 specific rules
-  solarwinds_02_region_02 = {
+  solarwinds_02_region_02 = var.enable_enterprise_security_rules ? {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
           # "tcp-9090-172-16-0-0-16-inbound" = {
@@ -723,7 +723,7 @@ locals {
       #   destination_address_prefix = "*"
       #   description                = "ESR 02 - SolarWinds Rule"
       # }
-  }
+  } : {}
   enterprise_02_solarwinds_rules = merge(
     local.solarwinds_02_common,
     var.location == "eastus" ? local.solarwinds_02_region_01 : {},
