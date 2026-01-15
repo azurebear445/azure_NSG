@@ -1,9 +1,9 @@
-# Multi-Service Enterprise Security Rule Rules (ESR 08)
+# Multi-Service Enterprise Security Rules (ESR 08)
 # This file contains enterprise-managed rules for SolarWinds monitoring with
 # Azure and on-premises pollers, and Tenable security scanning.
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
+# Region-01: eastus | Region-02: northcentralus
 #
 #
 # Priority Block: 800-899 (100 total slots)
@@ -13,7 +13,7 @@
 # Rule Distribution:
 #   - Common rules: 48 (apply to both regions)
 #   - Region-01 only: 0 (eastus only)
-#   - Region-02 only: 6 (eastus only)
+#   - Region-02 only: 6 (northcentralus only)
 #
 #
 # Variable Naming: enterprise_08_multi_service_rules
@@ -565,7 +565,7 @@ locals {
       #   description                = "ESR 08 - Multi-Service Rule"
       # }
   }
-    # Region-02 only (eastus2)
+    # Region-02 only (northcentralus)
   multi_service_08_region_02 = {
       "tcp-0-65535-10-111-100-235-32-ingress" = {
         direction                  = "Inbound"

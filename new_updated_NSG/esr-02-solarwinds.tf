@@ -1,8 +1,8 @@
-# SolarWinds Monitoring Enterprise Security Rule Rules (ESR 02)
+# SolarWinds Monitoring Enterprise Security Rules (ESR 02)
 # This file contains enterprise-managed SolarWinds monitoring rules.
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
+# Region-01: eastus | Region-02: northcentralus
 #
 #
 # Priority Block: 200-299 (100 total slots)
@@ -706,7 +706,7 @@ locals {
         description                = "ESR 02 - SolarWinds Rule"
       }
   }
-    # Region-02 only (eastus2)
+    # Region-02 only (northcentralus)
     # Currently empty - all non-common rules are Region-01 only
   # This block is ready for future Region-02 specific rules
   solarwinds_02_region_02 = {

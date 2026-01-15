@@ -1,9 +1,9 @@
-# Citrix Application Enterprise Security Rule Rules (ESR 11)
+# Citrix Application Enterprise Security Rules (ESR 11)
 # This file contains enterprise-managed rules for Citrix application access
 # and publishing.
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
+# Region-01: eastus | Region-02: northcentralus
 #
 #
 # Priority Block: 1040-1089 (50 total slots)
@@ -13,7 +13,7 @@
 # Rule Distribution:
 #   - Common rules: 11 (apply to both regions)
 #   - Region-01 only: 1 (eastus only) - COMMENTED OUT, NEEDS VERIFICATION
-#   - Region-02 only: 0 (eastus only)
+#   - Region-02 only: 0 (northcentralus only)
 #
 #
 # Variable Naming: enterprise_11_citrix_rules
@@ -157,7 +157,7 @@ locals {
       #   description                = "ESR 11 - Citrix Rule"
       # }
   }
-    # Region-02 only (eastus2)
+    # Region-02 only (northcentralus)
   citrix_11_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:

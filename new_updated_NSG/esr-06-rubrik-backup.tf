@@ -1,8 +1,8 @@
-# Rubrik Backup Enterprise Security Rule Rules (ESR 06)
+# Rubrik Backup Enterprise Security Rules (ESR 06)
 # This file contains enterprise-managed Rubrik backup and data protection rules.
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
+# Region-01: eastus | Region-02: northcentralus
 #
 #
 # Priority Block: 600-639 (40 total slots)
@@ -12,7 +12,7 @@
 # Rule Distribution:
 #   - Common rules: 3 (apply to both regions)
 #   - Region-01 only: 0 (eastus only)
-#   - Region-02 only: 0 (eastus only)
+#   - Region-02 only: 0 (northcentralus only)
 #
 #
 # Variable Naming: enterprise_06_rubrik_backup_rules
@@ -69,7 +69,7 @@ locals {
       #   description                = "ESR 06 - Rubrik Backup Rule"
       # }
   }
-    # Region-02 only (eastus2)
+    # Region-02 only (northcentralus)
   rubrik_backup_06_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:

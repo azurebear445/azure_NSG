@@ -1,9 +1,9 @@
-# SailPoint Identity Management Enterprise Security Rule Rules (ESR 12)
+# SailPoint Identity Management Enterprise Security Rules (ESR 12)
 # This file contains enterprise-managed rules for SailPoint identity management
 # services for database user and role configuration.
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
+# Region-01: eastus | Region-02: northcentralus
 #
 #
 # Priority Block: 1090-1149 (60 total slots)
@@ -13,7 +13,7 @@
 # Rule Distribution:
 #   - Common rules: 20 (apply to both regions)
 #   - Region-01 only: 0 (eastus only)
-#   - Region-02 only: 0 (eastus only)
+#   - Region-02 only: 0 (northcentralus only)
 #
 #
 # Variable Naming: enterprise_12_sailpoint_rules
@@ -257,7 +257,7 @@ locals {
       #   description                = "ESR 12 - SailPoint Rule"
       # }
   }
-    # Region-02 only (eastus2)
+    # Region-02 only (northcentralus)
   sailpoint_12_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:

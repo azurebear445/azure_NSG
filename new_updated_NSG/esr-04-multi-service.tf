@@ -1,9 +1,9 @@
-# Multi-Service Enterprise Security Rule Rules (ESR 04)
+# Multi-Service Enterprise Security Rules (ESR 04)
 # This file contains enterprise-managed rules for multiple monitoring and
 # management services.
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
+# Region-01: eastus | Region-02: northcentralus
 #
 #
 # Priority Block: 400-499 (100 total slots)
@@ -13,7 +13,7 @@
 # Rule Distribution:
 #   - Common rules: 58 (apply to both regions)
 #   - Region-01 only: 0 (eastus only)
-#   - Region-02 only: 0 (eastus only)
+#   - Region-02 only: 0 (northcentralus only)
 #
 #
 # Variable Naming: enterprise_04_multi_service_rules
@@ -675,7 +675,7 @@ locals {
       #   description                = "ESR 04 - Multi-Service Rule"
       # }
   }
-    # Region-02 only (eastus2)
+    # Region-02 only (northcentralus)
   multi_service_04_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:

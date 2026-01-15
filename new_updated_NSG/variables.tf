@@ -97,7 +97,7 @@ variable "location" {
       var.location == "eastus2" ||
       var.location == "northcentralus"
     )
-    error_message = "Location must be one of: eastus, eastus2, northcentralus."
+    error_message = "Location must be one of: eastus, northcentralus."
   }
 }
 

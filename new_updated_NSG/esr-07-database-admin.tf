@@ -1,8 +1,8 @@
-# Database Administration Enterprise Security Rule Rules (ESR 07)
+# Database Administration Enterprise Security Rules (ESR 07)
 # This file contains enterprise-managed database administration rules.
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
+# Region-01: eastus | Region-02: northcentralus
 #
 #
 # Priority Block: 700-799 (100 total slots)
@@ -12,7 +12,7 @@
 # Rule Distribution:
 #   - Common rules: 36 (apply to both regions)
 #   - Region-01 only: 0 (eastus only)
-#   - Region-02 only: 0 (eastus only)
+#   - Region-02 only: 0 (northcentralus only)
 #
 #
 # Variable Naming: enterprise_07_database_admin_rules
@@ -432,7 +432,7 @@ locals {
       #   description                = "ESR 07 - Database Admin Rule"
       # }
   }
-    # Region-02 only (eastus2)
+    # Region-02 only (northcentralus)
   database_admin_07_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:

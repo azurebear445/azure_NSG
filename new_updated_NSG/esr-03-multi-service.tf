@@ -1,9 +1,9 @@
-# Multi-Service Enterprise Security Rule Rules (ESR 03)
+# Multi-Service Enterprise Security Rules (ESR 03)
 # This file contains enterprise-managed rules for multiple monitoring and
 # management services (SolarWinds Azure pollers, Delinea server).
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
+# Region-01: eastus | Region-02: northcentralus
 #
 #
 # Priority Block: 300-399 (100 total slots)
@@ -710,7 +710,7 @@ locals {
       #   description                = "ESR 03 - Multi-Service Rule"
       # }
   }
-    # Region-02 only (eastus2)
+    # Region-02 only (northcentralus)
     # Currently empty - all rules are common to both regions
   # This block is ready for future Region-02 specific rules
   multi_service_03_region_02 = {

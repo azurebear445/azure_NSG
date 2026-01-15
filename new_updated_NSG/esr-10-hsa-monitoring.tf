@@ -1,9 +1,9 @@
-# HSA Monitoring Enterprise Security Rule Rules (ESR 10)
+# HSA Monitoring Enterprise Security Rules (ESR 10)
 # This file contains enterprise-managed rules for HSA (Health Savings Account)
 # monitoring from the HSA admin server.
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
+# Region-01: eastus | Region-02: northcentralus
 #
 #
 # Priority Block: 1000-1039 (40 total slots)
@@ -13,7 +13,7 @@
 # Rule Distribution:
 #   - Common rules: 3 (apply to both regions)
 #   - Region-01 only: 0 (eastus only)
-#   - Region-02 only: 0 (eastus only)
+#   - Region-02 only: 0 (northcentralus only)
 #
 #
 # Variable Naming: enterprise_10_hsa_monitoring_rules
@@ -70,7 +70,7 @@ locals {
       #   description                = "ESR 10 - HSA Monitoring Rule"
       # }
   }
-    # Region-02 only (eastus2)
+    # Region-02 only (northcentralus)
   hsa_monitoring_10_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:

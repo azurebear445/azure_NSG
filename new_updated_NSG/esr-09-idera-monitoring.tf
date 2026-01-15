@@ -1,8 +1,8 @@
-# Idera Database Monitoring Enterprise Security Rule Rules (ESR 09)
+# Idera Database Monitoring Enterprise Security Rules (ESR 09)
 # This file contains enterprise-managed rules for Idera database monitoring.
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
+# Region-01: eastus | Region-02: northcentralus
 #
 #
 # Priority Block: 900-999 (100 total slots)
@@ -12,7 +12,7 @@
 # Rule Distribution:
 #   - Common rules: 44 (apply to both regions)
 #   - Region-01 only: 0 (eastus only)
-#   - Region-02 only: 0 (eastus only)
+#   - Region-02 only: 0 (northcentralus only)
 #
 #
 # Variable Naming: enterprise_09_idera_monitoring_rules
@@ -520,7 +520,7 @@ locals {
       #   description                = "ESR 09 - Idera Monitoring Rule"
       # }
   }
-    # Region-02 only (eastus2)
+    # Region-02 only (northcentralus)
   idera_monitoring_09_region_02 = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:

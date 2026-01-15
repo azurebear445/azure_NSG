@@ -1,8 +1,8 @@
-# ServiceNow Enterprise Security Rule Rules (ESR 01)
+# ServiceNow Enterprise Security Rules (ESR 01)
 # This file contains enterprise-managed ServiceNow rules.
 #
 # Region Mapping:
-# Region-01: eastus | Region-02: eastus2 | Region-03: northcentralus (common only)
+# Region-01: eastus | Region-02: northcentralus
 #
 #
 # Priority Block: 100-199 (100 total slots)
@@ -12,7 +12,7 @@
 # Rule Distribution:
 #   - Common rules: 58 (apply to both regions)
 #   - Region-01 only: 2 (eastus only)
-#   - Region-02 only: 2 (eastus only)
+#   - Region-02 only: 2 (northcentralus only)
 #
 #
 # Variable Naming: enterprise_01_servicenow_rules
@@ -683,7 +683,7 @@ locals {
         description                = "ESR 01 - ServiceNow Rule"
       }
   }
-    # Region-02 only (eastus2)
+    # Region-02 only (northcentralus)
   servicenow_01_region_02 = {
       "tcp-49152-65535-10-110-34-0-24-inbound" = {
         protocol                   = "Tcp"
