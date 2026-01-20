@@ -6,3 +6,18 @@ We're replicating AWS Security Groups 1:1 - The AWS rules are structured this wa
 Rules sharing the same port serve different business purposes - ServiceNow port 22 vs Rubrik port 22 are conceptually different even if they use the same port.
 
 I'm keeping the current structure with source_address_prefix (singular) to maintain the 1:1 mapping from AWS."
+
+
+
+
+
+
+"I appreciate the suggestion to flatten directly in the for_each to make the translation more direct. I see the benefit of reducing the intermediate step.
+However, I'd like to keep the current locals approach if that's okay because:
+
+Easier debugging and validation - Having the assembled rules in a named local makes it easier to verify which rules are being included during testing and troubleshooting
+Cleaner resource block - The main.tf resource definition stays focused on resource creation rather than rule assembly logic
+Consistent with the flatten pattern - We're already using flatten in locals for user-defined rules processing, so keeping this pattern consistent makes the codebase more predictable
+Separation of concerns - locals.tf handles the 'what rules to include' logic, while main.tf handles the 'how to create them' logic
+
+The current approach works well and I think it'll be easier to maintain as we add features. Does this sound reasonable, or would you prefer I refactor it?"
