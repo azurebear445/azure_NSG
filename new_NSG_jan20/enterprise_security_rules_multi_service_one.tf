@@ -5,7 +5,7 @@
 
 locals {
     # Common rules - Apply to all regions
-  multi_service_three_common = {
+  multi_service_one_common = {
     "Allow-MultiService_All_AllPorts_Out" = {
       direction                  = "Outbound"
       access                     = "Allow"
@@ -681,7 +681,7 @@ locals {
     # Region-01 only (eastus)
     # Currently empty - all rules are common to both regions
   # This block is ready for future Region-01 specific rules
-  multi_service_three_region_eastus = {
+  multi_service_one_region_eastus = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:
           # "tcp-5432-10-50-0-0-16-inbound" = {
@@ -699,7 +699,7 @@ locals {
     # Region-02 only (northcentralus)
     # Currently empty - all rules are common to both regions
   # This block is ready for future Region-02 specific rules
-  multi_service_three_region_northcentralus = {
+  multi_service_one_region_northcentralus = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
           # "udp-161-10-60-0-0-16-inbound" = {
@@ -714,9 +714,9 @@ locals {
       #   description                = "ESR 03 - Multi-Service Rule."
       # }
   }
-  enterprise_multi_service_three_rules = merge(
-    local.multi_service_three_common,
-    var.location == "eastus" ? local.multi_service_three_region_eastus : {},
-    var.location == "northcentralus" ? local.multi_service_three_region_northcentralus : {}
+  enterprise_multi_service_one_rules = merge(
+    local.multi_service_one_common,
+    var.location == "eastus" ? local.multi_service_one_region_eastus : {},
+    var.location == "northcentralus" ? local.multi_service_one_region_northcentralus : {}
   )
 }

@@ -5,7 +5,7 @@
 
 locals {
     # Common rules - Apply to all regions
-  citrix_eleven_common = {
+  citrix_common = {
     "Allow-Citrix_TCP_80_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
@@ -129,7 +129,7 @@ locals {
     }
   }
     # Region-01 only (eastus)
-  citrix_eleven_region_eastus = {
+  citrix_region_eastus = {
       # Uncomment after verifying this rule should be migrated to Azure.
             # "tcp-5985-10-120-191-12-32-ingress" = {
       #   direction                  = "Inbound"
@@ -144,7 +144,7 @@ locals {
       # }
   }
     # Region-02 only (northcentralus)
-  citrix_eleven_region_northcentralus = {
+  citrix_region_northcentralus = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
           # "tcp-8080-10-1-1-0-24-inbound" = {
@@ -159,9 +159,9 @@ locals {
       #   description                = "ESR 11 - Citrix Rule."
       # }
   }
-  enterprise_citrix_eleven_rules = merge(
-    local.citrix_eleven_common,
-    var.location == "eastus" ? local.citrix_eleven_region_eastus : {},
-    var.location == "northcentralus" ? local.citrix_eleven_region_northcentralus : {}
+  enterprise_citrix_rules = merge(
+    local.citrix_common,
+    var.location == "eastus" ? local.citrix_region_eastus : {},
+    var.location == "northcentralus" ? local.citrix_region_northcentralus : {}
   )
 }

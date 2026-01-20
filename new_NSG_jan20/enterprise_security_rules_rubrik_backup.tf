@@ -5,7 +5,7 @@
 
 locals {
     # Common rules - Apply to all regions
-  rubrik_backup_six_common = {
+  rubrik_backup_common = {
     "Allow-RubrikBackup_TCP_12800to12801_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
@@ -41,7 +41,7 @@ locals {
     }
   }
     # Region-01 only (eastus)
-  rubrik_backup_six_region_eastus = {
+  rubrik_backup_region_eastus = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:
           # "tcp-3306-192-168-1-0-24-inbound" = {
@@ -57,7 +57,7 @@ locals {
       # }
   }
     # Region-02 only (northcentralus)
-  rubrik_backup_six_region_northcentralus = {
+  rubrik_backup_region_northcentralus = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
           # "tcp-8080-10-1-1-0-24-inbound" = {
@@ -72,9 +72,9 @@ locals {
       #   description                = "ESR 06 - Rubrik Backup Rule."
       # }
   }
-  enterprise_rubrik_backup_six_rules = merge(
-    local.rubrik_backup_six_common,
-    var.location == "eastus" ? local.rubrik_backup_six_region_eastus : {},
-    var.location == "northcentralus" ? local.rubrik_backup_six_region_northcentralus : {}
+  enterprise_rubrik_backup_rules = merge(
+    local.rubrik_backup_common,
+    var.location == "eastus" ? local.rubrik_backup_region_eastus : {},
+    var.location == "northcentralus" ? local.rubrik_backup_region_northcentralus : {}
   )
 }

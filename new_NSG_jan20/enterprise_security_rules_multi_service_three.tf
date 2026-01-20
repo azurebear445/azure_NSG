@@ -5,7 +5,7 @@
 
 locals {
     # Common rules - Apply to all regions
-  multi_service_five_common = {
+  multi_service_three_common = {
     "Allow-MultiService_TCP_22_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
@@ -602,7 +602,7 @@ locals {
     }
   }
     # Region-01 only (eastus)
-  multi_service_five_region_eastus = {
+  multi_service_three_region_eastus = {
       "Allow-MultiService_TCP_0to65535_In" = {
         direction                  = "Inbound"
         access                     = "Allow"
@@ -649,7 +649,7 @@ locals {
       }
   }
     # Region-02 only (northcentralus)
-  multi_service_five_region_northcentralus = {
+  multi_service_three_region_northcentralus = {
       "Allow-MultiService_TCP_135_In_1" = {
         direction                  = "Inbound"
         access                     = "Allow"
@@ -717,9 +717,9 @@ locals {
         description                = "ESR 05 - Multi-Service Rule."
       }
   }
-  enterprise_multi_service_five_rules = merge(
-    local.multi_service_five_common,
-    var.location == "eastus" ? local.multi_service_five_region_eastus : {},
-    var.location == "northcentralus" ? local.multi_service_five_region_northcentralus : {}
+  enterprise_multi_service_three_rules = merge(
+    local.multi_service_three_common,
+    var.location == "eastus" ? local.multi_service_three_region_eastus : {},
+    var.location == "northcentralus" ? local.multi_service_three_region_northcentralus : {}
   )
 }

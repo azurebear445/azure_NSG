@@ -5,7 +5,7 @@
 
 locals {
     # Common rules - Apply to all regions
-  sailpoint_twelve_common = {
+  sailpoint_common = {
     "Allow-SailPoint_TCP_1433_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
@@ -228,7 +228,7 @@ locals {
     }
   }
     # Region-01 only (eastus)
-  sailpoint_twelve_region_eastus = {
+  sailpoint_region_eastus = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:
           # "tcp-3306-192-168-1-0-24-inbound" = {
@@ -244,7 +244,7 @@ locals {
       # }
   }
     # Region-02 only (northcentralus)
-  sailpoint_twelve_region_northcentralus = {
+  sailpoint_region_northcentralus = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
           # "tcp-8080-10-1-1-0-24-inbound" = {
@@ -259,9 +259,9 @@ locals {
       #   description                = "ESR 12 - SailPoint Rule."
       # }
   }
-  enterprise_sailpoint_twelve_rules = merge(
-    local.sailpoint_twelve_common,
-    var.location == "eastus" ? local.sailpoint_twelve_region_eastus : {},
-    var.location == "northcentralus" ? local.sailpoint_twelve_region_northcentralus : {}
+  enterprise_sailpoint_rules = merge(
+    local.sailpoint_common,
+    var.location == "eastus" ? local.sailpoint_region_eastus : {},
+    var.location == "northcentralus" ? local.sailpoint_region_northcentralus : {}
   )
 }

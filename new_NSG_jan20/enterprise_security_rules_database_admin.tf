@@ -5,7 +5,7 @@
 
 locals {
     # Common rules - Apply to all regions
-  database_admin_seven_common = {
+  database_admin_common = {
     "Allow-DatabaseAdmin_TCP_1433_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
@@ -404,7 +404,7 @@ locals {
     }
   }
     # Region-01 only (eastus)
-  database_admin_seven_region_eastus = {
+  database_admin_region_eastus = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:
           # "tcp-3306-192-168-1-0-24-inbound" = {
@@ -420,7 +420,7 @@ locals {
       # }
   }
     # Region-02 only (northcentralus)
-  database_admin_seven_region_northcentralus = {
+  database_admin_region_northcentralus = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
           # "tcp-8080-10-1-1-0-24-inbound" = {
@@ -435,9 +435,9 @@ locals {
       #   description                = "ESR 07 - Database Admin Rule."
       # }
   }
-  enterprise_database_admin_seven_rules = merge(
-    local.database_admin_seven_common,
-    var.location == "eastus" ? local.database_admin_seven_region_eastus : {},
-    var.location == "northcentralus" ? local.database_admin_seven_region_northcentralus : {}
+  enterprise_database_admin_rules = merge(
+    local.database_admin_common,
+    var.location == "eastus" ? local.database_admin_region_eastus : {},
+    var.location == "northcentralus" ? local.database_admin_region_northcentralus : {}
   )
 }

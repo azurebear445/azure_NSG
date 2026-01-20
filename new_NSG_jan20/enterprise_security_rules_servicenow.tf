@@ -5,7 +5,7 @@
 
 locals {
     # Common rules - Apply to all regions
-  servicenow_one_common = var.enable_enterprise_security_rules ? {
+  servicenow_common = var.enable_enterprise_security_rules ? {
     "Allow-ServiceNow_All_AllPorts_Out" = {
       protocol                   = "*"
       source_port_range          = "*"
@@ -646,7 +646,7 @@ locals {
     }
   } : {}
     # Region-01 only (eastus)
-  servicenow_one_region_eastus = var.enable_enterprise_security_rules ? {
+  servicenow_region_eastus = var.enable_enterprise_security_rules ? {
       "Allow-ServiceNow_TCP_49152_In" = {
         protocol                   = "Tcp"
         source_port_range          = "*"
@@ -671,7 +671,7 @@ locals {
       }
   } : {}
     # Region-02 only (northcentralus)
-  servicenow_one_region_northcentralus = var.enable_enterprise_security_rules ? {
+  servicenow_region_northcentralus = var.enable_enterprise_security_rules ? {
       "Allow-ServiceNow_TCP_49152to65535_In" = {
         protocol                   = "Tcp"
         source_port_range          = "*"
@@ -695,9 +695,9 @@ locals {
         description                = "ESR 01 - ServiceNow Rule."
       }
   } : {}
-  enterprise_servicenow_one_rules = merge(
-    local.servicenow_one_common,
-    var.location == "eastus" ? local.servicenow_one_region_eastus : {},
-    var.location == "northcentralus" ? local.servicenow_one_region_northcentralus : {}
+  enterprise_servicenow_rules = merge(
+    local.servicenow_common,
+    var.location == "eastus" ? local.servicenow_region_eastus : {},
+    var.location == "northcentralus" ? local.servicenow_region_northcentralus : {}
   )
 }

@@ -5,7 +5,7 @@
 
 locals {
     # Common rules - Apply to all regions
-  idera_monitoring_nine_common = {
+  idera_monitoring_common = {
     "Allow-IderaMonitoring_TCP_135_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
@@ -492,7 +492,7 @@ locals {
     }
   }
     # Region-01 only (eastus)
-  idera_monitoring_nine_region_eastus = {
+  idera_monitoring_region_eastus = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:
           # "tcp-3306-192-168-1-0-24-inbound" = {
@@ -508,7 +508,7 @@ locals {
       # }
   }
     # Region-02 only (northcentralus)
-  idera_monitoring_nine_region_northcentralus = {
+  idera_monitoring_region_northcentralus = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
           # "tcp-8080-10-1-1-0-24-inbound" = {
@@ -523,9 +523,9 @@ locals {
       #   description                = "ESR 09 - Idera Monitoring Rule."
       # }
   }
-  enterprise_idera_monitoring_nine_rules = merge(
-    local.idera_monitoring_nine_common,
-    var.location == "eastus" ? local.idera_monitoring_nine_region_eastus : {},
-    var.location == "northcentralus" ? local.idera_monitoring_nine_region_northcentralus : {}
+  enterprise_idera_monitoring_rules = merge(
+    local.idera_monitoring_common,
+    var.location == "eastus" ? local.idera_monitoring_region_eastus : {},
+    var.location == "northcentralus" ? local.idera_monitoring_region_northcentralus : {}
   )
 }

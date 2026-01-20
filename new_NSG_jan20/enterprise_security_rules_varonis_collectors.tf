@@ -5,7 +5,7 @@
 
 locals {
     # Common rules - Apply to all regions
-  varonis_collectors_thirteen_common = {
+  varonis_collectors_common = {
     "Allow-VaronisCollectors_TCP_22_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
@@ -162,7 +162,7 @@ locals {
     }
   }
     # Region-01 only (eastus)
-  varonis_collectors_thirteen_region_eastus = {
+  varonis_collectors_region_eastus = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:
           # "tcp-3306-192-168-1-0-24-inbound" = {
@@ -178,7 +178,7 @@ locals {
       # }
   }
     # Region-02 only (northcentralus)
-  varonis_collectors_thirteen_region_northcentralus = {
+  varonis_collectors_region_northcentralus = {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
           # "tcp-8080-10-1-1-0-24-inbound" = {
@@ -193,9 +193,9 @@ locals {
       #   description                = "ESR 13 - Varonis Collectors Rule."
       # }
   }
-  enterprise_varonis_collectors_thirteen_rules = merge(
-    local.varonis_collectors_thirteen_common,
-    var.location == "eastus" ? local.varonis_collectors_thirteen_region_eastus : {},
-    var.location == "northcentralus" ? local.varonis_collectors_thirteen_region_northcentralus : {}
+  enterprise_varonis_collectors_rules = merge(
+    local.varonis_collectors_common,
+    var.location == "eastus" ? local.varonis_collectors_region_eastus : {},
+    var.location == "northcentralus" ? local.varonis_collectors_region_northcentralus : {}
   )
 }

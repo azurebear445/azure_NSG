@@ -5,7 +5,7 @@
 
 locals {
     # Common rules - Apply to all regions
-  multi_service_eight_common = {
+  multi_service_four_common = {
     "Allow-MultiService_TCP_22to23_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
@@ -536,7 +536,7 @@ locals {
     }
   }
     # Region-01 only (eastus)
-  multi_service_eight_region_eastus = {
+  multi_service_four_region_eastus = {
       # No Region-01 specific rules currently
           # EXAMPLE: How to add a new Region-01 only rule:
           # "tcp-3306-192-168-1-0-24-inbound" = {
@@ -552,7 +552,7 @@ locals {
       # }
   }
     # Region-02 only (northcentralus)
-  multi_service_eight_region_northcentralus = {
+  multi_service_four_region_northcentralus = {
       "Allow-MultiService_TCP_0to65535_In" = {
         direction                  = "Inbound"
         access                     = "Allow"
@@ -620,9 +620,9 @@ locals {
         description                = "ESR 08 - Multi-Service Rule."
       }
   }
-  enterprise_multi_service_eight_rules = merge(
-    local.multi_service_eight_common,
-    var.location == "eastus" ? local.multi_service_eight_region_eastus : {},
-    var.location == "northcentralus" ? local.multi_service_eight_region_northcentralus : {}
+  enterprise_multi_service_four_rules = merge(
+    local.multi_service_four_common,
+    var.location == "eastus" ? local.multi_service_four_region_eastus : {},
+    var.location == "northcentralus" ? local.multi_service_four_region_northcentralus : {}
   )
 }
