@@ -1,0 +1,8 @@
+"I don't think consolidating rules using source_address_prefixes makes sense for this module because:
+
+Each ESR file is independent with separate opt-in/opt-out controls (enable_rubrik_backup, enable_db_admin_access, etc.)
+Combining rules across ESRs would break the granular enable/disable functionality
+We're replicating AWS Security Groups 1:1 - the AWS rules are separate, so Azure should match
+Rules that happen to share the same port serve different business purposes (ServiceNow vs Rubrik vs SolarWinds)
+
+Consolidation might make sense within a single ESR file if duplicate ports exist, but not across different ESRs. Should I keep the current structure?"
