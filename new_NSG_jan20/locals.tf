@@ -13,20 +13,20 @@ locals {
   # Enterprise Security Rules - Conditional merge
   all_enterprise_rules = merge(
     var.enable_enterprise_security_rules ? merge(
-      local.enterprise_servicenow_one_rules,
-      local.enterprise_solarwinds_two_rules,
+      local.enterprise_servicenow_rules,
+      local.enterprise_solarwinds_rules,
+      local.enterprise_multi_service_one_rules,
+      local.enterprise_multi_service_two_rules,
       local.enterprise_multi_service_three_rules,
-      local.enterprise_multi_service_four_rules,
-      local.enterprise_multi_service_five_rules,
-      local.enterprise_multi_service_eight_rules
+      local.enterprise_multi_service_four_rules
     ) : {},
-    var.enable_rubrik_backup ? local.enterprise_rubrik_backup_six_rules : {},
-    var.enable_db_admin_access ? local.enterprise_database_admin_seven_rules : {},
-    var.enable_idera_monitoring ? local.enterprise_idera_monitoring_nine_rules : {},
-    var.enable_hsa_monitoring ? local.enterprise_hsa_monitoring_ten_rules : {},
-    var.enable_citrix_ingress ? local.enterprise_citrix_eleven_rules : {},
-    var.enable_sailpoint_ingress ? local.enterprise_sailpoint_twelve_rules : {},
-    var.enable_varonis_ingress ? local.enterprise_varonis_collectors_thirteen_rules : {}
+    var.enable_rubrik_backup ? local.enterprise_rubrik_backup_rules : {},
+    var.enable_db_admin_access ? local.enterprise_database_admin_rules : {},
+    var.enable_idera_monitoring ? local.enterprise_idera_monitoring_rules : {},
+    var.enable_hsa_monitoring ? local.enterprise_hsa_monitoring_rules : {},
+    var.enable_citrix_ingress ? local.enterprise_citrix_rules : {},
+    var.enable_sailpoint_ingress ? local.enterprise_sailpoint_rules : {},
+    var.enable_varonis_ingress ? local.enterprise_varonis_collectors_rules : {}
   )
 
   # User-Defined Rules Processing
