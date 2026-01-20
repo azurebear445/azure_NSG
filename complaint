@@ -21,3 +21,15 @@ Consistent with the flatten pattern - We're already using flatten in locals for 
 Separation of concerns - locals.tf handles the 'what rules to include' logic, while main.tf handles the 'how to create them' logic
 
 The current approach works well and I think it'll be easier to maintain as we add features. Does this sound reasonable, or would you prefer I refactor it?"
+
+
+"Regarding the diagnostic settings - I initially added this to create Log Analytics monitoring for the NSG, but discovered that Azure Policy automatically configures diagnostic settings for NSGs in our environment.
+When the module tries to create its own diagnostic setting, it conflicts with the policy-managed one. The policy configuration takes precedence and overrides any module-created settings.
+I'm removing this code block entirely since:
+
+Azure Policy already handles NSG diagnostic settings automatically
+Users don't need to create their own Log Analytics workspace
+This simplifies the module and removes potential conflicts
+One less thing for users to configure
+
+The NSG will still have diagnostic settings enabled - just managed by Azure Policy rather than the module."
