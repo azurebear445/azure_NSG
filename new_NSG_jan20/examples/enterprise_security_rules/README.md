@@ -1,3 +1,8 @@
+# Enterprise Security Rules Example
+
+This example demonstrates usage of the Network Security Group module with all opt-in Enterprise Security Rules enabled.
+
+```hcl
 module "resource_group" {
   source = "../../../."
 
@@ -39,3 +44,4 @@ module "enterprise_rules_nsg" {
     terraform_resource = "true"
   }
 }
+```
