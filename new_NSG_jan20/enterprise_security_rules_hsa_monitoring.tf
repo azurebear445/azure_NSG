@@ -11,8 +11,8 @@ locals {
       access                     = "Allow"
       priority                   = 1000
       protocol                   = "Tcp"
-      source_port_range          = "*"
-      destination_port_range     = "135"
+      source_port_ranges          = ["*"]
+      destination_port_ranges     = ["135"]
       source_address_prefix      = "10.111.41.153/32"
       destination_address_prefix = "*"
       description                = "ESR 10 - HSA Monitoring Rule."
@@ -22,8 +22,8 @@ locals {
       access                     = "Allow"
       priority                   = 1001
       protocol                   = "Tcp"
-      source_port_range          = "*"
-      destination_port_range     = "1024-65535"
+      source_port_ranges          = ["*"]
+      destination_port_ranges     = ["1024-65535"]
       source_address_prefix      = "10.111.41.153/32"
       destination_address_prefix = "*"
       description                = "ESR 10 - HSA Monitoring Rule."
@@ -33,8 +33,8 @@ locals {
       access                     = "Allow"
       priority                   = 1002
       protocol                   = "Icmp"
-      source_port_range          = "*"
-      destination_port_range     = "*"
+      source_port_ranges          = ["*"]
+      destination_port_ranges     = ["*"]
       source_address_prefix      = "10.111.41.153/32"
       destination_address_prefix = "*"
       description                = "ESR 10 - HSA Monitoring Rule."
@@ -49,8 +49,8 @@ locals {
       #   access                     = "Allow"
       #   priority                   = 1003  # Next available priority
       #   protocol                   = "Tcp"
-      #   source_port_range          = "*"
-      #   destination_port_range     = "3306"
+      #   source_port_ranges          = ["*"]
+      #   destination_port_ranges     = ["3306"]
       #   source_address_prefix      = "192.168.1.0/24"
       #   destination_address_prefix = "*"
       #   description                = "ESR 10 - HSA Monitoring Rule."
@@ -65,8 +65,8 @@ locals {
       #   access                     = "Allow"
       #   priority                   = 1003  # Next available priority
       #   protocol                   = "Tcp"
-      #   source_port_range          = "*"
-      #   destination_port_range     = "8080"
+      #   source_port_ranges          = ["*"]
+      #   destination_port_ranges     = ["8080"]
       #   source_address_prefix      = "10.1.1.0/24"
       #   destination_address_prefix = "*"
       #   description                = "ESR 10 - HSA Monitoring Rule."

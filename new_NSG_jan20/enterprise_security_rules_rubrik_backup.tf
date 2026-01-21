@@ -11,8 +11,8 @@ locals {
       access                     = "Allow"
       priority                   = 600
       protocol                   = "Tcp"
-      source_port_range          = "*"
-      destination_port_range     = "12800-12801"
+      source_port_ranges          = ["*"]
+      destination_port_ranges     = ["12800-12801"]
       source_address_prefix      = "10.111.51.0/27"
       destination_address_prefix = "*"
       description                = "ESR 06 - Rubrik Backup Rule."
@@ -22,8 +22,8 @@ locals {
       access                     = "Allow"
       priority                   = 601
       protocol                   = "Tcp"
-      source_port_range          = "*"
-      destination_port_range     = "12800-12801"
+      source_port_ranges          = ["*"]
+      destination_port_ranges     = ["12800-12801"]
       source_address_prefix      = "10.111.51.128/27"
       destination_address_prefix = "*"
       description                = "ESR 06 - Rubrik Backup Rule."
@@ -33,8 +33,8 @@ locals {
       access                     = "Allow"
       priority                   = 602
       protocol                   = "*"
-      source_port_range          = "*"
-      destination_port_range     = "*"
+      source_port_ranges          = ["*"]
+      destination_port_ranges     = ["*"]
       source_address_prefix      = "*"
       destination_address_prefix = "0.0.0.0/0"
       description                = "ESR 06 - Rubrik Backup Rule."
@@ -49,8 +49,8 @@ locals {
       #   access                     = "Allow"
       #   priority                   = 603  # Next available priority
       #   protocol                   = "Tcp"
-      #   source_port_range          = "*"
-      #   destination_port_range     = "3306"
+      #   source_port_ranges          = ["*"]
+      #   destination_port_ranges     = ["3306"]
       #   source_address_prefix      = "192.168.1.0/24"
       #   destination_address_prefix = "*"
       #   description                = "ESR 06 - Rubrik Backup Rule."
@@ -65,8 +65,8 @@ locals {
       #   access                     = "Allow"
       #   priority                   = 603  # Next available priority
       #   protocol                   = "Tcp"
-      #   source_port_range          = "*"
-      #   destination_port_range     = "8080"
+      #   source_port_ranges          = ["*"]
+      #   destination_port_ranges     = ["8080"]
       #   source_address_prefix      = "10.1.1.0/24"
       #   destination_address_prefix = "*"
       #   description                = "ESR 06 - Rubrik Backup Rule."

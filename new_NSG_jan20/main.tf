@@ -31,10 +31,8 @@ resource "azurerm_network_security_rule" "enterprise_rules" {
   priority  = each.value.priority
   protocol  = each.value.protocol
 
-  source_port_range          = try(each.value.source_port_range, null)
-  source_port_ranges         = try(each.value.source_port_ranges, null)
-  destination_port_range     = try(each.value.destination_port_range, null)
-  destination_port_ranges    = try(each.value.destination_port_ranges, null)
+  source_port_ranges      = each.value.source_port_ranges
+  destination_port_ranges = each.value.destination_port_ranges
 
   source_address_prefix      = try(each.value.source_address_prefix, null)
   destination_address_prefix = try(each.value.destination_address_prefix, null)
