@@ -1,6 +1,6 @@
 # Enterprise Security Rules Example
 
-This example demonstrates usage of the Network Security Group module with all opt-in Enterprise Security Rules enabled.
+This example demonstrates usage of the Network Security Group module with all opt-in enterprise rule files enabled.
 
 ```hcl
 module "resource_group" {
