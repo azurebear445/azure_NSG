@@ -6,7 +6,7 @@
 locals {
     # Common rules - Apply to all regions
   idera_monitoring_common = {
-    "Allow-IderaMonitoring_TCP_135_In" = {
+    "Allow_IderaMonitoring_TCP_135_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 900
@@ -17,7 +17,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_135_In_1" = {
+    "Allow_IderaMonitoring_TCP_135_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 901
@@ -28,7 +28,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_135_In_2" = {
+    "Allow_IderaMonitoring_TCP_135_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 902
@@ -39,7 +39,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_135_In_3" = {
+    "Allow_IderaMonitoring_TCP_135_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 903
@@ -50,7 +50,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_1024to65535_In" = {
+    "Allow_IderaMonitoring_TCP_1024to65535_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 904
@@ -61,7 +61,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_1024to65535_In_1" = {
+    "Allow_IderaMonitoring_TCP_1024to65535_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 905
@@ -72,7 +72,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_1024to65535_In_2" = {
+    "Allow_IderaMonitoring_TCP_1024to65535_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 906
@@ -83,7 +83,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_1024to65535_In_3" = {
+    "Allow_IderaMonitoring_TCP_1024to65535_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 907
@@ -94,7 +94,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_1433_In" = {
+    "Allow_IderaMonitoring_TCP_1433_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 908
@@ -105,7 +105,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_1433_In_1" = {
+    "Allow_IderaMonitoring_TCP_1433_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 909
@@ -116,7 +116,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_1433_In_2" = {
+    "Allow_IderaMonitoring_TCP_1433_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 910
@@ -127,7 +127,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_1433_In_3" = {
+    "Allow_IderaMonitoring_TCP_1433_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 911
@@ -138,7 +138,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5166_In" = {
+    "Allow_IderaMonitoring_TCP_5166_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 912
@@ -149,7 +149,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5166_In_1" = {
+    "Allow_IderaMonitoring_TCP_5166_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 913
@@ -160,7 +160,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5166_In_2" = {
+    "Allow_IderaMonitoring_TCP_5166_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 914
@@ -171,7 +171,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5166_In_3" = {
+    "Allow_IderaMonitoring_TCP_5166_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 915
@@ -182,7 +182,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5167_In" = {
+    "Allow_IderaMonitoring_TCP_5167_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 916
@@ -193,7 +193,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5167_In_1" = {
+    "Allow_IderaMonitoring_TCP_5167_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 917
@@ -204,7 +204,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5167_In_2" = {
+    "Allow_IderaMonitoring_TCP_5167_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 918
@@ -215,7 +215,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5167_In_3" = {
+    "Allow_IderaMonitoring_TCP_5167_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 919
@@ -226,7 +226,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5169_In" = {
+    "Allow_IderaMonitoring_TCP_5169_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 920
@@ -237,7 +237,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5169_In_1" = {
+    "Allow_IderaMonitoring_TCP_5169_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 921
@@ -248,7 +248,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5169_In_2" = {
+    "Allow_IderaMonitoring_TCP_5169_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 922
@@ -259,7 +259,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5169_In_3" = {
+    "Allow_IderaMonitoring_TCP_5169_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 923
@@ -270,7 +270,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5200_In" = {
+    "Allow_IderaMonitoring_TCP_5200_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 924
@@ -281,7 +281,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5200_In_1" = {
+    "Allow_IderaMonitoring_TCP_5200_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 925
@@ -292,7 +292,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5200_In_2" = {
+    "Allow_IderaMonitoring_TCP_5200_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 926
@@ -303,7 +303,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5200_In_3" = {
+    "Allow_IderaMonitoring_TCP_5200_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 927
@@ -314,7 +314,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5201_In" = {
+    "Allow_IderaMonitoring_TCP_5201_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 928
@@ -325,7 +325,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5201_In_1" = {
+    "Allow_IderaMonitoring_TCP_5201_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 929
@@ -336,7 +336,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5201_In_2" = {
+    "Allow_IderaMonitoring_TCP_5201_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 930
@@ -347,7 +347,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_5201_In_3" = {
+    "Allow_IderaMonitoring_TCP_5201_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 931
@@ -358,7 +358,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_49152to65535_In" = {
+    "Allow_IderaMonitoring_TCP_49152to65535_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 932
@@ -369,7 +369,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_49152to65535_In_1" = {
+    "Allow_IderaMonitoring_TCP_49152to65535_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 933
@@ -380,7 +380,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_49152to65535_In_2" = {
+    "Allow_IderaMonitoring_TCP_49152to65535_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 934
@@ -391,7 +391,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_49152to65535_In_3" = {
+    "Allow_IderaMonitoring_TCP_49152to65535_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 935
@@ -402,7 +402,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_52731_In" = {
+    "Allow_IderaMonitoring_TCP_52731_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 936
@@ -413,7 +413,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_52731_In_1" = {
+    "Allow_IderaMonitoring_TCP_52731_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 937
@@ -424,7 +424,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_52731_In_2" = {
+    "Allow_IderaMonitoring_TCP_52731_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 938
@@ -435,7 +435,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_TCP_52731_In_3" = {
+    "Allow_IderaMonitoring_TCP_52731_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 939
@@ -446,7 +446,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_ICMP_AllPorts_In" = {
+    "Allow_IderaMonitoring_ICMP_AllPorts_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 940
@@ -457,7 +457,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_ICMP_AllPorts_In_1" = {
+    "Allow_IderaMonitoring_ICMP_AllPorts_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 941
@@ -468,7 +468,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_ICMP_AllPorts_In_2" = {
+    "Allow_IderaMonitoring_ICMP_AllPorts_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 942
@@ -479,7 +479,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 09 - Idera Monitoring Rule."
     }
-    "Allow-IderaMonitoring_ICMP_AllPorts_In_3" = {
+    "Allow_IderaMonitoring_ICMP_AllPorts_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 943

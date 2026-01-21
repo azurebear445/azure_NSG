@@ -6,7 +6,7 @@
 locals {
     # Common rules - Apply to all regions
   citrix_common = {
-    "Allow-Citrix_TCP_80_In" = {
+    "Allow_Citrix_TCP_80_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1040
@@ -17,7 +17,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 11 - Citrix Rule."
     }
-    "Allow-Citrix_TCP_80_In_1" = {
+    "Allow_Citrix_TCP_80_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1041
@@ -28,7 +28,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 11 - Citrix Rule."
     }
-    "Allow-Citrix_TCP_80_In_2" = {
+    "Allow_Citrix_TCP_80_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1042
@@ -39,7 +39,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 11 - Citrix Rule."
     }
-    "Allow-Citrix_TCP_80_In_3" = {
+    "Allow_Citrix_TCP_80_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1043
@@ -50,7 +50,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 11 - Citrix Rule."
     }
-    "Allow-Citrix_TCP_1494_In" = {
+    "Allow_Citrix_TCP_1494_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1044
@@ -61,7 +61,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 11 - Citrix Rule."
     }
-    "Allow-Citrix_TCP_2598_In" = {
+    "Allow_Citrix_TCP_2598_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1045
@@ -72,7 +72,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 11 - Citrix Rule."
     }
-    "Allow-Citrix_TCP_8008_In" = {
+    "Allow_Citrix_TCP_8008_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1046
@@ -83,7 +83,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 11 - Citrix Rule."
     }
-    "Allow-Citrix_TCP_9988_In" = {
+    "Allow_Citrix_TCP_9988_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1047
@@ -94,7 +94,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 11 - Citrix Rule."
     }
-    "Allow-Citrix_UDP_1494_In" = {
+    "Allow_Citrix_UDP_1494_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1048
@@ -105,7 +105,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 11 - Citrix Rule."
     }
-    "Allow-Citrix_UDP_2598_In" = {
+    "Allow_Citrix_UDP_2598_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1049
@@ -116,7 +116,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 11 - Citrix Rule."
     }
-    "Allow-Citrix_UDP_9988_In" = {
+    "Allow_Citrix_UDP_9988_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1050

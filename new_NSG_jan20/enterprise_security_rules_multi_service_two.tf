@@ -6,7 +6,7 @@
 locals {
     # Common rules - Apply to all regions
   multi_service_two_common = {
-    "Allow-MultiService_All_AllPorts_Out" = {
+    "Allow_MultiService_Two_All_AllPorts_Out" = {
       direction                  = "Outbound"
       access                     = "Allow"
       priority                   = 400
@@ -17,7 +17,7 @@ locals {
       destination_address_prefix = "0.0.0.0/0"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_22_In" = {
+    "Allow_MultiService_Two_TCP_22_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 401
@@ -28,7 +28,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_22_In_1" = {
+    "Allow_MultiService_Two_TCP_22_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 402
@@ -39,7 +39,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_22_In_2" = {
+    "Allow_MultiService_Two_TCP_22_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 403
@@ -50,7 +50,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_22_In_3" = {
+    "Allow_MultiService_Two_TCP_22_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 404
@@ -61,7 +61,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_135_In" = {
+    "Allow_MultiService_Two_TCP_135_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 405
@@ -72,7 +72,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_135_In_1" = {
+    "Allow_MultiService_Two_TCP_135_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 406
@@ -83,7 +83,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_135_In_2" = {
+    "Allow_MultiService_Two_TCP_135_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 407
@@ -94,7 +94,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_135_In_3" = {
+    "Allow_MultiService_Two_TCP_135_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 408
@@ -105,7 +105,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_135_In_4" = {
+    "Allow_MultiService_Two_TCP_135_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 409
@@ -116,7 +116,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_135_In_5" = {
+    "Allow_MultiService_Two_TCP_135_In_5" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 410
@@ -127,7 +127,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_139_In" = {
+    "Allow_MultiService_Two_TCP_139_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 411
@@ -138,7 +138,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_139_In_1" = {
+    "Allow_MultiService_Two_TCP_139_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 412
@@ -149,7 +149,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_139_In_2" = {
+    "Allow_MultiService_Two_TCP_139_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 413
@@ -160,7 +160,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_139_In_3" = {
+    "Allow_MultiService_Two_TCP_139_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 414
@@ -171,7 +171,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_139_In_4" = {
+    "Allow_MultiService_Two_TCP_139_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 415
@@ -182,7 +182,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_139_In_5" = {
+    "Allow_MultiService_Two_TCP_139_In_5" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 416
@@ -193,7 +193,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_443_In" = {
+    "Allow_MultiService_Two_TCP_443_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 417
@@ -204,7 +204,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_443_In_1" = {
+    "Allow_MultiService_Two_TCP_443_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 418
@@ -215,7 +215,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_443_In_2" = {
+    "Allow_MultiService_Two_TCP_443_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 419
@@ -226,7 +226,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_445_In" = {
+    "Allow_MultiService_Two_TCP_445_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 420
@@ -237,7 +237,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_445_In_1" = {
+    "Allow_MultiService_Two_TCP_445_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 421
@@ -248,7 +248,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_445_In_2" = {
+    "Allow_MultiService_Two_TCP_445_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 422
@@ -259,7 +259,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_445_In_3" = {
+    "Allow_MultiService_Two_TCP_445_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 423
@@ -270,7 +270,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_445_In_4" = {
+    "Allow_MultiService_Two_TCP_445_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 424
@@ -281,7 +281,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_445_In_5" = {
+    "Allow_MultiService_Two_TCP_445_In_5" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 425
@@ -292,7 +292,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_636_In" = {
+    "Allow_MultiService_Two_TCP_636_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 426
@@ -303,7 +303,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_636_In_1" = {
+    "Allow_MultiService_Two_TCP_636_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 427
@@ -314,7 +314,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_636_In_2" = {
+    "Allow_MultiService_Two_TCP_636_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 428
@@ -325,7 +325,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_636_In_3" = {
+    "Allow_MultiService_Two_TCP_636_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 429
@@ -336,7 +336,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_1858_In" = {
+    "Allow_MultiService_Two_TCP_1858_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 430
@@ -347,7 +347,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_1858_In_1" = {
+    "Allow_MultiService_Two_TCP_1858_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 431
@@ -358,7 +358,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_1858_In_2" = {
+    "Allow_MultiService_Two_TCP_1858_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 432
@@ -369,7 +369,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_1858_In_3" = {
+    "Allow_MultiService_Two_TCP_1858_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 433
@@ -380,7 +380,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_3389_In" = {
+    "Allow_MultiService_Two_TCP_3389_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 434
@@ -391,7 +391,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_3389_In_1" = {
+    "Allow_MultiService_Two_TCP_3389_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 435
@@ -402,7 +402,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_3389_In_2" = {
+    "Allow_MultiService_Two_TCP_3389_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 436
@@ -413,7 +413,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_3389_In_3" = {
+    "Allow_MultiService_Two_TCP_3389_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 437
@@ -424,7 +424,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_5500_In" = {
+    "Allow_MultiService_Two_TCP_5500_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 438
@@ -435,7 +435,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_5500_In_1" = {
+    "Allow_MultiService_Two_TCP_5500_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 439
@@ -446,7 +446,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_5500_In_2" = {
+    "Allow_MultiService_Two_TCP_5500_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 440
@@ -457,7 +457,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_5500_In_3" = {
+    "Allow_MultiService_Two_TCP_5500_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 441
@@ -468,7 +468,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_49152to65535_In" = {
+    "Allow_MultiService_Two_TCP_49152to65535_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 442
@@ -479,7 +479,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_49152to65535_In_1" = {
+    "Allow_MultiService_Two_TCP_49152to65535_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 443
@@ -490,7 +490,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_49152to65535_In_2" = {
+    "Allow_MultiService_Two_TCP_49152to65535_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 444
@@ -501,7 +501,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_49152to65535_In_3" = {
+    "Allow_MultiService_Two_TCP_49152to65535_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 445
@@ -512,7 +512,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_49152to65535_In_4" = {
+    "Allow_MultiService_Two_TCP_49152to65535_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 446
@@ -523,7 +523,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_49152to65535_In_5" = {
+    "Allow_MultiService_Two_TCP_49152to65535_In_5" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 447
@@ -534,7 +534,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_52731_In" = {
+    "Allow_MultiService_Two_TCP_52731_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 448
@@ -545,7 +545,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_52731_In_1" = {
+    "Allow_MultiService_Two_TCP_52731_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 449
@@ -556,7 +556,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_52731_In_2" = {
+    "Allow_MultiService_Two_TCP_52731_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 450
@@ -567,7 +567,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_52731_In_3" = {
+    "Allow_MultiService_Two_TCP_52731_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 451
@@ -578,7 +578,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_52731_In_4" = {
+    "Allow_MultiService_Two_TCP_52731_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 452
@@ -589,7 +589,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_TCP_52731_In_5" = {
+    "Allow_MultiService_Two_TCP_52731_In_5" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 453
@@ -600,7 +600,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_UDP_1813_In" = {
+    "Allow_MultiService_Two_UDP_1813_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 454
@@ -611,7 +611,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_UDP_1813_In_1" = {
+    "Allow_MultiService_Two_UDP_1813_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 455
@@ -622,7 +622,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_UDP_1813_In_2" = {
+    "Allow_MultiService_Two_UDP_1813_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 456
@@ -633,7 +633,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 04 - Multi-Service Rule."
     }
-    "Allow-MultiService_UDP_1813_In_3" = {
+    "Allow_MultiService_Two_UDP_1813_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 457

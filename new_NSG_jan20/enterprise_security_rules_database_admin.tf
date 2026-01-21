@@ -6,7 +6,7 @@
 locals {
     # Common rules - Apply to all regions
   database_admin_common = {
-    "Allow-DatabaseAdmin_TCP_1433_In" = {
+    "Allow_DatabaseAdmin_TCP_1433_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 700
@@ -17,7 +17,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_1433_In_1" = {
+    "Allow_DatabaseAdmin_TCP_1433_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 701
@@ -28,7 +28,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_1433_In_2" = {
+    "Allow_DatabaseAdmin_TCP_1433_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 702
@@ -39,7 +39,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_1433_In_3" = {
+    "Allow_DatabaseAdmin_TCP_1433_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 703
@@ -50,7 +50,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_1433_In_4" = {
+    "Allow_DatabaseAdmin_TCP_1433_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 704
@@ -61,7 +61,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_1433_In_5" = {
+    "Allow_DatabaseAdmin_TCP_1433_In_5" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 705
@@ -72,7 +72,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_1433_In_6" = {
+    "Allow_DatabaseAdmin_TCP_1433_In_6" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 706
@@ -83,7 +83,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_1433_In_7" = {
+    "Allow_DatabaseAdmin_TCP_1433_In_7" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 707
@@ -94,7 +94,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_1433_In_8" = {
+    "Allow_DatabaseAdmin_TCP_1433_In_8" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 708
@@ -105,7 +105,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_5102_In" = {
+    "Allow_DatabaseAdmin_TCP_5102_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 709
@@ -116,7 +116,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_5102_In_1" = {
+    "Allow_DatabaseAdmin_TCP_5102_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 710
@@ -127,7 +127,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_5102_In_2" = {
+    "Allow_DatabaseAdmin_TCP_5102_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 711
@@ -138,7 +138,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_5102_In_3" = {
+    "Allow_DatabaseAdmin_TCP_5102_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 712
@@ -149,7 +149,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_5102_In_4" = {
+    "Allow_DatabaseAdmin_TCP_5102_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 713
@@ -160,7 +160,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_5102_In_5" = {
+    "Allow_DatabaseAdmin_TCP_5102_In_5" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 714
@@ -171,7 +171,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_5102_In_6" = {
+    "Allow_DatabaseAdmin_TCP_5102_In_6" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 715
@@ -182,7 +182,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_5102_In_7" = {
+    "Allow_DatabaseAdmin_TCP_5102_In_7" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 716
@@ -193,7 +193,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_5986_In" = {
+    "Allow_DatabaseAdmin_TCP_5986_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 717
@@ -204,7 +204,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52731_In" = {
+    "Allow_DatabaseAdmin_TCP_52731_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 718
@@ -215,7 +215,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52731_In_1" = {
+    "Allow_DatabaseAdmin_TCP_52731_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 719
@@ -226,7 +226,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52731_In_2" = {
+    "Allow_DatabaseAdmin_TCP_52731_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 720
@@ -237,7 +237,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52731_In_3" = {
+    "Allow_DatabaseAdmin_TCP_52731_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 721
@@ -248,7 +248,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52731_In_4" = {
+    "Allow_DatabaseAdmin_TCP_52731_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 722
@@ -259,7 +259,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52731_In_5" = {
+    "Allow_DatabaseAdmin_TCP_52731_In_5" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 723
@@ -270,7 +270,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52731_In_6" = {
+    "Allow_DatabaseAdmin_TCP_52731_In_6" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 724
@@ -281,7 +281,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52731_In_7" = {
+    "Allow_DatabaseAdmin_TCP_52731_In_7" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 725
@@ -292,7 +292,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52731_In_8" = {
+    "Allow_DatabaseAdmin_TCP_52731_In_8" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 726
@@ -303,7 +303,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52733_In" = {
+    "Allow_DatabaseAdmin_TCP_52733_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 727
@@ -314,7 +314,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52733_In_1" = {
+    "Allow_DatabaseAdmin_TCP_52733_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 728
@@ -325,7 +325,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52733_In_2" = {
+    "Allow_DatabaseAdmin_TCP_52733_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 729
@@ -336,7 +336,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52733_In_3" = {
+    "Allow_DatabaseAdmin_TCP_52733_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 730
@@ -347,7 +347,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52733_In_4" = {
+    "Allow_DatabaseAdmin_TCP_52733_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 731
@@ -358,7 +358,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52733_In_5" = {
+    "Allow_DatabaseAdmin_TCP_52733_In_5" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 732
@@ -369,7 +369,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52733_In_6" = {
+    "Allow_DatabaseAdmin_TCP_52733_In_6" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 733
@@ -380,7 +380,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_TCP_52733_In_7" = {
+    "Allow_DatabaseAdmin_TCP_52733_In_7" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 734
@@ -391,7 +391,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 07 - Database Admin Rule."
     }
-    "Allow-DatabaseAdmin_All_AllPorts_Out" = {
+    "Allow_DatabaseAdmin_All_AllPorts_Out" = {
       direction                  = "Outbound"
       access                     = "Allow"
       priority                   = 735

@@ -6,7 +6,7 @@
 locals {
     # Common rules - Apply to all regions
   solarwinds_common = var.enable_enterprise_security_rules ? {
-    "Allow-SolarWinds_All_AllPorts_Out" = {
+    "Allow_SolarWinds_All_AllPorts_Out" = {
       direction                  = "Outbound"
       access                     = "Allow"
       priority                   = 200
@@ -17,7 +17,7 @@ locals {
       destination_address_prefix = "0.0.0.0/0"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_ICMP_AllPorts_In" = {
+    "Allow_SolarWinds_ICMP_AllPorts_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 201
@@ -28,7 +28,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_22_In" = {
+    "Allow_SolarWinds_TCP_22_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 202
@@ -39,7 +39,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_22_In_1" = {
+    "Allow_SolarWinds_TCP_22_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 203
@@ -50,7 +50,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_23_In" = {
+    "Allow_SolarWinds_TCP_23_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 204
@@ -61,7 +61,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_23_In_1" = {
+    "Allow_SolarWinds_TCP_23_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 205
@@ -72,7 +72,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_25_In" = {
+    "Allow_SolarWinds_TCP_25_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 206
@@ -83,7 +83,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_25_In_1" = {
+    "Allow_SolarWinds_TCP_25_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 207
@@ -94,7 +94,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_53_In" = {
+    "Allow_SolarWinds_TCP_53_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 208
@@ -105,7 +105,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_53_In_1" = {
+    "Allow_SolarWinds_TCP_53_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 209
@@ -116,7 +116,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_80_In" = {
+    "Allow_SolarWinds_TCP_80_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 210
@@ -127,7 +127,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_80_In_1" = {
+    "Allow_SolarWinds_TCP_80_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 211
@@ -138,7 +138,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_135_In" = {
+    "Allow_SolarWinds_TCP_135_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 212
@@ -149,7 +149,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_135_In_1" = {
+    "Allow_SolarWinds_TCP_135_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 213
@@ -160,7 +160,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_139_In" = {
+    "Allow_SolarWinds_TCP_139_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 214
@@ -171,7 +171,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_139_In_1" = {
+    "Allow_SolarWinds_TCP_139_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 215
@@ -182,7 +182,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_443_In" = {
+    "Allow_SolarWinds_TCP_443_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 216
@@ -193,7 +193,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_443_In_1" = {
+    "Allow_SolarWinds_TCP_443_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 217
@@ -204,7 +204,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_445_In" = {
+    "Allow_SolarWinds_TCP_445_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 218
@@ -215,7 +215,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_445_In_1" = {
+    "Allow_SolarWinds_TCP_445_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 219
@@ -226,7 +226,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_465_In" = {
+    "Allow_SolarWinds_TCP_465_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 220
@@ -237,7 +237,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_465_In_1" = {
+    "Allow_SolarWinds_TCP_465_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 221
@@ -248,7 +248,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_587_In" = {
+    "Allow_SolarWinds_TCP_587_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 222
@@ -259,7 +259,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_587_In_1" = {
+    "Allow_SolarWinds_TCP_587_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 223
@@ -270,7 +270,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1024_In" = {
+    "Allow_SolarWinds_TCP_1024_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 224
@@ -281,7 +281,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1024_In_1" = {
+    "Allow_SolarWinds_TCP_1024_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 225
@@ -292,7 +292,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1025_In" = {
+    "Allow_SolarWinds_TCP_1025_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 226
@@ -303,7 +303,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1025_In_1" = {
+    "Allow_SolarWinds_TCP_1025_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 227
@@ -314,7 +314,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1026_In" = {
+    "Allow_SolarWinds_TCP_1026_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 228
@@ -325,7 +325,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1026_In_1" = {
+    "Allow_SolarWinds_TCP_1026_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 229
@@ -336,7 +336,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1027_In" = {
+    "Allow_SolarWinds_TCP_1027_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 230
@@ -347,7 +347,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1027_In_1" = {
+    "Allow_SolarWinds_TCP_1027_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 231
@@ -358,7 +358,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1028_In" = {
+    "Allow_SolarWinds_TCP_1028_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 232
@@ -369,7 +369,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1028_In_1" = {
+    "Allow_SolarWinds_TCP_1028_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 233
@@ -380,7 +380,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1029_In" = {
+    "Allow_SolarWinds_TCP_1029_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 234
@@ -391,7 +391,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1029_In_1" = {
+    "Allow_SolarWinds_TCP_1029_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 235
@@ -402,7 +402,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1030_In" = {
+    "Allow_SolarWinds_TCP_1030_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 236
@@ -413,7 +413,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1031_In" = {
+    "Allow_SolarWinds_TCP_1031_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 237
@@ -424,7 +424,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1032_In" = {
+    "Allow_SolarWinds_TCP_1032_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 238
@@ -435,7 +435,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1033_In" = {
+    "Allow_SolarWinds_TCP_1033_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 239
@@ -446,7 +446,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1034_In" = {
+    "Allow_SolarWinds_TCP_1034_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 240
@@ -457,7 +457,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1433_In" = {
+    "Allow_SolarWinds_TCP_1433_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 241
@@ -468,7 +468,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_1801_In" = {
+    "Allow_SolarWinds_TCP_1801_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 242
@@ -479,7 +479,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_5671_In" = {
+    "Allow_SolarWinds_TCP_5671_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 243
@@ -490,7 +490,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_17777_In" = {
+    "Allow_SolarWinds_TCP_17777_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 244
@@ -501,7 +501,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_17778_In" = {
+    "Allow_SolarWinds_TCP_17778_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 245
@@ -512,7 +512,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_TCP_17791_In" = {
+    "Allow_SolarWinds_TCP_17791_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 246
@@ -523,7 +523,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_53_In" = {
+    "Allow_SolarWinds_UDP_53_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 247
@@ -534,7 +534,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_53_In_1" = {
+    "Allow_SolarWinds_UDP_53_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 248
@@ -545,7 +545,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_137_In" = {
+    "Allow_SolarWinds_UDP_137_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 249
@@ -556,7 +556,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_137_In_1" = {
+    "Allow_SolarWinds_UDP_137_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 250
@@ -567,7 +567,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_138_In" = {
+    "Allow_SolarWinds_UDP_138_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 251
@@ -578,7 +578,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_138_In_1" = {
+    "Allow_SolarWinds_UDP_138_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 252
@@ -589,7 +589,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_161_In" = {
+    "Allow_SolarWinds_UDP_161_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 253
@@ -600,7 +600,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_161_In_1" = {
+    "Allow_SolarWinds_UDP_161_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 254
@@ -611,7 +611,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_162_In" = {
+    "Allow_SolarWinds_UDP_162_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 255
@@ -622,7 +622,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_162_In_1" = {
+    "Allow_SolarWinds_UDP_162_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 256
@@ -633,7 +633,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_1024_In" = {
+    "Allow_SolarWinds_UDP_1024_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 257
@@ -644,7 +644,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_1024_In_1" = {
+    "Allow_SolarWinds_UDP_1024_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 258
@@ -655,7 +655,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 02 - SolarWinds Rule."
     }
-    "Allow-SolarWinds_UDP_1434_In" = {
+    "Allow_SolarWinds_UDP_1434_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 259
@@ -670,7 +670,7 @@ locals {
     # Region-01 only (eastus)
   # Dynamic port ranges for SolarWinds Azure pollers
   solarwinds_region_eastus = var.enable_enterprise_security_rules ? {
-      "Allow-SolarWinds_TCP_49152to65535_In" = {
+      "Allow_SolarWinds_TCP_49152to65535_In" = {
         direction                  = "Inbound"
         access                     = "Allow"
         priority                   = 260
@@ -681,7 +681,7 @@ locals {
         destination_address_prefix = "*"
         description                = "ESR 02 - SolarWinds Rule."
       }
-      "Allow-SolarWinds_TCP_49152to65535_In_1" = {
+      "Allow_SolarWinds_TCP_49152to65535_In_1" = {
         direction                  = "Inbound"
         access                     = "Allow"
         priority                   = 261

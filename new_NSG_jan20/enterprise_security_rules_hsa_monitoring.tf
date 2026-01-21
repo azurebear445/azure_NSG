@@ -6,7 +6,7 @@
 locals {
     # Common rules - Apply to all regions
   hsa_monitoring_common = {
-    "Allow-HSAMonitoring_TCP_135_In" = {
+    "Allow_HSAMonitoring_TCP_135_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1000
@@ -17,7 +17,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 10 - HSA Monitoring Rule."
     }
-    "Allow-HSAMonitoring_TCP_1024to65535_In" = {
+    "Allow_HSAMonitoring_TCP_1024to65535_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1001
@@ -28,7 +28,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 10 - HSA Monitoring Rule."
     }
-    "Allow-HSAMonitoring_ICMP_AllPorts_In" = {
+    "Allow_HSAMonitoring_ICMP_AllPorts_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1002

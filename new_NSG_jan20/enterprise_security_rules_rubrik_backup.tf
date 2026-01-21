@@ -6,7 +6,7 @@
 locals {
     # Common rules - Apply to all regions
   rubrik_backup_common = {
-    "Allow-RubrikBackup_TCP_12800to12801_In" = {
+    "Allow_RubrikBackup_TCP_12800to12801_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 600
@@ -17,7 +17,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 06 - Rubrik Backup Rule."
     }
-    "Allow-RubrikBackup_TCP_12800to12801_In_1" = {
+    "Allow_RubrikBackup_TCP_12800to12801_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 601
@@ -28,7 +28,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 06 - Rubrik Backup Rule."
     }
-    "Allow-RubrikBackup_All_AllPorts_Out" = {
+    "Allow_RubrikBackup_All_AllPorts_Out" = {
       direction                  = "Outbound"
       access                     = "Allow"
       priority                   = 602

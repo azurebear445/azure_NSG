@@ -6,7 +6,7 @@
 locals {
     # Common rules - Apply to all regions
   varonis_collectors_common = {
-    "Allow-VaronisCollectors_TCP_22_In" = {
+    "Allow_VaronisCollectors_TCP_22_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1150
@@ -17,7 +17,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_22_In_1" = {
+    "Allow_VaronisCollectors_TCP_22_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1151
@@ -28,7 +28,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_80_In" = {
+    "Allow_VaronisCollectors_TCP_80_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1152
@@ -39,7 +39,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_80_In_1" = {
+    "Allow_VaronisCollectors_TCP_80_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1153
@@ -50,7 +50,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_111_In" = {
+    "Allow_VaronisCollectors_TCP_111_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1154
@@ -61,7 +61,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_111_In_1" = {
+    "Allow_VaronisCollectors_TCP_111_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1155
@@ -72,7 +72,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_137to139_In" = {
+    "Allow_VaronisCollectors_TCP_137to139_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1156
@@ -83,7 +83,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_137to139_In_1" = {
+    "Allow_VaronisCollectors_TCP_137to139_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1157
@@ -94,7 +94,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_445_In" = {
+    "Allow_VaronisCollectors_TCP_445_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1158
@@ -105,7 +105,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_445_In_1" = {
+    "Allow_VaronisCollectors_TCP_445_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1159
@@ -116,7 +116,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_2049_In" = {
+    "Allow_VaronisCollectors_TCP_2049_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1160
@@ -127,7 +127,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_2049_In_1" = {
+    "Allow_VaronisCollectors_TCP_2049_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1161
@@ -138,7 +138,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_4972to4973_In" = {
+    "Allow_VaronisCollectors_TCP_4972to4973_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1162
@@ -149,7 +149,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 13 - Varonis Collectors Rule."
     }
-    "Allow-VaronisCollectors_TCP_4972to4973_In_1" = {
+    "Allow_VaronisCollectors_TCP_4972to4973_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1163

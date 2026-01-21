@@ -6,7 +6,7 @@
 locals {
     # Common rules - Apply to all regions
   servicenow_common = var.enable_enterprise_security_rules ? {
-    "Allow-ServiceNow_All_AllPorts_Out" = {
+    "Allow_ServiceNow_All_AllPorts_Out" = {
       protocol                   = "*"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
@@ -17,7 +17,7 @@ locals {
       priority                   = 100
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_All_AllPorts_In" = {
+    "Allow_ServiceNow_All_AllPorts_In" = {
       protocol                   = "*"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
@@ -28,7 +28,7 @@ locals {
       priority                   = 101
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_135_In" = {
+    "Allow_ServiceNow_TCP_135_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
@@ -39,7 +39,7 @@ locals {
       priority                   = 102
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_135_In_1" = {
+    "Allow_ServiceNow_TCP_135_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
@@ -50,7 +50,7 @@ locals {
       priority                   = 103
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_135_In_2" = {
+    "Allow_ServiceNow_TCP_135_In_2" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
@@ -61,7 +61,7 @@ locals {
       priority                   = 104
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_135_In_3" = {
+    "Allow_ServiceNow_TCP_135_In_3" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
@@ -72,7 +72,7 @@ locals {
       priority                   = 105
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_135_In_4" = {
+    "Allow_ServiceNow_TCP_135_In_4" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
@@ -83,7 +83,7 @@ locals {
       priority                   = 106
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_13724_In" = {
+    "Allow_ServiceNow_TCP_13724_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["13724"]
@@ -94,7 +94,7 @@ locals {
       priority                   = 107
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_13724_In_1" = {
+    "Allow_ServiceNow_TCP_13724_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["13724"]
@@ -105,7 +105,7 @@ locals {
       priority                   = 108
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_13782_In" = {
+    "Allow_ServiceNow_TCP_13782_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["13782"]
@@ -116,7 +116,7 @@ locals {
       priority                   = 109
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_13782_In_1" = {
+    "Allow_ServiceNow_TCP_13782_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["13782"]
@@ -127,7 +127,7 @@ locals {
       priority                   = 110
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_139_In" = {
+    "Allow_ServiceNow_TCP_139_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["139"]
@@ -138,7 +138,7 @@ locals {
       priority                   = 111
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_139_In_1" = {
+    "Allow_ServiceNow_TCP_139_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["139"]
@@ -149,7 +149,7 @@ locals {
       priority                   = 112
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_139_In_2" = {
+    "Allow_ServiceNow_TCP_139_In_2" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["139"]
@@ -160,7 +160,7 @@ locals {
       priority                   = 113
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_1556_In" = {
+    "Allow_ServiceNow_TCP_1556_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1556"]
@@ -171,7 +171,7 @@ locals {
       priority                   = 114
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_1556_In_1" = {
+    "Allow_ServiceNow_TCP_1556_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1556"]
@@ -182,7 +182,7 @@ locals {
       priority                   = 115
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_15671_In" = {
+    "Allow_ServiceNow_TCP_15671_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["15671"]
@@ -193,7 +193,7 @@ locals {
       priority                   = 116
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_1858_In" = {
+    "Allow_ServiceNow_TCP_1858_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1858"]
@@ -204,7 +204,7 @@ locals {
       priority                   = 117
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_1858_In_1" = {
+    "Allow_ServiceNow_TCP_1858_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1858"]
@@ -215,7 +215,7 @@ locals {
       priority                   = 118
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_22_In" = {
+    "Allow_ServiceNow_TCP_22_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
@@ -226,7 +226,7 @@ locals {
       priority                   = 119
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_22_In_1" = {
+    "Allow_ServiceNow_TCP_22_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
@@ -237,7 +237,7 @@ locals {
       priority                   = 120
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_22_In_2" = {
+    "Allow_ServiceNow_TCP_22_In_2" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
@@ -248,7 +248,7 @@ locals {
       priority                   = 121
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_22_In_3" = {
+    "Allow_ServiceNow_TCP_22_In_3" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
@@ -259,7 +259,7 @@ locals {
       priority                   = 122
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_3389_In" = {
+    "Allow_ServiceNow_TCP_3389_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["3389"]
@@ -270,7 +270,7 @@ locals {
       priority                   = 123
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_3389_In_1" = {
+    "Allow_ServiceNow_TCP_3389_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["3389"]
@@ -281,7 +281,7 @@ locals {
       priority                   = 124
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_443_In" = {
+    "Allow_ServiceNow_TCP_443_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["443"]
@@ -292,7 +292,7 @@ locals {
       priority                   = 125
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_443_In_1" = {
+    "Allow_ServiceNow_TCP_443_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["443"]
@@ -303,7 +303,7 @@ locals {
       priority                   = 126
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_445_In" = {
+    "Allow_ServiceNow_TCP_445_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
@@ -314,7 +314,7 @@ locals {
       priority                   = 127
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_445_In_1" = {
+    "Allow_ServiceNow_TCP_445_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
@@ -325,7 +325,7 @@ locals {
       priority                   = 128
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_445_In_2" = {
+    "Allow_ServiceNow_TCP_445_In_2" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
@@ -336,7 +336,7 @@ locals {
       priority                   = 129
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_445_In_3" = {
+    "Allow_ServiceNow_TCP_445_In_3" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
@@ -347,7 +347,7 @@ locals {
       priority                   = 130
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_445_In_4" = {
+    "Allow_ServiceNow_TCP_445_In_4" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
@@ -358,7 +358,7 @@ locals {
       priority                   = 131
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_4699_In" = {
+    "Allow_ServiceNow_TCP_4699_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["4699"]
@@ -369,7 +369,7 @@ locals {
       priority                   = 132
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_4972_In" = {
+    "Allow_ServiceNow_TCP_4972_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["4972"]
@@ -380,7 +380,7 @@ locals {
       priority                   = 133
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_4972_In_1" = {
+    "Allow_ServiceNow_TCP_4972_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["4972"]
@@ -391,7 +391,7 @@ locals {
       priority                   = 134
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_4972_In_2" = {
+    "Allow_ServiceNow_TCP_4972_In_2" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["4972"]
@@ -402,7 +402,7 @@ locals {
       priority                   = 135
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_4974_In" = {
+    "Allow_ServiceNow_TCP_4974_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["4974"]
@@ -413,7 +413,7 @@ locals {
       priority                   = 136
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_4974_In_1" = {
+    "Allow_ServiceNow_TCP_4974_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["4974"]
@@ -424,7 +424,7 @@ locals {
       priority                   = 137
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_4974_In_2" = {
+    "Allow_ServiceNow_TCP_4974_In_2" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["4974"]
@@ -435,7 +435,7 @@ locals {
       priority                   = 138
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_5500_In" = {
+    "Allow_ServiceNow_TCP_5500_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5500"]
@@ -446,7 +446,7 @@ locals {
       priority                   = 139
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_5500_In_1" = {
+    "Allow_ServiceNow_TCP_5500_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5500"]
@@ -457,7 +457,7 @@ locals {
       priority                   = 140
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_5985_In" = {
+    "Allow_ServiceNow_TCP_5985_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5985"]
@@ -468,7 +468,7 @@ locals {
       priority                   = 141
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_5985_In_1" = {
+    "Allow_ServiceNow_TCP_5985_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5985"]
@@ -479,7 +479,7 @@ locals {
       priority                   = 142
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_5986_In" = {
+    "Allow_ServiceNow_TCP_5986_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5986"]
@@ -490,7 +490,7 @@ locals {
       priority                   = 143
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_5986_In_1" = {
+    "Allow_ServiceNow_TCP_5986_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5986"]
@@ -501,7 +501,7 @@ locals {
       priority                   = 144
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_60777_In" = {
+    "Allow_ServiceNow_TCP_60777_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["60777"]
@@ -512,7 +512,7 @@ locals {
       priority                   = 145
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_60777_In_1" = {
+    "Allow_ServiceNow_TCP_60777_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["60777"]
@@ -523,7 +523,7 @@ locals {
       priority                   = 146
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_60777_In_2" = {
+    "Allow_ServiceNow_TCP_60777_In_2" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["60777"]
@@ -534,7 +534,7 @@ locals {
       priority                   = 147
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_636_In" = {
+    "Allow_ServiceNow_TCP_636_In" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["636"]
@@ -545,7 +545,7 @@ locals {
       priority                   = 148
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_TCP_636_In_1" = {
+    "Allow_ServiceNow_TCP_636_In_1" = {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["636"]
@@ -556,7 +556,7 @@ locals {
       priority                   = 149
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_UDP_137_In" = {
+    "Allow_ServiceNow_UDP_137_In" = {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["137"]
@@ -567,7 +567,7 @@ locals {
       priority                   = 150
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_UDP_137_In_1" = {
+    "Allow_ServiceNow_UDP_137_In_1" = {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["137"]
@@ -578,7 +578,7 @@ locals {
       priority                   = 151
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_UDP_137_In_2" = {
+    "Allow_ServiceNow_UDP_137_In_2" = {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["137"]
@@ -589,7 +589,7 @@ locals {
       priority                   = 152
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_UDP_138_In" = {
+    "Allow_ServiceNow_UDP_138_In" = {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["138"]
@@ -600,7 +600,7 @@ locals {
       priority                   = 153
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_UDP_138_In_1" = {
+    "Allow_ServiceNow_UDP_138_In_1" = {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["138"]
@@ -611,7 +611,7 @@ locals {
       priority                   = 154
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_UDP_138_In_2" = {
+    "Allow_ServiceNow_UDP_138_In_2" = {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["138"]
@@ -622,7 +622,7 @@ locals {
       priority                   = 155
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_UDP_1813_In" = {
+    "Allow_ServiceNow_UDP_1813_In" = {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1813"]
@@ -633,7 +633,7 @@ locals {
       priority                   = 156
       description                = "ESR 01 - ServiceNow Rule."
     }
-    "Allow-ServiceNow_UDP_1813_In_1" = {
+    "Allow_ServiceNow_UDP_1813_In_1" = {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1813"]
@@ -647,7 +647,7 @@ locals {
   } : {}
     # Region-01 only (eastus)
   servicenow_region_eastus = var.enable_enterprise_security_rules ? {
-      "Allow-ServiceNow_TCP_49152_In" = {
+      "Allow_ServiceNow_TCP_49152_In" = {
         protocol                   = "Tcp"
         source_port_ranges          = ["*"]
         destination_port_ranges     = ["49152"]
@@ -658,7 +658,7 @@ locals {
         priority                   = 158
         description                = "ESR 01 - ServiceNow Rule."
       }
-      "Allow-ServiceNow_TCP_49152_In_1" = {
+      "Allow_ServiceNow_TCP_49152_In_1" = {
         protocol                   = "Tcp"
         source_port_ranges          = ["*"]
         destination_port_ranges     = ["49152"]
@@ -672,7 +672,7 @@ locals {
   } : {}
     # Region-02 only (northcentralus)
   servicenow_region_northcentralus = var.enable_enterprise_security_rules ? {
-      "Allow-ServiceNow_TCP_49152to65535_In" = {
+      "Allow_ServiceNow_TCP_49152to65535_In" = {
         protocol                   = "Tcp"
         source_port_ranges          = ["*"]
         destination_port_ranges     = ["49152-65535"]
@@ -683,7 +683,7 @@ locals {
         priority                   = 158
         description                = "ESR 01 - ServiceNow Rule."
       }
-      "Allow-ServiceNow_TCP_49152to65535_In_1" = {
+      "Allow_ServiceNow_TCP_49152to65535_In_1" = {
         protocol                   = "Tcp"
         source_port_ranges          = ["*"]
         destination_port_ranges     = ["49152-65535"]

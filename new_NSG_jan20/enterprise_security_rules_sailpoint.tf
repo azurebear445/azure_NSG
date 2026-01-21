@@ -6,7 +6,7 @@
 locals {
     # Common rules - Apply to all regions
   sailpoint_common = {
-    "Allow-SailPoint_TCP_1433_In" = {
+    "Allow_SailPoint_TCP_1433_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1090
@@ -17,7 +17,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_1433_In_1" = {
+    "Allow_SailPoint_TCP_1433_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1091
@@ -28,7 +28,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_1433_In_2" = {
+    "Allow_SailPoint_TCP_1433_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1092
@@ -39,7 +39,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_1433_In_3" = {
+    "Allow_SailPoint_TCP_1433_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1093
@@ -50,7 +50,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_1433_In_4" = {
+    "Allow_SailPoint_TCP_1433_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1094
@@ -61,7 +61,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_5102_In" = {
+    "Allow_SailPoint_TCP_5102_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1095
@@ -72,7 +72,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_5102_In_1" = {
+    "Allow_SailPoint_TCP_5102_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1096
@@ -83,7 +83,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_5102_In_2" = {
+    "Allow_SailPoint_TCP_5102_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1097
@@ -94,7 +94,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_5102_In_3" = {
+    "Allow_SailPoint_TCP_5102_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1098
@@ -105,7 +105,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_5102_In_4" = {
+    "Allow_SailPoint_TCP_5102_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1099
@@ -116,7 +116,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_5432_In" = {
+    "Allow_SailPoint_TCP_5432_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1100
@@ -127,7 +127,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_5432_In_1" = {
+    "Allow_SailPoint_TCP_5432_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1101
@@ -138,7 +138,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_5432_In_2" = {
+    "Allow_SailPoint_TCP_5432_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1102
@@ -149,7 +149,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_5432_In_3" = {
+    "Allow_SailPoint_TCP_5432_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1103
@@ -160,7 +160,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_5432_In_4" = {
+    "Allow_SailPoint_TCP_5432_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1104
@@ -171,7 +171,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_52731_In" = {
+    "Allow_SailPoint_TCP_52731_In" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1105
@@ -182,7 +182,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_52731_In_1" = {
+    "Allow_SailPoint_TCP_52731_In_1" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1106
@@ -193,7 +193,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_52731_In_2" = {
+    "Allow_SailPoint_TCP_52731_In_2" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1107
@@ -204,7 +204,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_52731_In_3" = {
+    "Allow_SailPoint_TCP_52731_In_3" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1108
@@ -215,7 +215,7 @@ locals {
       destination_address_prefix = "*"
       description                = "ESR 12 - SailPoint Rule."
     }
-    "Allow-SailPoint_TCP_52731_In_4" = {
+    "Allow_SailPoint_TCP_52731_In_4" = {
       direction                  = "Inbound"
       access                     = "Allow"
       priority                   = 1109
