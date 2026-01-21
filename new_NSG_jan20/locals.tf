@@ -73,7 +73,7 @@ locals {
     ]
   ])
 
-  # Flatten ingress rules from ASGs for TCP (Change 26: nsgs -> asgs)
+  # Flatten ingress rules from ASGs for TCP
   ingress_rules_from_asgs_tcp = flatten([
     for port, x in try(var.ingress_rules["from_asgs"]["tcp"], {}) : [
       for y, asg_id in x["source_asg_ids"] : {
@@ -87,7 +87,7 @@ locals {
     ]
   ])
 
-  # Flatten ingress rules from ASGs for UDP (Change 26: nsgs -> asgs)
+  # Flatten ingress rules from ASGs for UDP
   ingress_rules_from_asgs_udp = flatten([
     for port, x in try(var.ingress_rules["from_asgs"]["udp"], {}) : [
       for y, asg_id in x["source_asg_ids"] : {
@@ -143,7 +143,7 @@ locals {
     ]
   ]) : [], [])
 
-  # Flatten egress rules to ASGs for TCP (Change 26: nsgs -> asgs)
+  # Flatten egress rules to ASGs for TCP
   egress_rules_to_asgs_tcp = flatten([
     for port, v in try(var.egress_rules["to_asgs"]["tcp"], {}) : [
       for k, asg_id in v["destination_asg_ids"] : {
@@ -157,7 +157,7 @@ locals {
     ]
   ])
 
-  # Flatten egress rules to ASGs for UDP (Change 26: nsgs -> asgs)
+  # Flatten egress rules to ASGs for UDP
   egress_rules_to_asgs_udp = flatten([
     for port, v in try(var.egress_rules["to_asgs"]["udp"], {}) : [
       for k, asg_id in v["destination_asg_ids"] : {
@@ -171,7 +171,7 @@ locals {
     ]
   ])
 
-  # Create maps for each rule type with priorities (Change 27: Split for separate resources)
+  # Create maps for each rule type with priorities
   # User rules start at priority 1500 to avoid conflict with enterprise rules (100-1499)
 
   # Ingress ICMP from CIDRs
@@ -264,21 +264,6 @@ locals {
     })
   }
 
-  # Self-to-self rule
-  self_to_self_rule = var.enable_any_nsg_to_self ? {
-    "allow-self-to-self" = {
-      key                        = "allow-self-to-self"
-      protocol                   = "*"
-      from_port                  = 0
-      to_port                    = 0
-      source_address_prefix      = "VirtualNetwork"
-      destination_address_prefix = "VirtualNetwork"
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 2500
-    }
-  } : {}
-
   # Any egress rule
   any_egress_rule = var.enable_any_egress ? {
     "allow-any-egress" = {
@@ -290,7 +275,7 @@ locals {
       destination_address_prefix = "*"
       direction                  = "Outbound"
       access                     = "Allow"
-      priority                   = 2600
+      priority                   = 2500
     }
   } : {}
 }

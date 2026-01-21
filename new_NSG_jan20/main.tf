@@ -43,7 +43,7 @@ resource "azurerm_network_security_rule" "enterprise_rules" {
   description = each.value.description
 }
 
-# User-Defined Security Rules - Split by protocol/direction/type (Change 27)
+# User-Defined Security Rules - Split by protocol/direction/type
 
 # Ingress ICMP from CIDRs
 resource "azurerm_network_security_rule" "icmp_from_cidrs" {
@@ -79,8 +79,8 @@ resource "azurerm_network_security_rule" "tcp_from_cidrs" {
   priority  = each.value.priority
   protocol  = each.value.protocol
 
-  source_port_range      = "*"
-  destination_port_range = each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"
+  source_port_ranges      = ["*"]
+  destination_port_ranges = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
   source_address_prefix      = each.value.source_address_prefix
   destination_address_prefix = each.value.destination_address_prefix
 
@@ -100,8 +100,8 @@ resource "azurerm_network_security_rule" "udp_from_cidrs" {
   priority  = each.value.priority
   protocol  = each.value.protocol
 
-  source_port_range      = "*"
-  destination_port_range = each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"
+  source_port_ranges      = ["*"]
+  destination_port_ranges = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
   source_address_prefix      = each.value.source_address_prefix
   destination_address_prefix = each.value.destination_address_prefix
 
@@ -121,8 +121,8 @@ resource "azurerm_network_security_rule" "tcp_from_asgs" {
   priority  = each.value.priority
   protocol  = each.value.protocol
 
-  source_port_range      = "*"
-  destination_port_range = each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"
+  source_port_ranges      = ["*"]
+  destination_port_ranges = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
   source_application_security_group_ids = each.value.source_application_security_group_ids
   destination_address_prefix            = each.value.destination_address_prefix
 
@@ -142,8 +142,8 @@ resource "azurerm_network_security_rule" "udp_from_asgs" {
   priority  = each.value.priority
   protocol  = each.value.protocol
 
-  source_port_range      = "*"
-  destination_port_range = each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"
+  source_port_ranges      = ["*"]
+  destination_port_ranges = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
   source_application_security_group_ids = each.value.source_application_security_group_ids
   destination_address_prefix            = each.value.destination_address_prefix
 
@@ -184,8 +184,8 @@ resource "azurerm_network_security_rule" "tcp_to_cidrs" {
   priority  = each.value.priority
   protocol  = each.value.protocol
 
-  source_port_range      = "*"
-  destination_port_range = each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"
+  source_port_ranges      = ["*"]
+  destination_port_ranges = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
   source_address_prefix      = each.value.source_address_prefix
   destination_address_prefix = each.value.destination_address_prefix
 
@@ -205,8 +205,8 @@ resource "azurerm_network_security_rule" "udp_to_cidrs" {
   priority  = each.value.priority
   protocol  = each.value.protocol
 
-  source_port_range      = "*"
-  destination_port_range = each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"
+  source_port_ranges      = ["*"]
+  destination_port_ranges = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
   source_address_prefix      = each.value.source_address_prefix
   destination_address_prefix = each.value.destination_address_prefix
 
@@ -226,8 +226,8 @@ resource "azurerm_network_security_rule" "tcp_to_asgs" {
   priority  = each.value.priority
   protocol  = each.value.protocol
 
-  source_port_range      = "*"
-  destination_port_range = each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"
+  source_port_ranges      = ["*"]
+  destination_port_ranges = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
   source_address_prefix                      = each.value.source_address_prefix
   destination_application_security_group_ids = each.value.destination_application_security_group_ids
 
@@ -247,31 +247,10 @@ resource "azurerm_network_security_rule" "udp_to_asgs" {
   priority  = each.value.priority
   protocol  = each.value.protocol
 
-  source_port_range      = "*"
-  destination_port_range = each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"
+  source_port_ranges      = ["*"]
+  destination_port_ranges = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
   source_address_prefix                      = each.value.source_address_prefix
   destination_application_security_group_ids = each.value.destination_application_security_group_ids
-
-  description = ""
-}
-
-# Self-to-self rule
-resource "azurerm_network_security_rule" "self_to_self" {
-  for_each = local.self_to_self_rule
-
-  name                        = each.key
-  network_security_group_name = azurerm_network_security_group.this.name
-  resource_group_name         = var.resource_group_name
-
-  direction = each.value.direction
-  access    = each.value.access
-  priority  = each.value.priority
-  protocol  = each.value.protocol
-
-  source_port_range          = "*"
-  destination_port_range     = "*"
-  source_address_prefix      = each.value.source_address_prefix
-  destination_address_prefix = each.value.destination_address_prefix
 
   description = ""
 }

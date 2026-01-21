@@ -39,12 +39,6 @@ variable "enable_any_egress" {
   default     = true
 }
 
-variable "enable_any_nsg_to_self" {
-  type        = bool
-  description = "If set to true, NSG can talk to itself on any ports."
-  default     = true
-}
-
 variable "enable_citrix_ingress" {
   type        = bool
   description = "If set to true, enables Enterprise Security rules for Citrix."
