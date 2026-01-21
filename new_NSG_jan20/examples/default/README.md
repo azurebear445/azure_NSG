@@ -1,6 +1,6 @@
 # Default Example
 
-This example demonstrates basic usage of the Network Security Group module with default Enterprise Security Rules enabled and user-defined ingress rules for ports 443 and 80.
+This example demonstrates basic usage of the Network Security Group module with default enterprise rules enabled and user-defined ingress rules for ports 443 and 80.
 
 ```hcl
 module "resource_group" {
