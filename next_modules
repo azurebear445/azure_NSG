@@ -1,0 +1,100 @@
+AZURE TERRAFORM MODULES - STORY BREAKDOWN
+==========================================
+
+================================================================================
+1. STORAGE ACCOUNT CONTAINER MODULE (Currently working on this)
+================================================================================
+
+Story 1A (1 point) - DONE
+Title: Create foundational Azure Storage Account module with basic storage account and container resources
+
+Story 1B (2 points)
+Title: Add versioning, encryption, HTTPS enforcement, and RBAC configuration
+
+Story 2 (2 points)
+Title: Add lifecycle policies, storage tiering, and diagnostic logging
+
+Story 3 (1 point)
+Title: Testing, validation, and documentation for Storage Account Container module
+
+Total: 6 points
+
+
+================================================================================
+2. DISK ENCRYPTION SET MODULE
+================================================================================
+
+Story A (1 point)
+Title: Create foundational Azure Disk Encryption Set module with base resource and key vault integration
+
+Story B (1-2 points)
+Title: Add encryption settings, key rotation support, and managed identity configuration
+
+Story C (1 point)
+Title: Testing, validation, and documentation for Disk Encryption Set module
+
+Total: 3-4 points
+
+
+================================================================================
+3. STORAGE ACCOUNT FILE SHARE MODULE
+================================================================================
+
+Story A (1 point)
+Title: Create foundational Azure Storage File Share module with base file share resource
+
+Story B (1-2 points)
+Title: Add quotas, access tiers, backup policies, and SMB/NFS protocol settings
+
+Story C (1 point)
+Title: Testing, validation, and documentation for Storage File Share module
+
+Total: 3-4 points
+
+
+================================================================================
+4. STORAGE ACCOUNT TABLE MODULE
+================================================================================
+
+Story A (1 point)
+Title: Create foundational Azure Storage Table module with base table resource
+
+Story B (1-2 points)
+Title: Add access policies, encryption settings, and entity management support
+
+Story C (1 point)
+Title: Testing, validation, and documentation for Storage Table module
+
+Total: 3-4 points
+
+
+================================================================================
+5. STORAGE ACCOUNT QUEUE MODULE
+================================================================================
+
+Story A (1 point)
+Title: Create foundational Azure Storage Queue module with base queue resource
+
+Story B (1-2 points)
+Title: Add message policies, access controls, and metadata configuration
+
+Story C (1 point)
+Title: Testing, validation, and documentation for Storage Queue module
+
+Total: 3-4 points
+
+
+================================================================================
+SUMMARY
+================================================================================
+
+Total Modules: 5
+Total Stories: 16
+
+Storage Account Container:  6 points (4 stories)
+Disk Encryption Set:        3-4 points (3 stories)
+Storage File Share:         3-4 points (3 stories)
+Storage Table:              3-4 points (3 stories)
+Storage Queue:              3-4 points (3 stories)
+
+Grand Total: 18-22 points
