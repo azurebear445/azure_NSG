@@ -2,29 +2,39 @@
 
 ## Description
 
-Terraform module to create Azure Network Security Groups with enterprise-managed rules and user-defined rules. It replicates AWS Security Group functionality for Azure, including 13 Enterprise Security Rule files that are applied automatically or via variables.
+Terraform module to create Azure Network Security Groups with enterprise-managed rules and user-defined rules. It replicates AWS Security Group functionality for Azure, including 13 enterprise security rule files that are applied automatically or via variables.
 
-## Enterprise Security Rule Priority Blocks
+## What is this module responsible for?
 
-Each rule file has a reserved priority block. **Do not use these priority ranges for user-defined rules:**
+This module creates and manages Azure Network Security Groups with:
+- **Enterprise security rules**: 13 pre-configured rule files containing enterprise-managed security rules that apply automatically based on deployment region
+- **User-defined rules**: Custom ingress/egress rules for application-specific traffic
+- **Default security rules**: Optional allow-all-egress and NSG-to-self communication rules
+- **Automatic priority management**: Enterprise rules use priority range 100-1499, user rules use 1500+, preventing conflicts
+- **Regional rule application**: Rules conditionally applied based on location (eastus or northcentralus)
 
-| Service | File | Priority Range |
-|---------|------|----------------|
-| ServiceNow | `enterprise_security_rules_servicenow.tf` | 100-199 |
-| SolarWinds | `enterprise_security_rules_solarwinds.tf` | 200-299 |
-| Multi-Service One | `enterprise_security_rules_multi_service_one.tf` | 300-399 |
-| Multi-Service Two | `enterprise_security_rules_multi_service_two.tf` | 400-499 |
-| Multi-Service Three | `enterprise_security_rules_multi_service_three.tf` | 500-599 |
-| Rubrik Backup | `enterprise_security_rules_rubrik_backup.tf` | 600-699 |
-| Database Admin | `enterprise_security_rules_database_admin.tf` | 700-799 |
-| Multi-Service Four | `enterprise_security_rules_multi_service_four.tf` | 800-899 |
-| Idera Monitoring | `enterprise_security_rules_idera_monitoring.tf` | 900-999 |
-| HSA Monitoring | `enterprise_security_rules_hsa_monitoring.tf` | 1000-1099 |
-| Citrix | `enterprise_security_rules_citrix.tf` | 1100-1199 |
-| SailPoint | `enterprise_security_rules_sailpoint.tf` | 1200-1299 |
-| Varonis Collectors | `enterprise_security_rules_varonis_collectors.tf` | 1300-1399 |
+## Notes
 
-**User-defined rules:** Start at priority 1500 and above.
+**Enterprise security rules:**
+- **Default rules** (enabled by default, opt-out available): ServiceNow, SolarWinds, Multi-Service One, Multi-Service Two, Multi-Service Three, Multi-Service Four
+  - Set `enable_enterprise_security_rules = false` to opt-out of all default rules
+- **Opt-in rules** (enable via variables): Rubrik Backup, Database Admin, Idera Monitoring, HSA Monitoring, Citrix, SailPoint, Varonis
+- Rules apply automatically based on deployment region - no manual rule management required
+- Regional differences: Some rules apply only to specific regions (eastus vs northcentralus)
+
+**Critical - How to not break things:**
+- **Do NOT modify enterprise rule files directly** - these are enterprise-managed and changes will be overwritten
+- **Do NOT use priority range 100-1499** for user-defined rules - this range is reserved for enterprise rules
+- **Always specify location** as either `eastus` or `northcentralus` - other regions are not supported
+
+## What is explicitly out of scope?
+
+This module does **NOT**:
+- Associate NSGs with subnets or network interfaces (done separately by application teams)
+- Manage NSG Flow Logs or diagnostic settings (handled by Azure Policy)
+- Allow modification of enterprise-managed rules
+- Support regions other than eastus and northcentralus
+- Provide rule-level exceptions or overrides for enterprise rules
 
 ## Release Notes
 
