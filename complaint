@@ -37,3 +37,48 @@ The NSG will still have diagnostic settings enabled - just managed by Azure Poli
 
 
 Done. Split into separate resources: icmp_from_cidrs, tcp_from_cidrs, udp_from_cidrs, tcp_from_asgs, udp_from_asgs, icmp_to_cidrs, tcp_to_cidrs, udp_to_cidrs, tcp_to_asgs, udp_to_asgs.
+
+
+
+You're right. Here's the corrected list (40 changes):
+
+1. Rename ESR-01 file to enterprise_security_rules_servicenow.tf
+2. Rename ESR-02 file to enterprise_security_rules_solarwinds.tf
+3. Rename ESR-03 file to enterprise_security_rules_multi_service_one.tf
+4. Rename ESR-04 file to enterprise_security_rules_multi_service_two.tf
+5. Rename ESR-05 file to enterprise_security_rules_multi_service_three.tf
+6. Rename ESR-06 file to enterprise_security_rules_multi_service_four.tf
+7. Rename ESR-07 file to enterprise_security_rules_rubrik_backup.tf
+8. Rename ESR-08 file to enterprise_security_rules_database_admin.tf
+9. Rename ESR-09 file to enterprise_security_rules_idera_monitoring.tf
+10. Rename ESR-10 file to enterprise_security_rules_hsa_monitoring.tf
+11. Rename ESR-11 file to enterprise_security_rules_citrix.tf
+12. Rename ESR-12 file to enterprise_security_rules_sailpoint.tf
+13. Rename ESR-13 file to enterprise_security_rules_varonis_collectors.tf
+14. Update rule names from ESR-01/02/etc to service names (ServiceNow, SolarWinds, etc.)
+15. Update local variable names to match service names (enterprise_servicenow_rules, etc.)
+16. Update locals.tf references to use new local names
+17. Rename enable variables from enable_esr_07 to enable_rubrik_backup, etc.
+18. Update variables.tf with new enable variable names
+19. Update variable descriptions to reference service names
+20. Update examples/default to use new variable names
+21. Update examples/enterprise_security_rules to use new variable names
+22. Update README.md to reference service names instead of ESR numbers
+23. Update examples README files with service name references
+24. Remove ESR-01 through ESR-13 terminology from all documentation
+25. Add detailed "What is this module responsible for?" section to README
+26. Add "Notes" section to README (default vs opt-in rules, regional differences)
+27. Add "Critical - How to not break things" section to README
+28. Add "What is explicitly out of scope?" section to README
+29. Split user-defined rules into separate resources (icmp_from_cidrs, tcp_from_cidrs, etc.)
+30. Update main.tf with separate resource blocks per protocol/direction
+31. Update locals.tf with separate maps for each rule type
+32. Remove self_to_self resource (Azure VNet allows this by default)
+33. Remove enable_any_nsg_to_self variable
+34. Remove self_to_self_rule local
+35. Change Allow- prefix to Allow_ for consistent underscore usage
+36. Add underscore separator in multi-service names (Allow_MultiService_One_ etc.)
+37. Make rule name prefixes unique per file to prevent merge overwrites
+38. Update TCP/UDP user rules to use _ranges instead of _range
+39. Update enterprise rules to use _ranges for future flexibility
+40. Update examples/default with different /32 CIDRs for realistic examples
