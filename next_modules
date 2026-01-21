@@ -98,3 +98,61 @@ Storage Table:              3-4 points (3 stories)
 Storage Queue:              3-4 points (3 stories)
 
 Grand Total: 18-22 points
+
+
+
+
+
+
+
+================================================================================
+6. APPLICATION SECURITY GROUP MODULE
+================================================================================
+
+Story A (1 point)
+Title: Create foundational Azure Application Security Group module with base ASG resource
+
+Story B (1-2 points)
+Title: Add association rules, network interface bindings, and tag configuration
+
+Story C (1 point)
+Title: Testing, validation, and documentation for Application Security Group module
+
+Total: 3-4 points
+
+
+================================================================================
+SENTINEL POLICIES (Sprint 5 or later - lower priority than modules)
+================================================================================
+
+--------------------------------------------------------------------------------
+Policy 1: require_all_providers_have_version_constraint.sentinel
+--------------------------------------------------------------------------------
+
+Story A (1 point)
+Title: Create mock data and test cases for require_all_providers_have_version_constraint policy
+
+Story B (1 point)
+Title: Implement require_all_providers_have_version_constraint Sentinel policy code
+
+Story C (1 point)
+Title: Testing and publishing require_all_providers_have_version_constraint policy
+
+Total: 3 points
+
+
+--------------------------------------------------------------------------------
+Policy 2: require_all_modules_have_version_constraint.sentinel
+--------------------------------------------------------------------------------
+
+Story A (1 point)
+Title: Create mock data and test cases for require_all_modules_have_version_constraint policy
+
+Story B (1 point)
+Title: Implement require_all_modules_have_version_constraint Sentinel policy code
+
+Story C (1 point)
+Title: Testing and publishing require_all_modules_have_version_constraint policy
+
+Total: 3 points
+
