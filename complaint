@@ -33,3 +33,7 @@ This simplifies the module and removes potential conflicts
 One less thing for users to configure
 
 The NSG will still have diagnostic settings enabled - just managed by Azure Policy rather than the module."
+
+
+
+Done. Split into separate resources: icmp_from_cidrs, tcp_from_cidrs, udp_from_cidrs, tcp_from_asgs, udp_from_asgs, icmp_to_cidrs, tcp_to_cidrs, udp_to_cidrs, tcp_to_asgs, udp_to_asgs.
