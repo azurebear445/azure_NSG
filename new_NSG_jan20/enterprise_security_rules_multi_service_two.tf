@@ -1,682 +1,166 @@
 # Enterprise Security Rules - Multi-Service
-# Priority Block: 400-499
-#   Currently used: 400-457 (58 rules)
-#   Reserved for future: 458-499 (42 slots)
+# Priority Block: 313-365
+#   Currently used: 313-325 (13 rules)
+#   Reserved for future: 326-365 (40 slots)
 
 locals {
-    # Common rules - Apply to all regions
-  multi_service_two_common = {
-    "Allow_MultiService_Two_All_AllPorts_Out" = {
-      direction                  = "Outbound"
-      access                     = "Allow"
-      priority                   = 400
-      protocol                   = "*"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["*"]
-      source_address_prefixes      = ["*"]
-      destination_address_prefix = "0.0.0.0/0"
-      description                = "Egress to Multi-Service servers."
+  # Common rules - Apply to all regions
+  multi_service_two_common = var.enable_default_enterprise_security_rules ? {
+    "Allow-MultiService_TCP_22" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["22"]
+      direction                      = "Inbound"
+      priority                       = 313
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_22_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 401
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["22"]
-      source_address_prefixes      = ["10.111.19.208/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_TCP_135" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["135"]
+      direction                      = "Inbound"
+      priority                       = 314
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_22_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 402
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["22"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_TCP_139" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["139"]
+      direction                      = "Inbound"
+      priority                       = 315
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_22_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 403
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["22"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_TCP_443" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["443"]
+      direction                      = "Inbound"
+      priority                       = 316
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_22_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 404
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["22"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_TCP_445" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["445"]
+      direction                      = "Inbound"
+      priority                       = 317
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_135_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 405
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["135"]
-      source_address_prefixes      = ["10.111.19.208/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_TCP_636" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["636"]
+      direction                      = "Inbound"
+      priority                       = 318
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_135_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 406
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["135"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_TCP_1858" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["1858"]
+      direction                      = "Inbound"
+      priority                       = 319
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_135_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 407
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["135"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_TCP_3389" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["3389"]
+      direction                      = "Inbound"
+      priority                       = 320
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_135_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 408
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["135"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_TCP_5500" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["5500"]
+      direction                      = "Inbound"
+      priority                       = 321
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_135_In_4" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 409
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["135"]
-      source_address_prefixes      = ["10.71.44.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_TCP_52731" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["52731"]
+      direction                      = "Inbound"
+      priority                       = 322
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_135_In_5" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 410
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["135"]
-      source_address_prefixes      = ["10.72.44.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_TCP_49152-65535" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["49152-65535"]
+      direction                      = "Inbound"
+      priority                       = 323
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_139_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 411
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["139"]
-      source_address_prefixes      = ["10.111.19.208/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_UDP_1813" = {
+      access                         = "Allow"
+      description                    = "Ingress from Multi-Service servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["1813"]
+      direction                      = "Inbound"
+      priority                       = 324
+      protocol                       = "Udp"
+      source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_139_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 412
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["139"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
+    "Allow-MultiService_All_AllPorts" = {
+      access                         = "Allow"
+      description                    = "Egress to Multi-Service servers."
+      destination_address_prefix     = "0.0.0.0/0"
+      destination_port_ranges        = ["*"]
+      direction                      = "Outbound"
+      priority                       = 325
+      protocol                       = "*"
+      source_address_prefixes        = ["*"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_MultiService_Two_TCP_139_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 413
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["139"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_139_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 414
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["139"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_139_In_4" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 415
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["139"]
-      source_address_prefixes      = ["10.71.44.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_139_In_5" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 416
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["139"]
-      source_address_prefixes      = ["10.72.44.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_443_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 417
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["443"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_443_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 418
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["443"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_443_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 419
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["443"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_445_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 420
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["445"]
-      source_address_prefixes      = ["10.111.19.208/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_445_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 421
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["445"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_445_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 422
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["445"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_445_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 423
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["445"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_445_In_4" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 424
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["445"]
-      source_address_prefixes      = ["10.71.44.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_445_In_5" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 425
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["445"]
-      source_address_prefixes      = ["10.72.44.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_636_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 426
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["636"]
-      source_address_prefixes      = ["10.111.19.208/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_636_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 427
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["636"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_636_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 428
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["636"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_636_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 429
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["636"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_1858_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 430
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1858"]
-      source_address_prefixes      = ["10.111.19.208/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_1858_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 431
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1858"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_1858_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 432
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1858"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_1858_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 433
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1858"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_3389_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 434
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["3389"]
-      source_address_prefixes      = ["10.111.19.208/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_3389_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 435
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["3389"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_3389_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 436
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["3389"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_3389_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 437
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["3389"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_5500_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 438
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5500"]
-      source_address_prefixes      = ["10.111.19.208/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_5500_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 439
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5500"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_5500_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 440
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5500"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_5500_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 441
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5500"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_49152to65535_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 442
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["49152-65535"]
-      source_address_prefixes      = ["10.111.19.208/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_49152to65535_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 443
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["49152-65535"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_49152to65535_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 444
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["49152-65535"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_49152to65535_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 445
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["49152-65535"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_49152to65535_In_4" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 446
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["49152-65535"]
-      source_address_prefixes      = ["10.71.44.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_49152to65535_In_5" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 447
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["49152-65535"]
-      source_address_prefixes      = ["10.72.44.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_52731_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 448
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.111.19.208/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_52731_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 449
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_52731_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 450
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_52731_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 451
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_52731_In_4" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 452
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.71.44.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_TCP_52731_In_5" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 453
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.72.44.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_UDP_1813_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 454
-      protocol                   = "Udp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1813"]
-      source_address_prefixes      = ["10.111.19.208/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_UDP_1813_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 455
-      protocol                   = "Udp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1813"]
-      source_address_prefixes      = ["10.111.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_UDP_1813_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 456
-      protocol                   = "Udp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1813"]
-      source_address_prefixes      = ["10.211.19.155/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-    "Allow_MultiService_Two_UDP_1813_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 457
-      protocol                   = "Udp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1813"]
-      source_address_prefixes      = ["10.211.88.0/24"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Multi-Service servers."
-    }
-  }
-    # Region-01 only (eastus)
+  } : {}
+
+  # Region-01 only (eastus)
   multi_service_two_region_eastus = {
-      # No Region-01 specific rules currently
-          # EXAMPLE: How to add a new Region-01 only rule:
-          # "tcp-3306-192-168-1-0-24-inbound" = {
-      #   direction                  = "Inbound"
-      #   access                     = "Allow"
-      #   priority                   = 458  # Next available priority
-      #   protocol                   = "Tcp"
-      #   source_port_ranges          = ["*"]
-      #   destination_port_ranges     = ["3306"]
-      #   source_address_prefixes      = ["192.168.1.0/24"]
-      #   destination_address_prefix = "*"
-      #   description                = "Ingress from Multi-Service servers."
-      # }
+    # No eastus-specific rules currently
   }
-    # Region-02 only (northcentralus)
+
+  # Region-02 only (northcentralus)
   multi_service_two_region_northcentralus = {
-      # No Region-02 specific rules currently
-          # EXAMPLE: How to add a new Region-02 only rule:
-          # "tcp-8080-10-1-1-0-24-inbound" = {
-      #   direction                  = "Inbound"
-      #   access                     = "Allow"
-      #   priority                   = 458  # Next available priority
-      #   protocol                   = "Tcp"
-      #   source_port_ranges          = ["*"]
-      #   destination_port_ranges     = ["8080"]
-      #   source_address_prefixes      = ["10.1.1.0/24"]
-      #   destination_address_prefix = "*"
-      #   description                = "Ingress from Multi-Service servers."
-      # }
+    # No northcentralus-specific rules currently
   }
+
   enterprise_multi_service_two_rules = merge(
     local.multi_service_two_common,
     var.location == "eastus" ? local.multi_service_two_region_eastus : {},

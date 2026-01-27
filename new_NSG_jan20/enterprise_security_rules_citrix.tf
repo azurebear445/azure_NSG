@@ -1,164 +1,134 @@
 # Enterprise Security Rules - Citrix
-# Priority Block: 1040-1089
-#   Currently used: 1040-1050 (11 rules)
-#   Reserved for future: 1051-1089 (39 slots)
+# Priority Block: 684-731
+#   Currently used: 684-691 (8 rules)
+#   Reserved for future: 692-731 (40 slots)
 
 locals {
-    # Common rules - Apply to all regions
+  # Common rules - Apply to all regions
   citrix_common = {
-    "Allow_Citrix_TCP_80_In" = {
-      direction                  = "Inbound"
+    "Allow-Citrix_TCP_80" = {
       access                     = "Allow"
-      priority                   = 1040
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["80"]
-      source_address_prefixes      = ["10.111.124.135/32"]
-      destination_address_prefix = "*"
       description                = "Ingress from Citrix servers."
-    }
-    "Allow_Citrix_TCP_80_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 1041
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["80"]
-      source_address_prefixes      = ["10.111.124.176/32"]
       destination_address_prefix = "*"
-      description                = "Ingress from Citrix servers."
-    }
-    "Allow_Citrix_TCP_80_In_2" = {
+      destination_port_ranges    = ["80"]
       direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 1042
+      priority                   = 684
       protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["80"]
-      source_address_prefixes      = ["10.120.191.8/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Citrix servers."
+      source_address_prefixes    = ["10.111.124.135/32", "10.111.124.176/32", "10.120.191.8/32", "10.120.191.9/32"]
+      source_port_ranges         = ["*"]
     }
-    "Allow_Citrix_TCP_80_In_3" = {
-      direction                  = "Inbound"
+    "Allow-Citrix_TCP_1494" = {
       access                     = "Allow"
-      priority                   = 1043
+      description                = "Ingress from Citrix servers."
+      destination_address_prefix = "*"
+      destination_port_ranges    = ["1494"]
+      direction                  = "Inbound"
+      priority                   = 685
       protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["80"]
-      source_address_prefixes      = ["10.120.191.9/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Citrix servers."
+      source_address_prefixes    = ["10.0.0.0/8"]
+      source_port_ranges         = ["*"]
     }
-    "Allow_Citrix_TCP_1494_In" = {
-      direction                  = "Inbound"
+    "Allow-Citrix_TCP_2598" = {
       access                     = "Allow"
-      priority                   = 1044
+      description                = "Ingress from Citrix servers."
+      destination_address_prefix = "*"
+      destination_port_ranges    = ["2598"]
+      direction                  = "Inbound"
+      priority                   = 686
       protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1494"]
-      source_address_prefixes      = ["10.0.0.0/8"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Citrix servers."
+      source_address_prefixes    = ["10.0.0.0/8"]
+      source_port_ranges         = ["*"]
     }
-    "Allow_Citrix_TCP_2598_In" = {
-      direction                  = "Inbound"
+    "Allow-Citrix_TCP_8008" = {
       access                     = "Allow"
-      priority                   = 1045
+      description                = "Ingress from Citrix servers."
+      destination_address_prefix = "*"
+      destination_port_ranges    = ["8008"]
+      direction                  = "Inbound"
+      priority                   = 687
       protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["2598"]
-      source_address_prefixes      = ["10.0.0.0/8"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Citrix servers."
+      source_address_prefixes    = ["10.0.0.0/8"]
+      source_port_ranges         = ["*"]
     }
-    "Allow_Citrix_TCP_8008_In" = {
-      direction                  = "Inbound"
+    "Allow-Citrix_TCP_9988" = {
       access                     = "Allow"
-      priority                   = 1046
+      description                = "Ingress from Citrix servers."
+      destination_address_prefix = "*"
+      destination_port_ranges    = ["9988"]
+      direction                  = "Inbound"
+      priority                   = 688
       protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["8008"]
-      source_address_prefixes      = ["10.0.0.0/8"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Citrix servers."
+      source_address_prefixes    = ["10.0.0.0/8"]
+      source_port_ranges         = ["*"]
     }
-    "Allow_Citrix_TCP_9988_In" = {
-      direction                  = "Inbound"
+    "Allow-Citrix_UDP_1494" = {
       access                     = "Allow"
-      priority                   = 1047
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["9988"]
-      source_address_prefixes      = ["10.0.0.0/8"]
-      destination_address_prefix = "*"
       description                = "Ingress from Citrix servers."
-    }
-    "Allow_Citrix_UDP_1494_In" = {
+      destination_address_prefix = "*"
+      destination_port_ranges    = ["1494"]
       direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 1048
+      priority                   = 689
       protocol                   = "Udp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1494"]
-      source_address_prefixes      = ["10.0.0.0/8"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Citrix servers."
+      source_address_prefixes    = ["10.0.0.0/8"]
+      source_port_ranges         = ["*"]
     }
-    "Allow_Citrix_UDP_2598_In" = {
-      direction                  = "Inbound"
+    "Allow-Citrix_UDP_2598" = {
       access                     = "Allow"
-      priority                   = 1049
-      protocol                   = "Udp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["2598"]
-      source_address_prefixes      = ["10.0.0.0/8"]
-      destination_address_prefix = "*"
       description                = "Ingress from Citrix servers."
+      destination_address_prefix = "*"
+      destination_port_ranges    = ["2598"]
+      direction                  = "Inbound"
+      priority                   = 690
+      protocol                   = "Udp"
+      source_address_prefixes    = ["10.0.0.0/8"]
+      source_port_ranges         = ["*"]
     }
-    "Allow_Citrix_UDP_9988_In" = {
-      direction                  = "Inbound"
+    "Allow-Citrix_UDP_9988" = {
       access                     = "Allow"
-      priority                   = 1050
-      protocol                   = "Udp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["9988"]
-      source_address_prefixes      = ["10.0.0.0/8"]
-      destination_address_prefix = "*"
       description                = "Ingress from Citrix servers."
+      destination_address_prefix = "*"
+      destination_port_ranges    = ["9988"]
+      direction                  = "Inbound"
+      priority                   = 691
+      protocol                   = "Udp"
+      source_address_prefixes    = ["10.0.0.0/8"]
+      source_port_ranges         = ["*"]
     }
   }
-    # Region-01 only (eastus)
+
+  # Region-01 only (eastus)
   citrix_region_eastus = {
-      # Uncomment after verifying this rule should be migrated to Azure.
-            # "tcp-5985-10-120-191-12-32-ingress" = {
-      #   direction                  = "Inbound"
-      #   access                     = "Allow"
-      #   priority                   = 1051
-      #   protocol                   = "Tcp"
-      #   source_port_ranges          = ["*"]
-      #   destination_port_ranges     = ["5985"]
-      #   source_address_prefixes      = ["10.120.191.12/32"]
-      #   destination_address_prefix = "*"
-      #   description                = "Ingress from Citrix servers."
-      # }
+    # Uncomment after verifying this rule should be migrated to Azure.
+    # "Allow-Citrix_TCP_5985" = {
+    #   access                     = "Allow"
+    #   description                = "Ingress from Citrix servers."
+    #   destination_address_prefix = "*"
+    #   destination_port_ranges    = ["5985"]
+    #   direction                  = "Inbound"
+    #   priority                   = 1048
+    #   protocol                   = "Tcp"
+    #   source_address_prefixes    = ["10.120.191.12/32"]
+    #   source_port_ranges         = ["*"]
+    # }
   }
-    # Region-02 only (northcentralus)
+
+  # Region-02 only (northcentralus)
   citrix_region_northcentralus = {
-      # No Region-02 specific rules currently
-          # EXAMPLE: How to add a new Region-02 only rule:
-          # "tcp-8080-10-1-1-0-24-inbound" = {
-      #   direction                  = "Inbound"
-      #   access                     = "Allow"
-      #   priority                   = 1051  # Next available priority
-      #   protocol                   = "Tcp"
-      #   source_port_ranges          = ["*"]
-      #   destination_port_ranges     = ["8080"]
-      #   source_address_prefixes      = ["10.1.1.0/24"]
-      #   destination_address_prefix = "*"
-      #   description                = "Ingress from Citrix servers."
-      # }
+    # No Region-02 specific rules currently
+    # EXAMPLE: How to add a new Region-02 only rule:
+    # "Allow-Citrix_TCP_8080" = {
+    #   access                     = "Allow"
+    #   description                = "Ingress from Citrix servers."
+    #   destination_address_prefix = "*"
+    #   destination_port_ranges    = ["8080"]
+    #   direction                  = "Inbound"
+    #   priority                   = 1048
+    #   protocol                   = "Tcp"
+    #   source_address_prefixes    = ["10.1.1.0/24"]
+    #   source_port_ranges         = ["*"]
+    # }
   }
+
   enterprise_citrix_rules = merge(
     local.citrix_common,
     var.location == "eastus" ? local.citrix_region_eastus : {},

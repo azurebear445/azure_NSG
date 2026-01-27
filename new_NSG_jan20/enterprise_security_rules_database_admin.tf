@@ -1,440 +1,89 @@
 # Enterprise Security Rules - Database Admin
-# Priority Block: 700-799
-#   Currently used: 700-735 (36 rules)
-#   Reserved for future: 736-799 (64 slots)
+# Priority Block: 479-524
+#   Currently used: 479-484 (6 rules)
+#   Reserved for future: 485-524 (40 slots)
 
 locals {
-    # Common rules - Apply to all regions
+  # Common rules - Apply to all regions
   database_admin_common = {
-    "Allow_DatabaseAdmin_TCP_1433_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 700
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1433"]
-      source_address_prefixes      = ["10.110.28.197/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
+    "Allow-DatabaseAdmin_TCP_1433" = {
+      access                         = "Allow"
+      description                    = "Ingress from Database Admin servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["1433"]
+      direction                      = "Inbound"
+      priority                       = 479
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.110.28.197/32", "10.110.28.214/32", "10.111.123.145/32", "10.111.123.182/32", "10.111.88.85/32", "10.20.68.14/32", "10.211.123.156/32", "10.211.123.197/32", "10.211.88.4/32"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_DatabaseAdmin_TCP_1433_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 701
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1433"]
-      source_address_prefixes      = ["10.110.28.214/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
+    "Allow-DatabaseAdmin_TCP_5102" = {
+      access                         = "Allow"
+      description                    = "Ingress from Database Admin servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["5102"]
+      direction                      = "Inbound"
+      priority                       = 480
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.110.28.197/32", "10.110.28.214/32", "10.111.123.145/32", "10.111.123.182/32", "10.111.88.85/32", "10.211.123.156/32", "10.211.123.197/32", "10.211.88.4/32"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_DatabaseAdmin_TCP_1433_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 702
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1433"]
-      source_address_prefixes      = ["10.111.123.145/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
+    "Allow-DatabaseAdmin_TCP_5986" = {
+      access                         = "Allow"
+      description                    = "Ingress from Database Admin servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["5986"]
+      direction                      = "Inbound"
+      priority                       = 481
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.20.68.14/32"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_DatabaseAdmin_TCP_1433_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 703
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1433"]
-      source_address_prefixes      = ["10.111.123.182/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
+    "Allow-DatabaseAdmin_TCP_52731" = {
+      access                         = "Allow"
+      description                    = "Ingress from Database Admin servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["52731"]
+      direction                      = "Inbound"
+      priority                       = 482
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.110.28.197/32", "10.110.28.214/32", "10.111.123.145/32", "10.111.123.182/32", "10.111.88.85/32", "10.20.68.14/32", "10.211.123.156/32", "10.211.123.197/32", "10.211.88.4/32"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_DatabaseAdmin_TCP_1433_In_4" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 704
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1433"]
-      source_address_prefixes      = ["10.111.88.85/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
+    "Allow-DatabaseAdmin_TCP_52733" = {
+      access                         = "Allow"
+      description                    = "Ingress from Database Admin servers."
+      destination_address_prefix     = "*"
+      destination_port_ranges        = ["52733"]
+      direction                      = "Inbound"
+      priority                       = 483
+      protocol                       = "Tcp"
+      source_address_prefixes        = ["10.110.28.197/32", "10.110.28.214/32", "10.111.123.145/32", "10.111.123.182/32", "10.111.88.85/32", "10.211.123.156/32", "10.211.123.197/32", "10.211.88.4/32"]
+      source_port_ranges             = ["*"]
     }
-    "Allow_DatabaseAdmin_TCP_1433_In_5" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 705
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1433"]
-      source_address_prefixes      = ["10.20.68.14/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_1433_In_6" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 706
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1433"]
-      source_address_prefixes      = ["10.211.123.156/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_1433_In_7" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 707
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1433"]
-      source_address_prefixes      = ["10.211.123.197/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_1433_In_8" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 708
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["1433"]
-      source_address_prefixes      = ["10.211.88.4/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_5102_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 709
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5102"]
-      source_address_prefixes      = ["10.110.28.197/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_5102_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 710
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5102"]
-      source_address_prefixes      = ["10.110.28.214/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_5102_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 711
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5102"]
-      source_address_prefixes      = ["10.111.123.145/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_5102_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 712
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5102"]
-      source_address_prefixes      = ["10.111.123.182/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_5102_In_4" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 713
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5102"]
-      source_address_prefixes      = ["10.111.88.85/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_5102_In_5" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 714
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5102"]
-      source_address_prefixes      = ["10.211.123.156/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_5102_In_6" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 715
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5102"]
-      source_address_prefixes      = ["10.211.123.197/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_5102_In_7" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 716
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5102"]
-      source_address_prefixes      = ["10.211.88.4/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_5986_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 717
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["5986"]
-      source_address_prefixes      = ["10.20.68.14/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52731_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 718
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.110.28.197/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52731_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 719
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.110.28.214/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52731_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 720
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.111.123.145/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52731_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 721
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.111.123.182/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52731_In_4" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 722
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.111.88.85/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52731_In_5" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 723
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.20.68.14/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52731_In_6" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 724
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.211.123.156/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52731_In_7" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 725
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.211.123.197/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52731_In_8" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 726
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52731"]
-      source_address_prefixes      = ["10.211.88.4/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52733_In" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 727
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52733"]
-      source_address_prefixes      = ["10.110.28.197/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52733_In_1" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 728
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52733"]
-      source_address_prefixes      = ["10.110.28.214/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52733_In_2" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 729
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52733"]
-      source_address_prefixes      = ["10.111.123.145/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52733_In_3" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 730
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52733"]
-      source_address_prefixes      = ["10.111.123.182/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52733_In_4" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 731
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52733"]
-      source_address_prefixes      = ["10.111.88.85/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52733_In_5" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 732
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52733"]
-      source_address_prefixes      = ["10.211.123.156/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52733_In_6" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 733
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52733"]
-      source_address_prefixes      = ["10.211.123.197/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_TCP_52733_In_7" = {
-      direction                  = "Inbound"
-      access                     = "Allow"
-      priority                   = 734
-      protocol                   = "Tcp"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["52733"]
-      source_address_prefixes      = ["10.211.88.4/32"]
-      destination_address_prefix = "*"
-      description                = "Ingress from Database Admin servers."
-    }
-    "Allow_DatabaseAdmin_All_AllPorts_Out" = {
-      direction                  = "Outbound"
-      access                     = "Allow"
-      priority                   = 735
-      protocol                   = "*"
-      source_port_ranges          = ["*"]
-      destination_port_ranges     = ["*"]
-      source_address_prefixes      = ["*"]
-      destination_address_prefix = "0.0.0.0/0"
-      description                = "Egress to Database Admin servers."
+    "Allow-DatabaseAdmin_All_AllPorts" = {
+      access                         = "Allow"
+      description                    = "Egress to Database Admin servers."
+      destination_address_prefix     = "0.0.0.0/0"
+      destination_port_ranges        = ["*"]
+      direction                      = "Outbound"
+      priority                       = 484
+      protocol                       = "*"
+      source_address_prefixes        = ["*"]
+      source_port_ranges             = ["*"]
     }
   }
-    # Region-01 only (eastus)
+
+  # Region-01 only (eastus)
   database_admin_region_eastus = {
-      # No Region-01 specific rules currently
-          # EXAMPLE: How to add a new Region-01 only rule:
-          # "tcp-3306-192-168-1-0-24-inbound" = {
-      #   direction                  = "Inbound"
-      #   access                     = "Allow"
-      #   priority                   = 736  # Next available priority
-      #   protocol                   = "Tcp"
-      #   source_port_ranges          = ["*"]
-      #   destination_port_ranges     = ["3306"]
-      #   source_address_prefixes      = ["192.168.1.0/24"]
-      #   destination_address_prefix = "*"
-      #   description                = "Ingress from Database Admin servers."
-      # }
+    # No eastus-specific rules currently
   }
-    # Region-02 only (northcentralus)
+
+  # Region-02 only (northcentralus)
   database_admin_region_northcentralus = {
-      # No Region-02 specific rules currently
-          # EXAMPLE: How to add a new Region-02 only rule:
-          # "tcp-8080-10-1-1-0-24-inbound" = {
-      #   direction                  = "Inbound"
-      #   access                     = "Allow"
-      #   priority                   = 736  # Next available priority
-      #   protocol                   = "Tcp"
-      #   source_port_ranges          = ["*"]
-      #   destination_port_ranges     = ["8080"]
-      #   source_address_prefixes      = ["10.1.1.0/24"]
-      #   destination_address_prefix = "*"
-      #   description                = "Ingress from Database Admin servers."
-      # }
+    # No northcentralus-specific rules currently
   }
+
   enterprise_database_admin_rules = merge(
     local.database_admin_common,
     var.location == "eastus" ? local.database_admin_region_eastus : {},
