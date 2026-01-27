@@ -13,9 +13,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.110.117.157/32"
+      source_address_prefixes      = ["10.110.117.157/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_1433_In_1" = {
       direction                  = "Inbound"
@@ -24,9 +24,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.110.117.164/32"
+      source_address_prefixes      = ["10.110.117.164/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_1433_In_2" = {
       direction                  = "Inbound"
@@ -35,9 +35,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.111.95.173/32"
+      source_address_prefixes      = ["10.111.95.173/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_1433_In_3" = {
       direction                  = "Inbound"
@@ -46,9 +46,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.111.95.176/32"
+      source_address_prefixes      = ["10.111.95.176/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_1433_In_4" = {
       direction                  = "Inbound"
@@ -57,9 +57,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.211.42.149/32"
+      source_address_prefixes      = ["10.211.42.149/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_5102_In" = {
       direction                  = "Inbound"
@@ -68,9 +68,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.110.117.157/32"
+      source_address_prefixes      = ["10.110.117.157/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_5102_In_1" = {
       direction                  = "Inbound"
@@ -79,9 +79,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.110.117.164/32"
+      source_address_prefixes      = ["10.110.117.164/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_5102_In_2" = {
       direction                  = "Inbound"
@@ -90,9 +90,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.111.95.173/32"
+      source_address_prefixes      = ["10.111.95.173/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_5102_In_3" = {
       direction                  = "Inbound"
@@ -101,9 +101,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.111.95.176/32"
+      source_address_prefixes      = ["10.111.95.176/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_5102_In_4" = {
       direction                  = "Inbound"
@@ -112,9 +112,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.211.42.149/32"
+      source_address_prefixes      = ["10.211.42.149/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_5432_In" = {
       direction                  = "Inbound"
@@ -123,9 +123,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5432"]
-      source_address_prefix      = "10.110.117.157/32"
+      source_address_prefixes      = ["10.110.117.157/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_5432_In_1" = {
       direction                  = "Inbound"
@@ -134,9 +134,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5432"]
-      source_address_prefix      = "10.110.117.164/32"
+      source_address_prefixes      = ["10.110.117.164/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_5432_In_2" = {
       direction                  = "Inbound"
@@ -145,9 +145,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5432"]
-      source_address_prefix      = "10.111.95.173/32"
+      source_address_prefixes      = ["10.111.95.173/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_5432_In_3" = {
       direction                  = "Inbound"
@@ -156,9 +156,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5432"]
-      source_address_prefix      = "10.111.95.176/32"
+      source_address_prefixes      = ["10.111.95.176/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_5432_In_4" = {
       direction                  = "Inbound"
@@ -167,9 +167,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5432"]
-      source_address_prefix      = "10.211.42.149/32"
+      source_address_prefixes      = ["10.211.42.149/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_52731_In" = {
       direction                  = "Inbound"
@@ -178,9 +178,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.110.117.157/32"
+      source_address_prefixes      = ["10.110.117.157/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_52731_In_1" = {
       direction                  = "Inbound"
@@ -189,9 +189,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.110.117.164/32"
+      source_address_prefixes      = ["10.110.117.164/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_52731_In_2" = {
       direction                  = "Inbound"
@@ -200,9 +200,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.111.95.173/32"
+      source_address_prefixes      = ["10.111.95.173/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_52731_In_3" = {
       direction                  = "Inbound"
@@ -211,9 +211,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.111.95.176/32"
+      source_address_prefixes      = ["10.111.95.176/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
     "Allow_SailPoint_TCP_52731_In_4" = {
       direction                  = "Inbound"
@@ -222,9 +222,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.211.42.149/32"
+      source_address_prefixes      = ["10.211.42.149/32"]
       destination_address_prefix = "*"
-      description                = "ESR 12 - SailPoint Rule."
+      description                = "Ingress from SailPoint servers."
     }
   }
     # Region-01 only (eastus)
@@ -238,9 +238,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["3306"]
-      #   source_address_prefix      = "192.168.1.0/24"
+      #   source_address_prefixes      = ["192.168.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 12 - SailPoint Rule."
+      #   description                = "Ingress from SailPoint servers."
       # }
   }
     # Region-02 only (northcentralus)
@@ -254,9 +254,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["8080"]
-      #   source_address_prefix      = "10.1.1.0/24"
+      #   source_address_prefixes      = ["10.1.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 12 - SailPoint Rule."
+      #   description                = "Ingress from SailPoint servers."
       # }
   }
   enterprise_sailpoint_rules = merge(

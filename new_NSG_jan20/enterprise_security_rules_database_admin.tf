@@ -13,9 +13,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.110.28.197/32"
+      source_address_prefixes      = ["10.110.28.197/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_1433_In_1" = {
       direction                  = "Inbound"
@@ -24,9 +24,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.110.28.214/32"
+      source_address_prefixes      = ["10.110.28.214/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_1433_In_2" = {
       direction                  = "Inbound"
@@ -35,9 +35,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.111.123.145/32"
+      source_address_prefixes      = ["10.111.123.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_1433_In_3" = {
       direction                  = "Inbound"
@@ -46,9 +46,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.111.123.182/32"
+      source_address_prefixes      = ["10.111.123.182/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_1433_In_4" = {
       direction                  = "Inbound"
@@ -57,9 +57,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.111.88.85/32"
+      source_address_prefixes      = ["10.111.88.85/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_1433_In_5" = {
       direction                  = "Inbound"
@@ -68,9 +68,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.20.68.14/32"
+      source_address_prefixes      = ["10.20.68.14/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_1433_In_6" = {
       direction                  = "Inbound"
@@ -79,9 +79,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.211.123.156/32"
+      source_address_prefixes      = ["10.211.123.156/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_1433_In_7" = {
       direction                  = "Inbound"
@@ -90,9 +90,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.211.123.197/32"
+      source_address_prefixes      = ["10.211.123.197/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_1433_In_8" = {
       direction                  = "Inbound"
@@ -101,9 +101,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.211.88.4/32"
+      source_address_prefixes      = ["10.211.88.4/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_5102_In" = {
       direction                  = "Inbound"
@@ -112,9 +112,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.110.28.197/32"
+      source_address_prefixes      = ["10.110.28.197/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_5102_In_1" = {
       direction                  = "Inbound"
@@ -123,9 +123,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.110.28.214/32"
+      source_address_prefixes      = ["10.110.28.214/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_5102_In_2" = {
       direction                  = "Inbound"
@@ -134,9 +134,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.111.123.145/32"
+      source_address_prefixes      = ["10.111.123.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_5102_In_3" = {
       direction                  = "Inbound"
@@ -145,9 +145,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.111.123.182/32"
+      source_address_prefixes      = ["10.111.123.182/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_5102_In_4" = {
       direction                  = "Inbound"
@@ -156,9 +156,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.111.88.85/32"
+      source_address_prefixes      = ["10.111.88.85/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_5102_In_5" = {
       direction                  = "Inbound"
@@ -167,9 +167,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.211.123.156/32"
+      source_address_prefixes      = ["10.211.123.156/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_5102_In_6" = {
       direction                  = "Inbound"
@@ -178,9 +178,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.211.123.197/32"
+      source_address_prefixes      = ["10.211.123.197/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_5102_In_7" = {
       direction                  = "Inbound"
@@ -189,9 +189,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5102"]
-      source_address_prefix      = "10.211.88.4/32"
+      source_address_prefixes      = ["10.211.88.4/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_5986_In" = {
       direction                  = "Inbound"
@@ -200,9 +200,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5986"]
-      source_address_prefix      = "10.20.68.14/32"
+      source_address_prefixes      = ["10.20.68.14/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52731_In" = {
       direction                  = "Inbound"
@@ -211,9 +211,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.110.28.197/32"
+      source_address_prefixes      = ["10.110.28.197/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52731_In_1" = {
       direction                  = "Inbound"
@@ -222,9 +222,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.110.28.214/32"
+      source_address_prefixes      = ["10.110.28.214/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52731_In_2" = {
       direction                  = "Inbound"
@@ -233,9 +233,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.111.123.145/32"
+      source_address_prefixes      = ["10.111.123.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52731_In_3" = {
       direction                  = "Inbound"
@@ -244,9 +244,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.111.123.182/32"
+      source_address_prefixes      = ["10.111.123.182/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52731_In_4" = {
       direction                  = "Inbound"
@@ -255,9 +255,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.111.88.85/32"
+      source_address_prefixes      = ["10.111.88.85/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52731_In_5" = {
       direction                  = "Inbound"
@@ -266,9 +266,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.20.68.14/32"
+      source_address_prefixes      = ["10.20.68.14/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52731_In_6" = {
       direction                  = "Inbound"
@@ -277,9 +277,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.211.123.156/32"
+      source_address_prefixes      = ["10.211.123.156/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52731_In_7" = {
       direction                  = "Inbound"
@@ -288,9 +288,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.211.123.197/32"
+      source_address_prefixes      = ["10.211.123.197/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52731_In_8" = {
       direction                  = "Inbound"
@@ -299,9 +299,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.211.88.4/32"
+      source_address_prefixes      = ["10.211.88.4/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52733_In" = {
       direction                  = "Inbound"
@@ -310,9 +310,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52733"]
-      source_address_prefix      = "10.110.28.197/32"
+      source_address_prefixes      = ["10.110.28.197/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52733_In_1" = {
       direction                  = "Inbound"
@@ -321,9 +321,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52733"]
-      source_address_prefix      = "10.110.28.214/32"
+      source_address_prefixes      = ["10.110.28.214/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52733_In_2" = {
       direction                  = "Inbound"
@@ -332,9 +332,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52733"]
-      source_address_prefix      = "10.111.123.145/32"
+      source_address_prefixes      = ["10.111.123.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52733_In_3" = {
       direction                  = "Inbound"
@@ -343,9 +343,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52733"]
-      source_address_prefix      = "10.111.123.182/32"
+      source_address_prefixes      = ["10.111.123.182/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52733_In_4" = {
       direction                  = "Inbound"
@@ -354,9 +354,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52733"]
-      source_address_prefix      = "10.111.88.85/32"
+      source_address_prefixes      = ["10.111.88.85/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52733_In_5" = {
       direction                  = "Inbound"
@@ -365,9 +365,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52733"]
-      source_address_prefix      = "10.211.123.156/32"
+      source_address_prefixes      = ["10.211.123.156/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52733_In_6" = {
       direction                  = "Inbound"
@@ -376,9 +376,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52733"]
-      source_address_prefix      = "10.211.123.197/32"
+      source_address_prefixes      = ["10.211.123.197/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_TCP_52733_In_7" = {
       direction                  = "Inbound"
@@ -387,9 +387,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52733"]
-      source_address_prefix      = "10.211.88.4/32"
+      source_address_prefixes      = ["10.211.88.4/32"]
       destination_address_prefix = "*"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Ingress from Database Admin servers."
     }
     "Allow_DatabaseAdmin_All_AllPorts_Out" = {
       direction                  = "Outbound"
@@ -398,9 +398,9 @@ locals {
       protocol                   = "*"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
-      source_address_prefix      = "*"
+      source_address_prefixes      = ["*"]
       destination_address_prefix = "0.0.0.0/0"
-      description                = "ESR 07 - Database Admin Rule."
+      description                = "Egress to Database Admin servers."
     }
   }
     # Region-01 only (eastus)
@@ -414,9 +414,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["3306"]
-      #   source_address_prefix      = "192.168.1.0/24"
+      #   source_address_prefixes      = ["192.168.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 07 - Database Admin Rule."
+      #   description                = "Ingress from Database Admin servers."
       # }
   }
     # Region-02 only (northcentralus)
@@ -430,9 +430,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["8080"]
-      #   source_address_prefix      = "10.1.1.0/24"
+      #   source_address_prefixes      = ["10.1.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 07 - Database Admin Rule."
+      #   description                = "Ingress from Database Admin servers."
       # }
   }
   enterprise_database_admin_rules = merge(

@@ -5,7 +5,7 @@
 
 locals {
     # Common rules - Apply to all regions
-  solarwinds_common = var.enable_enterprise_security_rules ? {
+  solarwinds_common = var.enable_default_enterprise_security_rules ? {
     "Allow_SolarWinds_All_AllPorts_Out" = {
       direction                  = "Outbound"
       access                     = "Allow"
@@ -13,9 +13,9 @@ locals {
       protocol                   = "*"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
-      source_address_prefix      = "*"
+      source_address_prefixes      = ["*"]
       destination_address_prefix = "0.0.0.0/0"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Egress to SolarWinds servers."
     }
     "Allow_SolarWinds_ICMP_AllPorts_In" = {
       direction                  = "Inbound"
@@ -24,9 +24,9 @@ locals {
       protocol                   = "Icmp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_22_In" = {
       direction                  = "Inbound"
@@ -35,9 +35,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_22_In_1" = {
       direction                  = "Inbound"
@@ -46,9 +46,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_23_In" = {
       direction                  = "Inbound"
@@ -57,9 +57,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["23"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_23_In_1" = {
       direction                  = "Inbound"
@@ -68,9 +68,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["23"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_25_In" = {
       direction                  = "Inbound"
@@ -79,9 +79,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["25"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_25_In_1" = {
       direction                  = "Inbound"
@@ -90,9 +90,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["25"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_53_In" = {
       direction                  = "Inbound"
@@ -101,9 +101,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["53"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_53_In_1" = {
       direction                  = "Inbound"
@@ -112,9 +112,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["53"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_80_In" = {
       direction                  = "Inbound"
@@ -123,9 +123,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["80"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_80_In_1" = {
       direction                  = "Inbound"
@@ -134,9 +134,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["80"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_135_In" = {
       direction                  = "Inbound"
@@ -145,9 +145,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_135_In_1" = {
       direction                  = "Inbound"
@@ -156,9 +156,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_139_In" = {
       direction                  = "Inbound"
@@ -167,9 +167,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["139"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_139_In_1" = {
       direction                  = "Inbound"
@@ -178,9 +178,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["139"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_443_In" = {
       direction                  = "Inbound"
@@ -189,9 +189,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["443"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_443_In_1" = {
       direction                  = "Inbound"
@@ -200,9 +200,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["443"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_445_In" = {
       direction                  = "Inbound"
@@ -211,9 +211,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_445_In_1" = {
       direction                  = "Inbound"
@@ -222,9 +222,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_465_In" = {
       direction                  = "Inbound"
@@ -233,9 +233,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["465"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_465_In_1" = {
       direction                  = "Inbound"
@@ -244,9 +244,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["465"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_587_In" = {
       direction                  = "Inbound"
@@ -255,9 +255,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["587"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_587_In_1" = {
       direction                  = "Inbound"
@@ -266,9 +266,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["587"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1024_In" = {
       direction                  = "Inbound"
@@ -277,9 +277,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1024"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1024_In_1" = {
       direction                  = "Inbound"
@@ -288,9 +288,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1024"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1025_In" = {
       direction                  = "Inbound"
@@ -299,9 +299,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1025"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1025_In_1" = {
       direction                  = "Inbound"
@@ -310,9 +310,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1025"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1026_In" = {
       direction                  = "Inbound"
@@ -321,9 +321,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1026"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1026_In_1" = {
       direction                  = "Inbound"
@@ -332,9 +332,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1026"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1027_In" = {
       direction                  = "Inbound"
@@ -343,9 +343,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1027"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1027_In_1" = {
       direction                  = "Inbound"
@@ -354,9 +354,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1027"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1028_In" = {
       direction                  = "Inbound"
@@ -365,9 +365,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1028"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1028_In_1" = {
       direction                  = "Inbound"
@@ -376,9 +376,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1028"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1029_In" = {
       direction                  = "Inbound"
@@ -387,9 +387,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1029"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1029_In_1" = {
       direction                  = "Inbound"
@@ -398,9 +398,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1029"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1030_In" = {
       direction                  = "Inbound"
@@ -409,9 +409,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1030"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1031_In" = {
       direction                  = "Inbound"
@@ -420,9 +420,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1031"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1032_In" = {
       direction                  = "Inbound"
@@ -431,9 +431,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1032"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1033_In" = {
       direction                  = "Inbound"
@@ -442,9 +442,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1033"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1034_In" = {
       direction                  = "Inbound"
@@ -453,9 +453,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1034"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1433_In" = {
       direction                  = "Inbound"
@@ -464,9 +464,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_1801_In" = {
       direction                  = "Inbound"
@@ -475,9 +475,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1801"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_5671_In" = {
       direction                  = "Inbound"
@@ -486,9 +486,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5671"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_17777_In" = {
       direction                  = "Inbound"
@@ -497,9 +497,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["17777"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_17778_In" = {
       direction                  = "Inbound"
@@ -508,9 +508,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["17778"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_TCP_17791_In" = {
       direction                  = "Inbound"
@@ -519,9 +519,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["17791"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_53_In" = {
       direction                  = "Inbound"
@@ -530,9 +530,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["53"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_53_In_1" = {
       direction                  = "Inbound"
@@ -541,9 +541,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["53"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_137_In" = {
       direction                  = "Inbound"
@@ -552,9 +552,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["137"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_137_In_1" = {
       direction                  = "Inbound"
@@ -563,9 +563,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["137"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_138_In" = {
       direction                  = "Inbound"
@@ -574,9 +574,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["138"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_138_In_1" = {
       direction                  = "Inbound"
@@ -585,9 +585,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["138"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_161_In" = {
       direction                  = "Inbound"
@@ -596,9 +596,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["161"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_161_In_1" = {
       direction                  = "Inbound"
@@ -607,9 +607,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["161"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_162_In" = {
       direction                  = "Inbound"
@@ -618,9 +618,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["162"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_162_In_1" = {
       direction                  = "Inbound"
@@ -629,9 +629,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["162"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_1024_In" = {
       direction                  = "Inbound"
@@ -640,9 +640,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1024"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_1024_In_1" = {
       direction                  = "Inbound"
@@ -651,9 +651,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1024"]
-      source_address_prefix      = "10.111.14.233/32"
+      source_address_prefixes      = ["10.111.14.233/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
     "Allow_SolarWinds_UDP_1434_In" = {
       direction                  = "Inbound"
@@ -662,14 +662,14 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1434"]
-      source_address_prefix      = "10.111.14.232/32"
+      source_address_prefixes      = ["10.111.14.232/32"]
       destination_address_prefix = "*"
-      description                = "ESR 02 - SolarWinds Rule."
+      description                = "Ingress from SolarWinds servers."
     }
   } : {}
     # Region-01 only (eastus)
   # Dynamic port ranges for SolarWinds Azure pollers
-  solarwinds_region_eastus = var.enable_enterprise_security_rules ? {
+  solarwinds_region_eastus = var.enable_default_enterprise_security_rules ? {
       "Allow_SolarWinds_TCP_49152to65535_In" = {
         direction                  = "Inbound"
         access                     = "Allow"
@@ -677,9 +677,9 @@ locals {
         protocol                   = "Tcp"
         source_port_ranges          = ["*"]
         destination_port_ranges     = ["49152-65535"]
-        source_address_prefix      = "10.111.14.232/32"
+        source_address_prefixes      = ["10.111.14.232/32"]
         destination_address_prefix = "*"
-        description                = "ESR 02 - SolarWinds Rule."
+        description                = "Ingress from SolarWinds servers."
       }
       "Allow_SolarWinds_TCP_49152to65535_In_1" = {
         direction                  = "Inbound"
@@ -688,15 +688,15 @@ locals {
         protocol                   = "Tcp"
         source_port_ranges          = ["*"]
         destination_port_ranges     = ["49152-65535"]
-        source_address_prefix      = "10.120.7.135/32"
+        source_address_prefixes      = ["10.120.7.135/32"]
         destination_address_prefix = "*"
-        description                = "ESR 02 - SolarWinds Rule."
+        description                = "Ingress from SolarWinds servers."
       }
   } : {}
     # Region-02 only (northcentralus)
     # Currently empty - all non-common rules are Region-01 only
   # This block is ready for future Region-02 specific rules
-  solarwinds_region_northcentralus = var.enable_enterprise_security_rules ? {
+  solarwinds_region_northcentralus = var.enable_default_enterprise_security_rules ? {
       # No Region-02 specific rules currently
           # EXAMPLE: How to add a new Region-02 only rule:
           # "tcp-9090-172-16-0-0-16-inbound" = {
@@ -706,9 +706,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["9090"]
-      #   source_address_prefix      = "172.16.0.0/16"
+      #   source_address_prefixes      = ["172.16.0.0/16"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 02 - SolarWinds Rule."
+      #   description                = "Ingress from SolarWinds servers."
       # }
   } : {}
   enterprise_solarwinds_rules = merge(

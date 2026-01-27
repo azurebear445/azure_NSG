@@ -13,9 +13,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.111.41.153/32"
+      source_address_prefixes      = ["10.111.41.153/32"]
       destination_address_prefix = "*"
-      description                = "ESR 10 - HSA Monitoring Rule."
+      description                = "Ingress from HSA Monitoring servers."
     }
     "Allow_HSAMonitoring_TCP_1024to65535_In" = {
       direction                  = "Inbound"
@@ -24,9 +24,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1024-65535"]
-      source_address_prefix      = "10.111.41.153/32"
+      source_address_prefixes      = ["10.111.41.153/32"]
       destination_address_prefix = "*"
-      description                = "ESR 10 - HSA Monitoring Rule."
+      description                = "Ingress from HSA Monitoring servers."
     }
     "Allow_HSAMonitoring_ICMP_AllPorts_In" = {
       direction                  = "Inbound"
@@ -35,9 +35,9 @@ locals {
       protocol                   = "Icmp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
-      source_address_prefix      = "10.111.41.153/32"
+      source_address_prefixes      = ["10.111.41.153/32"]
       destination_address_prefix = "*"
-      description                = "ESR 10 - HSA Monitoring Rule."
+      description                = "Ingress from HSA Monitoring servers."
     }
   }
     # Region-01 only (eastus)
@@ -51,9 +51,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["3306"]
-      #   source_address_prefix      = "192.168.1.0/24"
+      #   source_address_prefixes      = ["192.168.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 10 - HSA Monitoring Rule."
+      #   description                = "Ingress from HSA Monitoring servers."
       # }
   }
     # Region-02 only (northcentralus)
@@ -67,9 +67,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["8080"]
-      #   source_address_prefix      = "10.1.1.0/24"
+      #   source_address_prefixes      = ["10.1.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 10 - HSA Monitoring Rule."
+      #   description                = "Ingress from HSA Monitoring servers."
       # }
   }
   enterprise_hsa_monitoring_rules = merge(

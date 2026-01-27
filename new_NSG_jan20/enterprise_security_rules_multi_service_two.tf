@@ -13,9 +13,9 @@ locals {
       protocol                   = "*"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
-      source_address_prefix      = "*"
+      source_address_prefixes      = ["*"]
       destination_address_prefix = "0.0.0.0/0"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Egress to Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_22_In" = {
       direction                  = "Inbound"
@@ -24,9 +24,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
-      source_address_prefix      = "10.111.19.208/32"
+      source_address_prefixes      = ["10.111.19.208/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_22_In_1" = {
       direction                  = "Inbound"
@@ -35,9 +35,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_22_In_2" = {
       direction                  = "Inbound"
@@ -46,9 +46,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_22_In_3" = {
       direction                  = "Inbound"
@@ -57,9 +57,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_135_In" = {
       direction                  = "Inbound"
@@ -68,9 +68,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.111.19.208/32"
+      source_address_prefixes      = ["10.111.19.208/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_135_In_1" = {
       direction                  = "Inbound"
@@ -79,9 +79,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_135_In_2" = {
       direction                  = "Inbound"
@@ -90,9 +90,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_135_In_3" = {
       direction                  = "Inbound"
@@ -101,9 +101,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_135_In_4" = {
       direction                  = "Inbound"
@@ -112,9 +112,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.71.44.0/24"
+      source_address_prefixes      = ["10.71.44.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_135_In_5" = {
       direction                  = "Inbound"
@@ -123,9 +123,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.72.44.0/24"
+      source_address_prefixes      = ["10.72.44.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_139_In" = {
       direction                  = "Inbound"
@@ -134,9 +134,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["139"]
-      source_address_prefix      = "10.111.19.208/32"
+      source_address_prefixes      = ["10.111.19.208/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_139_In_1" = {
       direction                  = "Inbound"
@@ -145,9 +145,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["139"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_139_In_2" = {
       direction                  = "Inbound"
@@ -156,9 +156,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["139"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_139_In_3" = {
       direction                  = "Inbound"
@@ -167,9 +167,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["139"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_139_In_4" = {
       direction                  = "Inbound"
@@ -178,9 +178,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["139"]
-      source_address_prefix      = "10.71.44.0/24"
+      source_address_prefixes      = ["10.71.44.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_139_In_5" = {
       direction                  = "Inbound"
@@ -189,9 +189,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["139"]
-      source_address_prefix      = "10.72.44.0/24"
+      source_address_prefixes      = ["10.72.44.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_443_In" = {
       direction                  = "Inbound"
@@ -200,9 +200,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["443"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_443_In_1" = {
       direction                  = "Inbound"
@@ -211,9 +211,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["443"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_443_In_2" = {
       direction                  = "Inbound"
@@ -222,9 +222,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["443"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_445_In" = {
       direction                  = "Inbound"
@@ -233,9 +233,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
-      source_address_prefix      = "10.111.19.208/32"
+      source_address_prefixes      = ["10.111.19.208/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_445_In_1" = {
       direction                  = "Inbound"
@@ -244,9 +244,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_445_In_2" = {
       direction                  = "Inbound"
@@ -255,9 +255,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_445_In_3" = {
       direction                  = "Inbound"
@@ -266,9 +266,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_445_In_4" = {
       direction                  = "Inbound"
@@ -277,9 +277,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
-      source_address_prefix      = "10.71.44.0/24"
+      source_address_prefixes      = ["10.71.44.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_445_In_5" = {
       direction                  = "Inbound"
@@ -288,9 +288,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
-      source_address_prefix      = "10.72.44.0/24"
+      source_address_prefixes      = ["10.72.44.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_636_In" = {
       direction                  = "Inbound"
@@ -299,9 +299,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["636"]
-      source_address_prefix      = "10.111.19.208/32"
+      source_address_prefixes      = ["10.111.19.208/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_636_In_1" = {
       direction                  = "Inbound"
@@ -310,9 +310,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["636"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_636_In_2" = {
       direction                  = "Inbound"
@@ -321,9 +321,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["636"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_636_In_3" = {
       direction                  = "Inbound"
@@ -332,9 +332,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["636"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_1858_In" = {
       direction                  = "Inbound"
@@ -343,9 +343,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1858"]
-      source_address_prefix      = "10.111.19.208/32"
+      source_address_prefixes      = ["10.111.19.208/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_1858_In_1" = {
       direction                  = "Inbound"
@@ -354,9 +354,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1858"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_1858_In_2" = {
       direction                  = "Inbound"
@@ -365,9 +365,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1858"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_1858_In_3" = {
       direction                  = "Inbound"
@@ -376,9 +376,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1858"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_3389_In" = {
       direction                  = "Inbound"
@@ -387,9 +387,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["3389"]
-      source_address_prefix      = "10.111.19.208/32"
+      source_address_prefixes      = ["10.111.19.208/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_3389_In_1" = {
       direction                  = "Inbound"
@@ -398,9 +398,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["3389"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_3389_In_2" = {
       direction                  = "Inbound"
@@ -409,9 +409,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["3389"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_3389_In_3" = {
       direction                  = "Inbound"
@@ -420,9 +420,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["3389"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_5500_In" = {
       direction                  = "Inbound"
@@ -431,9 +431,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5500"]
-      source_address_prefix      = "10.111.19.208/32"
+      source_address_prefixes      = ["10.111.19.208/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_5500_In_1" = {
       direction                  = "Inbound"
@@ -442,9 +442,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5500"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_5500_In_2" = {
       direction                  = "Inbound"
@@ -453,9 +453,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5500"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_5500_In_3" = {
       direction                  = "Inbound"
@@ -464,9 +464,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5500"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_49152to65535_In" = {
       direction                  = "Inbound"
@@ -475,9 +475,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["49152-65535"]
-      source_address_prefix      = "10.111.19.208/32"
+      source_address_prefixes      = ["10.111.19.208/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_49152to65535_In_1" = {
       direction                  = "Inbound"
@@ -486,9 +486,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["49152-65535"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_49152to65535_In_2" = {
       direction                  = "Inbound"
@@ -497,9 +497,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["49152-65535"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_49152to65535_In_3" = {
       direction                  = "Inbound"
@@ -508,9 +508,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["49152-65535"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_49152to65535_In_4" = {
       direction                  = "Inbound"
@@ -519,9 +519,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["49152-65535"]
-      source_address_prefix      = "10.71.44.0/24"
+      source_address_prefixes      = ["10.71.44.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_49152to65535_In_5" = {
       direction                  = "Inbound"
@@ -530,9 +530,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["49152-65535"]
-      source_address_prefix      = "10.72.44.0/24"
+      source_address_prefixes      = ["10.72.44.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_52731_In" = {
       direction                  = "Inbound"
@@ -541,9 +541,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.111.19.208/32"
+      source_address_prefixes      = ["10.111.19.208/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_52731_In_1" = {
       direction                  = "Inbound"
@@ -552,9 +552,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_52731_In_2" = {
       direction                  = "Inbound"
@@ -563,9 +563,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_52731_In_3" = {
       direction                  = "Inbound"
@@ -574,9 +574,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_52731_In_4" = {
       direction                  = "Inbound"
@@ -585,9 +585,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.71.44.0/24"
+      source_address_prefixes      = ["10.71.44.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_TCP_52731_In_5" = {
       direction                  = "Inbound"
@@ -596,9 +596,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.72.44.0/24"
+      source_address_prefixes      = ["10.72.44.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_UDP_1813_In" = {
       direction                  = "Inbound"
@@ -607,9 +607,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1813"]
-      source_address_prefix      = "10.111.19.208/32"
+      source_address_prefixes      = ["10.111.19.208/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_UDP_1813_In_1" = {
       direction                  = "Inbound"
@@ -618,9 +618,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1813"]
-      source_address_prefix      = "10.111.88.0/24"
+      source_address_prefixes      = ["10.111.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_UDP_1813_In_2" = {
       direction                  = "Inbound"
@@ -629,9 +629,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1813"]
-      source_address_prefix      = "10.211.19.155/32"
+      source_address_prefixes      = ["10.211.19.155/32"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
     "Allow_MultiService_Two_UDP_1813_In_3" = {
       direction                  = "Inbound"
@@ -640,9 +640,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1813"]
-      source_address_prefix      = "10.211.88.0/24"
+      source_address_prefixes      = ["10.211.88.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 04 - Multi-Service Rule."
+      description                = "Ingress from Multi-Service servers."
     }
   }
     # Region-01 only (eastus)
@@ -656,9 +656,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["3306"]
-      #   source_address_prefix      = "192.168.1.0/24"
+      #   source_address_prefixes      = ["192.168.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 04 - Multi-Service Rule."
+      #   description                = "Ingress from Multi-Service servers."
       # }
   }
     # Region-02 only (northcentralus)
@@ -672,9 +672,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["8080"]
-      #   source_address_prefix      = "10.1.1.0/24"
+      #   source_address_prefixes      = ["10.1.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 04 - Multi-Service Rule."
+      #   description                = "Ingress from Multi-Service servers."
       # }
   }
   enterprise_multi_service_two_rules = merge(

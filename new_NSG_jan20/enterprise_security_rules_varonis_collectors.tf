@@ -13,9 +13,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
-      source_address_prefix      = "10.111.19.0/24"
+      source_address_prefixes      = ["10.111.19.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_22_In_1" = {
       direction                  = "Inbound"
@@ -24,9 +24,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["22"]
-      source_address_prefix      = "10.112.1.153/32"
+      source_address_prefixes      = ["10.112.1.153/32"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_80_In" = {
       direction                  = "Inbound"
@@ -35,9 +35,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["80"]
-      source_address_prefix      = "10.111.19.0/24"
+      source_address_prefixes      = ["10.111.19.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_80_In_1" = {
       direction                  = "Inbound"
@@ -46,9 +46,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["80"]
-      source_address_prefix      = "10.112.1.153/32"
+      source_address_prefixes      = ["10.112.1.153/32"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_111_In" = {
       direction                  = "Inbound"
@@ -57,9 +57,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["111"]
-      source_address_prefix      = "10.111.19.0/24"
+      source_address_prefixes      = ["10.111.19.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_111_In_1" = {
       direction                  = "Inbound"
@@ -68,9 +68,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["111"]
-      source_address_prefix      = "10.112.1.153/32"
+      source_address_prefixes      = ["10.112.1.153/32"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_137to139_In" = {
       direction                  = "Inbound"
@@ -79,9 +79,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["137-139"]
-      source_address_prefix      = "10.111.19.0/24"
+      source_address_prefixes      = ["10.111.19.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_137to139_In_1" = {
       direction                  = "Inbound"
@@ -90,9 +90,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["137-139"]
-      source_address_prefix      = "10.112.1.153/32"
+      source_address_prefixes      = ["10.112.1.153/32"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_445_In" = {
       direction                  = "Inbound"
@@ -101,9 +101,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
-      source_address_prefix      = "10.111.19.0/24"
+      source_address_prefixes      = ["10.111.19.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_445_In_1" = {
       direction                  = "Inbound"
@@ -112,9 +112,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["445"]
-      source_address_prefix      = "10.112.1.153/32"
+      source_address_prefixes      = ["10.112.1.153/32"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_2049_In" = {
       direction                  = "Inbound"
@@ -123,9 +123,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["2049"]
-      source_address_prefix      = "10.111.19.0/24"
+      source_address_prefixes      = ["10.111.19.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_2049_In_1" = {
       direction                  = "Inbound"
@@ -134,9 +134,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["2049"]
-      source_address_prefix      = "10.112.1.153/32"
+      source_address_prefixes      = ["10.112.1.153/32"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_4972to4973_In" = {
       direction                  = "Inbound"
@@ -145,9 +145,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["4972-4973"]
-      source_address_prefix      = "10.111.19.0/24"
+      source_address_prefixes      = ["10.111.19.0/24"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
     "Allow_VaronisCollectors_TCP_4972to4973_In_1" = {
       direction                  = "Inbound"
@@ -156,9 +156,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["4972-4973"]
-      source_address_prefix      = "10.112.1.153/32"
+      source_address_prefixes      = ["10.112.1.153/32"]
       destination_address_prefix = "*"
-      description                = "ESR 13 - Varonis Collectors Rule."
+      description                = "Ingress from Varonis Collectors servers."
     }
   }
     # Region-01 only (eastus)
@@ -172,9 +172,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["3306"]
-      #   source_address_prefix      = "192.168.1.0/24"
+      #   source_address_prefixes      = ["192.168.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 13 - Varonis Collectors Rule."
+      #   description                = "Ingress from Varonis Collectors servers."
       # }
   }
     # Region-02 only (northcentralus)
@@ -188,9 +188,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["8080"]
-      #   source_address_prefix      = "10.1.1.0/24"
+      #   source_address_prefixes      = ["10.1.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 13 - Varonis Collectors Rule."
+      #   description                = "Ingress from Varonis Collectors servers."
       # }
   }
   enterprise_varonis_collectors_rules = merge(

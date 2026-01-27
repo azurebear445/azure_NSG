@@ -13,9 +13,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["12800-12801"]
-      source_address_prefix      = "10.111.51.0/27"
+      source_address_prefixes      = ["10.111.51.0/27"]
       destination_address_prefix = "*"
-      description                = "ESR 06 - Rubrik Backup Rule."
+      description                = "Ingress from Rubrik Backup servers."
     }
     "Allow_RubrikBackup_TCP_12800to12801_In_1" = {
       direction                  = "Inbound"
@@ -24,9 +24,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["12800-12801"]
-      source_address_prefix      = "10.111.51.128/27"
+      source_address_prefixes      = ["10.111.51.128/27"]
       destination_address_prefix = "*"
-      description                = "ESR 06 - Rubrik Backup Rule."
+      description                = "Ingress from Rubrik Backup servers."
     }
     "Allow_RubrikBackup_All_AllPorts_Out" = {
       direction                  = "Outbound"
@@ -35,9 +35,9 @@ locals {
       protocol                   = "*"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
-      source_address_prefix      = "*"
+      source_address_prefixes      = ["*"]
       destination_address_prefix = "0.0.0.0/0"
-      description                = "ESR 06 - Rubrik Backup Rule."
+      description                = "Egress to Rubrik Backup servers."
     }
   }
     # Region-01 only (eastus)
@@ -51,9 +51,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["3306"]
-      #   source_address_prefix      = "192.168.1.0/24"
+      #   source_address_prefixes      = ["192.168.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 06 - Rubrik Backup Rule."
+      #   description                = "Ingress from Rubrik Backup servers."
       # }
   }
     # Region-02 only (northcentralus)
@@ -67,9 +67,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["8080"]
-      #   source_address_prefix      = "10.1.1.0/24"
+      #   source_address_prefixes      = ["10.1.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 06 - Rubrik Backup Rule."
+      #   description                = "Ingress from Rubrik Backup servers."
       # }
   }
   enterprise_rubrik_backup_rules = merge(

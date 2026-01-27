@@ -13,9 +13,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["80"]
-      source_address_prefix      = "10.111.124.135/32"
+      source_address_prefixes      = ["10.111.124.135/32"]
       destination_address_prefix = "*"
-      description                = "ESR 11 - Citrix Rule."
+      description                = "Ingress from Citrix servers."
     }
     "Allow_Citrix_TCP_80_In_1" = {
       direction                  = "Inbound"
@@ -24,9 +24,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["80"]
-      source_address_prefix      = "10.111.124.176/32"
+      source_address_prefixes      = ["10.111.124.176/32"]
       destination_address_prefix = "*"
-      description                = "ESR 11 - Citrix Rule."
+      description                = "Ingress from Citrix servers."
     }
     "Allow_Citrix_TCP_80_In_2" = {
       direction                  = "Inbound"
@@ -35,9 +35,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["80"]
-      source_address_prefix      = "10.120.191.8/32"
+      source_address_prefixes      = ["10.120.191.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 11 - Citrix Rule."
+      description                = "Ingress from Citrix servers."
     }
     "Allow_Citrix_TCP_80_In_3" = {
       direction                  = "Inbound"
@@ -46,9 +46,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["80"]
-      source_address_prefix      = "10.120.191.9/32"
+      source_address_prefixes      = ["10.120.191.9/32"]
       destination_address_prefix = "*"
-      description                = "ESR 11 - Citrix Rule."
+      description                = "Ingress from Citrix servers."
     }
     "Allow_Citrix_TCP_1494_In" = {
       direction                  = "Inbound"
@@ -57,9 +57,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1494"]
-      source_address_prefix      = "10.0.0.0/8"
+      source_address_prefixes      = ["10.0.0.0/8"]
       destination_address_prefix = "*"
-      description                = "ESR 11 - Citrix Rule."
+      description                = "Ingress from Citrix servers."
     }
     "Allow_Citrix_TCP_2598_In" = {
       direction                  = "Inbound"
@@ -68,9 +68,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["2598"]
-      source_address_prefix      = "10.0.0.0/8"
+      source_address_prefixes      = ["10.0.0.0/8"]
       destination_address_prefix = "*"
-      description                = "ESR 11 - Citrix Rule."
+      description                = "Ingress from Citrix servers."
     }
     "Allow_Citrix_TCP_8008_In" = {
       direction                  = "Inbound"
@@ -79,9 +79,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["8008"]
-      source_address_prefix      = "10.0.0.0/8"
+      source_address_prefixes      = ["10.0.0.0/8"]
       destination_address_prefix = "*"
-      description                = "ESR 11 - Citrix Rule."
+      description                = "Ingress from Citrix servers."
     }
     "Allow_Citrix_TCP_9988_In" = {
       direction                  = "Inbound"
@@ -90,9 +90,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["9988"]
-      source_address_prefix      = "10.0.0.0/8"
+      source_address_prefixes      = ["10.0.0.0/8"]
       destination_address_prefix = "*"
-      description                = "ESR 11 - Citrix Rule."
+      description                = "Ingress from Citrix servers."
     }
     "Allow_Citrix_UDP_1494_In" = {
       direction                  = "Inbound"
@@ -101,9 +101,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1494"]
-      source_address_prefix      = "10.0.0.0/8"
+      source_address_prefixes      = ["10.0.0.0/8"]
       destination_address_prefix = "*"
-      description                = "ESR 11 - Citrix Rule."
+      description                = "Ingress from Citrix servers."
     }
     "Allow_Citrix_UDP_2598_In" = {
       direction                  = "Inbound"
@@ -112,9 +112,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["2598"]
-      source_address_prefix      = "10.0.0.0/8"
+      source_address_prefixes      = ["10.0.0.0/8"]
       destination_address_prefix = "*"
-      description                = "ESR 11 - Citrix Rule."
+      description                = "Ingress from Citrix servers."
     }
     "Allow_Citrix_UDP_9988_In" = {
       direction                  = "Inbound"
@@ -123,9 +123,9 @@ locals {
       protocol                   = "Udp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["9988"]
-      source_address_prefix      = "10.0.0.0/8"
+      source_address_prefixes      = ["10.0.0.0/8"]
       destination_address_prefix = "*"
-      description                = "ESR 11 - Citrix Rule."
+      description                = "Ingress from Citrix servers."
     }
   }
     # Region-01 only (eastus)
@@ -138,9 +138,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["5985"]
-      #   source_address_prefix      = "10.120.191.12/32"
+      #   source_address_prefixes      = ["10.120.191.12/32"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 11 - Citrix Rule."
+      #   description                = "Ingress from Citrix servers."
       # }
   }
     # Region-02 only (northcentralus)
@@ -154,9 +154,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["8080"]
-      #   source_address_prefix      = "10.1.1.0/24"
+      #   source_address_prefixes      = ["10.1.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 11 - Citrix Rule."
+      #   description                = "Ingress from Citrix servers."
       # }
   }
   enterprise_citrix_rules = merge(

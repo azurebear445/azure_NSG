@@ -13,9 +13,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.111.14.6/32"
+      source_address_prefixes      = ["10.111.14.6/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_135_In_1" = {
       direction                  = "Inbound"
@@ -24,9 +24,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.111.26.8/32"
+      source_address_prefixes      = ["10.111.26.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_135_In_2" = {
       direction                  = "Inbound"
@@ -35,9 +35,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.111.41.145/32"
+      source_address_prefixes      = ["10.111.41.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_135_In_3" = {
       direction                  = "Inbound"
@@ -46,9 +46,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["135"]
-      source_address_prefix      = "10.111.71.30/32"
+      source_address_prefixes      = ["10.111.71.30/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_1024to65535_In" = {
       direction                  = "Inbound"
@@ -57,9 +57,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1024-65535"]
-      source_address_prefix      = "10.111.14.6/32"
+      source_address_prefixes      = ["10.111.14.6/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_1024to65535_In_1" = {
       direction                  = "Inbound"
@@ -68,9 +68,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1024-65535"]
-      source_address_prefix      = "10.111.26.8/32"
+      source_address_prefixes      = ["10.111.26.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_1024to65535_In_2" = {
       direction                  = "Inbound"
@@ -79,9 +79,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1024-65535"]
-      source_address_prefix      = "10.111.41.145/32"
+      source_address_prefixes      = ["10.111.41.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_1024to65535_In_3" = {
       direction                  = "Inbound"
@@ -90,9 +90,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1024-65535"]
-      source_address_prefix      = "10.111.71.30/32"
+      source_address_prefixes      = ["10.111.71.30/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_1433_In" = {
       direction                  = "Inbound"
@@ -101,9 +101,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.111.14.6/32"
+      source_address_prefixes      = ["10.111.14.6/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_1433_In_1" = {
       direction                  = "Inbound"
@@ -112,9 +112,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.111.26.8/32"
+      source_address_prefixes      = ["10.111.26.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_1433_In_2" = {
       direction                  = "Inbound"
@@ -123,9 +123,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.111.41.145/32"
+      source_address_prefixes      = ["10.111.41.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_1433_In_3" = {
       direction                  = "Inbound"
@@ -134,9 +134,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["1433"]
-      source_address_prefix      = "10.111.71.30/32"
+      source_address_prefixes      = ["10.111.71.30/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5166_In" = {
       direction                  = "Inbound"
@@ -145,9 +145,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5166"]
-      source_address_prefix      = "10.111.14.6/32"
+      source_address_prefixes      = ["10.111.14.6/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5166_In_1" = {
       direction                  = "Inbound"
@@ -156,9 +156,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5166"]
-      source_address_prefix      = "10.111.26.8/32"
+      source_address_prefixes      = ["10.111.26.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5166_In_2" = {
       direction                  = "Inbound"
@@ -167,9 +167,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5166"]
-      source_address_prefix      = "10.111.41.145/32"
+      source_address_prefixes      = ["10.111.41.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5166_In_3" = {
       direction                  = "Inbound"
@@ -178,9 +178,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5166"]
-      source_address_prefix      = "10.111.71.30/32"
+      source_address_prefixes      = ["10.111.71.30/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5167_In" = {
       direction                  = "Inbound"
@@ -189,9 +189,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5167"]
-      source_address_prefix      = "10.111.14.6/32"
+      source_address_prefixes      = ["10.111.14.6/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5167_In_1" = {
       direction                  = "Inbound"
@@ -200,9 +200,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5167"]
-      source_address_prefix      = "10.111.26.8/32"
+      source_address_prefixes      = ["10.111.26.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5167_In_2" = {
       direction                  = "Inbound"
@@ -211,9 +211,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5167"]
-      source_address_prefix      = "10.111.41.145/32"
+      source_address_prefixes      = ["10.111.41.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5167_In_3" = {
       direction                  = "Inbound"
@@ -222,9 +222,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5167"]
-      source_address_prefix      = "10.111.71.30/32"
+      source_address_prefixes      = ["10.111.71.30/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5169_In" = {
       direction                  = "Inbound"
@@ -233,9 +233,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5169"]
-      source_address_prefix      = "10.111.14.6/32"
+      source_address_prefixes      = ["10.111.14.6/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5169_In_1" = {
       direction                  = "Inbound"
@@ -244,9 +244,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5169"]
-      source_address_prefix      = "10.111.26.8/32"
+      source_address_prefixes      = ["10.111.26.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5169_In_2" = {
       direction                  = "Inbound"
@@ -255,9 +255,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5169"]
-      source_address_prefix      = "10.111.41.145/32"
+      source_address_prefixes      = ["10.111.41.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5169_In_3" = {
       direction                  = "Inbound"
@@ -266,9 +266,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5169"]
-      source_address_prefix      = "10.111.71.30/32"
+      source_address_prefixes      = ["10.111.71.30/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5200_In" = {
       direction                  = "Inbound"
@@ -277,9 +277,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5200"]
-      source_address_prefix      = "10.111.14.6/32"
+      source_address_prefixes      = ["10.111.14.6/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5200_In_1" = {
       direction                  = "Inbound"
@@ -288,9 +288,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5200"]
-      source_address_prefix      = "10.111.26.8/32"
+      source_address_prefixes      = ["10.111.26.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5200_In_2" = {
       direction                  = "Inbound"
@@ -299,9 +299,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5200"]
-      source_address_prefix      = "10.111.41.145/32"
+      source_address_prefixes      = ["10.111.41.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5200_In_3" = {
       direction                  = "Inbound"
@@ -310,9 +310,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5200"]
-      source_address_prefix      = "10.111.71.30/32"
+      source_address_prefixes      = ["10.111.71.30/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5201_In" = {
       direction                  = "Inbound"
@@ -321,9 +321,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5201"]
-      source_address_prefix      = "10.111.14.6/32"
+      source_address_prefixes      = ["10.111.14.6/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5201_In_1" = {
       direction                  = "Inbound"
@@ -332,9 +332,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5201"]
-      source_address_prefix      = "10.111.26.8/32"
+      source_address_prefixes      = ["10.111.26.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5201_In_2" = {
       direction                  = "Inbound"
@@ -343,9 +343,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5201"]
-      source_address_prefix      = "10.111.41.145/32"
+      source_address_prefixes      = ["10.111.41.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_5201_In_3" = {
       direction                  = "Inbound"
@@ -354,9 +354,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["5201"]
-      source_address_prefix      = "10.111.71.30/32"
+      source_address_prefixes      = ["10.111.71.30/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_49152to65535_In" = {
       direction                  = "Inbound"
@@ -365,9 +365,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["49152-65535"]
-      source_address_prefix      = "10.111.14.6/32"
+      source_address_prefixes      = ["10.111.14.6/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_49152to65535_In_1" = {
       direction                  = "Inbound"
@@ -376,9 +376,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["49152-65535"]
-      source_address_prefix      = "10.111.26.8/32"
+      source_address_prefixes      = ["10.111.26.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_49152to65535_In_2" = {
       direction                  = "Inbound"
@@ -387,9 +387,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["49152-65535"]
-      source_address_prefix      = "10.111.41.145/32"
+      source_address_prefixes      = ["10.111.41.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_49152to65535_In_3" = {
       direction                  = "Inbound"
@@ -398,9 +398,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["49152-65535"]
-      source_address_prefix      = "10.111.71.30/32"
+      source_address_prefixes      = ["10.111.71.30/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_52731_In" = {
       direction                  = "Inbound"
@@ -409,9 +409,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.111.14.6/32"
+      source_address_prefixes      = ["10.111.14.6/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_52731_In_1" = {
       direction                  = "Inbound"
@@ -420,9 +420,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.111.26.8/32"
+      source_address_prefixes      = ["10.111.26.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_52731_In_2" = {
       direction                  = "Inbound"
@@ -431,9 +431,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.111.41.145/32"
+      source_address_prefixes      = ["10.111.41.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_TCP_52731_In_3" = {
       direction                  = "Inbound"
@@ -442,9 +442,9 @@ locals {
       protocol                   = "Tcp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["52731"]
-      source_address_prefix      = "10.111.71.30/32"
+      source_address_prefixes      = ["10.111.71.30/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_ICMP_AllPorts_In" = {
       direction                  = "Inbound"
@@ -453,9 +453,9 @@ locals {
       protocol                   = "Icmp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
-      source_address_prefix      = "10.111.14.6/32"
+      source_address_prefixes      = ["10.111.14.6/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_ICMP_AllPorts_In_1" = {
       direction                  = "Inbound"
@@ -464,9 +464,9 @@ locals {
       protocol                   = "Icmp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
-      source_address_prefix      = "10.111.26.8/32"
+      source_address_prefixes      = ["10.111.26.8/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_ICMP_AllPorts_In_2" = {
       direction                  = "Inbound"
@@ -475,9 +475,9 @@ locals {
       protocol                   = "Icmp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
-      source_address_prefix      = "10.111.41.145/32"
+      source_address_prefixes      = ["10.111.41.145/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
     "Allow_IderaMonitoring_ICMP_AllPorts_In_3" = {
       direction                  = "Inbound"
@@ -486,9 +486,9 @@ locals {
       protocol                   = "Icmp"
       source_port_ranges          = ["*"]
       destination_port_ranges     = ["*"]
-      source_address_prefix      = "10.111.71.30/32"
+      source_address_prefixes      = ["10.111.71.30/32"]
       destination_address_prefix = "*"
-      description                = "ESR 09 - Idera Monitoring Rule."
+      description                = "Ingress from Idera Monitoring servers."
     }
   }
     # Region-01 only (eastus)
@@ -502,9 +502,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["3306"]
-      #   source_address_prefix      = "192.168.1.0/24"
+      #   source_address_prefixes      = ["192.168.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 09 - Idera Monitoring Rule."
+      #   description                = "Ingress from Idera Monitoring servers."
       # }
   }
     # Region-02 only (northcentralus)
@@ -518,9 +518,9 @@ locals {
       #   protocol                   = "Tcp"
       #   source_port_ranges          = ["*"]
       #   destination_port_ranges     = ["8080"]
-      #   source_address_prefix      = "10.1.1.0/24"
+      #   source_address_prefixes      = ["10.1.1.0/24"]
       #   destination_address_prefix = "*"
-      #   description                = "ESR 09 - Idera Monitoring Rule."
+      #   description                = "Ingress from Idera Monitoring servers."
       # }
   }
   enterprise_idera_monitoring_rules = merge(
