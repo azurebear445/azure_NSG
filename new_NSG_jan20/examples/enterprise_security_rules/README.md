@@ -2,7 +2,7 @@
 
 This example demonstrates usage of the Network Security Group module with all opt-in enterprise rule files enabled.
 
-```hcl
+```terraform
 module "resource_group" {
   source = "../../../."
 
