@@ -10,7 +10,6 @@ module "resource_group" {
     architecture       = "native"
     owner              = "cloudoperations@websterbank.com"
     purpose            = "Used to test the Terraform Resource Group Module."
-    repo               = "azprodlz-infrall-shared"
     terraform_resource = "true"
   }
 }
@@ -43,7 +42,6 @@ module "enterprise_rules_nsg" {
     architecture       = "native"
     owner              = "cloudoperations@websterbank.com"
     purpose            = "Used to test the Terraform Network Security Group Module."
-    repo               = "azprodlz-infrall-shared"
     terraform_resource = "true"
   }
 }
