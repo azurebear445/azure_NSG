@@ -1,18 +1,13 @@
 locals {
   # Region Configuration
-  location = {
-    eastus         = "eastus"
-    northcentralus = "ncus"
-  }
+  location = var.location == "eastus" ? var.location : "ncus"
 
-  region_eastus_locations         = ["eastus"]
-  region_northcentralus_locations = ["northcentralus"]
-  is_region_eastus                = contains(local.region_eastus_locations, var.location)
-  is_region_northcentralus        = contains(local.region_northcentralus_locations, var.location)
+  is_region_eastus         = var.location == "eastus"
+  is_region_northcentralus = var.location == "northcentralus"
 
   # Enterprise Security Rules - Conditional merge
   all_enterprise_rules = merge(
-    var.enable_enterprise_security_rules ? merge(
+    var.enable_default_enterprise_security_rules ? merge(
       local.enterprise_servicenow_rules,
       local.enterprise_solarwinds_rules,
       local.enterprise_multi_service_one_rules,
@@ -31,47 +26,41 @@ locals {
 
   # User-Defined Rules Processing
 
-  # Flatten ingress rules from CIDRs for ICMP
-  ingress_rules_from_cidrs_icmp = flatten([
-    for port, rule in try(var.ingress_rules["from_cidrs"]["icmp"], {}) : [
-      for cidr in rule["cidrs"] : {
-        key                        = "${port}-icmp-${replace(cidr, "/", "-")}"
-        protocol                   = rule["protocol"]
-        from_port                  = tonumber(port)
-        to_port                    = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
-        source_address_prefix      = cidr
-        destination_address_prefix = "*"
-      }
-    ]
-  ])
+  # Ingress rules from CIDRs for ICMP - consolidated by port
+  ingress_rules_from_cidrs_icmp = [
+    for port, rule in try(var.ingress_rules["from_cidrs"]["icmp"], {}) : {
+      key                        = "${port}-icmp"
+      protocol                   = rule["protocol"]
+      from_port                  = tonumber(port)
+      to_port                    = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
+      source_address_prefixes    = rule["cidrs"]
+      destination_address_prefix = "*"
+    }
+  ]
 
-  # Flatten ingress rules from CIDRs for TCP
-  ingress_rules_from_cidrs_tcp = flatten([
-    for port, rule in try(var.ingress_rules["from_cidrs"]["tcp"], {}) : [
-      for cidr in rule["cidrs"] : {
-        key                        = "${port}-tcp-${replace(cidr, "/", "-")}"
-        protocol                   = rule["protocol"]
-        from_port                  = tonumber(port)
-        to_port                    = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
-        source_address_prefix      = cidr
-        destination_address_prefix = "*"
-      }
-    ]
-  ])
+  # Ingress rules from CIDRs for TCP - consolidated by port
+  ingress_rules_from_cidrs_tcp = [
+    for port, rule in try(var.ingress_rules["from_cidrs"]["tcp"], {}) : {
+      key                        = "${port}-tcp"
+      protocol                   = rule["protocol"]
+      from_port                  = tonumber(port)
+      to_port                    = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
+      source_address_prefixes    = rule["cidrs"]
+      destination_address_prefix = "*"
+    }
+  ]
 
-  # Flatten ingress rules from CIDRs for UDP
-  ingress_rules_from_cidrs_udp = flatten([
-    for port, rule in try(var.ingress_rules["from_cidrs"]["udp"], {}) : [
-      for cidr in rule["cidrs"] : {
-        key                        = "${port}-udp-${replace(cidr, "/", "-")}"
-        protocol                   = rule["protocol"]
-        from_port                  = tonumber(port)
-        to_port                    = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
-        source_address_prefix      = cidr
-        destination_address_prefix = "*"
-      }
-    ]
-  ])
+  # Ingress rules from CIDRs for UDP - consolidated by port
+  ingress_rules_from_cidrs_udp = [
+    for port, rule in try(var.ingress_rules["from_cidrs"]["udp"], {}) : {
+      key                        = "${port}-udp"
+      protocol                   = rule["protocol"]
+      from_port                  = tonumber(port)
+      to_port                    = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
+      source_address_prefixes    = rule["cidrs"]
+      destination_address_prefix = "*"
+    }
+  ]
 
   # Flatten ingress rules from ASGs for TCP
   ingress_rules_from_asgs_tcp = flatten([
@@ -101,47 +90,41 @@ locals {
     ]
   ])
 
-  # Flatten egress rules to CIDRs for ICMP
-  egress_rules_to_cidrs_icmp = try(var.egress_rules["to_cidrs"]["icmp"] != null ? flatten([
-    for port, rule in var.egress_rules["to_cidrs"]["icmp"] : [
-      for cidr in rule["cidrs"] : {
-        key                        = "egress-${port}-icmp-${replace(cidr, "/", "-")}"
-        protocol                   = "Icmp"
-        from_port                  = 0
-        to_port                    = 0
-        source_address_prefix      = "*"
-        destination_address_prefix = cidr
-      }
-    ]
-  ]) : [], [])
+  # Egress rules to CIDRs for ICMP - consolidated by port
+  egress_rules_to_cidrs_icmp = [
+    for port, rule in try(var.egress_rules["to_cidrs"]["icmp"], {}) : {
+      key                         = "egress-${port}-icmp"
+      protocol                    = "Icmp"
+      from_port                   = 0
+      to_port                     = 0
+      source_address_prefix       = "*"
+      destination_address_prefixes = rule["cidrs"]
+    }
+  ]
 
-  # Flatten egress rules to CIDRs for TCP
-  egress_rules_to_cidrs_tcp = try(var.egress_rules["to_cidrs"]["tcp"] != null ? flatten([
-    for port, rule in var.egress_rules["to_cidrs"]["tcp"] : [
-      for cidr in rule["cidrs"] : {
-        key                        = "egress-${port}-tcp-${replace(cidr, "/", "-")}"
-        protocol                   = "Tcp"
-        from_port                  = tonumber(port)
-        to_port                    = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
-        source_address_prefix      = "*"
-        destination_address_prefix = cidr
-      }
-    ]
-  ]) : [], [])
+  # Egress rules to CIDRs for TCP - consolidated by port
+  egress_rules_to_cidrs_tcp = [
+    for port, rule in try(var.egress_rules["to_cidrs"]["tcp"], {}) : {
+      key                         = "egress-${port}-tcp"
+      protocol                    = "Tcp"
+      from_port                   = tonumber(port)
+      to_port                     = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
+      source_address_prefix       = "*"
+      destination_address_prefixes = rule["cidrs"]
+    }
+  ]
 
-  # Flatten egress rules to CIDRs for UDP
-  egress_rules_to_cidrs_udp = try(var.egress_rules["to_cidrs"]["udp"] != null ? flatten([
-    for port, rule in var.egress_rules["to_cidrs"]["udp"] : [
-      for cidr in rule["cidrs"] : {
-        key                        = "egress-${port}-udp-${replace(cidr, "/", "-")}"
-        protocol                   = "Udp"
-        from_port                  = tonumber(port)
-        to_port                    = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
-        source_address_prefix      = "*"
-        destination_address_prefix = cidr
-      }
-    ]
-  ]) : [], [])
+  # Egress rules to CIDRs for UDP - consolidated by port
+  egress_rules_to_cidrs_udp = [
+    for port, rule in try(var.egress_rules["to_cidrs"]["udp"], {}) : {
+      key                         = "egress-${port}-udp"
+      protocol                    = "Udp"
+      from_port                   = tonumber(port)
+      to_port                     = rule["to_port"] != null ? rule["to_port"] : tonumber(port)
+      source_address_prefix       = "*"
+      destination_address_prefixes = rule["cidrs"]
+    }
+  ]
 
   # Flatten egress rules to ASGs for TCP
   egress_rules_to_asgs_tcp = flatten([
@@ -263,19 +246,4 @@ locals {
       priority  = 2400 + idx
     })
   }
-
-  # Any egress rule
-  any_egress_rule = var.enable_any_egress ? {
-    "allow-any-egress" = {
-      key                        = "allow-any-egress"
-      protocol                   = "*"
-      from_port                  = 0
-      to_port                    = 0
-      source_address_prefix      = "*"
-      destination_address_prefix = "*"
-      direction                  = "Outbound"
-      access                     = "Allow"
-      priority                   = 2500
-    }
-  } : {}
 }

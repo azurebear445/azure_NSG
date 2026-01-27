@@ -51,7 +51,7 @@ variable "enable_db_admin_access" {
   default     = false
 }
 
-variable "enable_enterprise_security_rules" {
+variable "enable_default_enterprise_security_rules" {
   type        = bool
   description = "If set to false, disables the standard set of Enterprise Security rules."
   default     = true
@@ -143,7 +143,7 @@ variable "ingress_rules" {
 
 variable "location" {
   type        = string
-  description = "Azure location for the NSG."
+  description = "Region to create resources in. Must be one of: eastus, northcentralus."
 
   validation {
     condition = (
@@ -184,27 +184,24 @@ variable "tags" {
     owner                     = string
     project                   = optional(string)
     purpose                   = string
-    repo                      = optional(string)
-    serviceid                 = optional(string)
     tag_formatting_exceptions = optional(list(string), [])
     terraform_resource        = string
   })
-  description = "Map of tags to apply to module resources. Must include architecture, owner, purpose, terraform_resource, and one of appid|appgid|project|serviceid."
+  description = "Map of tags to apply to module resources. Must include architecture, owner, purpose, terraform_resource, and one of appid|appgid|project."
 
   validation {
     condition = (
       (
         var.tags["appid"] != null ||
         var.tags["appgid"] != null ||
-        var.tags["project"] != null ||
-        var.tags["serviceid"] != null
+        var.tags["project"] != null
       ) &&
       alltrue([
         for k, v in var.tags : can(regex("^[-@.a-z0-9_]+$", v)) || v == null || contains(var.tags["tag_formatting_exceptions"], k)
         if k != "purpose" && k != "tag_formatting_exceptions" && k != "custom_tags"
       ])
     )
-    error_message = "The keys in the tags map must include: architecture, owner, purpose, terraform_resource, and one of appid|appgid|project|serviceid. Values for tags other than \"purpose\" must be all lowercase and use underscores."
+    error_message = "The keys in the tags map must include: architecture, owner, purpose, terraform_resource, and one of appid|appgid|project. Values for tags other than \"purpose\" must be all lowercase and use underscores."
   }
 
   validation {
