@@ -402,7 +402,7 @@ locals {
       source_address_prefixes        = ["10.111.14.232/32"]
       source_port_ranges             = ["*"]
     }
-    "Allow-SolarWinds_All_AllPorts" = {
+    "Allow-All_Egress" = {
       access                         = "Allow"
       description                    = "Egress to SolarWinds servers."
       destination_address_prefix     = "0.0.0.0/0"

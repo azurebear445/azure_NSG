@@ -6,7 +6,7 @@
 locals {
   # Common rules - Apply to all regions
   servicenow_common = var.enable_default_enterprise_security_rules ? {
-    "Allow-ServiceNow_All_AllPorts" = {
+    "Allow-All_Egress" = {
       access                         = "Allow"
       description                    = "Ingress from ServiceNow servers."
       destination_address_prefix     = "*"
@@ -259,7 +259,7 @@ locals {
       source_address_prefixes        = ["10.71.44.0/24", "10.72.44.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-ServiceNow_All_AllPorts" = {
+    "Allow-All_Egress" = {
       access                         = "Allow"
       description                    = "Egress to ServiceNow servers."
       destination_address_prefix     = "*"

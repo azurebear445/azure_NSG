@@ -6,7 +6,7 @@
 locals {
   # Common rules - Apply to all regions
   multi_service_two_common = var.enable_default_enterprise_security_rules ? {
-    "Allow-MultiService_TCP_22" = {
+    "Allow-MultiServiceTwo_TCP_22" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -17,7 +17,7 @@ locals {
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_TCP_135" = {
+    "Allow-MultiServiceTwo_TCP_135" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -28,7 +28,7 @@ locals {
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_TCP_139" = {
+    "Allow-MultiServiceTwo_TCP_139" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -39,7 +39,7 @@ locals {
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_TCP_443" = {
+    "Allow-MultiServiceTwo_TCP_443" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -50,7 +50,7 @@ locals {
       source_address_prefixes        = ["10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_TCP_445" = {
+    "Allow-MultiServiceTwo_TCP_445" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -61,7 +61,7 @@ locals {
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_TCP_636" = {
+    "Allow-MultiServiceTwo_TCP_636" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -72,7 +72,7 @@ locals {
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_TCP_1858" = {
+    "Allow-MultiServiceTwo_TCP_1858" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -83,7 +83,7 @@ locals {
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_TCP_3389" = {
+    "Allow-MultiServiceTwo_TCP_3389" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -94,7 +94,7 @@ locals {
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_TCP_5500" = {
+    "Allow-MultiServiceTwo_TCP_5500" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -105,7 +105,7 @@ locals {
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_TCP_52731" = {
+    "Allow-MultiServiceTwo_TCP_52731" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -116,7 +116,7 @@ locals {
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_TCP_49152-65535" = {
+    "Allow-MultiServiceTwo_TCP_49152-65535" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -127,7 +127,7 @@ locals {
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_UDP_1813" = {
+    "Allow-MultiServiceTwo_UDP_1813" = {
       access                         = "Allow"
       description                    = "Ingress from Multi-Service servers."
       destination_address_prefix     = "*"
@@ -138,7 +138,7 @@ locals {
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
       source_port_ranges             = ["*"]
     }
-    "Allow-MultiService_All_AllPorts" = {
+    "Allow-All_Egress" = {
       access                         = "Allow"
       description                    = "Egress to Multi-Service servers."
       destination_address_prefix     = "0.0.0.0/0"

@@ -61,7 +61,7 @@ locals {
       source_address_prefixes        = ["10.110.28.197/32", "10.110.28.214/32", "10.111.123.145/32", "10.111.123.182/32", "10.111.88.85/32", "10.211.123.156/32", "10.211.123.197/32", "10.211.88.4/32"]
       source_port_ranges             = ["*"]
     }
-    "Allow-DatabaseAdmin_All_AllPorts" = {
+    "Allow-All_Egress" = {
       access                         = "Allow"
       description                    = "Egress to Database Admin servers."
       destination_address_prefix     = "0.0.0.0/0"

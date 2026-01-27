@@ -17,7 +17,7 @@ locals {
       source_address_prefixes        = ["10.111.51.0/27", "10.111.51.128/27"]
       source_port_ranges             = ["*"]
     }
-    "Allow-RubrikBackup_All_AllPorts" = {
+    "Allow-All_Egress" = {
       access                         = "Allow"
       description                    = "Egress to Rubrik Backup servers."
       destination_address_prefix     = "0.0.0.0/0"
