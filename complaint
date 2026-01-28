@@ -171,3 +171,6 @@ You're right. Here's the corrected list (40 changes):
 
 
 sed -i 's/source_address_prefixes\s*=\s*\["0-65535"\]/source_address_prefixes = ["*"]/g' enterprise_security_rules_*.tf
+
+
+sed -i 's/source_port_ranges\s*=\s*\["0-65535"\]/source_port_range = "*"/g' *.tf
