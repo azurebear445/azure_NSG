@@ -152,3 +152,22 @@ You're right. Here's the corrected list (40 changes):
 | 38 | Update TCP/UDP user rules to use `_ranges` instead of `_range` |
 | 39 | Update enterprise rules to use `_ranges` for future flexibility |
 | 40 | Update `examples/default` with different /32 CIDRs for realistic examples |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sed -i 's/source_address_prefixes\s*=\s*\["0-65535"\]/source_address_prefixes = ["*"]/g' enterprise_security_rules_*.tf
