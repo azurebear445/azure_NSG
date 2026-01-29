@@ -177,3 +177,11 @@ sed -i 's/source_port_ranges\s*=\s*\["0-65535"\]/source_port_range = "*"/g' *.tf
 
 
 sed -i 's/source_port_ranges\s*=\s*\["\*"\]/source_port_range = "*"/g' main.tf
+
+
+
+# Enterprise Security Rules NSG Module Usage
+
+## Description
+
+Creates a Network Security Group with all Enterprise Security Rules enabled, including default rules (ServiceNow, SolarWinds, Multi-Service) and opt-in rules (Citrix, Database Admin, HSA Monitoring, Idera Monitoring, Rubrik Backup, SailPoint, Varonis Collectors).
