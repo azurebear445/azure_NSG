@@ -185,3 +185,6 @@ sed -i 's/source_port_ranges\s*=\s*\["\*"\]/source_port_range = "*"/g' main.tf
 ## Description
 
 Creates a Network Security Group with all Enterprise Security Rules enabled, including default rules (ServiceNow, SolarWinds, Multi-Service) and opt-in rules (Citrix, Database Admin, HSA Monitoring, Idera Monitoring, Rubrik Backup, SailPoint, Varonis Collectors).
+
+
+Terraform module to create Azure Network Security Groups with enterprise-managed rules and user-defined rules. It replicates AWS Enterprise Security Group functionality via variables. It tags resources that are created with environment, module_name, module_version, architecture, owner, purpose, terraform_resource, and one of appid|appgid|project.
