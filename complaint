@@ -188,3 +188,6 @@ Creates a Network Security Group with all Enterprise Security Rules enabled, inc
 
 
 Terraform module to create Azure Network Security Groups with enterprise-managed rules and user-defined rules. It replicates AWS Enterprise Security Group functionality via variables. It tags resources that are created with environment, module_name, module_version, architecture, owner, purpose, terraform_resource, and one of appid|appgid|project.
+
+
+"Checked - these CIDRs are unique to database_admin and not used in other ESR files. Also, different rules use different subsets of CIDRs (some use 9 IPs, some use 8 IPs, one uses 1 IP). Creating a local would add complexity without much reuse benefit. Happy to discuss if you prefer otherwise."
