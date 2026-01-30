@@ -193,3 +193,6 @@ Terraform module to create Azure Network Security Groups with enterprise-managed
 "Checked - these CIDRs are unique to database_admin and not used in other ESR files. Also, different rules use different subsets of CIDRs (some use 9 IPs, some use 8 IPs, one uses 1 IP). Creating a local would add complexity without much reuse benefit. Happy to discuss if you prefer otherwise."
 
 for_each = var.enable_any_egress ? toset(["enabled"]) : toset([])
+
+
+Refactored as suggested. CIDR rules now use direct for_each on the variable in the resource block - no intermediate locals processing. ASG rules still use locals for flattening since we need to split multiple ASG IDs into separate rules (Azure requirement).
