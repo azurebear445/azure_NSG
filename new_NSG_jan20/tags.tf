@@ -1,7 +1,4 @@
 locals {
-  module_name    = "terraform-azurerm-network_security_group"
-  module_version = "0.0.1"
-
   namespace = "${var.namespace}-${var.environment}-${local.location}"
 
   custom_tags = {

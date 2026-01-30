@@ -1,4 +1,8 @@
 locals {
+  # Module metadata
+  module_name    = "terraform-azurerm-network_security_group"
+  module_version = "0.0.1"
+
   # Region Configuration
   location = var.location == "eastus" ? var.location : "ncus"
 
