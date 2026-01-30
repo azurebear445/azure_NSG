@@ -1,4 +1,5 @@
 resource "random_id" "this" {
+  byte_length = 3
   keepers = {
     description         = local.tags["purpose"]
     environment         = var.environment
@@ -6,16 +7,13 @@ resource "random_id" "this" {
     namespace           = var.namespace
     resource_group_name = var.resource_group_name
   }
-
-  byte_length = 3
 }
 
 resource "azurerm_network_security_group" "this" {
-  name                = local.nsg_tags["Name"]
   location            = var.location
+  name                = local.nsg_tags["Name"]
   resource_group_name = var.resource_group_name
-
-  tags = local.nsg_tags
+  tags                = local.nsg_tags
 
   lifecycle {
     create_before_destroy = true
@@ -26,21 +24,18 @@ resource "azurerm_network_security_group" "this" {
 resource "azurerm_network_security_rule" "enterprise_rules" {
   for_each = local.all_enterprise_rules
 
+  access                      = each.value.access
+  description                 = each.value.description
+  destination_address_prefix  = each.value.destination_address_prefix
+  destination_port_ranges     = each.value.destination_port_ranges
+  direction                   = each.value.direction
   name                        = each.key
   network_security_group_name = azurerm_network_security_group.this.name
+  priority                    = each.value.priority
+  protocol                    = each.value.protocol
   resource_group_name         = var.resource_group_name
-
-  access    = each.value.access
-  direction = each.value.direction
-  priority  = each.value.priority
-  protocol  = each.value.protocol
-
-  destination_address_prefix = each.value.destination_address_prefix
-  destination_port_ranges    = each.value.destination_port_ranges
-  source_address_prefixes    = each.value.source_address_prefixes
-  source_port_range = each.value.source_port_range
-
-  description = each.value.description
+  source_address_prefixes     = each.value.source_address_prefixes
+  source_port_range           = each.value.source_port_range
 }
 
 # User-Defined Security Rules - Split by protocol/direction/type
@@ -51,74 +46,66 @@ resource "azurerm_network_security_rule" "enterprise_rules" {
 resource "azurerm_network_security_rule" "icmp_from_cidrs" {
   for_each = try(var.ingress_rules["from_cidrs"]["icmp"], {})
 
+  access                      = "Allow"
+  destination_address_prefix  = "*"
+  destination_port_range      = "*"
+  direction                   = "Inbound"
   name                        = "${each.key}-icmp"
   network_security_group_name = azurerm_network_security_group.this.name
+  priority                    = 1500 + index(keys(try(var.ingress_rules["from_cidrs"]["icmp"], {})), each.key)
+  protocol                    = each.value["protocol"]
   resource_group_name         = var.resource_group_name
-
-  access    = "Allow"
-  direction = "Inbound"
-  priority  = 1500 + index(keys(try(var.ingress_rules["from_cidrs"]["icmp"], {})), each.key)
-  protocol  = each.value["protocol"]
-
-  destination_address_prefix = "*"
-  destination_port_range     = "*"
-  source_address_prefixes    = each.value["cidrs"]
-  source_port_range          = "*"
+  source_address_prefixes     = each.value["cidrs"]
+  source_port_range           = "*"
 }
 
 # Ingress TCP from CIDRs
 resource "azurerm_network_security_rule" "tcp_from_cidrs" {
   for_each = try(var.ingress_rules["from_cidrs"]["tcp"], {})
 
+  access                      = "Allow"
+  destination_address_prefix  = "*"
+  destination_port_ranges     = [each.value["to_port"] != null ? "${each.key}-${each.value["to_port"]}" : each.key]
+  direction                   = "Inbound"
   name                        = "${each.key}-tcp"
   network_security_group_name = azurerm_network_security_group.this.name
+  priority                    = 1600 + index(keys(try(var.ingress_rules["from_cidrs"]["tcp"], {})), each.key)
+  protocol                    = each.value["protocol"]
   resource_group_name         = var.resource_group_name
-
-  access    = "Allow"
-  direction = "Inbound"
-  priority  = 1600 + index(keys(try(var.ingress_rules["from_cidrs"]["tcp"], {})), each.key)
-  protocol  = each.value["protocol"]
-
-  destination_address_prefix = "*"
-  destination_port_ranges    = [each.value["to_port"] != null ? "${each.key}-${each.value["to_port"]}" : each.key]
-  source_address_prefixes    = each.value["cidrs"]
-  source_port_range          = "*"
+  source_address_prefixes     = each.value["cidrs"]
+  source_port_range           = "*"
 }
 
 # Ingress UDP from CIDRs
 resource "azurerm_network_security_rule" "udp_from_cidrs" {
   for_each = try(var.ingress_rules["from_cidrs"]["udp"], {})
 
+  access                      = "Allow"
+  destination_address_prefix  = "*"
+  destination_port_ranges     = [each.value["to_port"] != null ? "${each.key}-${each.value["to_port"]}" : each.key]
+  direction                   = "Inbound"
   name                        = "${each.key}-udp"
   network_security_group_name = azurerm_network_security_group.this.name
+  priority                    = 1700 + index(keys(try(var.ingress_rules["from_cidrs"]["udp"], {})), each.key)
+  protocol                    = each.value["protocol"]
   resource_group_name         = var.resource_group_name
-
-  access    = "Allow"
-  direction = "Inbound"
-  priority  = 1700 + index(keys(try(var.ingress_rules["from_cidrs"]["udp"], {})), each.key)
-  protocol  = each.value["protocol"]
-
-  destination_address_prefix = "*"
-  destination_port_ranges    = [each.value["to_port"] != null ? "${each.key}-${each.value["to_port"]}" : each.key]
-  source_address_prefixes    = each.value["cidrs"]
-  source_port_range          = "*"
+  source_address_prefixes     = each.value["cidrs"]
+  source_port_range           = "*"
 }
 
 # Ingress TCP from ASGs (requires locals for flattening multiple ASG IDs)
 resource "azurerm_network_security_rule" "tcp_from_asgs" {
   for_each = local.ingress_rules_from_asgs_tcp
 
-  name                        = each.key
-  network_security_group_name = azurerm_network_security_group.this.name
-  resource_group_name         = var.resource_group_name
-
-  access    = "Allow"
-  direction = "Inbound"
-  priority  = each.value.priority
-  protocol  = each.value.protocol
-
+  access                                = "Allow"
   destination_address_prefix            = "*"
   destination_port_ranges               = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
+  direction                             = "Inbound"
+  name                                  = each.key
+  network_security_group_name           = azurerm_network_security_group.this.name
+  priority                              = each.value.priority
+  protocol                              = each.value.protocol
+  resource_group_name                   = var.resource_group_name
   source_application_security_group_ids = each.value.source_application_security_group_ids
   source_port_range                     = "*"
 }
@@ -127,17 +114,15 @@ resource "azurerm_network_security_rule" "tcp_from_asgs" {
 resource "azurerm_network_security_rule" "udp_from_asgs" {
   for_each = local.ingress_rules_from_asgs_udp
 
-  name                        = each.key
-  network_security_group_name = azurerm_network_security_group.this.name
-  resource_group_name         = var.resource_group_name
-
-  access    = "Allow"
-  direction = "Inbound"
-  priority  = each.value.priority
-  protocol  = each.value.protocol
-
+  access                                = "Allow"
   destination_address_prefix            = "*"
   destination_port_ranges               = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
+  direction                             = "Inbound"
+  name                                  = each.key
+  network_security_group_name           = azurerm_network_security_group.this.name
+  priority                              = each.value.priority
+  protocol                              = each.value.protocol
+  resource_group_name                   = var.resource_group_name
   source_application_security_group_ids = each.value.source_application_security_group_ids
   source_port_range                     = "*"
 }
@@ -146,17 +131,15 @@ resource "azurerm_network_security_rule" "udp_from_asgs" {
 resource "azurerm_network_security_rule" "icmp_to_cidrs" {
   for_each = try(var.egress_rules["to_cidrs"]["icmp"], {})
 
-  name                        = "egress-${each.key}-icmp"
-  network_security_group_name = azurerm_network_security_group.this.name
-  resource_group_name         = var.resource_group_name
-
-  access    = "Allow"
-  direction = "Outbound"
-  priority  = 2000 + index(keys(try(var.egress_rules["to_cidrs"]["icmp"], {})), each.key)
-  protocol  = "Icmp"
-
+  access                       = "Allow"
   destination_address_prefixes = each.value["cidrs"]
   destination_port_range       = "*"
+  direction                    = "Outbound"
+  name                         = "egress-${each.key}-icmp"
+  network_security_group_name  = azurerm_network_security_group.this.name
+  priority                     = 2000 + index(keys(try(var.egress_rules["to_cidrs"]["icmp"], {})), each.key)
+  protocol                     = "Icmp"
+  resource_group_name          = var.resource_group_name
   source_address_prefix        = "*"
   source_port_range            = "*"
 }
@@ -165,17 +148,15 @@ resource "azurerm_network_security_rule" "icmp_to_cidrs" {
 resource "azurerm_network_security_rule" "tcp_to_cidrs" {
   for_each = try(var.egress_rules["to_cidrs"]["tcp"], {})
 
-  name                        = "egress-${each.key}-tcp"
-  network_security_group_name = azurerm_network_security_group.this.name
-  resource_group_name         = var.resource_group_name
-
-  access    = "Allow"
-  direction = "Outbound"
-  priority  = 2100 + index(keys(try(var.egress_rules["to_cidrs"]["tcp"], {})), each.key)
-  protocol  = "Tcp"
-
+  access                       = "Allow"
   destination_address_prefixes = each.value["cidrs"]
   destination_port_ranges      = [each.value["to_port"] != null ? "${each.key}-${each.value["to_port"]}" : each.key]
+  direction                    = "Outbound"
+  name                         = "egress-${each.key}-tcp"
+  network_security_group_name  = azurerm_network_security_group.this.name
+  priority                     = 2100 + index(keys(try(var.egress_rules["to_cidrs"]["tcp"], {})), each.key)
+  protocol                     = "Tcp"
+  resource_group_name          = var.resource_group_name
   source_address_prefix        = "*"
   source_port_range            = "*"
 }
@@ -184,17 +165,15 @@ resource "azurerm_network_security_rule" "tcp_to_cidrs" {
 resource "azurerm_network_security_rule" "udp_to_cidrs" {
   for_each = try(var.egress_rules["to_cidrs"]["udp"], {})
 
-  name                        = "egress-${each.key}-udp"
-  network_security_group_name = azurerm_network_security_group.this.name
-  resource_group_name         = var.resource_group_name
-
-  access    = "Allow"
-  direction = "Outbound"
-  priority  = 2200 + index(keys(try(var.egress_rules["to_cidrs"]["udp"], {})), each.key)
-  protocol  = "Udp"
-
+  access                       = "Allow"
   destination_address_prefixes = each.value["cidrs"]
   destination_port_ranges      = [each.value["to_port"] != null ? "${each.key}-${each.value["to_port"]}" : each.key]
+  direction                    = "Outbound"
+  name                         = "egress-${each.key}-udp"
+  network_security_group_name  = azurerm_network_security_group.this.name
+  priority                     = 2200 + index(keys(try(var.egress_rules["to_cidrs"]["udp"], {})), each.key)
+  protocol                     = "Udp"
+  resource_group_name          = var.resource_group_name
   source_address_prefix        = "*"
   source_port_range            = "*"
 }
@@ -203,17 +182,15 @@ resource "azurerm_network_security_rule" "udp_to_cidrs" {
 resource "azurerm_network_security_rule" "tcp_to_asgs" {
   for_each = local.egress_rules_to_asgs_tcp
 
-  name                        = each.key
-  network_security_group_name = azurerm_network_security_group.this.name
-  resource_group_name         = var.resource_group_name
-
-  access    = "Allow"
-  direction = "Outbound"
-  priority  = each.value.priority
-  protocol  = each.value.protocol
-
+  access                                     = "Allow"
   destination_application_security_group_ids = each.value.destination_application_security_group_ids
   destination_port_ranges                    = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
+  direction                                  = "Outbound"
+  name                                       = each.key
+  network_security_group_name                = azurerm_network_security_group.this.name
+  priority                                   = each.value.priority
+  protocol                                   = each.value.protocol
+  resource_group_name                        = var.resource_group_name
   source_address_prefix                      = "*"
   source_port_range                          = "*"
 }
@@ -222,17 +199,15 @@ resource "azurerm_network_security_rule" "tcp_to_asgs" {
 resource "azurerm_network_security_rule" "udp_to_asgs" {
   for_each = local.egress_rules_to_asgs_udp
 
-  name                        = each.key
-  network_security_group_name = azurerm_network_security_group.this.name
-  resource_group_name         = var.resource_group_name
-
-  access    = "Allow"
-  direction = "Outbound"
-  priority  = each.value.priority
-  protocol  = each.value.protocol
-
+  access                                     = "Allow"
   destination_application_security_group_ids = each.value.destination_application_security_group_ids
   destination_port_ranges                    = [each.value.from_port == each.value.to_port ? tostring(each.value.from_port) : "${each.value.from_port}-${each.value.to_port}"]
+  direction                                  = "Outbound"
+  name                                       = each.key
+  network_security_group_name                = azurerm_network_security_group.this.name
+  priority                                   = each.value.priority
+  protocol                                   = each.value.protocol
+  resource_group_name                        = var.resource_group_name
   source_address_prefix                      = "*"
   source_port_range                          = "*"
 }
@@ -241,17 +216,15 @@ resource "azurerm_network_security_rule" "udp_to_asgs" {
 resource "azurerm_network_security_rule" "any_egress" {
   for_each = var.enable_any_egress ? toset(["enabled"]) : toset([])
 
+  access                      = "Allow"
+  destination_address_prefix  = "*"
+  destination_port_range      = "*"
+  direction                   = "Outbound"
   name                        = "Allow-Any_Egress"
   network_security_group_name = azurerm_network_security_group.this.name
+  priority                    = 2500
+  protocol                    = "*"
   resource_group_name         = var.resource_group_name
-
-  access    = "Allow"
-  direction = "Outbound"
-  priority  = 2500
-  protocol  = "*"
-
-  destination_address_prefix = "*"
-  destination_port_range     = "*"
-  source_address_prefix      = "*"
-  source_port_range          = "*"
+  source_address_prefix       = "*"
+  source_port_range           = "*"
 }
