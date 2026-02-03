@@ -203,3 +203,5 @@ https://learn.microsoft.com/en-us/cli/azure/network/nsg/rule?view=azure-cli-late
 
 https://github.com/hashicorp/terraform-provider-azurerm/issues/1346
 
+The Terraform provider documentation shows list(string), but Azure has a backend limitation that only allows 1 ASG per rule. Terraform validate and plan will pass, but apply fails with error: "A security rule may have up to 1 Application Security Group in the source or destination fields."
+This is why we need the flattening - to create separate rules for each ASG ID.
