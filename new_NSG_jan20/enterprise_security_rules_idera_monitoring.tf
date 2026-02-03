@@ -15,7 +15,7 @@ locals {
       priority                       = 590
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.6/32", "10.111.26.8/32", "10.111.41.145/32", "10.111.71.30/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-IderaMonitoring_TCP_1433" = {
       access                         = "Allow"
@@ -26,7 +26,7 @@ locals {
       priority                       = 591
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.6/32", "10.111.26.8/32", "10.111.41.145/32", "10.111.71.30/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-IderaMonitoring_TCP_5166" = {
       access                         = "Allow"
@@ -37,7 +37,7 @@ locals {
       priority                       = 592
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.6/32", "10.111.26.8/32", "10.111.41.145/32", "10.111.71.30/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-IderaMonitoring_TCP_5167" = {
       access                         = "Allow"
@@ -48,7 +48,7 @@ locals {
       priority                       = 593
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.6/32", "10.111.26.8/32", "10.111.41.145/32", "10.111.71.30/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-IderaMonitoring_TCP_5169" = {
       access                         = "Allow"
@@ -59,7 +59,7 @@ locals {
       priority                       = 594
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.6/32", "10.111.26.8/32", "10.111.41.145/32", "10.111.71.30/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-IderaMonitoring_TCP_5200" = {
       access                         = "Allow"
@@ -70,7 +70,7 @@ locals {
       priority                       = 595
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.6/32", "10.111.26.8/32", "10.111.41.145/32", "10.111.71.30/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-IderaMonitoring_TCP_5201" = {
       access                         = "Allow"
@@ -81,7 +81,7 @@ locals {
       priority                       = 596
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.6/32", "10.111.26.8/32", "10.111.41.145/32", "10.111.71.30/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-IderaMonitoring_TCP_52731" = {
       access                         = "Allow"
@@ -92,7 +92,7 @@ locals {
       priority                       = 597
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.6/32", "10.111.26.8/32", "10.111.41.145/32", "10.111.71.30/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-IderaMonitoring_TCP_1024-65535" = {
       access                         = "Allow"
@@ -103,7 +103,7 @@ locals {
       priority                       = 598
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.6/32", "10.111.26.8/32", "10.111.41.145/32", "10.111.71.30/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-IderaMonitoring_TCP_49152-65535" = {
       access                         = "Allow"
@@ -114,7 +114,7 @@ locals {
       priority                       = 599
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.6/32", "10.111.26.8/32", "10.111.41.145/32", "10.111.71.30/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-IderaMonitoring_ICMP_AllPorts" = {
       access                         = "Allow"
@@ -125,7 +125,7 @@ locals {
       priority                       = 600
       protocol                       = "Icmp"
       source_address_prefixes        = ["10.111.14.6/32", "10.111.26.8/32", "10.111.41.145/32", "10.111.71.30/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
   }
 
@@ -141,7 +141,7 @@ locals {
 
   enterprise_idera_monitoring_rules = merge(
     local.idera_monitoring_common,
-    var.location == "eastus" ? local.idera_monitoring_region_eastus : {},
-    var.location == "northcentralus" ? local.idera_monitoring_region_northcentralus : {}
+    local.is_region_eastus ? local.idera_monitoring_region_eastus : {},
+    local.is_region_northcentralus ? local.idera_monitoring_region_northcentralus : {}
   )
 }

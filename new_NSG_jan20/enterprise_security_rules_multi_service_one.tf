@@ -15,7 +15,7 @@ locals {
       priority                       = 241
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.1.249.31/32", "10.1.82.254/32", "10.20.68.72/32", "10.81.1.113/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_25" = {
       access                         = "Allow"
@@ -26,7 +26,7 @@ locals {
       priority                       = 242
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_53" = {
       access                         = "Allow"
@@ -37,7 +37,7 @@ locals {
       priority                       = 243
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_80" = {
       access                         = "Allow"
@@ -48,7 +48,7 @@ locals {
       priority                       = 244
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_135" = {
       access                         = "Allow"
@@ -59,7 +59,7 @@ locals {
       priority                       = 245
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_139" = {
       access                         = "Allow"
@@ -70,7 +70,7 @@ locals {
       priority                       = 246
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_443" = {
       access                         = "Allow"
@@ -81,7 +81,7 @@ locals {
       priority                       = 247
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_445" = {
       access                         = "Allow"
@@ -92,7 +92,7 @@ locals {
       priority                       = 248
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_465" = {
       access                         = "Allow"
@@ -103,7 +103,7 @@ locals {
       priority                       = 249
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_587" = {
       access                         = "Allow"
@@ -114,7 +114,7 @@ locals {
       priority                       = 250
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_1030" = {
       access                         = "Allow"
@@ -125,7 +125,7 @@ locals {
       priority                       = 251
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_1031" = {
       access                         = "Allow"
@@ -136,7 +136,7 @@ locals {
       priority                       = 252
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_1032" = {
       access                         = "Allow"
@@ -147,7 +147,7 @@ locals {
       priority                       = 253
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_1033" = {
       access                         = "Allow"
@@ -158,7 +158,7 @@ locals {
       priority                       = 254
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_1034" = {
       access                         = "Allow"
@@ -169,7 +169,7 @@ locals {
       priority                       = 255
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_1433" = {
       access                         = "Allow"
@@ -180,7 +180,7 @@ locals {
       priority                       = 256
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_1801" = {
       access                         = "Allow"
@@ -191,7 +191,7 @@ locals {
       priority                       = 257
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_5671" = {
       access                         = "Allow"
@@ -202,7 +202,7 @@ locals {
       priority                       = 258
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_17777" = {
       access                         = "Allow"
@@ -213,7 +213,7 @@ locals {
       priority                       = 259
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_17778" = {
       access                         = "Allow"
@@ -224,7 +224,7 @@ locals {
       priority                       = 260
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_17791" = {
       access                         = "Allow"
@@ -235,7 +235,7 @@ locals {
       priority                       = 261
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_22-23" = {
       access                         = "Allow"
@@ -246,7 +246,7 @@ locals {
       priority                       = 262
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.80/32", "10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_1024-1034" = {
       access                         = "Allow"
@@ -257,7 +257,7 @@ locals {
       priority                       = 263
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_17777-17778" = {
       access                         = "Allow"
@@ -268,7 +268,7 @@ locals {
       priority                       = 264
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_TCP_49152-65535" = {
       access                         = "Allow"
@@ -279,7 +279,7 @@ locals {
       priority                       = 265
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.233/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_UDP_53" = {
       access                         = "Allow"
@@ -290,7 +290,7 @@ locals {
       priority                       = 266
       protocol                       = "Udp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_UDP_1024" = {
       access                         = "Allow"
@@ -301,7 +301,7 @@ locals {
       priority                       = 267
       protocol                       = "Udp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_UDP_1434" = {
       access                         = "Allow"
@@ -312,7 +312,7 @@ locals {
       priority                       = 268
       protocol                       = "Udp"
       source_address_prefixes        = ["10.111.14.233/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_UDP_137-138" = {
       access                         = "Allow"
@@ -323,7 +323,7 @@ locals {
       priority                       = 269
       protocol                       = "Udp"
       source_address_prefixes        = ["10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_UDP_161-162" = {
       access                         = "Allow"
@@ -334,7 +334,7 @@ locals {
       priority                       = 270
       protocol                       = "Udp"
       source_address_prefixes        = ["10.110.34.0/24", "10.111.32.0/24", "10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceOne_ICMP_AllPorts" = {
       access                         = "Allow"
@@ -345,7 +345,7 @@ locals {
       priority                       = 271
       protocol                       = "Icmp"
       source_address_prefixes        = ["10.111.14.233/32", "10.120.7.135/32", "10.120.7.142/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-All_Egress" = {
       access                         = "Allow"
@@ -355,8 +355,8 @@ locals {
       direction                      = "Outbound"
       priority                       = 272
       protocol                       = "*"
-      source_address_prefixes        = ["*"]
-      source_port_ranges             = ["*"]
+      source_address_prefixes = ["0.0.0.0/0"]
+      source_port_range             = "*"
     }
   } : {}
 
@@ -372,7 +372,7 @@ locals {
 
   enterprise_multi_service_one_rules = merge(
     local.multi_service_one_common,
-    var.location == "eastus" ? local.multi_service_one_region_eastus : {},
-    var.location == "northcentralus" ? local.multi_service_one_region_northcentralus : {}
+    local.is_region_eastus ? local.multi_service_one_region_eastus : {},
+    local.is_region_northcentralus ? local.multi_service_one_region_northcentralus : {}
   )
 }

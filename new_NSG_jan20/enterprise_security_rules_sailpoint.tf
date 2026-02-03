@@ -15,7 +15,7 @@ locals {
       priority                       = 732
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.110.117.157/32", "10.110.117.164/32", "10.111.95.173/32", "10.111.95.176/32", "10.211.42.149/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SailPoint_TCP_5102" = {
       access                         = "Allow"
@@ -26,7 +26,7 @@ locals {
       priority                       = 733
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.110.117.157/32", "10.110.117.164/32", "10.111.95.173/32", "10.111.95.176/32", "10.211.42.149/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SailPoint_TCP_5432" = {
       access                         = "Allow"
@@ -37,7 +37,7 @@ locals {
       priority                       = 734
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.110.117.157/32", "10.110.117.164/32", "10.111.95.173/32", "10.111.95.176/32", "10.211.42.149/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SailPoint_TCP_52731" = {
       access                         = "Allow"
@@ -48,7 +48,7 @@ locals {
       priority                       = 735
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.110.117.157/32", "10.110.117.164/32", "10.111.95.173/32", "10.111.95.176/32", "10.211.42.149/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
   }
 
@@ -64,7 +64,7 @@ locals {
 
   enterprise_sailpoint_rules = merge(
     local.sailpoint_common,
-    var.location == "eastus" ? local.sailpoint_region_eastus : {},
-    var.location == "northcentralus" ? local.sailpoint_region_northcentralus : {}
+    local.is_region_eastus ? local.sailpoint_region_eastus : {},
+    local.is_region_northcentralus ? local.sailpoint_region_northcentralus : {}
   )
 }

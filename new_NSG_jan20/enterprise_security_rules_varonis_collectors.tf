@@ -15,7 +15,7 @@ locals {
       priority                       = 776
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.0/24", "10.112.1.153/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-VaronisCollectors_TCP_80" = {
       access                         = "Allow"
@@ -26,7 +26,7 @@ locals {
       priority                       = 777
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.0/24", "10.112.1.153/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-VaronisCollectors_TCP_111" = {
       access                         = "Allow"
@@ -37,7 +37,7 @@ locals {
       priority                       = 778
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.0/24", "10.112.1.153/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-VaronisCollectors_TCP_445" = {
       access                         = "Allow"
@@ -48,7 +48,7 @@ locals {
       priority                       = 779
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.0/24", "10.112.1.153/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-VaronisCollectors_TCP_2049" = {
       access                         = "Allow"
@@ -59,7 +59,7 @@ locals {
       priority                       = 780
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.0/24", "10.112.1.153/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-VaronisCollectors_TCP_137-139" = {
       access                         = "Allow"
@@ -70,7 +70,7 @@ locals {
       priority                       = 781
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.0/24", "10.112.1.153/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-VaronisCollectors_TCP_4972-4973" = {
       access                         = "Allow"
@@ -81,7 +81,7 @@ locals {
       priority                       = 782
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.0/24", "10.112.1.153/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
   }
 
@@ -97,7 +97,7 @@ locals {
 
   enterprise_varonis_collectors_rules = merge(
     local.varonis_collectors_common,
-    var.location == "eastus" ? local.varonis_collectors_region_eastus : {},
-    var.location == "northcentralus" ? local.varonis_collectors_region_northcentralus : {}
+    local.is_region_eastus ? local.varonis_collectors_region_eastus : {},
+    local.is_region_northcentralus ? local.varonis_collectors_region_northcentralus : {}
   )
 }

@@ -15,7 +15,7 @@ locals {
       priority                       = 437
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.51.0/27", "10.111.51.128/27"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-All_Egress" = {
       access                         = "Allow"
@@ -25,8 +25,8 @@ locals {
       direction                      = "Outbound"
       priority                       = 438
       protocol                       = "*"
-      source_address_prefixes        = ["*"]
-      source_port_ranges             = ["*"]
+      source_address_prefixes = ["0.0.0.0/0"]
+      source_port_range             = "*"
     }
   }
 
@@ -42,7 +42,7 @@ locals {
 
   enterprise_rubrik_backup_rules = merge(
     local.rubrik_backup_common,
-    var.location == "eastus" ? local.rubrik_backup_region_eastus : {},
-    var.location == "northcentralus" ? local.rubrik_backup_region_northcentralus : {}
+    local.is_region_eastus ? local.rubrik_backup_region_eastus : {},
+    local.is_region_northcentralus ? local.rubrik_backup_region_northcentralus : {}
   )
 }

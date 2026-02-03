@@ -15,7 +15,7 @@ locals {
       priority                       = 479
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.110.28.197/32", "10.110.28.214/32", "10.111.123.145/32", "10.111.123.182/32", "10.111.88.85/32", "10.20.68.14/32", "10.211.123.156/32", "10.211.123.197/32", "10.211.88.4/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-DatabaseAdmin_TCP_5102" = {
       access                         = "Allow"
@@ -26,7 +26,7 @@ locals {
       priority                       = 480
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.110.28.197/32", "10.110.28.214/32", "10.111.123.145/32", "10.111.123.182/32", "10.111.88.85/32", "10.211.123.156/32", "10.211.123.197/32", "10.211.88.4/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-DatabaseAdmin_TCP_5986" = {
       access                         = "Allow"
@@ -37,7 +37,7 @@ locals {
       priority                       = 481
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.20.68.14/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-DatabaseAdmin_TCP_52731" = {
       access                         = "Allow"
@@ -48,7 +48,7 @@ locals {
       priority                       = 482
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.110.28.197/32", "10.110.28.214/32", "10.111.123.145/32", "10.111.123.182/32", "10.111.88.85/32", "10.20.68.14/32", "10.211.123.156/32", "10.211.123.197/32", "10.211.88.4/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-DatabaseAdmin_TCP_52733" = {
       access                         = "Allow"
@@ -59,7 +59,7 @@ locals {
       priority                       = 483
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.110.28.197/32", "10.110.28.214/32", "10.111.123.145/32", "10.111.123.182/32", "10.111.88.85/32", "10.211.123.156/32", "10.211.123.197/32", "10.211.88.4/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-All_Egress" = {
       access                         = "Allow"
@@ -69,8 +69,8 @@ locals {
       direction                      = "Outbound"
       priority                       = 484
       protocol                       = "*"
-      source_address_prefixes        = ["*"]
-      source_port_ranges             = ["*"]
+      source_address_prefixes = ["0.0.0.0/0"]
+      source_port_range             = "*"
     }
   }
 
@@ -86,7 +86,7 @@ locals {
 
   enterprise_database_admin_rules = merge(
     local.database_admin_common,
-    var.location == "eastus" ? local.database_admin_region_eastus : {},
-    var.location == "northcentralus" ? local.database_admin_region_northcentralus : {}
+    local.is_region_eastus ? local.database_admin_region_eastus : {},
+    local.is_region_northcentralus ? local.database_admin_region_northcentralus : {}
   )
 }

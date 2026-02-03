@@ -15,7 +15,7 @@ locals {
       priority                       = 641
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.41.153/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-HSAMonitoring_TCP_1024-65535" = {
       access                         = "Allow"
@@ -26,7 +26,7 @@ locals {
       priority                       = 642
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.41.153/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-HSAMonitoring_ICMP_AllPorts" = {
       access                         = "Allow"
@@ -37,7 +37,7 @@ locals {
       priority                       = 643
       protocol                       = "Icmp"
       source_address_prefixes        = ["10.111.41.153/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
   }
 
@@ -53,7 +53,7 @@ locals {
 
   enterprise_hsa_monitoring_rules = merge(
     local.hsa_monitoring_common,
-    var.location == "eastus" ? local.hsa_monitoring_region_eastus : {},
-    var.location == "northcentralus" ? local.hsa_monitoring_region_northcentralus : {}
+    local.is_region_eastus ? local.hsa_monitoring_region_eastus : {},
+    local.is_region_northcentralus ? local.hsa_monitoring_region_northcentralus : {}
   )
 }

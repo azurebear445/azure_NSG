@@ -15,7 +15,7 @@ locals {
       priority                       = 164
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_23" = {
       access                         = "Allow"
@@ -26,7 +26,7 @@ locals {
       priority                       = 165
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_25" = {
       access                         = "Allow"
@@ -37,7 +37,7 @@ locals {
       priority                       = 166
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_53" = {
       access                         = "Allow"
@@ -48,7 +48,7 @@ locals {
       priority                       = 167
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_80" = {
       access                         = "Allow"
@@ -59,7 +59,7 @@ locals {
       priority                       = 168
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_135" = {
       access                         = "Allow"
@@ -70,7 +70,7 @@ locals {
       priority                       = 169
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_139" = {
       access                         = "Allow"
@@ -81,7 +81,7 @@ locals {
       priority                       = 170
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_443" = {
       access                         = "Allow"
@@ -92,7 +92,7 @@ locals {
       priority                       = 171
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_445" = {
       access                         = "Allow"
@@ -103,7 +103,7 @@ locals {
       priority                       = 172
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_465" = {
       access                         = "Allow"
@@ -114,7 +114,7 @@ locals {
       priority                       = 173
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_587" = {
       access                         = "Allow"
@@ -125,7 +125,7 @@ locals {
       priority                       = 174
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1024" = {
       access                         = "Allow"
@@ -136,7 +136,7 @@ locals {
       priority                       = 175
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1025" = {
       access                         = "Allow"
@@ -147,7 +147,7 @@ locals {
       priority                       = 176
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1026" = {
       access                         = "Allow"
@@ -158,7 +158,7 @@ locals {
       priority                       = 177
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1027" = {
       access                         = "Allow"
@@ -169,7 +169,7 @@ locals {
       priority                       = 178
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1028" = {
       access                         = "Allow"
@@ -180,7 +180,7 @@ locals {
       priority                       = 179
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1029" = {
       access                         = "Allow"
@@ -191,7 +191,7 @@ locals {
       priority                       = 180
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1030" = {
       access                         = "Allow"
@@ -202,7 +202,7 @@ locals {
       priority                       = 181
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1031" = {
       access                         = "Allow"
@@ -213,7 +213,7 @@ locals {
       priority                       = 182
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1032" = {
       access                         = "Allow"
@@ -224,7 +224,7 @@ locals {
       priority                       = 183
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1033" = {
       access                         = "Allow"
@@ -235,7 +235,7 @@ locals {
       priority                       = 184
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1034" = {
       access                         = "Allow"
@@ -246,7 +246,7 @@ locals {
       priority                       = 185
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1433" = {
       access                         = "Allow"
@@ -257,7 +257,7 @@ locals {
       priority                       = 186
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_1801" = {
       access                         = "Allow"
@@ -268,7 +268,7 @@ locals {
       priority                       = 187
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_5671" = {
       access                         = "Allow"
@@ -279,7 +279,7 @@ locals {
       priority                       = 188
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_17777" = {
       access                         = "Allow"
@@ -290,7 +290,7 @@ locals {
       priority                       = 189
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_17778" = {
       access                         = "Allow"
@@ -301,7 +301,7 @@ locals {
       priority                       = 190
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_TCP_17791" = {
       access                         = "Allow"
@@ -312,7 +312,7 @@ locals {
       priority                       = 191
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_UDP_53" = {
       access                         = "Allow"
@@ -323,7 +323,7 @@ locals {
       priority                       = 192
       protocol                       = "Udp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_UDP_137" = {
       access                         = "Allow"
@@ -334,7 +334,7 @@ locals {
       priority                       = 193
       protocol                       = "Udp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_UDP_138" = {
       access                         = "Allow"
@@ -345,7 +345,7 @@ locals {
       priority                       = 194
       protocol                       = "Udp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_UDP_161" = {
       access                         = "Allow"
@@ -356,7 +356,7 @@ locals {
       priority                       = 195
       protocol                       = "Udp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_UDP_162" = {
       access                         = "Allow"
@@ -367,7 +367,7 @@ locals {
       priority                       = 196
       protocol                       = "Udp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_UDP_1024" = {
       access                         = "Allow"
@@ -378,7 +378,7 @@ locals {
       priority                       = 197
       protocol                       = "Udp"
       source_address_prefixes        = ["10.111.14.232/32", "10.111.14.233/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_UDP_1434" = {
       access                         = "Allow"
@@ -389,7 +389,7 @@ locals {
       priority                       = 198
       protocol                       = "Udp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-SolarWinds_ICMP_AllPorts" = {
       access                         = "Allow"
@@ -400,7 +400,7 @@ locals {
       priority                       = 199
       protocol                       = "Icmp"
       source_address_prefixes        = ["10.111.14.232/32"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-All_Egress" = {
       access                         = "Allow"
@@ -410,8 +410,8 @@ locals {
       direction                      = "Outbound"
       priority                       = 200
       protocol                       = "*"
-      source_address_prefixes        = ["*"]
-      source_port_ranges             = ["*"]
+      source_address_prefixes = ["0.0.0.0/0"]
+      source_port_range             = "*"
     }
   } : {}
 
@@ -427,7 +427,7 @@ locals {
 
   enterprise_solarwinds_rules = merge(
     local.solarwinds_common,
-    var.location == "eastus" ? local.solarwinds_region_eastus : {},
-    var.location == "northcentralus" ? local.solarwinds_region_northcentralus : {}
+    local.is_region_eastus ? local.solarwinds_region_eastus : {},
+    local.is_region_northcentralus ? local.solarwinds_region_northcentralus : {}
   )
 }

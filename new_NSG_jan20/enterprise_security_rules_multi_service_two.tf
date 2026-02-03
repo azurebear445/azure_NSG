@@ -15,7 +15,7 @@ locals {
       priority                       = 313
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceTwo_TCP_135" = {
       access                         = "Allow"
@@ -26,7 +26,7 @@ locals {
       priority                       = 314
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceTwo_TCP_139" = {
       access                         = "Allow"
@@ -37,7 +37,7 @@ locals {
       priority                       = 315
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceTwo_TCP_443" = {
       access                         = "Allow"
@@ -48,7 +48,7 @@ locals {
       priority                       = 316
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceTwo_TCP_445" = {
       access                         = "Allow"
@@ -59,7 +59,7 @@ locals {
       priority                       = 317
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceTwo_TCP_636" = {
       access                         = "Allow"
@@ -70,7 +70,7 @@ locals {
       priority                       = 318
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceTwo_TCP_1858" = {
       access                         = "Allow"
@@ -81,7 +81,7 @@ locals {
       priority                       = 319
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceTwo_TCP_3389" = {
       access                         = "Allow"
@@ -92,7 +92,7 @@ locals {
       priority                       = 320
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceTwo_TCP_5500" = {
       access                         = "Allow"
@@ -103,7 +103,7 @@ locals {
       priority                       = 321
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceTwo_TCP_52731" = {
       access                         = "Allow"
@@ -114,7 +114,7 @@ locals {
       priority                       = 322
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceTwo_TCP_49152-65535" = {
       access                         = "Allow"
@@ -125,7 +125,7 @@ locals {
       priority                       = 323
       protocol                       = "Tcp"
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24", "10.71.44.0/24", "10.72.44.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-MultiServiceTwo_UDP_1813" = {
       access                         = "Allow"
@@ -136,7 +136,7 @@ locals {
       priority                       = 324
       protocol                       = "Udp"
       source_address_prefixes        = ["10.111.19.208/32", "10.111.88.0/24", "10.211.19.155/32", "10.211.88.0/24"]
-      source_port_ranges             = ["*"]
+      source_port_range             = "*"
     }
     "Allow-All_Egress" = {
       access                         = "Allow"
@@ -146,8 +146,8 @@ locals {
       direction                      = "Outbound"
       priority                       = 325
       protocol                       = "*"
-      source_address_prefixes        = ["*"]
-      source_port_ranges             = ["*"]
+      source_address_prefixes = ["0.0.0.0/0"]
+      source_port_range             = "*"
     }
   } : {}
 
@@ -163,7 +163,7 @@ locals {
 
   enterprise_multi_service_two_rules = merge(
     local.multi_service_two_common,
-    var.location == "eastus" ? local.multi_service_two_region_eastus : {},
-    var.location == "northcentralus" ? local.multi_service_two_region_northcentralus : {}
+    local.is_region_eastus ? local.multi_service_two_region_eastus : {},
+    local.is_region_northcentralus ? local.multi_service_two_region_northcentralus : {}
   )
 }
