@@ -205,3 +205,27 @@ https://github.com/hashicorp/terraform-provider-azurerm/issues/1346
 
 The Terraform provider documentation shows list(string), but Azure has a backend limitation that only allows 1 ASG per rule. Terraform validate and plan will pass, but apply fails with error: "A security rule may have up to 1 Application Security Group in the source or destination fields."
 This is why we need the flattening - to create separate rules for each ASG ID.
+
+
+
+
+A shared local only helps if future CIDR changes will always apply to all rules using it — meaning every port that currently shares the same CIDR list will always get the same CIDR additions, removals, or updates in the future, with no port-specific changes ever.
+Since each rule is for a different port, future updates are likely to be port-specific. Creating a shared local now would make those future changes harder.
+
+For example, in database_admin we have:
+
+An exact same list of 9 CIDRs repeated 2 times
+An exact same list of 8 CIDRs repeated 2 times
+A single CIDR used 1 time
+0.0.0.0/0 used 1 time
+
+Yes, we could create local.database_admin_cidrs_9 and local.database_admin_cidrs_8 for the repeated lists. But this adds more lines (local definitions + references) and doesn't reduce complexity.
+If in the future they need to add a CIDR to only one of the rules using the shared local:
+
+They can't update the local (the other rule still needs the old value)
+They have to remove the local reference from that rule
+They have to write the CIDRs inline
+Now we have a mix of local references and inline values
+
+This is especially problematic when a local is created for a list that's only repeated 2 times. One different addition and the shared local becomes useless — the code ends up more confusing than if we just kept everything inline from the start.
+This is my opinion, but I'm open to going with your approach if you prefer.
