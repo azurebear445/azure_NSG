@@ -229,3 +229,6 @@ Now we have a mix of local references and inline values
 
 This is especially problematic when a local is created for a list that's only repeated 2 times. One different addition and the shared local becomes useless — the code ends up more confusing than if we just kept everything inline from the start.
 This is my opinion, but I'm open to going with your approach if you prefer.
+
+
+That PR didn't fix the limitation — it added MaxItems: 1 validation in the Terraform provider to enforce Azure's backend limit. The Azure limit of 1 ASG per rule still exists. The PR just makes Terraform catch it earlier instead of failing at apply.
