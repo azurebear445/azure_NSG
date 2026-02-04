@@ -238,3 +238,8 @@ LineCurrentNew53name = "${each.key}-icmp"name = "Allow-ICMP"70name = "${each.key
 
 2. locals.tf - 4 places (ASG-based rules)
 LineCurrentNew39key = "${port}-tcp-asg-${y}"key = "Allow-TCP_${port}-asg-${y}"54key = "${port}-udp-asg-${y}"key = "Allow-UDP_${port}-asg-${y}"69key = "egress-${port}-tcp-asg-${k}"key = "Allow-Egress-TCP_${port}-asg-${k}"84key = "egress-${port}-udp-asg-${k}"key = "Allow-Egress-UDP_${port}-asg-${k}"
+
+
+
+
+k is the index from iterating over the destination_asg_ids list. Since Azure only allows 1 ASG per rule, we flatten the list and create separate rules for each ASG ID. The index ensures unique rule names when multiple ASGs are provided for the same port.
