@@ -232,3 +232,9 @@ This is my opinion, but I'm open to going with your approach if you prefer.
 
 
 That PR didn't fix the limitation — it added MaxItems: 1 validation in the Terraform provider to enforce Azure's backend limit. The Azure limit of 1 ASG per rule still exists. The PR just makes Terraform catch it earlier instead of failing at apply.
+
+1. main.tf - 6 places (CIDR-based rules)
+LineCurrentNew53name = "${each.key}-icmp"name = "Allow-ICMP"70name = "${each.key}-tcp"name = "Allow-TCP_${each.key}"87name = "${each.key}-udp"name = "Allow-UDP_${each.key}"138name = "egress-${each.key}-icmp"name = "Allow-Egress-ICMP"155name = "egress-${each.key}-tcp"name = "Allow-Egress-TCP_${each.key}"172name = "egress-${each.key}-udp"name = "Allow-Egress-UDP_${each.key}"
+
+2. locals.tf - 4 places (ASG-based rules)
+LineCurrentNew39key = "${port}-tcp-asg-${y}"key = "Allow-TCP_${port}-asg-${y}"54key = "${port}-udp-asg-${y}"key = "Allow-UDP_${port}-asg-${y}"69key = "egress-${port}-tcp-asg-${k}"key = "Allow-Egress-TCP_${port}-asg-${k}"84key = "egress-${port}-udp-asg-${k}"key = "Allow-Egress-UDP_${port}-asg-${k}"
