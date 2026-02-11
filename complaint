@@ -243,3 +243,35 @@ LineCurrentNew39key = "${port}-tcp-asg-${y}"key = "Allow-TCP_${port}-asg-${y}"54
 
 
 k is the index from iterating over the destination_asg_ids list. Since Azure only allows 1 ASG per rule, we flatten the list and create separate rules for each ASG ID. The index ensures unique rule names when multiple ASGs are provided for the same port.
+
+
+
+
+
+# Wiz Compliance Findings
+
+| ID | Severity | Issue | Source | Notes |
+| --- | --- | --- | --- | --- |
+| Firewall-102 | HIGH | Allow all egress | `enable_any_egress` variable | Migrated from AWS SG module |
+| Firewall-096 | LOW | Flow logs retention < 90 days | Not configured | Out of scope* |
+| Firewall-008 | HIGH | 10.0.0.0/8 allowed | ESR files (Citrix) | Migrated from AWS SG module |
+| Firewall-094 | LOW | Flow logs not enabled | Not configured | Out of scope* |
+| Firewall-095 | LOW | Traffic analytics disabled | Not configured | Out of scope* |
+| Firewall-009 | HIGH | Port ranges allowed | ESR files (Idera, HSA) | Migrated from AWS SG module |
+
+*Note: Firewall-094, 095, 096 are related to NSG Flow Logs which Azure is retiring on September 30, 2027. Azure recommends migrating to Virtual Network Flow Logs instead. This is a separate resource outside the NSG module scope.
+
+
+
+# Wiz Compliance Findings
+
+| ID | Severity | Issue | Source | Notes |
+| --- | --- | --- | --- | --- |
+| Firewall-102 | HIGH | Allow all egress | `enable_any_egress` variable | Migrated from AWS SG module |
+| Firewall-096 | LOW | Flow logs retention < 90 days | Not configured | Out of scope* |
+| Firewall-008 | HIGH | 10.0.0.0/8 allowed | ESR files (Citrix) | Migrated from AWS SG module |
+| Firewall-094 | LOW | Flow logs not enabled | Not configured | Out of scope* |
+| Firewall-095 | LOW | Traffic analytics disabled | Not configured | Out of scope* |
+| Firewall-009 | HIGH | Port ranges allowed | ESR files (Idera, HSA) | Migrated from AWS SG module |
+
+*Note: Firewall-094, 095, 096 are related to NSG Flow Logs which Azure is retiring on September 30, 2027. Azure recommends migrating to Virtual Network Flow Logs instead. This is a separate resource outside the NSG module scope.
